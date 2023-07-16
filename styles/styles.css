@@ -156,7 +156,7 @@ div[id^=shuffled-cell-][data-evolution-3]:after,
 div[id^=shuffled-cell-][data-evolution-4]:after {
 	content: "•";
 	position: absolute;
-	font-size: 8px;
+	font-size: 13px;
 	color: #000;
 	top: 8%;
 	left: 5%;
@@ -411,6 +411,20 @@ div[id^=shuffled-cell-][data-evolution-4]:after {
 	}
 }
 
+@media (max-width: 900px) {
+
+	div[id^=buyer-][data-evolution-1]:after,
+	div[id^=buyer-][data-evolution-2]:after,
+	div[id^=buyer-][data-evolution-3]:after,
+	div[id^=buyer-][data-evolution-4]:after,
+	div[id^=shuffled-cell-][data-evolution-1]:after,
+	div[id^=shuffled-cell-][data-evolution-2]:after,
+	div[id^=shuffled-cell-][data-evolution-3]:after,
+	div[id^=shuffled-cell-][data-evolution-4]:after {
+		font-size: 7px;
+	}
+}
+
 @media only screen and (width: 720px) and (height: 1440px) {
 
 	[id^=shuffled-cell],
@@ -441,8 +455,7 @@ div[id^=shuffled-cell-][data-evolution-4]:after {
 }
 
 [id^=shuffled-cell-].highlight-border,
-[id^=buyer-].highlight-border
- {
+[id^=buyer-].highlight-border {
 	border-color: rgba(var(--color-f7df6f), 0.9) !important;
 }
 
