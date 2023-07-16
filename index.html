@@ -10,29 +10,12 @@
 </head>
 
 <body>
-	<style>
-		.backpack-grid,
-		.buyer-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-			grid-template-rows: 1fr;
-			gap: 10px;
-		}
-		.backpack-grid {
-			grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-		}
-
-		.backpack-grid>div,
-		.buyer-grid>div {
-			border-radius: 8px;
-		}
-	</style>
 
 	<div class="container">
 		<div class="square">
 			<div class="content">
 				<div class="header">
-					<h1>PoKeMerge</h1>
+					<h1 onclick="showStats()">PoKeMerge</h1>
 				</div>
 				<div class="box-container">
 					<div class="left-box">
@@ -46,7 +29,8 @@
 					white-space: initial;">...</span></div>
 					</div>
 					<div class="right-box">
-						<div class="right-box-pokeball no-highlight" onclick="onPokeBallClick()">
+						<div class="right-box-pokeball no-highlight" id="right-box-pokeball" onmousedown="onPokeballMouseDown()"
+							onmouseup="onPokeballMouseUp()" onmouseout="onPokeballMouseUp()" onclick="onPokeBallClick()">
 							<div>
 								<img id="poke-ball" class="pokeball-shake"
 									src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
@@ -138,9 +122,16 @@
 			return arr;
 		}
 
+		function showStats() {
+			window.alert(`WxH: ${window.innerWidth}x${window.innerHeight}`);
+		}
+
 		(async () => {
 			await loadBasicEvolutionJson();
 			await loadPokeCsv();
+
+
+			attachContextMenus();
 
 			initializeCurrentLevel();
 			updateCurrentLevel();
@@ -167,12 +158,32 @@
 			window.pokelist = jsonResponse.select;
 		}
 
+		function attachContextMenus() {
+			const shuffledCells = getAllShuffledCells();
+
+			shuffledCells.forEach((eachShuffledCell) => {
+				attachBackpackContextMenu(eachShuffledCell);
+			});
+
+			const buyerCells = Array.from(document.querySelectorAll('[id^=buyer-]'));
+
+			buyerCells.forEach((eachShuffledCell) => {
+				attachBuyerContextMenu(eachShuffledCell);
+			});
+		}
+
+		addEventListener("keydown", (event) => {
+			if (event.code === 'KeyP') {
+				onPokeBallClick();
+			}
+		});
+
 		function playBgm() {
 			const bgmElement = document.getElementById('pokemon-theme-bgm');
 
 			if (!bgmElement.paused) { return; }
 
-			bgmElement.volume = 0.03;
+			bgmElement.volume = 0.01;
 			bgmElement.play();
 		}
 
@@ -214,7 +225,7 @@
 			return pool;
 		}
 
-		function getIdentifierForCsv(displayName) {
+		function getIdentifierForCsv(displayName, callerName) {
 			return displayName.replaceAll('.', '').replaceAll(' ', '-').replaceAll(':', '').replaceAll('♀', '-m').replaceAll('♂', '-f').replaceAll(`'`, '').replaceAll('é', 'e').toLowerCase();
 		}
 
@@ -223,6 +234,18 @@
 				const j = Math.floor(Math.random() * (i + 1));
 				[anArrayCopy[i], anArrayCopy[j]] = [anArrayCopy[j], anArrayCopy[i]];
 			}
+		}
+
+		function getSecondEvolutionPokemonDisplayNameByChance(chainDataList) {
+			if (1 === chainDataList.length) {
+				return chainDataList[0];
+			}
+
+			if (Math.floor(Math.random() * 20) > 0) {
+				return chainDataList[0];
+			}
+
+			return chainDataList[1];
 		}
 
 		function randomizeCell(cellElement) {
@@ -238,7 +261,11 @@
 			cellElement.setAttribute('data-chain-length', chainData.list.length);
 			cellElement.setAttribute('data-evolution-chain-string', chainData.list.map((eachEvolutionName) => Array.isArray(eachEvolutionName) ? eachEvolutionName.join('/') : eachEvolutionName).join(' > '));
 
-			const pokemonDisplayName = chainData.list[0];
+			let pokemonDisplayName = getSecondEvolutionPokemonDisplayNameByChance(chainData.list);
+
+			if (Array.isArray(pokemonDisplayName)) {
+				pokemonDisplayName = pokemonDisplayName[Math.floor(Math.random() * pokemonDisplayName.length)];
+			}
 
 			cellElement.setAttribute('data-display-name', pokemonDisplayName);
 
@@ -263,7 +290,9 @@
 
 		function increaseCurrentGold(goldIncrease) {
 			window.currentGold += goldIncrease;
+
 			window.localStorage.setItem('current_gold', window.currentGold);
+
 			updateCurrentGold();
 		}
 
@@ -324,6 +353,7 @@
 			if (exactMatch) {
 				return exactMatch;
 			}
+
 			return window.pokeCsv.find((eachPokemon) => eachPokemon.identifier.match(`^${identifierPrefix}`));
 		}
 
@@ -395,10 +425,31 @@
 			playSound('coin-sound');
 		}
 
+		function attachBackpackContextMenu(cellElement) {
+			cellElement.removeEventListener("contextmenu", onBackpackContextMenu)
+			cellElement.addEventListener("contextmenu", onBackpackContextMenu);
+
+			function onBackpackContextMenu(event) {
+				event.preventDefault();
+
+				if (null === cellElement.getAttribute('data-identifier')) {
+					return;
+				}
+
+				sellCell(cellElement);
+				clearShuffledCell(cellElement);
+			};
+		}
+
 		function decorateCell(cellElement, pokemonDisplayName, evolutionCount) {
-			const validNameForCsv = getIdentifierForCsv(pokemonDisplayName);
+			const validNameForCsv = getIdentifierForCsv(pokemonDisplayName, 'decorateCell');
 
 			const pokemonData = findPokemonFromCsv(validNameForCsv);
+
+			if (!pokemonData) {
+				console.error(`No data for ${pokemonDisplayName}`);
+				return;
+			}
 
 			const pokemonId = pokemonData.id;
 
@@ -411,18 +462,6 @@
 			cellElement.setAttribute('title', `${cellElement.getAttribute('data-evolution-chain-string')}\nRight click to sell for ${sellValue} gold.`);
 			cellElement.setAttribute('data-identifier', pokemonIdentifier);
 			cellElement.setAttribute('data-evolution-count', evolutionCount);
-
-
-			cellElement.addEventListener("contextmenu", (event) => {
-				event.preventDefault();
-
-				if (null === cellElement.getAttribute('data-identifier')) {
-					return;
-				}
-
-				sellCell(cellElement);
-				clearShuffledCell(cellElement);
-			});
 
 			cellElement.onclick = () => {
 				if (null === cellElement.getAttribute('data-identifier')) {
@@ -479,6 +518,26 @@
 			clearSelectedCell();
 		}
 
+		function onPokeballMouseDown() {
+			clearInterval(window._mouseDownInterval);
+			clearTimeout(window._mouseDownTimeout);
+			window._mouseDownTimeout = setTimeout(() => {
+				clearInterval(window._mouseDownInterval);
+				window._mouseDownInterval = setInterval(() => {
+					onPokeBallClick()
+				}, 100);
+			}, 800)
+		}
+
+		function onPokeballMouseUp() {
+			clearTimeout(window._mouseDownTimeout);
+			clearInterval(window._mouseDownInterval);
+		}
+
+		addEventListener("mouseup", (event) => {
+			clearInterval(window._mouseDownInterval);
+		});
+
 		function randomizeBuyerCell(cellElement) {
 			let allShuffledCells = getAllShuffledCells();
 
@@ -513,6 +572,8 @@
 
 			const chainString = thatElement.getAttribute('data-evolution-chain-string');
 
+			let additionalSellValue = 0;
+
 			if (numberOfDuplicates > 1) {
 
 				const matches = chainString.match(new RegExp(`${pokemonDisplayName} > (.+)`))
@@ -521,15 +582,16 @@
 					const [_, thatMatch] = matches;
 
 					pokemonDisplayName = thatMatch.split(' > ').at(0);
+					additionalSellValue = 5;
 
 					const maybeMoreByEvolutionLevel = pokemonDisplayName.split('/');
 
 					if (maybeMoreByEvolutionLevel.length > 1) {
 						pokemonDisplayName = maybeMoreByEvolutionLevel[Math.floor(Math.random() * maybeMoreByEvolutionLevel.length)];
+						additionalSellValue = 10;
 					}
 				}
 			}
-
 
 			const allBuyers = Array.from(document.querySelectorAll('[id^=buyer-]'));
 			const existingBuyersWithDisplayName = allBuyers.filter((eachBuyerCell) => pokemonDisplayName === eachBuyerCell.getAttribute('data-display-name'))
@@ -541,7 +603,7 @@
 			const basicEvolutionData = window.pokelist.find(({ list }) => list.find((eachInList) => new RegExp(pokemonDisplayName).test(eachInList)));
 
 			const minimumSellValue = Math.max(1, 10 - numberOfDuplicates);
-			const maximumSellValue = minimumSellValue + (5 - basicEvolutionData.list.length);
+			const maximumSellValue = minimumSellValue + (additionalSellValue * 2) + ((5 - basicEvolutionData.list.length) * 2);
 			const differenceSellValue = maximumSellValue - minimumSellValue;
 			const finalSellValue = minimumSellValue + Math.floor(Math.random() * differenceSellValue);
 
@@ -565,7 +627,7 @@
 			cellElement._allowBuyerRandomizeTimeout = setTimeout(() => {
 				clearTimeout(cellElement._allowBuyerRandomizeTimeout);
 				cellElement.setAttribute('data-display-buyer-randomize-button', true);
-			}, 1000);
+			}, 6000);
 		}
 
 		function resetBuyers() {
@@ -651,10 +713,44 @@
 			window._playedCries[audioElementId] = Date.now() + 3000;
 		}
 
+		function attachBuyerContextMenu(cellElement) {
+			cellElement.addEventListener("contextmenu", onBuyerContextMenu, true);
+
+			function onBuyerContextMenu(event) {
+				event.preventDefault();
+
+				if (window.currentGold < 10) {
+					return;
+				}
+
+				if (null === cellElement.getAttribute('data-identifier')) {
+					return;
+				}
+
+				if (cellElement._nextRandomForThisCell > Date.now()) {
+					return;
+				}
+
+				randomizeBuyerCell(cellElement);
+				cellElement.removeAttribute('data-display-buyer-randomize-button');
+				increaseCurrentGold(-10);
+
+				cellElement._nextRandomForThisCell = Date.now() + 6000;
+				restartBuyerRandomizeTimeout(cellElement);
+
+				playSound('shuffle-sound');
+			}
+		}
+
 		function decorateBuyerCell(cellElement, pokemonDisplayName) {
-			const validNameForCsv = getIdentifierForCsv(pokemonDisplayName);
+			const validNameForCsv = getIdentifierForCsv(pokemonDisplayName, 'decorateBuyerCell');
 
 			const pokemonData = findPokemonFromCsv(validNameForCsv);
+
+			if (!pokemonData) {
+				console.error(`No data for ${pokemonDisplayName}`);
+				return;
+			}
 
 			const pokemonId = pokemonData.id;
 
@@ -666,21 +762,6 @@
 			cellElement.setAttribute('title', cellElement.getAttribute('data-evolution-chain-string'));
 			cellElement.setAttribute('data-identifier', pokemonIdentifier);
 			cellElement.setAttribute('data-display-name', pokemonDisplayName);
-
-			cellElement.addEventListener("contextmenu", (event) => {
-				event.preventDefault();
-				
-				if (window.currentGold < 10) {
-					return;
-				}
-
-				randomizeBuyerCell(cellElement);
-				cellElement.removeAttribute('data-display-buyer-randomize-button');
-				increaseCurrentGold(-10);
-
-				cellElement._nextRandomForThisCell = Date.now() + 6000;
-				restartBuyerRandomizeTimeout(cellElement);
-			});
 
 			cellElement.onclick = () => {
 				if (!window.selectedCellElement) {
@@ -727,13 +808,13 @@
 	<audio id="click-sound"
 		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/click-sound.mp3?v=1"></audio>
 	<audio id="gold-sound"
-		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/gold-sound.mp3?v=1"></audio>
+		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/gold-sound.mp3?v=2"></audio>
 	<audio id="coin-sound"
 		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/coin-sound.mp3?v=1"></audio>
 	<audio id="level-up-sound"
 		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/level-up.mp3?v=1"></audio>
 	<audio id="shuffle-sound"
-		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/shuffle.mp3?v=1"></audio>
+		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/shuffle.mp3?v=2"></audio>
 	<audio id="plus-sound"
 		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/plus.mp3?v=1"></audio>
 	<audio id="pokeball-open-sound"

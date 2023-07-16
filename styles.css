@@ -116,6 +116,23 @@ div[id^=buyer-][data-display-buyer-randomize-button]>div.buyer-refresh {
 	width: fit-content;
 }
 
+.backpack-grid,
+.buyer-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 10px;
+}
+
+.backpack-grid {
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.backpack-grid>div,
+.buyer-grid>div {
+	border-radius: 8px;
+}
+
 div[id^=shuffled-cell]>div,
 div[id^=buyer-]>div,
 .right-box-pokeball>div,
