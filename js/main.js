@@ -272,6 +272,17 @@ function updateUpgradeCount() {
   playSound("level-up-sound");
 }
 
+function clearIdentifierAttributes(cellElement) {
+	const attributeNames = Array.from(cellElement.attributes).map(({name})=>name)
+	
+	attributeNames.forEach((eachAttributeName) => {
+		
+		if (/^data\-identifier\-/.test(eachAttributeName)) {
+			cellElement.removeAttribute(eachAttributeName);
+		}
+	})
+}
+
 function upgradeCell(previousCellElement, cellElement) {
   const currentEvolutionCount = Number.parseInt(
     cellElement.getAttribute("data-evolution-count"),
@@ -285,7 +296,10 @@ function upgradeCell(previousCellElement, cellElement) {
   if (currentEvolutionCount == chainLength) {
     setSelectedCell(window.selectedCellElement);
     return;
-  }
+	}
+	
+	clearIdentifierAttributes(previousCellElement);
+	clearIdentifierAttributes(cellElement);
 
   const chainIndex = Number.parseInt(
     cellElement.getAttribute("data-chain-index"),
@@ -386,6 +400,8 @@ function updateDisplayCell(
 }
 
 function setSelectedCell(cellElement) {
+	clearSelectedCell();
+
   window.selectedCellElement = cellElement;
   cellElement.classList.add("selected-cell");
 
@@ -394,7 +410,9 @@ function setSelectedCell(cellElement) {
 
   document
     .getElementById("left-box-evolution-chain")
-    .setAttribute("data-show-that", "show");
+		.setAttribute("data-show-that", "show");
+	
+	setBackpackSameIdentifier(cellElement.getAttribute('data-identifier'));
 
   playSound("click-sound");
   playBgm();
@@ -457,6 +475,7 @@ function decorateCell(cellElement, pokemonDisplayName, evolutionCount) {
     )}\nRight click to sell for ${sellValue} gold.`
   );
   cellElement.setAttribute("data-identifier", pokemonIdentifier);
+	cellElement.setAttribute(`data-identifier-${pokemonIdentifier}`, "true");
   cellElement.setAttribute("data-evolution-count", evolutionCount);
   cellElement.setAttribute(`data-evolution-${evolutionCount}`, "true");
 
@@ -700,11 +719,19 @@ function resetBuyers() {
 function clearSelectedCell() {
   if (window.selectedCellElement) {
     window.selectedCellElement.classList.remove("selected-cell");
-    window.selectedCellElement = null;
+		window.selectedCellElement = null;
   }
+		
+	Array.from(document.querySelectorAll(`[id^=buyer-]`)).forEach((eachItem)=>eachItem.classList.remove('highlight-border'));
+	Array.from(document.querySelectorAll(`[id^=shuffled-cell-]`)).forEach((eachItem) => eachItem.classList.remove('highlight-border'));
+	
   document
     .getElementById("left-box-evolution-chain")
     .removeAttribute("data-show-that");
+}
+
+function setBackpackSameIdentifier(dataIdentifierName) {
+	Array.from(document.querySelectorAll(`[data-identifier-${dataIdentifierName}]`)).forEach((eachItem)=>eachItem.classList.add('highlight-border'));
 }
 
 function clearShuffledCell(cellElement) {
@@ -719,7 +746,8 @@ function clearShuffledCell(cellElement) {
   cellElement.removeAttribute("data-evolution-1");
   cellElement.removeAttribute("data-evolution-2");
   cellElement.removeAttribute("data-evolution-3");
-  cellElement.removeAttribute("data-evolution-4");
+	cellElement.removeAttribute("data-evolution-4");
+	clearIdentifierAttributes(cellElement);
 
   cellElement.innerHTML = '<img src="transparent-picture.png" />';
 }
@@ -826,7 +854,8 @@ function decorateBuyerCell(cellElement, pokemonDisplayName) {
     "title",
     cellElement.getAttribute("data-evolution-chain-string")
   );
-  cellElement.setAttribute("data-identifier", pokemonIdentifier);
+	cellElement.setAttribute("data-identifier", pokemonIdentifier);
+	cellElement.setAttribute(`data-identifier-${pokemonIdentifier}`, "true");
   cellElement.setAttribute("data-display-name", pokemonDisplayName);
 
   cellElement.onclick = () => {
@@ -841,11 +870,16 @@ function decorateBuyerCell(cellElement, pokemonDisplayName) {
 
     if (selectedIdentifier !== thisIdentifier) {
       return;
-    }
-
+		}
+		
+		clearIdentifierAttributes(cellElement);
+		
     resetBuyers();
 
     cellElement.removeAttribute("data-display-buyer-randomize-button");
+    cellElement.removeAttribute("data-chain-index");
+    cellElement.removeAttribute("title");
+    cellElement.removeAttribute("data-display-name");
 
     const goldIncreaseValue = Number.parseInt(
       cellElement.getAttribute("data-buyer-sell-value"),

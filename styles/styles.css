@@ -440,6 +440,12 @@ div[id^=shuffled-cell-][data-evolution-4]:after {
 	background-color: rgba(var(--color-f7df6f), 0.9) !important;
 }
 
+[id^=shuffled-cell-].highlight-border,
+[id^=buyer-].highlight-border
+ {
+	border-color: rgba(var(--color-f7df6f), 0.9) !important;
+}
+
 img {
 	cursor: pointer;
 }
