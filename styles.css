@@ -312,6 +312,34 @@ div[id^=buyer-]>div,
 	}
 }
 
+@media only screen and (width: 360px) and (height: 598px) {
+	[id^=shuffled-cell], [id^=buyer-] {
+		max-width: 100%;
+	}
+
+	body .buyer-header {
+		font-size: 11px;
+		margin-top: 0;
+	}
+
+	body .backpack-header {
+		font-size: 11px;
+		margin-top: 0;
+	}
+
+  body .occupy-center {
+		font-size: 6px;
+	}
+  body .occupy-center.second-center-text {
+		font-size: 5px;
+	}
+
+	body .box-container {
+		font-size: 11px;
+		height: 25%;
+	}
+}
+
 @media only screen and (width: 720px) and (height: 1440px) {
 	[id^=shuffled-cell], [id^=buyer-] {
 		max-width: 100%;
