@@ -310,6 +310,10 @@ div[id^=buyer-]>div,
 	body .box-container {
 		height: 35%;
 	}
+	
+	body .left-box-evolution-chain {
+		font-size: 9px;
+	}
 }
 
 @media only screen and (width: 360px) and (height: 598px) {
@@ -337,6 +341,10 @@ div[id^=buyer-]>div,
 	body .box-container {
 		font-size: 11px;
 		height: 25%;
+	}
+
+	body .left-box-evolution-chain {
+		font-size: 9px;
 	}
 }
 
