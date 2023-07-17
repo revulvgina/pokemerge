@@ -122,7 +122,7 @@ const _FIFTY_MAX_BELOW_LEVEL = 10;
 function getPool() {
   let pool = window.pokelist;
 
-  pool = pool.slice(0, window.currentLevel);
+  pool = pool.slice(0, window.currentLevel*2);
 
   return pool;
 }
@@ -346,6 +346,10 @@ function upgradeCell(previousCellElement, cellElement) {
   clearShuffledCell(previousCellElement);
 
   clearSelectedCell();
+	// clearAllHighlight();
+	// setBackpackSameIdentifier(cellElement.getAttribute('data-identifier'));
+
+	setSelectedCell(cellElement);
 
   updateUpgradeCount();
   playSound("plus-sound");
@@ -744,18 +748,22 @@ function resetBuyers() {
   }, 1000);
 }
 
-function clearSelectedCell() {
-  if (window.selectedCellElement) {
-    window.selectedCellElement.classList.remove("selected-cell");
-    window.selectedCellElement = null;
-  }
-
+function clearAllHighlight() {
   Array.from(document.querySelectorAll(`[id^=buyer-]`)).forEach((eachItem) =>
     eachItem.classList.remove("highlight-border")
   );
   Array.from(document.querySelectorAll(`[id^=shuffled-cell-]`)).forEach(
     (eachItem) => eachItem.classList.remove("highlight-border")
   );
+}
+
+function clearSelectedCell() {
+  if (window.selectedCellElement) {
+    window.selectedCellElement.classList.remove("selected-cell");
+    window.selectedCellElement = null;
+  }
+
+	clearAllHighlight();
 
   document
     .getElementById("left-box-evolution-chain")
