@@ -1122,7 +1122,12 @@ function onBuyerMouseDown(cellElement) {
 
   clearElementAttributesByPrefix(cellElement, "data-");
 
-  increaseCurrentGold(goldIncreaseValue);
+	increaseCurrentGold(goldIncreaseValue);
+	
+	reanimateElement(cellElement);
+	
+	reanimateElement(document.getElementById("pokemerge-brand"));
+	reanimateElement(document.querySelector('h1[onclick]'));
 
   updateExpForNextLevelCount();
 

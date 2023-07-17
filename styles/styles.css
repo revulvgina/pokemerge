@@ -93,11 +93,12 @@ div[id^=buyer-][data-display-buyer-randomize-button]>div.buyer-refresh {
 }
 
 .header-text {
-	flex-basis: 80%;
+	flex-basis: 100%;
 }
 
 .header-settings {
-	flex-basis: 20%;
+	position: absolute;
+	right: 10px;
 }
 
 #settings {
@@ -206,7 +207,7 @@ div[id^=shuffled-cell-][data-evolution-count="4"]:after {
 }
 
 div[data-identifier] div img {
-	background-image: radial-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.02));
+	background-image: radial-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.02));
 	background-size: 100% 33%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -214,7 +215,7 @@ div[data-identifier] div img {
 }
 
 img[src="./images/poke-ball.png"] {
-	background-image: radial-gradient(rgba(222,90,58,0.4), rgba(222,90,58,0.01));
+	background-image: radial-gradient(rgba(222, 90, 58, 0.4), rgba(222, 90, 58, 0.01));
 	background-size: 100% 50%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -222,7 +223,7 @@ img[src="./images/poke-ball.png"] {
 }
 
 img[src="./images/great-ball.png"] {
-	background-image: radial-gradient(rgba(58, 148, 255,1), rgba(58, 148, 255,0.01));
+	background-image: radial-gradient(rgba(58, 148, 255, 1), rgba(58, 148, 255, 0.01));
 	background-size: 100% 50%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -230,7 +231,7 @@ img[src="./images/great-ball.png"] {
 }
 
 img[src="./images/ultra-ball.png"] {
-	background-image: radial-gradient(rgba(255, 214, 58,1), rgba(255, 214, 58,0.01));
+	background-image: radial-gradient(rgba(255, 214, 58, 1), rgba(255, 214, 58, 0.01));
 	background-size: 100% 50%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -238,7 +239,7 @@ img[src="./images/ultra-ball.png"] {
 }
 
 img[src="./images/master-ball.png"] {
-	background-image: radial-gradient(rgba(126,9,189,1), rgba(251,114,163,0.01));
+	background-image: radial-gradient(rgba(126, 9, 189, 1), rgba(251, 114, 163, 0.01));
 	background-size: 100% 50%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -276,6 +277,45 @@ img[src="./images/master-ball.png"] {
 	max-height: 100%;
 	max-width: 65%;
 	position: relative;
+}
+
+[id^=buyer-] {
+	animation: quick-pulse 0.1s linear 4 forwards;
+}
+
+.header-text > h1 {
+	animation: pokeball-shake 0.5s;
+}
+
+.header-text > h1 > span {
+	animation: header-pulse 0.1s linear 4 forwards;
+}
+
+@keyframes header-pulse {
+	25% {
+    -webkit-text-stroke-color: #ff0000;
+	}
+	50% {
+    -webkit-text-stroke-color: #ff6600;
+	}
+	100% {
+    -webkit-text-stroke-color: #3466AF99;
+	}
+}
+
+@keyframes quick-pulse {
+	25% {
+		box-shadow: 0 0 4px #ff6600;
+		border-color: #ff6600;
+	}
+	50% {
+		box-shadow: 0 0 4px #ff0000;
+		border-color: #ff0000;
+	}
+	25% {
+		box-shadow: 0 0 4px #ff6600;
+		border-color: #ff6600;
+	}
 }
 
 .image-container {
@@ -500,20 +540,21 @@ img[src="./images/master-ball.png"] {
 	background-color: #0000;
 }
 
-[id^=shuffled-cell-]:not([data-identifier]), [id^=shuffled-cell-]:not([data-identifier]) > img {
+[id^=shuffled-cell-]:not([data-identifier]),
+[id^=shuffled-cell-]:not([data-identifier])>img {
 	cursor: help;
 }
 
 img[src$="-ball.png"] {
 	opacity: 0.5;
-	
+
 	animation: pokeball-shake 0.5s;
 	animation-iteration-count: linear;
 }
 
 img[src$="-ball.png"]:hover {
 	opacity: 1;
-	
+
 	animation: pokeball-shake 0.5s;
 	animation-iteration-count: linear;
 }
@@ -587,22 +628,22 @@ img.poke-dollar {
 
 #spinning-box {
 	position: absolute;
-  --border-angle: 0turn;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    conic-gradient(from var(--border-angle), transparent 10%, #0000, #f904);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  /* animation: bg-spin 1s linear infinite; */
-  animation: bg-spin 1s linear 4 forwards;
+	--border-angle: 0turn;
+	width: 100%;
+	height: 100%;
+	background-image:
+		conic-gradient(from var(--border-angle), transparent 10%, #0000, #f904);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	/* animation: bg-spin 1s linear infinite; */
+	animation: bg-spin 1s linear 4 forwards;
 }
 
 .display-none {
 	display: none;
 }
-  
+
 @keyframes bg-spin {
 	to {
 		--border-angle: 1turn;
@@ -610,7 +651,7 @@ img.poke-dollar {
 }
 
 @property --border-angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: 0turn;
+	syntax: "<angle>";
+	inherits: true;
+	initial-value: 0turn;
 }
