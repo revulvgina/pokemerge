@@ -6,53 +6,18 @@ function showStats() {
   await loadBasicEvolutionJson();
   await loadPokeCsv();
 
-	window.defaultPokeBallCell = `<img src="./images/poke-ball.png" onclick="onPokeBallCellClick(this)" ondragstart="onPokeBallCellClick(this)" />`;
-	window.pokeBallRandomIndexList = [
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		0,
-		1,
-		1,
-		1,
-		1,
-		1,
-		1,
-		1,
-		1,
-		2,
-		2,
-		2,
-		2,
-		3
-	];
-	window.totalPokeBallRandomIndexList = window.pokeBallRandomIndexList.length;
-	window.pokeBallNames = [
-		'poke-ball',
-		'great-ball',
-		'ultra-ball',
-		'master-ball'
-	];
+  window.defaultPokeBallCell = `<img src="./images/poke-ball.png" onclick="onPokeBallCellClick(this)" ondragstart="onPokeBallCellClick(this)" />`;
+  window.pokeBallRandomIndexList = [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3,
+  ];
+  window.totalPokeBallRandomIndexList = window.pokeBallRandomIndexList.length;
+  window.pokeBallNames = [
+    "poke-ball",
+    "great-ball",
+    "ultra-ball",
+    "master-ball",
+  ];
 
   attachContextMenus();
 
@@ -66,9 +31,11 @@ function showStats() {
 
   deleteAudioElementCriesInterval();
 
-	addEventListeners();
-	
-	initializeBackpackBalls();
+  addEventListeners();
+
+  initializeBackpackBalls();
+
+  initializeEncounter();
 })();
 
 async function loadPokeCsv() {
@@ -89,49 +56,78 @@ async function loadBasicEvolutionJson() {
   window.pokelist = jsonResponse.select;
 }
 
-function createRandomPokeBallImage() {
-	const imgTag = document.createElement("img");
-	const randomPokeBallIndex = getRandomPokeBallIndex();
-	const pokeBallName = window.pokeBallNames[randomPokeBallIndex];
-	imgTag.setAttribute('src', `./images/${pokeBallName}.png`);
-	imgTag.onclick = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
-	imgTag.ondragstart = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
-	imgTag.setAttribute("data-pokeball-index", randomPokeBallIndex);
-	imgTag.setAttribute("data-click-price", getClickPrice(randomPokeBallIndex));
-	imgTag.setAttribute("title", `Open for ${getClickPrice(randomPokeBallIndex)} gold`);
+function initializeEncounter() {
+  window._encounterDuration = -Infinity;
+  window._encounterPokemonBallList = [2, 2, 2, 2, 3];
+}
 
-	return imgTag;
+function adjustEncounterDisplay() {
+  const { offsetWidth, offsetHeight } =
+    document.querySelector("div.backpack-grid");
+  document.querySelector("#spinning-box").style.width = `${offsetWidth}px`;
+  document.querySelector("#spinning-box").style.height = `${offsetHeight}px`;
+}
+
+function createRandomPokeBallImage() {
+  const imgTag = document.createElement("img");
+  const randomPokeBallIndex = getRandomPokeBallIndex();
+  const pokeBallName = window.pokeBallNames[randomPokeBallIndex];
+  imgTag.setAttribute("src", `./images/${pokeBallName}.png`);
+  imgTag.onclick = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
+  imgTag.ondragstart = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
+  imgTag.setAttribute("data-pokeball-index", randomPokeBallIndex);
+  imgTag.setAttribute("data-click-price", getClickPrice(randomPokeBallIndex));
+  imgTag.setAttribute(
+    "title",
+    `Open for ${getClickPrice(randomPokeBallIndex)} gold`
+  );
+
+  return imgTag;
 }
 
 function attachCellWithPokeBallImage(cellElement) {
-	cellElement.appendChild(createRandomPokeBallImage());
-	cellElement.setAttribute("data-evolution-count", Math.min(3, Number.parseInt(cellElement.firstChild.getAttribute('data-pokeball-index'), 10) + 1));
+  cellElement.appendChild(createRandomPokeBallImage());
+  cellElement.setAttribute(
+    "data-evolution-count",
+    Number.parseInt(
+      cellElement.firstChild.getAttribute("data-pokeball-index"),
+      10
+    ) + 1
+  );
 }
 
 function initializeBackpackBalls() {
-	const backpackCells = Array.from(document.querySelectorAll('[id^=shuffled-cell-]'));
+  const backpackCells = Array.from(
+    document.querySelectorAll("[id^=shuffled-cell-]")
+  );
 
-	backpackCells.forEach((eachCell) => {
-		attachCellWithPokeBallImage(eachCell);
-	});
+  backpackCells.forEach((eachCell) => {
+    attachCellWithPokeBallImage(eachCell);
+  });
 }
 
 function getBasePrice(evolutionCount) {
-	return Math.pow(evolutionCount, evolutionCount);
+  return Math.pow(evolutionCount, evolutionCount);
 }
 
 function getRandomBuyerPrice(evolutionCount) {
-	const basePrice = getBasePrice(evolutionCount);
+  const basePrice = getBasePrice(evolutionCount);
 
-	return 3 + basePrice + Math.floor(Math.random() * basePrice);
+  return 3 + basePrice + Math.floor(Math.random() * basePrice);
 }
 
 function getClickPrice(pokeBallIndex) {
-	return Math.min(10, (pokeBallIndex + 1) * 3);
+  return Math.min(10, (pokeBallIndex + 1) * 3);
 }
 
 function getRandomPokeBallIndex() {
-	return window.pokeBallRandomIndexList[Math.floor(Math.random() * window.totalPokeBallRandomIndexList)];
+  if (window._encounterDuration > Date.now()) {
+    return getRandomItem(window._encounterPokemonBallList);
+  }
+
+  return window.pokeBallRandomIndexList[
+    Math.floor(Math.random() * window.totalPokeBallRandomIndexList)
+  ];
 }
 
 function addEventListeners() {
@@ -259,95 +255,132 @@ function getIncreasingChanceByLevel(maxIncrease = 15) {
 }
 
 function findInPool(thisPool, displayName) {
-	return thisPool.find(({list}) => list.find((eachInList) => Array.isArray(eachInList) ? eachInList.includes(displayName) : eachInList === displayName))
+  return thisPool.find(({ list }) =>
+    list.find((eachInList) =>
+      Array.isArray(eachInList)
+        ? eachInList.includes(displayName)
+        : eachInList === displayName
+    )
+  );
 }
 
 function getRandomItem(listOfItems) {
-	const totalItems = listOfItems.length;
+  const totalItems = listOfItems.length;
 
-	return listOfItems[Math.floor(Math.random() * totalItems)];
+  return listOfItems[Math.floor(Math.random() * totalItems)];
 }
 
 function getChainData(pokeBallIndex) {
-	let pool = getPool();
-	
-	const poolByPokeBallIndex = pool.filter((eachChain) => {
-		return eachChain.list.length >= Math.min(3, pokeBallIndex+1)
-	});
+  let pool = getPool();
 
-	const allNamesInPool = poolByPokeBallIndex.map((eachChain) => {
-		if (3 === pokeBallIndex) {
-			return eachChain.list[2];
-		}
+  const poolByPokeBallIndex = pool.filter((eachChain) => {
+    return eachChain.list.length >= Math.min(3, pokeBallIndex + 1);
+  });
 
-		return eachChain.list.slice(0, (pokeBallIndex + 1))
-	}).flat(3);
+  const allNamesInPool = poolByPokeBallIndex
+    .map((eachChain) => {
+      if (3 === pokeBallIndex) {
+        return eachChain.list[2];
+      }
 
-	if (0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))) {
+      return eachChain.list.slice(0, pokeBallIndex + 1);
+    })
+    .flat(3);
 
-		const buyerCellsWithNames = Array.from(
-			document.querySelectorAll("[id^=buyer-][data-display-name]")
-		);
+  if (0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))) {
+    const buyerCellsWithNames = Array.from(
+      document.querySelectorAll("[id^=buyer-][data-display-name]")
+    );
 
-		if (buyerCellsWithNames.length > 0) {
-			const allBuyerCellNames = buyerCellsWithNames.map((eachBuyerCell) => eachBuyerCell.getAttribute('data-display-name'));
+    if (buyerCellsWithNames.length > 0) {
+      const allBuyerCellNames = buyerCellsWithNames.map((eachBuyerCell) =>
+        eachBuyerCell.getAttribute("data-display-name")
+      );
 
-			const matchingBuyerDisplayName = allBuyerCellNames.find((eachName) => allNamesInPool.includes(eachName));
+      const matchingBuyerDisplayName = allBuyerCellNames.find((eachName) =>
+        allNamesInPool.includes(eachName)
+      );
 
-			if (matchingBuyerDisplayName) {
-				const chainData = findInPool(poolByPokeBallIndex, matchingBuyerDisplayName);
+      if (matchingBuyerDisplayName) {
+        const chainData = findInPool(
+          poolByPokeBallIndex,
+          matchingBuyerDisplayName
+        );
 
-				const evolutionIndex = chainData.list.findIndex((eachInList) => Array.isArray(eachInList) ? eachInList.includes(matchingBuyerDisplayName) : eachInList === matchingBuyerDisplayName)
+        const evolutionIndex = chainData.list.findIndex((eachInList) =>
+          Array.isArray(eachInList)
+            ? eachInList.includes(matchingBuyerDisplayName)
+            : eachInList === matchingBuyerDisplayName
+        );
 
-				return {
-					pokemonDisplayName: matchingBuyerDisplayName,
-					evolutionIndex,
-					chainData
-				}
-			}
-		}
+        return {
+          pokemonDisplayName: matchingBuyerDisplayName,
+          evolutionIndex,
+          chainData,
+        };
+      }
+    }
   }
 
   if (0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))) {
+    const backpackCellsWithNames = Array.from(
+      document.querySelectorAll("[id^=shuffled-cell-][data-display-name]")
+    );
 
-		const backpackCellsWithNames = Array.from(
-			document.querySelectorAll("[id^=shuffled-cell-][data-display-name]")
-		);
+    if (backpackCellsWithNames.length > 0) {
+      const allBackpackCellNames = backpackCellsWithNames.map((eachBuyerCell) =>
+        eachBuyerCell.getAttribute("data-display-name")
+      );
 
-		if (backpackCellsWithNames.length > 0) {
-			const allBackpackCellNames = backpackCellsWithNames.map((eachBuyerCell) => eachBuyerCell.getAttribute('data-display-name'));
+      const matchingBackpackDisplayName = allBackpackCellNames.find(
+        (eachName) => allNamesInPool.includes(eachName)
+      );
 
-			const matchingBackpackDisplayName = allBackpackCellNames.find((eachName) => allNamesInPool.includes(eachName));
+      if (matchingBackpackDisplayName) {
+        const chainData = findInPool(
+          poolByPokeBallIndex,
+          matchingBackpackDisplayName
+        );
 
-			if (matchingBackpackDisplayName) {
-				const chainData = findInPool(poolByPokeBallIndex, matchingBackpackDisplayName);
+        const evolutionIndex = chainData.list.findIndex((eachInList) =>
+          Array.isArray(eachInList)
+            ? eachInList.includes(matchingBackpackDisplayName)
+            : eachInList === matchingBackpackDisplayName
+        );
 
-				const evolutionIndex = chainData.list.findIndex((eachInList) => Array.isArray(eachInList) ? eachInList.includes(matchingBackpackDisplayName) : eachInList === matchingBackpackDisplayName)
+        return {
+          pokemonDisplayName: matchingBackpackDisplayName,
+          evolutionIndex,
+          chainData,
+        };
+      }
+    }
+  }
 
-				return {
-					pokemonDisplayName: matchingBackpackDisplayName,
-					evolutionIndex,
-					chainData
-				}
-			}
-		}
-	}
+  let randomPokemonDisplayNameInChain = getRandomItem(allNamesInPool);
 
-	let randomPokemonDisplayNameInChain = getRandomItem(allNamesInPool);
+  if (Array.isArray(randomPokemonDisplayNameInChain)) {
+    randomPokemonDisplayNameInChain = getRandomItem(
+      randomPokemonDisplayNameInChain
+    );
+  }
 
-	if (Array.isArray(randomPokemonDisplayNameInChain)) {
-		randomPokemonDisplayNameInChain = getRandomItem(randomPokemonDisplayNameInChain);
-	}
+  const chainData = findInPool(
+    poolByPokeBallIndex,
+    randomPokemonDisplayNameInChain
+  );
 
-	const chainData = findInPool(poolByPokeBallIndex, randomPokemonDisplayNameInChain);
+  const evolutionIndex = chainData.list.findIndex((eachInList) =>
+    Array.isArray(eachInList)
+      ? eachInList.includes(randomPokemonDisplayNameInChain)
+      : eachInList === randomPokemonDisplayNameInChain
+  );
 
-	const evolutionIndex = chainData.list.findIndex((eachInList) => Array.isArray(eachInList) ? eachInList.includes(randomPokemonDisplayNameInChain) : eachInList === randomPokemonDisplayNameInChain)
-
-	return {
-		pokemonDisplayName: randomPokemonDisplayNameInChain,
-		evolutionIndex,
-		chainData
-	};
+  return {
+    pokemonDisplayName: randomPokemonDisplayNameInChain,
+    evolutionIndex,
+    chainData,
+  };
 }
 
 function getChainStringFromChainDataArray(chainDataList) {
@@ -361,16 +394,17 @@ function getChainStringFromChainDataArray(chainDataList) {
 }
 
 function randomizeBackpackCell(cellElement, pokeBallIndex) {
-	const { pokemonDisplayName, chainData, evolutionIndex } = getChainData(pokeBallIndex);
+  const { pokemonDisplayName, chainData, evolutionIndex } =
+    getChainData(pokeBallIndex);
 
   cellElement.setAttribute("data-chain-index", chainData.chainIndex);
   cellElement.setAttribute("data-chain-length", chainData.list.length);
   cellElement.setAttribute(
     "data-evolution-chain-string",
     getChainStringFromChainDataArray(chainData.list)
-	);
-	
-	const evolutionCount = evolutionIndex + 1;
+  );
+
+  const evolutionCount = evolutionIndex + 1;
 
   cellElement.setAttribute("data-display-name", pokemonDisplayName);
 
@@ -409,9 +443,9 @@ function updateExpForNextLevelCount() {
   if (window.expCountForNextLevel < window.currentLevel) {
     updateExpForNextLevelElement();
     return;
-	}
-	
-	increaseCurrentGold(window.currentLevel * 5);
+  }
+
+  increaseCurrentGold(window.currentLevel * 5);
 
   window.currentLevel += 1;
   localStorage.setItem("current_lv", window.currentLevel);
@@ -419,6 +453,20 @@ function updateExpForNextLevelCount() {
   updateExpForNextLevelElement();
   updateCurrentLevel();
   playSound("level-up-sound");
+
+  if (0 === window.currentLevel % 5) {
+    adjustEncounterDisplay();
+    playEncounter();
+    window._encounterDuration = Date.now() + 30000;
+    document
+      .getElementById("encounter-container")
+      .classList.remove("display-none");
+    window._encounterDurationNotification = setTimeout(() => {
+      document
+        .getElementById("encounter-container")
+        .classList.add("display-none");
+    }, 30000);
+  }
 }
 
 function clearElementAttributesByPrefix(cellElement, attributePrefix) {
@@ -556,7 +604,16 @@ function setSelectedCell(cellElement) {
     .getElementById("left-box-evolution-chain")
     .setAttribute("data-show-that", "show");
 
-  highlightBackpackSameIdentifier(cellElement.getAttribute("data-identifier"));
+  if (
+    cellElement.getAttribute("data-evolution-count") !==
+    cellElement.getAttribute("data-chain-length")
+  ) {
+    highlightBackpackSameIdentifier(
+      cellElement.getAttribute("data-identifier")
+    );
+  } else {
+    highlightBuyerSameIdentifier(cellElement.getAttribute("data-identifier"));
+  }
 
   playSound("click-sound");
   playBgm();
@@ -569,8 +626,8 @@ function sellCell(cellElement) {
   );
 
   cellElement.classList.remove("selected-cell");
-	clearSelectedCell();
-	
+  clearSelectedCell();
+
   increaseCurrentGold(getBasePrice(evolutionCount));
 
   playSound("coin-sound");
@@ -687,7 +744,8 @@ function onPokeBallClick() {
     indexWithoutDisplayName >= 0
   ) {
     randomizeBackpackCell(
-      document.getElementById(`shuffled-cell-${indexWithoutDisplayName}`), Math.floor(Math.random() * 3)
+      document.getElementById(`shuffled-cell-${indexWithoutDisplayName}`),
+      Math.floor(Math.random() * 3)
     );
 
     playSound("pokeball-open-sound");
@@ -696,17 +754,20 @@ function onPokeBallClick() {
   clearSelectedCell();
 }
 function onPokeBallCellClick(imgElement, pokeBallIndex) {
-	clearSelectedCell();
-	
-	const dataClickPrice = Number.parseInt(imgElement.getAttribute('data-click-price'), 10);
+  clearSelectedCell();
 
-	reanimateElement(imgElement);
+  const dataClickPrice = Number.parseInt(
+    imgElement.getAttribute("data-click-price"),
+    10
+  );
 
-	if (window.currentGold < dataClickPrice) {
-		return;
-	}
+  reanimateElement(imgElement);
 
-	increaseCurrentGold(-dataClickPrice);
+  if (window.currentGold < dataClickPrice) {
+    return;
+  }
+
+  increaseCurrentGold(-dataClickPrice);
 
   const parentElement = imgElement.parentElement;
   randomizeBackpackCell(parentElement, pokeBallIndex);
@@ -721,7 +782,9 @@ function getEvolutionIndexByChainString(pokemonDisplayName, chainString) {
 }
 
 function randomizeBuyerCell(cellElement) {
-	const openedShuffledCells = document.querySelectorAll('[id^=shuffled-cell-][data-identifier]');
+  const openedShuffledCells = document.querySelectorAll(
+    "[id^=shuffled-cell-][data-identifier]"
+  );
 
   if (openedShuffledCells.length <= 1) {
     return;
@@ -816,7 +879,7 @@ function randomizeBuyerCell(cellElement) {
     chainString
   );
 
-	const finalSellValue = getRandomBuyerPrice(evolutionIndex + 1);
+  const finalSellValue = getRandomBuyerPrice(evolutionIndex + 1);
 
   cellElement.setAttribute("data-buyer-sell-value", finalSellValue);
   cellElement.setAttribute("data-evolution-chain-string", chainString);
@@ -828,11 +891,16 @@ function randomizeBuyerCell(cellElement) {
 
   attachBuyerRefreshElement(cellElement);
 
-	restartBuyerRandomizeTimeout(cellElement);
-	
-	if (window.selectedCellElement && null !== window.selectedCellElement.getAttribute("data-identifier")) {
-		highlightBackpackSameIdentifier(window.selectedCellElement.getAttribute("data-identifier"))
-	}
+  restartBuyerRandomizeTimeout(cellElement);
+
+  if (
+    window.selectedCellElement &&
+    null !== window.selectedCellElement.getAttribute("data-identifier")
+  ) {
+    highlightBackpackSameIdentifier(
+      window.selectedCellElement.getAttribute("data-identifier")
+    );
+  }
 }
 
 function attachBuyerRefreshElement(cellElement) {
@@ -905,14 +973,22 @@ function highlightBackpackSameIdentifier(dataIdentifierName) {
   ).forEach((eachItem) => eachItem.classList.add("highlight-border"));
 }
 
+function highlightBuyerSameIdentifier(dataIdentifierName) {
+  Array.from(
+    document.querySelectorAll(
+      `[id^=buyer-][data-identifier-${dataIdentifierName}]`
+    )
+  ).forEach((eachItem) => eachItem.classList.add("highlight-border"));
+}
+
 function clearShuffledCell(cellElement) {
   cellElement.classList.remove("selected-cell");
   cellElement.removeAttribute("title");
-	clearElementAttributesByPrefix(cellElement, "data-");
+  clearElementAttributesByPrefix(cellElement, "data-");
 
-	cellElement.innerHTML = "";
-	
-	attachCellWithPokeBallImage(cellElement);
+  cellElement.innerHTML = "";
+
+  attachCellWithPokeBallImage(cellElement);
 }
 
 function deleteAudioElementCriesInterval() {
@@ -1061,6 +1137,16 @@ function onBuyerMouseDown(cellElement) {
   playSound("gold-sound");
 
   playCry(thisIdentifier);
+}
+
+function playEncounter() {
+  playSound("pokemon-encounter");
+
+  clearTimeout(window._showStreakAnimation);
+  document.getElementById("spinning-box").classList.remove("display-none");
+  window._showStreakAnimation = setTimeout(() => {
+    document.getElementById("spinning-box").classList.add("display-none");
+  }, 4000);
 }
 
 function decorateBuyerCell(cellElement, pokemonDisplayName) {

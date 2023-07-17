@@ -20,7 +20,8 @@
 					</div>
 					<div class="header-settings" onclick="openSettings()">
 						<img id="settings" class="pokeball-shake"
-							src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/explorer-kit.png" class="pixelated" />
+							src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/explorer-kit.png"
+							class="pixelated" />
 					</div>
 				</div>
 				<div class="box-container">
@@ -57,6 +58,8 @@
 					<div class="buyer-item-empty">&nbsp;</div>
 				</div>
 				<div class="backpack-header"><strong>Backpack</strong></div>
+				<div id="spinning-box" class="display-none">
+				</div>
 				<div class="backpack-grid no-highlight">
 					<div class="backpack-0 no-highlight" id="shuffled-cell-0"></div>
 					<div class="backpack-1 no-highlight" id="shuffled-cell-1"></div>
@@ -85,6 +88,10 @@
 					<div class="backpack-24 no-highlight" id="shuffled-cell-24"></div>
 				</div>
 
+				<div id="encounter-container" class="display-none">
+					Master Ball and Ultra Ball only for 30 seconds.
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -93,7 +100,7 @@
 		function myfunction(ev) {
 			console.log("drag")
 		}
-		</script>
+	</script>
 
 	<audio id="click-sound"
 		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/click-sound.mp3?v=1"></audio>
@@ -115,6 +122,8 @@
 		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/pokeball-open-sound.mp3?v=2"></audio>
 	<audio id="pokemon-theme-bgm"
 		src="https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/sounds/pokemon%20theme.mp3?v=1"></audio>
+	<audio id="pokemon-encounter"
+		src="./mp3/pokemon-encounter.mp3"></audio>
 
 	<div id="audio-cries">
 	</div>
