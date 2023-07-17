@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link href='https://fonts.googleapis.com/css?family=Press+Start+2P:400&subset=latin' rel='stylesheet' type='text/css'>
 	<link href='./styles/pokeball-shake.css' rel='stylesheet' type='text/css'>
-	<link href='./styles/styles.css?v=033353' rel='stylesheet' type='text/css'>
+	<link href='./styles/styles.css?v=074942' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -28,8 +28,17 @@
 				</div>
 				<div class="box-container">
 					<div class="left-box">
-						<div class="left-box-level"><strong>Level <span id="current-level">0</span>&nbsp;&nbsp;<span
-									id="exp-for-next-level">(0 / 10)</span></strong></div>
+						<div class="left-box-level">
+							<div style="display: inline-block">
+								<span>Level <span id="current-level">0</span></span>
+							</div>
+							
+							<div id="exp-container">
+								<div id="exp-bar"></div>
+								<div
+									id="exp-for-next-level">(0 / 10)</div>
+							</div>
+						</div>
 						<div class="left-box-current-gold"><strong>Gold: <span id="current-gold">0</span></strong></div>
 						<div class="left-box-evolution-chain" id="left-box-evolution-chain"><strong>Evolution Chain: </strong><span
 								id="evolution-chain" style="
@@ -131,7 +140,7 @@
 	</div>
 
 	<script src="js/csv-to-array.js"></script>
-	<script src="js/main.js?v=033404"></script>
+	<script src="js/main.js?v=074942"></script>
 </body>
 
 </html>

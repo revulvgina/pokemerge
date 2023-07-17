@@ -414,7 +414,8 @@ function randomizeBackpackCell(cellElement, pokeBallIndex) {
 function updateExpForNextLevelElement() {
   window.expCountForNextLevel = window.expCountForNextLevel || 0;
   const expForNextLevelElement = document.getElementById("exp-for-next-level");
-  expForNextLevelElement.innerText = `(${window.expCountForNextLevel} / ${window.currentLevel})`;
+	expForNextLevelElement.innerText = `(${window.expCountForNextLevel} / ${window.currentLevel})`;
+	document.getElementById('exp-bar').style.width = `${100* (window.expCountForNextLevel/window.currentLevel)}%`;
 }
 
 function updateCurrentLevel() {
@@ -437,8 +438,6 @@ function increaseCurrentGold(goldIncrease) {
 
 function updateExpForNextLevelCount() {
   window.expCountForNextLevel = (window.expCountForNextLevel || 0) + 1;
-
-  const expForNextLevelElement = document.getElementById("exp-for-next-level");
 
   if (window.expCountForNextLevel < window.currentLevel) {
     updateExpForNextLevelElement();
@@ -1128,6 +1127,7 @@ function onBuyerMouseDown(cellElement) {
 	
 	reanimateElement(document.getElementById("pokemerge-brand"));
 	reanimateElement(document.querySelector('h1[onclick]'));
+	reanimateElement(document.querySelector('#exp-bar'));
 
   updateExpForNextLevelCount();
 

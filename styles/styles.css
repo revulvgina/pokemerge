@@ -101,6 +101,34 @@ div[id^=buyer-][data-display-buyer-randomize-button]>div.buyer-refresh {
 	right: 10px;
 }
 
+#exp-container {
+	border: 1px solid #000;
+	padding: 3px;
+	flex: 0.5;
+	height: 14px;
+	margin-left: 30px;
+	border-radius: 4px;
+}
+
+#exp-bar {
+	background: #6dca16;
+	width: 50%;
+	height: 100%;
+	border-radius: 3px;
+	animation: bar-pulse 0.1s linear 4 forwards;
+}
+
+#exp-for-next-level {
+	position: relative;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	bottom: 136%;
+	font-size: 70%;
+}
+
 #settings {
 	display: flex;
 	width: 25px;
@@ -116,7 +144,7 @@ div[id^=buyer-][data-display-buyer-randomize-button]>div.buyer-refresh {
 }
 
 .left-box {
-	flex-basis: 80%;
+	flex-basis: 100%;
 }
 
 .left-box-level,
@@ -125,12 +153,16 @@ div[id^=buyer-][data-display-buyer-randomize-button]>div.buyer-refresh {
 	padding: 5px 0;
 }
 
+.left-box-level {
+	display: flex;
+	flex-flow: row;
+}
+
 .left-box-evolution-chain {
 	font-size: 10px;
 }
 
 .right-box {
-	flex-basis: 20%;
 	/* display: flex; */
 	display: none;
 }
@@ -318,6 +350,21 @@ img[src="./images/master-ball.png"] {
 	}
 }
 
+@keyframes bar-pulse {
+	25% {
+		box-shadow: 0 0 4px #eeff00;
+		border-color: #eeff00;
+	}
+	50% {
+		box-shadow: 0 0 4px #ffffff;
+		border-color: #ffffff;
+	}
+	25% {
+		box-shadow: 0 0 4px #eeff00;
+		border-color: #eeff00;
+	}
+}
+
 .image-container {
 	position: inherit;
 	width: 100%;
@@ -445,6 +492,11 @@ img[src="./images/master-ball.png"] {
 
 	body .backpack-header {
 		margin-top: 4em;
+	}
+}
+@media only screen and (max-width: 400px) {
+	#exp-container {
+		height: 10px;
 	}
 }
 
