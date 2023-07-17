@@ -162,14 +162,14 @@ div[id^=buyer-]>div,
 }
 
 
-div[id^=buyer-][data-evolution-1]:after,
-div[id^=buyer-][data-evolution-2]:after,
-div[id^=buyer-][data-evolution-3]:after,
-div[id^=buyer-][data-evolution-4]:after,
-div[id^=shuffled-cell-][data-evolution-1]:after,
-div[id^=shuffled-cell-][data-evolution-2]:after,
-div[id^=shuffled-cell-][data-evolution-3]:after,
-div[id^=shuffled-cell-][data-evolution-4]:after {
+div[id^=buyer-][data-evolution-count="1"]:after,
+div[id^=buyer-][data-evolution-count="2"]:after,
+div[id^=buyer-][data-evolution-count="3"]:after,
+div[id^=buyer-][data-evolution-count="4"]:after,
+div[id^=shuffled-cell-][data-evolution-count="1"]:after,
+div[id^=shuffled-cell-][data-evolution-count="2"]:after,
+div[id^=shuffled-cell-][data-evolution-count="3"]:after,
+div[id^=shuffled-cell-][data-evolution-count="4"]:after {
 	content: "•";
 	position: absolute;
 	font-size: 13px;
@@ -178,18 +178,18 @@ div[id^=shuffled-cell-][data-evolution-4]:after {
 	left: 5%;
 }
 
-div[id^=buyer-][data-evolution-2]:after,
-div[id^=shuffled-cell-][data-evolution-2]:after {
+div[id^=buyer-][data-evolution-count="2"]:after,
+div[id^=shuffled-cell-][data-evolution-count="2"]:after {
 	content: "••";
 }
 
-div[id^=buyer-][data-evolution-3]:after,
-div[id^=shuffled-cell-][data-evolution-3]:after {
+div[id^=buyer-][data-evolution-count="3"]:after,
+div[id^=shuffled-cell-][data-evolution-count="3"]:after {
 	content: "•••";
 }
 
-div[id^=buyer-][data-evolution-4]:after,
-div[id^=shuffled-cell-][data-evolution-4]:after {
+div[id^=buyer-][data-evolution-count="4"]:after,
+div[id^=shuffled-cell-][data-evolution-count="4"]:after {
 	content: "••••";
 }
 
@@ -429,14 +429,14 @@ div[id^=shuffled-cell-][data-evolution-4]:after {
 
 @media (max-width: 900px) {
 
-	div[id^=buyer-][data-evolution-1]:after,
-	div[id^=buyer-][data-evolution-2]:after,
-	div[id^=buyer-][data-evolution-3]:after,
-	div[id^=buyer-][data-evolution-4]:after,
-	div[id^=shuffled-cell-][data-evolution-1]:after,
-	div[id^=shuffled-cell-][data-evolution-2]:after,
-	div[id^=shuffled-cell-][data-evolution-3]:after,
-	div[id^=shuffled-cell-][data-evolution-4]:after {
+	div[id^=buyer-][data-evolution-count="1"]:after,
+	div[id^=buyer-][data-evolution-count="2"]:after,
+	div[id^=buyer-][data-evolution-count="3"]:after,
+	div[id^=buyer-][data-evolution-count="4"]:after,
+	div[id^=shuffled-cell-][data-evolution-count="1"]:after,
+	div[id^=shuffled-cell-][data-evolution-count="2"]:after,
+	div[id^=shuffled-cell-][data-evolution-count="3"]:after,
+	div[id^=shuffled-cell-][data-evolution-count="4"]:after {
 		font-size: 7px;
 	}
 }

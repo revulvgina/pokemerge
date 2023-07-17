@@ -123,7 +123,7 @@ function getPool() {
   return window.pokelist.slice(0, window.currentLevel);
 }
 
-function getIdentifierForCsv(displayName, callerName) {
+function getIdentifierForCsv(displayName) {
   return displayName
     .replaceAll(".", "")
     .replaceAll(" ", "-")
@@ -142,7 +142,7 @@ function shuffleArray(anArrayCopy) {
   }
 }
 
-function getSecondEvolutionPokemonDisplayNameByChance(chainDataList) {
+function getDisplayNameAndSecondEvolutionByChance(chainDataList) {
   if (1 === chainDataList.length) {
     return {
       pokemonDisplayName: chainDataList[0],
@@ -155,10 +155,17 @@ function getSecondEvolutionPokemonDisplayNameByChance(chainDataList) {
       pokemonDisplayName: chainDataList[0],
       evolutionCount: 1,
     };
+	}
+
+	let pokemonDisplayName = chainDataList[1];
+	
+  if (Array.isArray(pokemonDisplayName)) {
+    pokemonDisplayName =
+      pokemonDisplayName[Math.floor(Math.random() * pokemonDisplayName.length)];
   }
 
   return {
-    pokemonDisplayName: chainDataList[1],
+    pokemonDisplayName,
     evolutionCount: 2,
   };
 }
@@ -224,33 +231,32 @@ function getChainData() {
   return pool[randomNumber];
 }
 
-function randomizeCell(cellElement) {
+function getChainStringFromChainDataArray(chainDataList) {
+	return chainDataList
+		.map((eachEvolutionName) =>
+			Array.isArray(eachEvolutionName)
+				? eachEvolutionName.join("/")
+				: eachEvolutionName
+		)
+		.join(" > ");
+}
+
+function randomizeBackpackCell(cellElement) {
   const chainData = getChainData();
 
   cellElement.setAttribute("data-chain-index", chainData.chainIndex);
   cellElement.setAttribute("data-chain-length", chainData.list.length);
   cellElement.setAttribute(
     "data-evolution-chain-string",
-    chainData.list
-      .map((eachEvolutionName) =>
-        Array.isArray(eachEvolutionName)
-          ? eachEvolutionName.join("/")
-          : eachEvolutionName
-      )
-      .join(" > ")
+    getChainStringFromChainDataArray(chainData.list)
   );
 
   let { pokemonDisplayName, evolutionCount } =
-    getSecondEvolutionPokemonDisplayNameByChance(chainData.list);
-
-  if (Array.isArray(pokemonDisplayName)) {
-    pokemonDisplayName =
-      pokemonDisplayName[Math.floor(Math.random() * pokemonDisplayName.length)];
-  }
+    getDisplayNameAndSecondEvolutionByChance(chainData.list);
 
   cellElement.setAttribute("data-display-name", pokemonDisplayName);
 
-  decorateCell(cellElement, pokemonDisplayName, evolutionCount);
+  decorateBackpackCell(cellElement, pokemonDisplayName, evolutionCount);
 }
 
 function updateExpForNextLevelElement() {
@@ -330,13 +336,11 @@ function upgradeCell(previousCellElement, cellElement) {
     10
   );
 
-	
-	cellElement.removeAttribute(`data-evolution-${currentEvolutionCount}`);
+	cellElement.removeAttribute("data-evolution-count");
 	
   const nextEvolutionCount = currentEvolutionCount + 1;
 
 	cellElement.setAttribute("data-evolution-count", nextEvolutionCount);
-  cellElement.setAttribute(`data-evolution-${nextEvolutionCount}`, "true");
 
   let nextEvolutionName =
     window.pokelist[chainIndex].list[nextEvolutionCount - 1];
@@ -348,7 +352,7 @@ function upgradeCell(previousCellElement, cellElement) {
       nextEvolutionName[Math.floor(Math.random() * maybeArrayLength)];
   }
 
-  decorateCell(cellElement, nextEvolutionName, nextEvolutionCount);
+  decorateBackpackCell(cellElement, nextEvolutionName, nextEvolutionCount);
 
   clearShuffledCell(previousCellElement);
 
@@ -387,26 +391,17 @@ function updateDisplayCell(
   pokemonDisplayName,
   isBuyer
 ) {
-  cellElement.firstElementChild &&
-    cellElement.removeChild(cellElement.firstElementChild);
-  cellElement.firstElementChild &&
-    cellElement.removeChild(cellElement.firstElementChild);
-  cellElement.firstElementChild &&
-    cellElement.removeChild(cellElement.firstElementChild);
-  cellElement.firstElementChild &&
-    cellElement.removeChild(cellElement.firstElementChild);
-  cellElement.firstElementChild &&
-    cellElement.removeChild(cellElement.firstElementChild);
+	cellElement.innerHTML = '';
 
   const imageUrl = getPokemonImageUrl(pokemonId);
   let img = document.createElement("img");
-  img.src = imageUrl;
+	img.src = imageUrl;
+	img.setAttribute("draggable", "false");
   img.classList.add("pixelated");
 
   const divElement = document.createElement("div");
   divElement.classList.add("image-container");
   divElement.appendChild(img);
-  // divElement.classList.add('occupy-height');
   cellElement.appendChild(divElement);
 
   const textContainerElement = document.createElement("div");
@@ -479,10 +474,9 @@ function attachBackpackContextMenu(cellElement) {
   }
 }
 
-function decorateCell(cellElement, pokemonDisplayName, evolutionCount) {
+function decorateBackpackCell(cellElement, pokemonDisplayName, evolutionCount) {
   const validNameForCsv = getIdentifierForCsv(
-    pokemonDisplayName,
-    "decorateCell"
+    pokemonDisplayName
   );
 
   const pokemonData = findPokemonFromCsv(validNameForCsv);
@@ -509,10 +503,9 @@ function decorateCell(cellElement, pokemonDisplayName, evolutionCount) {
   cellElement.setAttribute("data-identifier", pokemonIdentifier);
   cellElement.setAttribute(`data-identifier-${pokemonIdentifier}`, "true");
   cellElement.setAttribute("data-evolution-count", evolutionCount);
-  cellElement.setAttribute(`data-evolution-${evolutionCount}`, "true");
-  cellElement.setAttribute(`data-display-name`, pokemonDisplayName);
-
-  cellElement.onclick = () => {
+	cellElement.setAttribute(`data-display-name`, pokemonDisplayName);
+	
+  cellElement.onmousedown = () => {
     if (null === cellElement.getAttribute("data-identifier")) {
       return;
     }
@@ -568,7 +561,7 @@ function onPokeBallClick() {
     "number" === typeof indexWithoutDisplayName &&
     indexWithoutDisplayName >= 0
   ) {
-    randomizeCell(
+    randomizeBackpackCell(
       document.getElementById(`shuffled-cell-${indexWithoutDisplayName}`)
     );
 
@@ -597,6 +590,12 @@ function onPokeballMouseDown() {
 function onPokeballMouseUp() {
   clearTimeout(window._mouseDownTimeout);
   clearInterval(window._mouseDownInterval);
+}
+
+function getEvolutionIndexByChainString(pokemonDisplayName, chainString) {
+  return chainString
+    .split(" > ")
+    .findIndex((eachItem) => eachItem.split("/").includes(pokemonDisplayName));
 }
 
 function randomizeBuyerCell(cellElement) {
@@ -711,14 +710,18 @@ function randomizeBuyerCell(cellElement) {
   cellElement.setAttribute("data-evolution-chain-string", chainString);
   cellElement.setAttribute("data-chain-index", chainIndex);
 
-  const evolutionIndex = chainString
-    .split(" > ")
-    .findIndex((eachItem) => eachItem.split("/").includes(pokemonDisplayName));
+	const evolutionIndex = getEvolutionIndexByChainString(pokemonDisplayName, chainString);
 
-  cellElement.setAttribute(`data-evolution-${evolutionIndex + 1}`, true);
+  cellElement.setAttribute("data-evolution-count", evolutionIndex + 1);
 
-  decorateBuyerCell(cellElement, pokemonDisplayName);
+	decorateBuyerCell(cellElement, pokemonDisplayName);
+	
+	attachBuyerRefreshElement(cellElement);
 
+  restartBuyerRandomizeTimeout(cellElement);
+}
+
+function attachBuyerRefreshElement(cellElement) {
   const buyerRefreshElement = document.createElement("div");
   buyerRefreshElement.classList.add("buyer-refresh");
   buyerRefreshElement.setAttribute("title", "Randomize for 10 Gold");
@@ -727,9 +730,7 @@ function randomizeBuyerCell(cellElement) {
     `buyer-refresh-${cellElement.getAttribute("id")}`
   );
   buyerRefreshElement.innerText = "⟳";
-  cellElement.prepend(buyerRefreshElement);
-
-  restartBuyerRandomizeTimeout(cellElement);
+  cellElement.appendChild(buyerRefreshElement);
 }
 
 function restartBuyerRandomizeTimeout(cellElement) {
@@ -879,7 +880,8 @@ function attachBuyerContextMenu(cellElement) {
 
     increaseCurrentGold(-10);
 
-    cellElement._nextRandomForThisCell = Date.now() + 6000;
+		cellElement._nextRandomForThisCell = Date.now() + 6000;
+		
     restartBuyerRandomizeTimeout(cellElement);
 
     playSound("shuffle-sound");
@@ -888,8 +890,7 @@ function attachBuyerContextMenu(cellElement) {
 
 function decorateBuyerCell(cellElement, pokemonDisplayName) {
   const validNameForCsv = getIdentifierForCsv(
-    pokemonDisplayName,
-    "decorateBuyerCell"
+    pokemonDisplayName
   );
 
   const pokemonData = findPokemonFromCsv(validNameForCsv);
@@ -914,7 +915,7 @@ function decorateBuyerCell(cellElement, pokemonDisplayName) {
   cellElement.setAttribute(`data-identifier-${pokemonIdentifier}`, "true");
   cellElement.setAttribute("data-display-name", pokemonDisplayName);
 
-  cellElement.onclick = () => {
+  cellElement.onmousedown = () => {
     if (!window.selectedCellElement) {
       return;
     }
