@@ -468,8 +468,18 @@ div[id^=shuffled-cell-][data-evolution-count="4"]:after {
 	cursor: help;
 }
 
-img[src="./images/poke-ball.png"] {
+img[src$="-ball.png"] {
 	opacity: 0.5;
+	
+	animation: pokeball-shake 0.5s;
+	animation-iteration-count: linear;
+}
+
+img[src$="-ball.png"]:hover {
+	opacity: 1;
+	
+	animation: pokeball-shake 0.5s;
+	animation-iteration-count: linear;
 }
 
 img[src] {

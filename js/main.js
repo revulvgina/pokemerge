@@ -6,7 +6,53 @@ function showStats() {
   await loadBasicEvolutionJson();
   await loadPokeCsv();
 
-  window.defaultPokeBallCell = `<img src="./images/poke-ball.png" onclick="onPokeBallCellClick(this)" ondragstart="onPokeBallCellClick(this)" />`;
+	window.defaultPokeBallCell = `<img src="./images/poke-ball.png" onclick="onPokeBallCellClick(this)" ondragstart="onPokeBallCellClick(this)" />`;
+	window.pokeBallRandomIndexList = [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		1,
+		1,
+		1,
+		1,
+		1,
+		1,
+		1,
+		1,
+		2,
+		2,
+		2,
+		2,
+		3
+	];
+	window.totalPokeBallRandomIndexList = window.pokeBallRandomIndexList.length;
+	window.pokeBallNames = [
+		'poke-ball',
+		'great-ball',
+		'ultra-ball',
+		'master-ball'
+	];
 
   attachContextMenus();
 
@@ -20,7 +66,9 @@ function showStats() {
 
   deleteAudioElementCriesInterval();
 
-  addEventListeners();
+	addEventListeners();
+	
+	initializeBackpackBalls();
 })();
 
 async function loadPokeCsv() {
@@ -39,6 +87,51 @@ async function loadBasicEvolutionJson() {
   const jsonResponse = await response.json();
 
   window.pokelist = jsonResponse.select;
+}
+
+function createRandomPokeBallImage() {
+	const imgTag = document.createElement("img");
+	const randomPokeBallIndex = getRandomPokeBallIndex();
+	const pokeBallName = window.pokeBallNames[randomPokeBallIndex];
+	imgTag.setAttribute('src', `./images/${pokeBallName}.png`);
+	imgTag.onclick = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
+	imgTag.ondragstart = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
+	imgTag.setAttribute("data-pokeball-index", randomPokeBallIndex);
+	imgTag.setAttribute("data-click-price", getClickPrice(randomPokeBallIndex));
+	imgTag.setAttribute("title", `Open for ${getClickPrice(randomPokeBallIndex)} gold`);
+
+	return imgTag;
+}
+
+function attachCellWithPokeBallImage(cellElement) {
+	cellElement.appendChild(createRandomPokeBallImage());
+	cellElement.setAttribute("data-evolution-count", Math.min(3, Number.parseInt(cellElement.firstChild.getAttribute('data-pokeball-index'), 10) + 1));
+}
+
+function initializeBackpackBalls() {
+	const backpackCells = Array.from(document.querySelectorAll('[id^=shuffled-cell-]'));
+
+	backpackCells.forEach((eachCell) => {
+		attachCellWithPokeBallImage(eachCell);
+	});
+}
+
+function getBasePrice(evolutionCount) {
+	return Math.pow(evolutionCount, evolutionCount);
+}
+
+function getRandomBuyerPrice(evolutionCount) {
+	const basePrice = getBasePrice(evolutionCount);
+
+	return 3 + basePrice + Math.floor(Math.random() * basePrice);
+}
+
+function getClickPrice(pokeBallIndex) {
+	return Math.min(10, (pokeBallIndex + 1) * 3);
+}
+
+function getRandomPokeBallIndex() {
+	return window.pokeBallRandomIndexList[Math.floor(Math.random() * window.totalPokeBallRandomIndexList)];
 }
 
 function addEventListeners() {
@@ -97,14 +190,10 @@ function initializeCurrentGold() {
   );
 
   if (!window.currentGold) {
-    window.currentGold = 0;
+    window.currentGold = 100;
     window.localStorage.setItem("current_gold", window.currentGold);
   }
 }
-
-const _MAX_ROW_COLUMN_ELEMENTS = 10;
-const _ONE_EVOLUTION_LEVEL_REQUIREMENT = 50;
-const _FIFTY_MAX_BELOW_LEVEL = 10;
 
 function getPool() {
   return window.pokelist.slice(0, window.currentLevel);
@@ -169,53 +258,96 @@ function getIncreasingChanceByLevel(maxIncrease = 15) {
   return Math.min(maxIncrease, Math.floor(window.currentLevel / 1.5));
 }
 
-function getChainData() {
-  let pool = getPool();
+function findInPool(thisPool, displayName) {
+	return thisPool.find(({list}) => list.find((eachInList) => Array.isArray(eachInList) ? eachInList.includes(displayName) : eachInList === displayName))
+}
 
-  if (0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))) {
-    const buyerCellsWithChainIndex = Array.from(
-      document.querySelectorAll("[id^=buyer-][data-chain-index]")
-    );
+function getRandomItem(listOfItems) {
+	const totalItems = listOfItems.length;
 
-    const totalBuyerCellsWithChainIndex = buyerCellsWithChainIndex.length;
-    if (totalBuyerCellsWithChainIndex > 0) {
-      const randomBuyerCellWithChainIndex =
-        buyerCellsWithChainIndex[
-          Math.floor(Math.random() * totalBuyerCellsWithChainIndex)
-        ];
+	return listOfItems[Math.floor(Math.random() * totalItems)];
+}
 
-      const chainIndex = Number.parseInt(
-        randomBuyerCellWithChainIndex.getAttribute("data-chain-index"),
-        10
-      );
+function getChainData(pokeBallIndex) {
+	let pool = getPool();
+	
+	const poolByPokeBallIndex = pool.filter((eachChain) => {
+		return eachChain.list.length >= Math.min(3, pokeBallIndex+1)
+	});
 
-      return pool[chainIndex];
-    }
+	const allNamesInPool = poolByPokeBallIndex.map((eachChain) => {
+		if (3 === pokeBallIndex) {
+			return eachChain.list[2];
+		}
+
+		return eachChain.list.slice(0, (pokeBallIndex + 1))
+	}).flat(3);
+
+	if (0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))) {
+
+		const buyerCellsWithNames = Array.from(
+			document.querySelectorAll("[id^=buyer-][data-display-name]")
+		);
+
+		if (buyerCellsWithNames.length > 0) {
+			const allBuyerCellNames = buyerCellsWithNames.map((eachBuyerCell) => eachBuyerCell.getAttribute('data-display-name'));
+
+			const matchingBuyerDisplayName = allBuyerCellNames.find((eachName) => allNamesInPool.includes(eachName));
+
+			if (matchingBuyerDisplayName) {
+				const chainData = findInPool(poolByPokeBallIndex, matchingBuyerDisplayName);
+
+				const evolutionIndex = chainData.list.findIndex((eachInList) => Array.isArray(eachInList) ? eachInList.includes(matchingBuyerDisplayName) : eachInList === matchingBuyerDisplayName)
+
+				return {
+					pokemonDisplayName: matchingBuyerDisplayName,
+					evolutionIndex,
+					chainData
+				}
+			}
+		}
   }
 
   if (0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))) {
-    const cellsWithDisplayName = getCellsWithDisplayName();
 
-    const totalCellsWithDisplayName = cellsWithDisplayName.length;
-    if (totalCellsWithDisplayName > 0) {
-      const randomCellWithDisplayName =
-        cellsWithDisplayName[
-          Math.floor(Math.random() * totalCellsWithDisplayName)
-        ];
-      const chainIndex = Number.parseInt(
-        randomCellWithDisplayName.getAttribute("data-chain-index"),
-        10
-      );
+		const backpackCellsWithNames = Array.from(
+			document.querySelectorAll("[id^=shuffled-cell-][data-display-name]")
+		);
 
-      return pool[chainIndex];
-    }
-  }
+		if (backpackCellsWithNames.length > 0) {
+			const allBackpackCellNames = backpackCellsWithNames.map((eachBuyerCell) => eachBuyerCell.getAttribute('data-display-name'));
 
-  const totalLength = pool.length;
+			const matchingBackpackDisplayName = allBackpackCellNames.find((eachName) => allNamesInPool.includes(eachName));
 
-  const randomNumber = Math.floor(Math.random() * totalLength);
+			if (matchingBackpackDisplayName) {
+				const chainData = findInPool(poolByPokeBallIndex, matchingBackpackDisplayName);
 
-  return pool[randomNumber];
+				const evolutionIndex = chainData.list.findIndex((eachInList) => Array.isArray(eachInList) ? eachInList.includes(matchingBackpackDisplayName) : eachInList === matchingBackpackDisplayName)
+
+				return {
+					pokemonDisplayName: matchingBackpackDisplayName,
+					evolutionIndex,
+					chainData
+				}
+			}
+		}
+	}
+
+	let randomPokemonDisplayNameInChain = getRandomItem(allNamesInPool);
+
+	if (Array.isArray(randomPokemonDisplayNameInChain)) {
+		randomPokemonDisplayNameInChain = getRandomItem(randomPokemonDisplayNameInChain);
+	}
+
+	const chainData = findInPool(poolByPokeBallIndex, randomPokemonDisplayNameInChain);
+
+	const evolutionIndex = chainData.list.findIndex((eachInList) => Array.isArray(eachInList) ? eachInList.includes(randomPokemonDisplayNameInChain) : eachInList === randomPokemonDisplayNameInChain)
+
+	return {
+		pokemonDisplayName: randomPokemonDisplayNameInChain,
+		evolutionIndex,
+		chainData
+	};
 }
 
 function getChainStringFromChainDataArray(chainDataList) {
@@ -228,18 +360,17 @@ function getChainStringFromChainDataArray(chainDataList) {
     .join(" > ");
 }
 
-function randomizeBackpackCell(cellElement) {
-  const chainData = getChainData();
+function randomizeBackpackCell(cellElement, pokeBallIndex) {
+	const { pokemonDisplayName, chainData, evolutionIndex } = getChainData(pokeBallIndex);
 
   cellElement.setAttribute("data-chain-index", chainData.chainIndex);
   cellElement.setAttribute("data-chain-length", chainData.list.length);
   cellElement.setAttribute(
     "data-evolution-chain-string",
     getChainStringFromChainDataArray(chainData.list)
-  );
-
-  let { pokemonDisplayName, evolutionCount } =
-    getDisplayNameAndSecondEvolutionByChance(chainData.list);
+	);
+	
+	const evolutionCount = evolutionIndex + 1;
 
   cellElement.setAttribute("data-display-name", pokemonDisplayName);
 
@@ -278,7 +409,9 @@ function updateExpForNextLevelCount() {
   if (window.expCountForNextLevel < window.currentLevel) {
     updateExpForNextLevelElement();
     return;
-  }
+	}
+	
+	increaseCurrentGold(window.currentLevel * 5);
 
   window.currentLevel += 1;
   localStorage.setItem("current_lv", window.currentLevel);
@@ -436,8 +569,9 @@ function sellCell(cellElement) {
   );
 
   cellElement.classList.remove("selected-cell");
-  clearSelectedCell();
-  increaseCurrentGold(Math.pow(evolutionCount, 2));
+	clearSelectedCell();
+	
+  increaseCurrentGold(getBasePrice(evolutionCount));
 
   playSound("coin-sound");
 }
@@ -473,7 +607,7 @@ function decorateBackpackCell(cellElement, pokemonDisplayName, evolutionCount) {
 
   updateDisplayCell(cellElement, pokemonId, pokemonDisplayName);
 
-  const sellValue = Math.pow(evolutionCount, 2);
+  const sellValue = getBasePrice(evolutionCount);
 
   cellElement.setAttribute(
     "title",
@@ -540,9 +674,9 @@ function playSound(audioId) {
 }
 
 function reanimateElement(element) {
-  pokeBall.style.animation = "none";
-  pokeBall.offsetHeight; /* trigger reflow */
-  pokeBall.style.animation = null;
+  element.style.animation = "none";
+  element.offsetHeight; /* trigger reflow */
+  element.style.animation = null;
 }
 
 function onPokeBallClick() {
@@ -553,7 +687,7 @@ function onPokeBallClick() {
     indexWithoutDisplayName >= 0
   ) {
     randomizeBackpackCell(
-      document.getElementById(`shuffled-cell-${indexWithoutDisplayName}`)
+      document.getElementById(`shuffled-cell-${indexWithoutDisplayName}`), Math.floor(Math.random() * 3)
     );
 
     playSound("pokeball-open-sound");
@@ -561,10 +695,21 @@ function onPokeBallClick() {
 
   clearSelectedCell();
 }
-function onPokeBallCellClick(imgElement, ev) {
-  clearSelectedCell();
+function onPokeBallCellClick(imgElement, pokeBallIndex) {
+	clearSelectedCell();
+	
+	const dataClickPrice = Number.parseInt(imgElement.getAttribute('data-click-price'), 10);
+
+	reanimateElement(imgElement);
+
+	if (window.currentGold < dataClickPrice) {
+		return;
+	}
+
+	increaseCurrentGold(-dataClickPrice);
+
   const parentElement = imgElement.parentElement;
-  randomizeBackpackCell(parentElement);
+  randomizeBackpackCell(parentElement, pokeBallIndex);
   setSelectedCell(parentElement);
   playSound("pokeball-open-sound");
 }
@@ -576,13 +721,9 @@ function getEvolutionIndexByChainString(pokemonDisplayName, chainString) {
 }
 
 function randomizeBuyerCell(cellElement) {
-  let allShuffledCells = getAllShuffledCells();
+	const openedShuffledCells = document.querySelectorAll('[id^=shuffled-cell-][data-identifier]');
 
-  const indexNotNull = allShuffledCells.findIndex(
-    (eachCell) => null !== eachCell.getAttribute("data-display-name")
-  );
-
-  if ("number" !== typeof indexNotNull || indexNotNull < 0) {
+  if (openedShuffledCells.length <= 1) {
     return;
   }
 
@@ -670,27 +811,16 @@ function randomizeBuyerCell(cellElement) {
     return;
   }
 
-  const basicEvolutionData = window.pokelist.find(({ list }) =>
-    list.find((eachInList) => new RegExp(pokemonDisplayName).test(eachInList))
-  );
-
-  const minimumSellValue = Math.max(1, 10 - numberOfDuplicates);
-  const maximumSellValue =
-    minimumSellValue +
-    additionalSellValue * 2 +
-    (5 - basicEvolutionData.list.length) * 2;
-  const differenceSellValue = maximumSellValue - minimumSellValue;
-  const finalSellValue =
-    minimumSellValue + Math.floor(Math.random() * differenceSellValue);
-
-  cellElement.setAttribute("data-buyer-sell-value", finalSellValue);
-  cellElement.setAttribute("data-evolution-chain-string", chainString);
-  cellElement.setAttribute("data-chain-index", chainIndex);
-
   const evolutionIndex = getEvolutionIndexByChainString(
     pokemonDisplayName,
     chainString
   );
+
+	const finalSellValue = getRandomBuyerPrice(evolutionIndex + 1);
+
+  cellElement.setAttribute("data-buyer-sell-value", finalSellValue);
+  cellElement.setAttribute("data-evolution-chain-string", chainString);
+  cellElement.setAttribute("data-chain-index", chainIndex);
 
   cellElement.setAttribute("data-evolution-count", evolutionIndex + 1);
 
@@ -777,16 +907,12 @@ function highlightBackpackSameIdentifier(dataIdentifierName) {
 
 function clearShuffledCell(cellElement) {
   cellElement.classList.remove("selected-cell");
-  cellElement.removeAttribute("data-chain-index");
-  cellElement.removeAttribute("data-chain-length");
-  cellElement.removeAttribute("data-evolution-chain-string");
-  cellElement.removeAttribute("data-display-name");
   cellElement.removeAttribute("title");
-  cellElement.removeAttribute("data-identifier");
-  cellElement.removeAttribute("data-evolution-count");
-  clearElementAttributesByPrefix(cellElement, "data-identifier-");
+	clearElementAttributesByPrefix(cellElement, "data-");
 
-  cellElement.innerHTML = window.defaultPokeBallCell;
+	cellElement.innerHTML = "";
+	
+	attachCellWithPokeBallImage(cellElement);
 }
 
 function deleteAudioElementCriesInterval() {
