@@ -148,14 +148,23 @@ function shuffleArray(anArrayCopy) {
 
 function getSecondEvolutionPokemonDisplayNameByChance(chainDataList) {
   if (1 === chainDataList.length) {
-    return chainDataList[0];
+		return {
+			pokemonDisplayName: chainDataList[0],
+			evolutionCount: 1
+		};
   }
 
   if (Math.floor(Math.random() * 20) > 0) {
-    return chainDataList[0];
+		return {
+			pokemonDisplayName: chainDataList[0],
+			evolutionCount: 1
+		};
   }
 
-  return chainDataList[1];
+	return {
+		pokemonDisplayName: chainDataList[1],
+		evolutionCount: 2
+	};
 }
 
 function getCellsWithDisplayName() {
@@ -188,8 +197,9 @@ function getChainData() {
       const chainIndex = Number.parseInt(
         randomBuyerCellWithChainIndex.getAttribute("data-chain-index"),
         10
-      );
-      return pool[chainIndex];
+			);
+			
+			return pool[chainIndex];
     }
   }
 
@@ -205,17 +215,17 @@ function getChainData() {
       const chainIndex = Number.parseInt(
         randomCellWithDisplayName.getAttribute("data-chain-index"),
         10
-      );
-
-      return pool[chainIndex];
+			);
+			
+			return pool[chainIndex];
     }
   }
 
   const totalLength = pool.length;
 
-  const randomNumber = Math.floor(Math.random() * totalLength);
-
-  return pool[randomNumber];
+	const randomNumber = Math.floor(Math.random() * totalLength);
+	
+	return pool[randomNumber];
 }
 
 function randomizeCell(cellElement) {
@@ -234,7 +244,7 @@ function randomizeCell(cellElement) {
       .join(" > ")
   );
 
-  let pokemonDisplayName = getSecondEvolutionPokemonDisplayNameByChance(
+	let { pokemonDisplayName, evolutionCount } = getSecondEvolutionPokemonDisplayNameByChance(
     chainData.list
   );
 
@@ -243,9 +253,9 @@ function randomizeCell(cellElement) {
       pokemonDisplayName[Math.floor(Math.random() * pokemonDisplayName.length)];
   }
 
-  cellElement.setAttribute("data-display-name", pokemonDisplayName);
-
-  decorateCell(cellElement, pokemonDisplayName, 1);
+	cellElement.setAttribute("data-display-name", pokemonDisplayName);
+	
+  decorateCell(cellElement, pokemonDisplayName, evolutionCount);
 }
 
 function updateExpForNextLevelElement() {
@@ -633,7 +643,7 @@ function randomizeBuyerCell(cellElement) {
 
   const numberOfDuplicates = duplicateMap[randomUniqueName];
 
-  let pokemonDisplayName = randomUniqueName;
+	let pokemonDisplayName = randomUniqueName;
 
   const thatElement = Array.from(
     document.querySelectorAll("[id^=shuffled-cell-]")
@@ -641,7 +651,7 @@ function randomizeBuyerCell(cellElement) {
     (eachCell) =>
       pokemonDisplayName === eachCell.getAttribute("data-display-name")
   );
-
+	
   const chainString = thatElement.getAttribute("data-evolution-chain-string");
   const chainIndex = thatElement.getAttribute("data-chain-index");
 
