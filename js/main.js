@@ -87,7 +87,7 @@ function playBgm() {
     return;
   }
 
-  bgmElement.volume = 0.01;
+  bgmElement.volume = 0.03;
   bgmElement.play();
 }
 
@@ -120,11 +120,7 @@ const _ONE_EVOLUTION_LEVEL_REQUIREMENT = 50;
 const _FIFTY_MAX_BELOW_LEVEL = 10;
 
 function getPool() {
-  let pool = window.pokelist;
-
-  pool = pool.slice(0, window.currentLevel*2);
-
-  return pool;
+  return window.pokelist.slice(0, window.currentLevel);
 }
 
 function getIdentifierForCsv(displayName, callerName) {
@@ -148,23 +144,23 @@ function shuffleArray(anArrayCopy) {
 
 function getSecondEvolutionPokemonDisplayNameByChance(chainDataList) {
   if (1 === chainDataList.length) {
-		return {
-			pokemonDisplayName: chainDataList[0],
-			evolutionCount: 1
-		};
+    return {
+      pokemonDisplayName: chainDataList[0],
+      evolutionCount: 1,
+    };
   }
 
   if (Math.floor(Math.random() * 20) > 0) {
-		return {
-			pokemonDisplayName: chainDataList[0],
-			evolutionCount: 1
-		};
+    return {
+      pokemonDisplayName: chainDataList[0],
+      evolutionCount: 1,
+    };
   }
 
-	return {
-		pokemonDisplayName: chainDataList[1],
-		evolutionCount: 2
-	};
+  return {
+    pokemonDisplayName: chainDataList[1],
+    evolutionCount: 2,
+  };
 }
 
 function getCellsWithDisplayName() {
@@ -197,9 +193,9 @@ function getChainData() {
       const chainIndex = Number.parseInt(
         randomBuyerCellWithChainIndex.getAttribute("data-chain-index"),
         10
-			);
-			
-			return pool[chainIndex];
+      );
+
+      return pool[chainIndex];
     }
   }
 
@@ -215,17 +211,17 @@ function getChainData() {
       const chainIndex = Number.parseInt(
         randomCellWithDisplayName.getAttribute("data-chain-index"),
         10
-			);
-			
-			return pool[chainIndex];
+      );
+
+      return pool[chainIndex];
     }
   }
 
   const totalLength = pool.length;
 
-	const randomNumber = Math.floor(Math.random() * totalLength);
-	
-	return pool[randomNumber];
+  const randomNumber = Math.floor(Math.random() * totalLength);
+
+  return pool[randomNumber];
 }
 
 function randomizeCell(cellElement) {
@@ -244,24 +240,23 @@ function randomizeCell(cellElement) {
       .join(" > ")
   );
 
-	let { pokemonDisplayName, evolutionCount } = getSecondEvolutionPokemonDisplayNameByChance(
-    chainData.list
-  );
+  let { pokemonDisplayName, evolutionCount } =
+    getSecondEvolutionPokemonDisplayNameByChance(chainData.list);
 
   if (Array.isArray(pokemonDisplayName)) {
     pokemonDisplayName =
       pokemonDisplayName[Math.floor(Math.random() * pokemonDisplayName.length)];
   }
 
-	cellElement.setAttribute("data-display-name", pokemonDisplayName);
-	
+  cellElement.setAttribute("data-display-name", pokemonDisplayName);
+
   decorateCell(cellElement, pokemonDisplayName, evolutionCount);
 }
 
 function updateExpForNextLevelElement() {
-  window.upgradeCountForCurrentLevel = window.upgradeCountForCurrentLevel || 0;
+  window.expCountForNextLevel = window.expCountForNextLevel || 0;
   const expForNextLevelElement = document.getElementById("exp-for-next-level");
-  expForNextLevelElement.innerText = `(${window.upgradeCountForCurrentLevel} / ${window.currentLevel})`;
+  expForNextLevelElement.innerText = `(${window.expCountForNextLevel} / ${window.currentLevel})`;
 }
 
 function updateCurrentLevel() {
@@ -282,20 +277,19 @@ function increaseCurrentGold(goldIncrease) {
   updateCurrentGold();
 }
 
-function updateUpgradeCount() {
-  window.upgradeCountForCurrentLevel =
-    (window.upgradeCountForCurrentLevel || 0) + 1;
+function updateExpForNextLevelCount() {
+  window.expCountForNextLevel = (window.expCountForNextLevel || 0) + 1;
 
   const expForNextLevelElement = document.getElementById("exp-for-next-level");
 
-  if (window.upgradeCountForCurrentLevel < window.currentLevel) {
+  if (window.expCountForNextLevel < window.currentLevel) {
     updateExpForNextLevelElement();
     return;
   }
 
   window.currentLevel += 1;
   localStorage.setItem("current_lv", window.currentLevel);
-  window.upgradeCountForCurrentLevel = 0;
+  window.expCountForNextLevel = 0;
   updateExpForNextLevelElement();
   updateCurrentLevel();
   playSound("level-up-sound");
@@ -336,10 +330,13 @@ function upgradeCell(previousCellElement, cellElement) {
     10
   );
 
+	
+	cellElement.removeAttribute(`data-evolution-${currentEvolutionCount}`);
+	
   const nextEvolutionCount = currentEvolutionCount + 1;
 
-  cellElement.setAttribute("data-evolution-count", nextEvolutionCount);
-  cellElement.setAttribute(`evolution-${nextEvolutionCount + 1}`, "true");
+	cellElement.setAttribute("data-evolution-count", nextEvolutionCount);
+  cellElement.setAttribute(`data-evolution-${nextEvolutionCount}`, "true");
 
   let nextEvolutionName =
     window.pokelist[chainIndex].list[nextEvolutionCount - 1];
@@ -356,12 +353,13 @@ function upgradeCell(previousCellElement, cellElement) {
   clearShuffledCell(previousCellElement);
 
   clearSelectedCell();
-	// clearAllHighlight();
-	// setBackpackSameIdentifier(cellElement.getAttribute('data-identifier'));
+  // clearAllHighlight();
+  // setBackpackSameIdentifier(cellElement.getAttribute('data-identifier'));
 
-	setSelectedCell(cellElement);
+  setSelectedCell(cellElement);
 
-  updateUpgradeCount();
+  updateExpForNextLevelCount();
+
   playSound("plus-sound");
 }
 
@@ -512,6 +510,7 @@ function decorateCell(cellElement, pokemonDisplayName, evolutionCount) {
   cellElement.setAttribute(`data-identifier-${pokemonIdentifier}`, "true");
   cellElement.setAttribute("data-evolution-count", evolutionCount);
   cellElement.setAttribute(`data-evolution-${evolutionCount}`, "true");
+  cellElement.setAttribute(`data-display-name`, pokemonDisplayName);
 
   cellElement.onclick = () => {
     if (null === cellElement.getAttribute("data-identifier")) {
@@ -616,21 +615,25 @@ function randomizeBuyerCell(cellElement) {
   }
 
   const allDisplayNames = Array.from(
-    document.querySelectorAll("[id^=shuffled-cell-]")
+    document.querySelectorAll("[id^=shuffled-cell-][data-identifier]")
   ).map((eachCell) => eachCell.getAttribute("data-display-name"));
 
   const duplicateMap = {};
   allDisplayNames.forEach((eachName) => {
     duplicateMap[eachName] = (duplicateMap[eachName] || 0) + 1;
-  });
+	});
 
   const getRandomHigherEvolutionNumber = Math.floor(Math.random() * 2);
 
-  const namesOnly = Object.entries(duplicateMap)
+  const namesWithGreaterThanDuplicateNumber = Object.entries(duplicateMap)
     .filter(([k, v]) => v > getRandomHigherEvolutionNumber)
     .map(([k, v]) => k);
 
-  const allUniqueNamesCopy = [...namesOnly].filter(
+  const namesToFilter = namesWithGreaterThanDuplicateNumber.length
+    ? namesWithGreaterThanDuplicateNumber
+    : Object.keys(duplicateMap);
+
+  const allUniqueNamesCopy = [...namesToFilter].filter(
     (removeSomeNamesThatAreNullString) =>
       removeSomeNamesThatAreNullString !== "null"
   );
@@ -643,15 +646,16 @@ function randomizeBuyerCell(cellElement) {
 
   const numberOfDuplicates = duplicateMap[randomUniqueName];
 
-	let pokemonDisplayName = randomUniqueName;
+  let pokemonDisplayName = randomUniqueName;
 
   const thatElement = Array.from(
     document.querySelectorAll("[id^=shuffled-cell-]")
   ).find(
-    (eachCell) =>
+    (eachCell, index) =>
+      eachCell &&
       pokemonDisplayName === eachCell.getAttribute("data-display-name")
   );
-	
+
   const chainString = thatElement.getAttribute("data-evolution-chain-string");
   const chainIndex = thatElement.getAttribute("data-chain-index");
 
@@ -773,7 +777,7 @@ function clearSelectedCell() {
     window.selectedCellElement = null;
   }
 
-	clearAllHighlight();
+  clearAllHighlight();
 
   document
     .getElementById("left-box-evolution-chain")
@@ -948,6 +952,8 @@ function decorateBuyerCell(cellElement, pokemonDisplayName) {
     cellElement.removeAttribute("data-evolution-4");
 
     increaseCurrentGold(goldIncreaseValue);
+
+    updateExpForNextLevelCount();
 
     navigator.vibrate(150);
 
