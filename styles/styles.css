@@ -457,6 +457,18 @@ div[id^=shuffled-cell-][data-evolution-count="4"]:after {
 	}
 }
 
+[id^=shuffled-cell-]:not([data-identifier]), [id^=shuffled-cell-]:not([data-identifier]) > img {
+	cursor: help;
+}
+
+img[src="./images/poke-ball.png"] {
+	image-rendering: pixelated;
+}
+
+img[src] {
+	image-rendering: pixelated;
+}
+
 .pixelated {
 	image-rendering: pixelated;
 }
