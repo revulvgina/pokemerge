@@ -15,7 +15,13 @@
 		<div class="square">
 			<div class="content">
 				<div class="header">
-					<h1 onclick="showStats()">PoKeMerge</h1>
+					<div class="header-text">
+						<h1 onclick="showStats()">PoKeMerge</h1>
+					</div>
+					<div class="header-settings" onclick="openSettings()">
+						<img id="settings" class="pokeball-shake"
+							src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/explorer-kit.png" class="pixelated" />
+					</div>
 				</div>
 				<div class="box-container">
 					<div class="left-box">
@@ -30,7 +36,7 @@
 					</div>
 					<div class="right-box">
 						<div class="right-box-pokeball no-highlight" id="right-box-pokeball" onmousedown="onPokeballMouseDown()"
-							onmouseup="onPokeballMouseUp()" onmouseout="onPokeballMouseUp()" onclick="onPokeBallClick()">
+							onmouseup="onPokeballMouseUp()" onmouseout="onPokeballMouseUp()" onclick="onPokeBallClick()" style="display: none;">
 							<div>
 								<img id="poke-ball" class="pokeball-shake"
 									src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"

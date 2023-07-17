@@ -83,12 +83,27 @@ div[id^=buyer-][data-display-buyer-randomize-button]>div.buyer-refresh {
 }
 
 .header {
-	flex: 0 0 100%;
+	display: flex;
+	flex-flow: row;
 	color: #FFCB05;
 	margin-top: 20px;
 
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: #3466AF99;
+}
+
+.header-text {
+	flex-basis: 80%;
+}
+
+.header-settings {
+	flex-basis: 20%;
+}
+
+#settings {
+	display: flex;
+	width: 50px;
+	margin-left: auto;
 }
 
 .box-container {
