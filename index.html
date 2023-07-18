@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link href='https://fonts.googleapis.com/css?family=Press+Start+2P:400&subset=latin' rel='stylesheet' type='text/css'>
 	<link href='./styles/pokeball-shake.css' rel='stylesheet' type='text/css'>
-	<link href='./styles/styles.css?v=074942' rel='stylesheet' type='text/css'>
+	<link href='./styles/styles.css?v=074941' rel='stylesheet' type='text/css'>
+	<link href='./styles/settings.css?v=074942' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -129,7 +130,7 @@
 				<div class="settings-header">
 					<div class="inline-block">Settings</div>
 					<div class="inline-block header-close-button cursor-pointer no-highlight"
-						onclick="closeDialog('settings-dialog')">x</div>
+						onclick="closeDialog('settings-dialog')">X</div>
 				</div>
 				<div class="settings-content">
 					<div style="margin-top: 10%;">
@@ -150,134 +151,15 @@
 	</dialog>
 
 	<style>
-		#settings-dialog {
-			border-radius: 8px;
-			border: 4px solid rgb(var(--color-a76f47));
-			background-color: rgba(var(--color-f79f4f));
-		}
-
-		#settings-dialog::backdrop {
-			background: repeating-linear-gradient(135deg,
-					rgba(104, 69, 44, 0.3),
-					rgba(104, 69, 44, 0.3) 1px,
-					rgba(104, 69, 44, 0.5) 1px,
-					rgba(104, 69, 44, 0.5) 20px);
-		}
-
-		.inline-block {
-			display: inline-block;
-		}
-
-		.header-close-button {
-			margin-left: auto;
-			vertical-align: top;
-			color: #000;
-			right: 30px;
-			position: absolute;
-		}
-
-		.settings-content>div {
-			padding: 2% 0;
-		}
-
-		.reset-container {
-			background: rgb(var(--color-cf4f2f));
-			color: rgb(var(--color-f7df6f));
-			margin-top: 5%;
-		}
-
-		#journal-button,
-		#journal-button:visited,
-		#journal-button:hover,
-		#journal-button:active {
-			color: inherit;
-			text-decoration: none;
-			border-width: 0;
-			outline: none;
-		}
-
-
-		.reset-progress-animation {
-			background: linear-gradient(to right, black 0%, red 50%, red 100%);
-			width: 100%;
-			background-size: 200% auto;
-			background-position: 0 100%;
-			animation: red-gradient 4s linear;
-		}
-
-		@keyframes red-gradient {
-			0% {
-				background-position: 0 0;
-			}
-
-			100% {
-				background-position: -100% 0;
-			}
-		}
+		
 	</style>
 
 	<script>
-
-		function onEnableVibration(event) {
-			window.localStorage.setItem('enable-vibration', !!document.getElementById('enable-vibration').checked);
-		}
-
-		function openSettings() {
-			if (null === window.localStorage.getItem('enable-vibration')) {
-				window.localStorage.setItem('enable-vibration', true);
-			}
-			document.getElementById('enable-vibration').checked = "true" === window.localStorage.getItem('enable-vibration');
-			document.getElementById('settings-dialog').showModal();
-		}
-
-		function onResetProgress() {
-			window.location.reload();
-		}
-
-		function closeDialog(dialogId) {
-			document.getElementById(dialogId).close();
-		}
-
-		document.getElementById('reset-progress').addEventListener('mousedown', (event) => {
-			event.preventDefault();
-			if (1 !== event.which) { return; }
-			startResetProgressHold();
-		});
-
-		document.getElementById('reset-progress').addEventListener('mouseup', (event) => {
-			event.preventDefault();
-			stopResetProgressHold();
-		});
-
-		document.getElementById('reset-progress').addEventListener('touchstart', (event) => {
-			event.preventDefault();
-			startResetProgressHold();
-		});
-
-		document.getElementById('reset-progress').addEventListener('touchend', (event) => {
-			event.preventDefault();
-			stopResetProgressHold();
-		});
-
-		function startResetProgressHold() {
-			stopResetProgressHold();
-			document.querySelector('.reset-container').classList.add('reset-progress-animation');
-			window._resetProgressTimeout = setTimeout(resetProgressCallback, 4000);
-		}
-
-		function stopResetProgressHold() {
-			document.querySelector('.reset-container').classList.remove('reset-progress-animation');
-			clearTimeout(window._resetProgressTimeout);
-		}
-
-		function resetProgressCallback() {
-			document.querySelector('.reset-container').classList.remove('reset-progress-animation');
-			window.alert('Resetting progress...')
-		}
 	</script>
 
 	<script src="js/csv-to-array.js"></script>
 	<script src="js/main.js?v=074942"></script>
+	<script src="js/settings.js?v=074942"></script>
 </body>
 
 </html>

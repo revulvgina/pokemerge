@@ -1,0 +1,64 @@
+.header-close-button {
+	font-weight: bold;
+}
+
+#settings-dialog {
+	border-radius: 8px;
+	border: 4px solid rgb(var(--color-a76f47));
+	background-color: rgba(var(--color-f79f4f));
+}
+
+#settings-dialog::backdrop {
+	background: repeating-linear-gradient(135deg,
+			rgba(104, 69, 44, 0.3),
+			rgba(104, 69, 44, 0.3) 1px,
+			rgba(104, 69, 44, 0.5) 1px,
+			rgba(104, 69, 44, 0.5) 20px);
+}
+
+.header-close-button {
+	margin-left: auto;
+	vertical-align: top;
+	color: #000;
+	right: 30px;
+	position: absolute;
+}
+
+.settings-content>div {
+	padding: 2% 0;
+}
+
+.reset-container {
+	background: rgb(var(--color-cf4f2f));
+	color: rgb(var(--color-f7df6f));
+	margin-top: 10%;
+}
+
+#journal-button,
+#journal-button:visited,
+#journal-button:hover,
+#journal-button:active {
+	color: inherit;
+	text-decoration: none;
+	border-width: 0;
+	outline: none;
+}
+
+
+.reset-progress-animation {
+	background: linear-gradient(to right, black 0%, red 50%, red 100%);
+	width: 100%;
+	background-size: 200% auto;
+	background-position: 0 100%;
+	animation: red-gradient 4s linear;
+}
+
+@keyframes red-gradient {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -100% 0;
+	}
+}

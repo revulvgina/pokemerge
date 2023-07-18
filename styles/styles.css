@@ -727,3 +727,7 @@ img.poke-dollar {
 	inherits: true;
 	initial-value: 0turn;
 }
+
+.inline-block {
+	display: inline-block;
+}
