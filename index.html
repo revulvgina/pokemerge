@@ -32,11 +32,10 @@
 							<div style="display: inline-block">
 								<span>Level <span id="current-level">0</span></span>
 							</div>
-							
+
 							<div id="exp-container">
 								<div id="exp-bar"></div>
-								<div
-									id="exp-for-next-level">(0 / 10)</div>
+								<div id="exp-for-next-level">(0 / 10)</div>
 							</div>
 						</div>
 						<div class="left-box-current-gold"><strong>Gold: <span id="current-gold">0</span></strong></div>
@@ -107,39 +106,109 @@
 		</div>
 	</div>
 
-	<script>
-		function myfunction(ev) {
-			console.log("drag")
-		}
-	</script>
-
-	<audio id="click-sound"
-		src="./mp3/click-sound.mp3?v=1"></audio>
-	<audio id="gold-sound"
-		src="./mp3/gold-sound.mp3?v=2"></audio>
+	<audio id="click-sound" src="./mp3/click-sound.mp3?v=1"></audio>
+	<audio id="gold-sound" src="./mp3/gold-sound.mp3?v=2"></audio>
 	<!-- <audio id="coin-sound"
 			src="./mp3/coin-sound.mp3?v=1"></audio> -->
-	<audio id="coin-sound"
-		src="./mp3/pokeball-a-button-sound.mp3?v=1"></audio>
-	<audio id="level-up-sound"
-		src="./mp3/level-up.mp3?v=1"></audio>
-	<audio id="shuffle-sound"
-		src="./mp3/shuffle.mp3?v=2"></audio>
-	<audio id="plus-sound"
-		src="./mp3/plus.mp3?v=1"></audio>
+	<audio id="coin-sound" src="./mp3/pokeball-a-button-sound.mp3?v=1"></audio>
+	<audio id="level-up-sound" src="./mp3/level-up.mp3?v=1"></audio>
+	<audio id="shuffle-sound" src="./mp3/shuffle.mp3?v=2"></audio>
+	<audio id="plus-sound" src="./mp3/plus.mp3?v=1"></audio>
 	<!-- <audio id="pokeball-open-sound"
 			src="./mp3/pokeball-open.mp3?v=1"></audio> -->
-	<audio id="pokeball-open-sound"
-		src="./mp3/pokeball-open-sound.mp3?v=2"></audio>
-	<audio id="pokemon-theme-bgm"
-		src="./mp3/pokemon%20theme.mp3?v=1"></audio>
-	<audio id="pokemon-encounter"
-		src="./mp3/pokemon-encounter.mp3"></audio>
-
-	<input id="basic-evolutions" type="file" value="./json/basic-evolutions.json" />
+	<audio id="pokeball-open-sound" src="./mp3/pokeball-open-sound.mp3?v=2"></audio>
+	<audio id="pokemon-theme-bgm" src="./mp3/pokemon%20theme.mp3?v=1"></audio>
+	<audio id="pokemon-encounter" src="./mp3/pokemon-encounter.mp3"></audio>
 
 	<div id="audio-cries">
 	</div>
+
+	<dialog id="settings-dialog">
+		<form>
+			<div class="options">
+				<div class="header">
+					<h2>Settings</h2>
+					<div class="header-close-button cursor-pointer no-highlight" onclick="closeDialog('settings-dialog')">x</div>
+				</div>
+				<div class="settings-content">
+					<div style="margin-top: 10%;">
+						<a id="journal-button" class="no-highlight cursor-pointer" href="./journal.html">Go to Journal</a>
+					</div>
+					<div class="reset-container" oncontextmenu="return false;">
+						<div class="no-highlight cursor-pointer" id="reset-progress">Hold to Reset Progress</div>
+					</div>
+					<div class="vibrate-container">
+						<label class="no-highlight cursor-pointer" for="enable-vibration">
+							Enable vibration&nbsp;<input type="checkbox" value="true" id="enable-vibration" />
+						</label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</dialog>
+
+	<style>
+		.header-close-button {
+			margin-left: auto;
+			vertical-align: top;
+			color: #000;
+		}
+
+		.settings-content>div {
+			padding: 2% 0;
+		}
+
+		#journal-button,
+		#journal-button:visited,
+		#journal-button:hover,
+		#journal-button:active {
+			color: inherit;
+			text-decoration: none;
+			border-width: 0;
+			outline: none;
+		}
+	</style>
+
+	<script>
+		function onResetProgress() {
+			window.location.reload();
+		}
+
+		function closeDialog(dialogId) {
+			document.getElementById(dialogId).close();
+		}
+
+		document.getElementById('reset-progress').addEventListener('mousedown', (event) => {
+			event.preventDefault();
+			if (1 !== event.which) { return; }
+			console.log("mousedown", event)
+			clearTimeout(window._resetProgressTimeout);
+			window._resetProgressTimeout = setTimeout(resetProgressCallback, 2000);
+		});
+
+		document.getElementById('reset-progress').addEventListener('mouseup', (event) => {
+			event.preventDefault();
+			console.log("mouseup", event)
+			clearTimeout(window._resetProgressTimeout);
+		});
+
+		document.getElementById('reset-progress').addEventListener('touchstart', (event) => {
+			event.preventDefault();
+			console.log("touchstart", event)
+			clearTimeout(window._resetProgressTimeout);
+			window._resetProgressTimeout = setTimeout(resetProgressCallback, 2000);
+		});
+
+		document.getElementById('reset-progress').addEventListener('touchend', (event) => {
+			event.preventDefault();
+			console.log("touchend", event)
+			clearTimeout(window._resetProgressTimeout);
+		});
+
+		function resetProgressCallback() {
+			window.alert('Resetting progress...')
+		}
+	</script>
 
 	<script src="js/csv-to-array.js"></script>
 	<script src="js/main.js?v=074942"></script>

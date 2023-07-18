@@ -1185,4 +1185,6 @@ function decorateBuyerCell(cellElement, pokemonDisplayName) {
   cellElement.ondragstart = () => onBuyerMouseDown(cellElement);
 }
 
-function openSettings() {}
+function openSettings() {
+	document.getElementById('settings-dialog').showModal();
+}

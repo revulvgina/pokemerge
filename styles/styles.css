@@ -696,6 +696,19 @@ img.poke-dollar {
 	display: none;
 }
 
+.cursor-pointer {
+	cursor: pointer;
+}
+
+#settings-dialog {
+	left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10%;
+    padding: 30px;
+}
+
 @keyframes bg-spin {
 	to {
 		--border-angle: 1turn;
