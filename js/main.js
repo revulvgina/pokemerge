@@ -39,42 +39,22 @@ function showStats() {
 })();
 
 async function loadPokeCsv() {
-	let fileReader = new FileReader();
-	fileReader.onload = function () {
-		console.log(">>", fileReader.result);
-	}
+  const response = await fetch(
+    "https://raw.githubusercontent.com/revulvgina/pokemerge/master/csv/pokemon.csv"
+  );
+  const text = await response.text();
 
-	fileReader.readAsText('./csv/pokemon.csv');
+  window.pokeCsv = csvToArray(text, ",");
 }
-
-// async function loadPokeCsv() {
-//   const response = await fetch(
-//     "./csv/pokemon.csv"
-//   );
-//   const text = await response.text();
-
-//   window.pokeCsv = csvToArray(text, ",");
-// }
 
 async function loadBasicEvolutionJson() {
-	let fileReader = new FileReader();
-	fileReader.onload = function () {
-		console.log(">>", fileReader.target.result);
-	}
+  const response = await fetch(
+    `https://raw.githubusercontent.com/revulvgina/pokemerge/master/json/basic-evolutions.json`
+  );
+  const jsonResponse = await response.json();
 
-	console.log("document.getElementById('basic-evolutions')", document.getElementById('basic-evolutions'))
-
-	fileReader.readAsText(document.getElementById('basic-evolutions'));
+  window.pokelist = jsonResponse.select;
 }
-
-// async function loadBasicEvolutionJson() {
-//   const response = await fetch(
-//     `./json/basic-evolutions.json?v=2`
-//   );
-//   const jsonResponse = await response.json();
-
-//   window.pokelist = jsonResponse.select;
-// }
 
 function initializeEncounter() {
   window._encounterDuration = -Infinity;
