@@ -1,0 +1,3690 @@
+{ "select": [
+    {
+        "chainIndex": 0,
+        "list": [
+            "Bulbasaur",
+            "Ivysaur",
+            "Venusaur"
+        ]
+    },
+    {
+        "chainIndex": 1,
+        "list": [
+            "Charmander",
+            "Charmeleon",
+            "Charizard"
+        ]
+    },
+    {
+        "chainIndex": 2,
+        "list": [
+            "Squirtle",
+            "Wartortle",
+            "Blastoise"
+        ]
+    },
+    {
+        "chainIndex": 3,
+        "list": [
+            "Caterpie",
+            "Metapod",
+            "Butterfree"
+        ]
+    },
+    {
+        "chainIndex": 4,
+        "list": [
+            "Weedle",
+            "Kakuna",
+            "Beedrill"
+        ]
+    },
+    {
+        "chainIndex": 5,
+        "list": [
+            "Pidgey",
+            "Pidgeotto",
+            "Pidgeot"
+        ]
+    },
+    {
+        "chainIndex": 6,
+        "list": [
+            "Rattata",
+            "Raticate"
+        ]
+    },
+    {
+        "chainIndex": 7,
+        "list": [
+            "Spearow",
+            "Fearow"
+        ]
+    },
+    {
+        "chainIndex": 8,
+        "list": [
+            "Ekans",
+            "Arbok"
+        ]
+    },
+    {
+        "chainIndex": 9,
+        "list": [
+            "Pichu",
+            "Pikachu",
+            "Raichu"
+        ]
+    },
+    {
+        "chainIndex": 10,
+        "list": [
+            "Sandshrew",
+            "Sandslash"
+        ]
+    },
+    {
+        "chainIndex": 11,
+        "list": [
+            "Nidoran♀",
+            "Nidorina",
+            "Nidoqueen"
+        ]
+    },
+    {
+        "chainIndex": 12,
+        "list": [
+            "Nidoran♂",
+            "Nidorino",
+            "Nidoking"
+        ]
+    },
+    {
+        "chainIndex": 13,
+        "list": [
+            "Cleffa",
+            "Clefairy",
+            "Clefable"
+        ]
+    },
+    {
+        "chainIndex": 14,
+        "list": [
+            "Vulpix",
+            "Ninetales"
+        ]
+    },
+    {
+        "chainIndex": 15,
+        "list": [
+            "Igglybuff",
+            "Jigglypuff",
+            "Wigglytuff"
+        ]
+    },
+    {
+        "chainIndex": 16,
+        "list": [
+            "Zubat",
+            "Golbat",
+            "Crobat"
+        ]
+    },
+    {
+        "chainIndex": 17,
+        "list": [
+            "Oddish",
+            "Gloom",
+            [
+                "Vileplume",
+                "Bellossom"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 18,
+        "list": [
+            "Paras",
+            "Parasect"
+        ]
+    },
+    {
+        "chainIndex": 19,
+        "list": [
+            "Venonat",
+            "Venomoth"
+        ]
+    },
+    {
+        "chainIndex": 20,
+        "list": [
+            "Diglett",
+            "Dugtrio"
+        ]
+    },
+    {
+        "chainIndex": 21,
+        "list": [
+            "Meowth",
+            [
+                "Persian",
+                "Perrserker"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 22,
+        "list": [
+            "Psyduck",
+            "Golduck"
+        ]
+    },
+    {
+        "chainIndex": 23,
+        "list": [
+            "Mankey",
+            "Primeape",
+            "Annihilape"
+        ]
+    },
+    {
+        "chainIndex": 24,
+        "list": [
+            "Growlithe",
+            "Arcanine"
+        ]
+    },
+    {
+        "chainIndex": 25,
+        "list": [
+            "Poliwag",
+            "Poliwhirl",
+            [
+                "Poliwrath",
+                "Politoed"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 26,
+        "list": [
+            "Abra",
+            "Kadabra",
+            "Alakazam"
+        ]
+    },
+    {
+        "chainIndex": 27,
+        "list": [
+            "Machop",
+            "Machoke",
+            "Machamp"
+        ]
+    },
+    {
+        "chainIndex": 28,
+        "list": [
+            "Bellsprout",
+            "Weepinbell",
+            "Victreebel"
+        ]
+    },
+    {
+        "chainIndex": 29,
+        "list": [
+            "Tentacool",
+            "Tentacruel"
+        ]
+    },
+    {
+        "chainIndex": 30,
+        "list": [
+            "Geodude",
+            "Graveler",
+            "Golem"
+        ]
+    },
+    {
+        "chainIndex": 31,
+        "list": [
+            "Ponyta",
+            "Rapidash"
+        ]
+    },
+    {
+        "chainIndex": 32,
+        "list": [
+            "Slowpoke",
+            [
+                "Slowbro",
+                "Slowking"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 33,
+        "list": [
+            "Magnemite",
+            "Magneton",
+            "Magnezone"
+        ]
+    },
+    {
+        "chainIndex": 34,
+        "list": [
+            "Farfetch'd",
+            "Sirfetch'd"
+        ]
+    },
+    {
+        "chainIndex": 35,
+        "list": [
+            "Doduo",
+            "Dodrio"
+        ]
+    },
+    {
+        "chainIndex": 36,
+        "list": [
+            "Seel",
+            "Dewgong"
+        ]
+    },
+    {
+        "chainIndex": 37,
+        "list": [
+            "Grimer",
+            "Muk"
+        ]
+    },
+    {
+        "chainIndex": 38,
+        "list": [
+            "Shellder",
+            "Cloyster"
+        ]
+    },
+    {
+        "chainIndex": 39,
+        "list": [
+            "Gastly",
+            "Haunter",
+            "Gengar"
+        ]
+    },
+    {
+        "chainIndex": 40,
+        "list": [
+            "Onix",
+            "Steelix"
+        ]
+    },
+    {
+        "chainIndex": 41,
+        "list": [
+            "Drowzee",
+            "Hypno"
+        ]
+    },
+    {
+        "chainIndex": 42,
+        "list": [
+            "Krabby",
+            "Kingler"
+        ]
+    },
+    {
+        "chainIndex": 43,
+        "list": [
+            "Voltorb",
+            "Electrode"
+        ]
+    },
+    {
+        "chainIndex": 44,
+        "list": [
+            "Exeggcute",
+            "Exeggutor"
+        ]
+    },
+    {
+        "chainIndex": 45,
+        "list": [
+            "Cubone",
+            "Marowak"
+        ]
+    },
+    {
+        "chainIndex": 46,
+        "list": [
+            "Tyrogue",
+            [
+                "Hitmonlee",
+                "Hitmonchan",
+                "Hitmontop"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 47,
+        "list": [
+            "Lickitung",
+            "Lickilicky"
+        ]
+    },
+    {
+        "chainIndex": 48,
+        "list": [
+            "Koffing",
+            "Weezing"
+        ]
+    },
+    {
+        "chainIndex": 49,
+        "list": [
+            "Rhyhorn",
+            "Rhydon",
+            "Rhyperior"
+        ]
+    },
+    {
+        "chainIndex": 50,
+        "list": [
+            "Happiny",
+            "Chansey",
+            "Blissey"
+        ]
+    },
+    {
+        "chainIndex": 51,
+        "list": [
+            "Tangela",
+            "Tangrowth"
+        ]
+    },
+    {
+        "chainIndex": 52,
+        "list": [
+            "Kangaskhan"
+        ]
+    },
+    {
+        "chainIndex": 53,
+        "list": [
+            "Horsea",
+            "Seadra",
+            "Kingdra"
+        ]
+    },
+    {
+        "chainIndex": 54,
+        "list": [
+            "Goldeen",
+            "Seaking"
+        ]
+    },
+    {
+        "chainIndex": 55,
+        "list": [
+            "Staryu",
+            "Starmie"
+        ]
+    },
+    {
+        "chainIndex": 56,
+        "list": [
+            "Mime Jr.",
+            "Mr. Mime",
+            "Mr. Rime"
+        ]
+    },
+    {
+        "chainIndex": 57,
+        "list": [
+            "Scyther",
+            [
+                "Scizor",
+                "Kleavor"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 58,
+        "list": [
+            "Smoochum",
+            "Jynx"
+        ]
+    },
+    {
+        "chainIndex": 59,
+        "list": [
+            "Elekid",
+            "Electabuzz",
+            "Electivire"
+        ]
+    },
+    {
+        "chainIndex": 60,
+        "list": [
+            "Magby",
+            "Magmar",
+            "Magmortar"
+        ]
+    },
+    {
+        "chainIndex": 61,
+        "list": [
+            "Pinsir"
+        ]
+    },
+    {
+        "chainIndex": 62,
+        "list": [
+            "Tauros"
+        ]
+    },
+    {
+        "chainIndex": 63,
+        "list": [
+            "Magikarp",
+            "Gyarados"
+        ]
+    },
+    {
+        "chainIndex": 64,
+        "list": [
+            "Lapras"
+        ]
+    },
+    {
+        "chainIndex": 65,
+        "list": [
+            "Ditto"
+        ]
+    },
+    {
+        "chainIndex": 66,
+        "list": [
+            "Eevee",
+            [
+                "Vaporeon",
+                "Jolteon",
+                "Flareon",
+                "Espeon",
+                "Umbreon",
+                "Leafeon",
+                "Glaceon",
+                "Sylveon"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 67,
+        "list": [
+            "Porygon",
+            "Porygon2",
+            "Porygon-Z"
+        ]
+    },
+    {
+        "chainIndex": 68,
+        "list": [
+            "Omanyte",
+            "Omastar"
+        ]
+    },
+    {
+        "chainIndex": 69,
+        "list": [
+            "Kabuto",
+            "Kabutops"
+        ]
+    },
+    {
+        "chainIndex": 70,
+        "list": [
+            "Aerodactyl"
+        ]
+    },
+    {
+        "chainIndex": 71,
+        "list": [
+            "Munchlax",
+            "Snorlax"
+        ]
+    },
+    {
+        "chainIndex": 72,
+        "list": [
+            "Articuno"
+        ]
+    },
+    {
+        "chainIndex": 73,
+        "list": [
+            "Zapdos"
+        ]
+    },
+    {
+        "chainIndex": 74,
+        "list": [
+            "Moltres"
+        ]
+    },
+    {
+        "chainIndex": 75,
+        "list": [
+            "Dratini",
+            "Dragonair",
+            "Dragonite"
+        ]
+    },
+    {
+        "chainIndex": 76,
+        "list": [
+            "Mewtwo"
+        ]
+    },
+    {
+        "chainIndex": 77,
+        "list": [
+            "Mew"
+        ]
+    },
+    {
+        "chainIndex": 78,
+        "list": [
+            "Chikorita",
+            "Bayleef",
+            "Meganium"
+        ]
+    },
+    {
+        "chainIndex": 79,
+        "list": [
+            "Cyndaquil",
+            "Quilava",
+            "Typhlosion"
+        ]
+    },
+    {
+        "chainIndex": 80,
+        "list": [
+            "Totodile",
+            "Croconaw",
+            "Feraligatr"
+        ]
+    },
+    {
+        "chainIndex": 81,
+        "list": [
+            "Sentret",
+            "Furret"
+        ]
+    },
+    {
+        "chainIndex": 82,
+        "list": [
+            "Hoothoot",
+            "Noctowl"
+        ]
+    },
+    {
+        "chainIndex": 83,
+        "list": [
+            "Ledyba",
+            "Ledian"
+        ]
+    },
+    {
+        "chainIndex": 84,
+        "list": [
+            "Spinarak",
+            "Ariados"
+        ]
+    },
+    {
+        "chainIndex": 85,
+        "list": [
+            "Chinchou",
+            "Lanturn"
+        ]
+    },
+    {
+        "chainIndex": 86,
+        "list": [
+            "Togepi",
+            "Togetic",
+            "Togekiss"
+        ]
+    },
+    {
+        "chainIndex": 87,
+        "list": [
+            "Natu",
+            "Xatu"
+        ]
+    },
+    {
+        "chainIndex": 88,
+        "list": [
+            "Mareep",
+            "Flaaffy",
+            "Ampharos"
+        ]
+    },
+    {
+        "chainIndex": 89,
+        "list": [
+            "Azurill",
+            "Marill",
+            "Azumarill"
+        ]
+    },
+    {
+        "chainIndex": 90,
+        "list": [
+            "Bonsly",
+            "Sudowoodo"
+        ]
+    },
+    {
+        "chainIndex": 91,
+        "list": [
+            "Hoppip",
+            "Skiploom",
+            "Jumpluff"
+        ]
+    },
+    {
+        "chainIndex": 92,
+        "list": [
+            "Aipom",
+            "Ambipom"
+        ]
+    },
+    {
+        "chainIndex": 93,
+        "list": [
+            "Sunkern",
+            "Sunflora"
+        ]
+    },
+    {
+        "chainIndex": 94,
+        "list": [
+            "Yanma",
+            "Yanmega"
+        ]
+    },
+    {
+        "chainIndex": 95,
+        "list": [
+            "Wooper",
+            [
+                "Quagsire",
+                "Clodsire"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 96,
+        "list": [
+            "Murkrow",
+            "Honchkrow"
+        ]
+    },
+    {
+        "chainIndex": 97,
+        "list": [
+            "Misdreavus",
+            "Mismagius"
+        ]
+    },
+    {
+        "chainIndex": 98,
+        "list": [
+            "Unown"
+        ]
+    },
+    {
+        "chainIndex": 99,
+        "list": [
+            "Wynaut",
+            "Wobbuffet"
+        ]
+    },
+    {
+        "chainIndex": 100,
+        "list": [
+            "Girafarig",
+            "Farigiraf"
+        ]
+    },
+    {
+        "chainIndex": 101,
+        "list": [
+            "Pineco",
+            "Forretress"
+        ]
+    },
+    {
+        "chainIndex": 102,
+        "list": [
+            "Dunsparce",
+            "Dudunsparce"
+        ]
+    },
+    {
+        "chainIndex": 103,
+        "list": [
+            "Gligar",
+            "Gliscor"
+        ]
+    },
+    {
+        "chainIndex": 104,
+        "list": [
+            "Snubbull",
+            "Granbull"
+        ]
+    },
+    {
+        "chainIndex": 105,
+        "list": [
+            "Qwilfish",
+            "Overqwil"
+        ]
+    },
+    {
+        "chainIndex": 106,
+        "list": [
+            "Shuckle"
+        ]
+    },
+    {
+        "chainIndex": 107,
+        "list": [
+            "Heracross"
+        ]
+    },
+    {
+        "chainIndex": 108,
+        "list": [
+            "Sneasel",
+            [
+                "Weavile",
+                "Sneasler"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 109,
+        "list": [
+            "Teddiursa",
+            "Ursaring",
+            "Ursaluna"
+        ]
+    },
+    {
+        "chainIndex": 110,
+        "list": [
+            "Slugma",
+            "Magcargo"
+        ]
+    },
+    {
+        "chainIndex": 111,
+        "list": [
+            "Swinub",
+            "Piloswine",
+            "Mamoswine"
+        ]
+    },
+    {
+        "chainIndex": 112,
+        "list": [
+            "Corsola",
+            "Cursola"
+        ]
+    },
+    {
+        "chainIndex": 113,
+        "list": [
+            "Remoraid",
+            "Octillery"
+        ]
+    },
+    {
+        "chainIndex": 114,
+        "list": [
+            "Delibird"
+        ]
+    },
+    {
+        "chainIndex": 115,
+        "list": [
+            "Mantyke",
+            "Mantine"
+        ]
+    },
+    {
+        "chainIndex": 116,
+        "list": [
+            "Skarmory"
+        ]
+    },
+    {
+        "chainIndex": 117,
+        "list": [
+            "Houndour",
+            "Houndoom"
+        ]
+    },
+    {
+        "chainIndex": 118,
+        "list": [
+            "Phanpy",
+            "Donphan"
+        ]
+    },
+    {
+        "chainIndex": 119,
+        "list": [
+            "Stantler",
+            "Wyrdeer"
+        ]
+    },
+    {
+        "chainIndex": 120,
+        "list": [
+            "Smeargle"
+        ]
+    },
+    {
+        "chainIndex": 121,
+        "list": [
+            "Miltank"
+        ]
+    },
+    {
+        "chainIndex": 122,
+        "list": [
+            "Raikou"
+        ]
+    },
+    {
+        "chainIndex": 123,
+        "list": [
+            "Entei"
+        ]
+    },
+    {
+        "chainIndex": 124,
+        "list": [
+            "Suicune"
+        ]
+    },
+    {
+        "chainIndex": 125,
+        "list": [
+            "Larvitar",
+            "Pupitar",
+            "Tyranitar"
+        ]
+    },
+    {
+        "chainIndex": 126,
+        "list": [
+            "Lugia"
+        ]
+    },
+    {
+        "chainIndex": 127,
+        "list": [
+            "Ho-Oh"
+        ]
+    },
+    {
+        "chainIndex": 128,
+        "list": [
+            "Celebi"
+        ]
+    },
+    {
+        "chainIndex": 129,
+        "list": [
+            "Treecko",
+            "Grovyle",
+            "Sceptile"
+        ]
+    },
+    {
+        "chainIndex": 130,
+        "list": [
+            "Torchic",
+            "Combusken",
+            "Blaziken"
+        ]
+    },
+    {
+        "chainIndex": 131,
+        "list": [
+            "Mudkip",
+            "Marshtomp",
+            "Swampert"
+        ]
+    },
+    {
+        "chainIndex": 132,
+        "list": [
+            "Poochyena",
+            "Mightyena"
+        ]
+    },
+    {
+        "chainIndex": 133,
+        "list": [
+            "Zigzagoon",
+            "Linoone",
+            "Obstagoon"
+        ]
+    },
+    {
+        "chainIndex": 134,
+        "list": [
+            "Wurmple",
+            [
+                "Silcoon",
+                "Cascoon"
+            ],
+            [
+                "Beautifly",
+                "Dustox"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 135,
+        "list": [
+            "Lotad",
+            "Lombre",
+            "Ludicolo"
+        ]
+    },
+    {
+        "chainIndex": 136,
+        "list": [
+            "Seedot",
+            "Nuzleaf",
+            "Shiftry"
+        ]
+    },
+    {
+        "chainIndex": 137,
+        "list": [
+            "Taillow",
+            "Swellow"
+        ]
+    },
+    {
+        "chainIndex": 138,
+        "list": [
+            "Wingull",
+            "Pelipper"
+        ]
+    },
+    {
+        "chainIndex": 139,
+        "list": [
+            "Ralts",
+            "Kirlia",
+            [
+                "Gardevoir",
+                "Gallade"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 140,
+        "list": [
+            "Surskit",
+            "Masquerain"
+        ]
+    },
+    {
+        "chainIndex": 141,
+        "list": [
+            "Shroomish",
+            "Breloom"
+        ]
+    },
+    {
+        "chainIndex": 142,
+        "list": [
+            "Slakoth",
+            "Vigoroth",
+            "Slaking"
+        ]
+    },
+    {
+        "chainIndex": 143,
+        "list": [
+            "Nincada",
+            [
+                "Ninjask",
+                "Shedinja"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 144,
+        "list": [
+            "Whismur",
+            "Loudred",
+            "Exploud"
+        ]
+    },
+    {
+        "chainIndex": 145,
+        "list": [
+            "Makuhita",
+            "Hariyama"
+        ]
+    },
+    {
+        "chainIndex": 146,
+        "list": [
+            "Nosepass",
+            "Probopass"
+        ]
+    },
+    {
+        "chainIndex": 147,
+        "list": [
+            "Skitty",
+            "Delcatty"
+        ]
+    },
+    {
+        "chainIndex": 148,
+        "list": [
+            "Sableye"
+        ]
+    },
+    {
+        "chainIndex": 149,
+        "list": [
+            "Mawile"
+        ]
+    },
+    {
+        "chainIndex": 150,
+        "list": [
+            "Aron",
+            "Lairon",
+            "Aggron"
+        ]
+    },
+    {
+        "chainIndex": 151,
+        "list": [
+            "Meditite",
+            "Medicham"
+        ]
+    },
+    {
+        "chainIndex": 152,
+        "list": [
+            "Electrike",
+            "Manectric"
+        ]
+    },
+    {
+        "chainIndex": 153,
+        "list": [
+            "Plusle"
+        ]
+    },
+    {
+        "chainIndex": 154,
+        "list": [
+            "Minun"
+        ]
+    },
+    {
+        "chainIndex": 155,
+        "list": [
+            "Volbeat"
+        ]
+    },
+    {
+        "chainIndex": 156,
+        "list": [
+            "Illumise"
+        ]
+    },
+    {
+        "chainIndex": 157,
+        "list": [
+            "Budew",
+            "Roselia",
+            "Roserade"
+        ]
+    },
+    {
+        "chainIndex": 158,
+        "list": [
+            "Gulpin",
+            "Swalot"
+        ]
+    },
+    {
+        "chainIndex": 159,
+        "list": [
+            "Carvanha",
+            "Sharpedo"
+        ]
+    },
+    {
+        "chainIndex": 160,
+        "list": [
+            "Wailmer",
+            "Wailord"
+        ]
+    },
+    {
+        "chainIndex": 161,
+        "list": [
+            "Numel",
+            "Camerupt"
+        ]
+    },
+    {
+        "chainIndex": 162,
+        "list": [
+            "Torkoal"
+        ]
+    },
+    {
+        "chainIndex": 163,
+        "list": [
+            "Spoink",
+            "Grumpig"
+        ]
+    },
+    {
+        "chainIndex": 164,
+        "list": [
+            "Spinda"
+        ]
+    },
+    {
+        "chainIndex": 165,
+        "list": [
+            "Trapinch",
+            "Vibrava",
+            "Flygon"
+        ]
+    },
+    {
+        "chainIndex": 166,
+        "list": [
+            "Cacnea",
+            "Cacturne"
+        ]
+    },
+    {
+        "chainIndex": 167,
+        "list": [
+            "Swablu",
+            "Altaria"
+        ]
+    },
+    {
+        "chainIndex": 168,
+        "list": [
+            "Zangoose"
+        ]
+    },
+    {
+        "chainIndex": 169,
+        "list": [
+            "Seviper"
+        ]
+    },
+    {
+        "chainIndex": 170,
+        "list": [
+            "Lunatone"
+        ]
+    },
+    {
+        "chainIndex": 171,
+        "list": [
+            "Solrock"
+        ]
+    },
+    {
+        "chainIndex": 172,
+        "list": [
+            "Barboach",
+            "Whiscash"
+        ]
+    },
+    {
+        "chainIndex": 173,
+        "list": [
+            "Corphish",
+            "Crawdaunt"
+        ]
+    },
+    {
+        "chainIndex": 174,
+        "list": [
+            "Baltoy",
+            "Claydol"
+        ]
+    },
+    {
+        "chainIndex": 175,
+        "list": [
+            "Lileep",
+            "Cradily"
+        ]
+    },
+    {
+        "chainIndex": 176,
+        "list": [
+            "Anorith",
+            "Armaldo"
+        ]
+    },
+    {
+        "chainIndex": 177,
+        "list": [
+            "Feebas",
+            "Milotic"
+        ]
+    },
+    {
+        "chainIndex": 178,
+        "list": [
+            "Castform"
+        ]
+    },
+    {
+        "chainIndex": 179,
+        "list": [
+            "Kecleon"
+        ]
+    },
+    {
+        "chainIndex": 180,
+        "list": [
+            "Shuppet",
+            "Banette"
+        ]
+    },
+    {
+        "chainIndex": 181,
+        "list": [
+            "Duskull",
+            "Dusclops",
+            "Dusknoir"
+        ]
+    },
+    {
+        "chainIndex": 182,
+        "list": [
+            "Tropius"
+        ]
+    },
+    {
+        "chainIndex": 183,
+        "list": [
+            "Chingling",
+            "Chimecho"
+        ]
+    },
+    {
+        "chainIndex": 184,
+        "list": [
+            "Absol"
+        ]
+    },
+    {
+        "chainIndex": 185,
+        "list": [
+            "Snorunt",
+            [
+                "Glalie",
+                "Froslass"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 186,
+        "list": [
+            "Spheal",
+            "Sealeo",
+            "Walrein"
+        ]
+    },
+    {
+        "chainIndex": 187,
+        "list": [
+            "Clamperl",
+            [
+                "Huntail",
+                "Gorebyss"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 188,
+        "list": [
+            "Relicanth"
+        ]
+    },
+    {
+        "chainIndex": 189,
+        "list": [
+            "Luvdisc"
+        ]
+    },
+    {
+        "chainIndex": 190,
+        "list": [
+            "Bagon",
+            "Shelgon",
+            "Salamence"
+        ]
+    },
+    {
+        "chainIndex": 191,
+        "list": [
+            "Beldum",
+            "Metang",
+            "Metagross"
+        ]
+    },
+    {
+        "chainIndex": 192,
+        "list": [
+            "Regirock"
+        ]
+    },
+    {
+        "chainIndex": 193,
+        "list": [
+            "Regice"
+        ]
+    },
+    {
+        "chainIndex": 194,
+        "list": [
+            "Registeel"
+        ]
+    },
+    {
+        "chainIndex": 195,
+        "list": [
+            "Latias"
+        ]
+    },
+    {
+        "chainIndex": 196,
+        "list": [
+            "Latios"
+        ]
+    },
+    {
+        "chainIndex": 197,
+        "list": [
+            "Kyogre"
+        ]
+    },
+    {
+        "chainIndex": 198,
+        "list": [
+            "Groudon"
+        ]
+    },
+    {
+        "chainIndex": 199,
+        "list": [
+            "Rayquaza"
+        ]
+    },
+    {
+        "chainIndex": 200,
+        "list": [
+            "Jirachi"
+        ]
+    },
+    {
+        "chainIndex": 201,
+        "list": [
+            "Deoxys"
+        ]
+    },
+    {
+        "chainIndex": 202,
+        "list": [
+            "Turtwig",
+            "Grotle",
+            "Torterra"
+        ]
+    },
+    {
+        "chainIndex": 203,
+        "list": [
+            "Chimchar",
+            "Monferno",
+            "Infernape"
+        ]
+    },
+    {
+        "chainIndex": 204,
+        "list": [
+            "Piplup",
+            "Prinplup",
+            "Empoleon"
+        ]
+    },
+    {
+        "chainIndex": 205,
+        "list": [
+            "Starly",
+            "Staravia",
+            "Staraptor"
+        ]
+    },
+    {
+        "chainIndex": 206,
+        "list": [
+            "Bidoof",
+            "Bibarel"
+        ]
+    },
+    {
+        "chainIndex": 207,
+        "list": [
+            "Kricketot",
+            "Kricketune"
+        ]
+    },
+    {
+        "chainIndex": 208,
+        "list": [
+            "Shinx",
+            "Luxio",
+            "Luxray"
+        ]
+    },
+    {
+        "chainIndex": 209,
+        "list": [
+            "Cranidos",
+            "Rampardos"
+        ]
+    },
+    {
+        "chainIndex": 210,
+        "list": [
+            "Shieldon",
+            "Bastiodon"
+        ]
+    },
+    {
+        "chainIndex": 211,
+        "list": [
+            "Burmy",
+            [
+                "Wormadam",
+                "Mothim"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 212,
+        "list": [
+            "Combee",
+            "Vespiquen"
+        ]
+    },
+    {
+        "chainIndex": 213,
+        "list": [
+            "Pachirisu"
+        ]
+    },
+    {
+        "chainIndex": 214,
+        "list": [
+            "Buizel",
+            "Floatzel"
+        ]
+    },
+    {
+        "chainIndex": 215,
+        "list": [
+            "Cherubi",
+            "Cherrim"
+        ]
+    },
+    {
+        "chainIndex": 216,
+        "list": [
+            "Shellos",
+            "Gastrodon"
+        ]
+    },
+    {
+        "chainIndex": 217,
+        "list": [
+            "Drifloon",
+            "Drifblim"
+        ]
+    },
+    {
+        "chainIndex": 218,
+        "list": [
+            "Buneary",
+            "Lopunny"
+        ]
+    },
+    {
+        "chainIndex": 219,
+        "list": [
+            "Glameow",
+            "Purugly"
+        ]
+    },
+    {
+        "chainIndex": 220,
+        "list": [
+            "Stunky",
+            "Skuntank"
+        ]
+    },
+    {
+        "chainIndex": 221,
+        "list": [
+            "Bronzor",
+            "Bronzong"
+        ]
+    },
+    {
+        "chainIndex": 222,
+        "list": [
+            "Chatot"
+        ]
+    },
+    {
+        "chainIndex": 223,
+        "list": [
+            "Spiritomb"
+        ]
+    },
+    {
+        "chainIndex": 224,
+        "list": [
+            "Gible",
+            "Gabite",
+            "Garchomp"
+        ]
+    },
+    {
+        "chainIndex": 225,
+        "list": [
+            "Riolu",
+            "Lucario"
+        ]
+    },
+    {
+        "chainIndex": 226,
+        "list": [
+            "Hippopotas",
+            "Hippowdon"
+        ]
+    },
+    {
+        "chainIndex": 227,
+        "list": [
+            "Skorupi",
+            "Drapion"
+        ]
+    },
+    {
+        "chainIndex": 228,
+        "list": [
+            "Croagunk",
+            "Toxicroak"
+        ]
+    },
+    {
+        "chainIndex": 229,
+        "list": [
+            "Carnivine"
+        ]
+    },
+    {
+        "chainIndex": 230,
+        "list": [
+            "Finneon",
+            "Lumineon"
+        ]
+    },
+    {
+        "chainIndex": 231,
+        "list": [
+            "Snover",
+            "Abomasnow"
+        ]
+    },
+    {
+        "chainIndex": 232,
+        "list": [
+            "Rotom"
+        ]
+    },
+    {
+        "chainIndex": 233,
+        "list": [
+            "Uxie"
+        ]
+    },
+    {
+        "chainIndex": 234,
+        "list": [
+            "Mesprit"
+        ]
+    },
+    {
+        "chainIndex": 235,
+        "list": [
+            "Azelf"
+        ]
+    },
+    {
+        "chainIndex": 236,
+        "list": [
+            "Dialga"
+        ]
+    },
+    {
+        "chainIndex": 237,
+        "list": [
+            "Palkia"
+        ]
+    },
+    {
+        "chainIndex": 238,
+        "list": [
+            "Heatran"
+        ]
+    },
+    {
+        "chainIndex": 239,
+        "list": [
+            "Regigigas"
+        ]
+    },
+    {
+        "chainIndex": 240,
+        "list": [
+            "Giratina"
+        ]
+    },
+    {
+        "chainIndex": 241,
+        "list": [
+            "Cresselia"
+        ]
+    },
+    {
+        "chainIndex": 242,
+        "list": [
+            "Phione"
+        ]
+    },
+    {
+        "chainIndex": 243,
+        "list": [
+            "Manaphy"
+        ]
+    },
+    {
+        "chainIndex": 244,
+        "list": [
+            "Darkrai"
+        ]
+    },
+    {
+        "chainIndex": 245,
+        "list": [
+            "Shaymin"
+        ]
+    },
+    {
+        "chainIndex": 246,
+        "list": [
+            "Arceus"
+        ]
+    },
+    {
+        "chainIndex": 247,
+        "list": [
+            "Victini"
+        ]
+    },
+    {
+        "chainIndex": 248,
+        "list": [
+            "Snivy",
+            "Servine",
+            "Serperior"
+        ]
+    },
+    {
+        "chainIndex": 249,
+        "list": [
+            "Tepig",
+            "Pignite",
+            "Emboar"
+        ]
+    },
+    {
+        "chainIndex": 250,
+        "list": [
+            "Oshawott",
+            "Dewott",
+            "Samurott"
+        ]
+    },
+    {
+        "chainIndex": 251,
+        "list": [
+            "Patrat",
+            "Watchog"
+        ]
+    },
+    {
+        "chainIndex": 252,
+        "list": [
+            "Lillipup",
+            "Herdier",
+            "Stoutland"
+        ]
+    },
+    {
+        "chainIndex": 253,
+        "list": [
+            "Purrloin",
+            "Liepard"
+        ]
+    },
+    {
+        "chainIndex": 254,
+        "list": [
+            "Pansage",
+            "Simisage"
+        ]
+    },
+    {
+        "chainIndex": 255,
+        "list": [
+            "Pansear",
+            "Simisear"
+        ]
+    },
+    {
+        "chainIndex": 256,
+        "list": [
+            "Panpour",
+            "Simipour"
+        ]
+    },
+    {
+        "chainIndex": 257,
+        "list": [
+            "Munna",
+            "Musharna"
+        ]
+    },
+    {
+        "chainIndex": 258,
+        "list": [
+            "Pidove",
+            "Tranquill",
+            "Unfezant"
+        ]
+    },
+    {
+        "chainIndex": 259,
+        "list": [
+            "Blitzle",
+            "Zebstrika"
+        ]
+    },
+    {
+        "chainIndex": 260,
+        "list": [
+            "Roggenrola",
+            "Boldore",
+            "Gigalith"
+        ]
+    },
+    {
+        "chainIndex": 261,
+        "list": [
+            "Woobat",
+            "Swoobat"
+        ]
+    },
+    {
+        "chainIndex": 262,
+        "list": [
+            "Drilbur",
+            "Excadrill"
+        ]
+    },
+    {
+        "chainIndex": 263,
+        "list": [
+            "Audino"
+        ]
+    },
+    {
+        "chainIndex": 264,
+        "list": [
+            "Timburr",
+            "Gurdurr",
+            "Conkeldurr"
+        ]
+    },
+    {
+        "chainIndex": 265,
+        "list": [
+            "Tympole",
+            "Palpitoad",
+            "Seismitoad"
+        ]
+    },
+    {
+        "chainIndex": 266,
+        "list": [
+            "Throh"
+        ]
+    },
+    {
+        "chainIndex": 267,
+        "list": [
+            "Sawk"
+        ]
+    },
+    {
+        "chainIndex": 268,
+        "list": [
+            "Sewaddle",
+            "Swadloon",
+            "Leavanny"
+        ]
+    },
+    {
+        "chainIndex": 269,
+        "list": [
+            "Venipede",
+            "Whirlipede",
+            "Scolipede"
+        ]
+    },
+    {
+        "chainIndex": 270,
+        "list": [
+            "Cottonee",
+            "Whimsicott"
+        ]
+    },
+    {
+        "chainIndex": 271,
+        "list": [
+            "Petilil",
+            "Lilligant"
+        ]
+    },
+    {
+        "chainIndex": 272,
+        "list": [
+            "Basculin",
+            "Basculegion"
+        ]
+    },
+    {
+        "chainIndex": 273,
+        "list": [
+            "Sandile",
+            "Krokorok",
+            "Krookodile"
+        ]
+    },
+    {
+        "chainIndex": 274,
+        "list": [
+            "Darumaka",
+            "Darmanitan"
+        ]
+    },
+    {
+        "chainIndex": 275,
+        "list": [
+            "Maractus"
+        ]
+    },
+    {
+        "chainIndex": 276,
+        "list": [
+            "Dwebble",
+            "Crustle"
+        ]
+    },
+    {
+        "chainIndex": 277,
+        "list": [
+            "Scraggy",
+            "Scrafty"
+        ]
+    },
+    {
+        "chainIndex": 278,
+        "list": [
+            "Sigilyph"
+        ]
+    },
+    {
+        "chainIndex": 279,
+        "list": [
+            "Yamask",
+            [
+                "Cofagrigus",
+                "Runerigus"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 280,
+        "list": [
+            "Tirtouga",
+            "Carracosta"
+        ]
+    },
+    {
+        "chainIndex": 281,
+        "list": [
+            "Archen",
+            "Archeops"
+        ]
+    },
+    {
+        "chainIndex": 282,
+        "list": [
+            "Trubbish",
+            "Garbodor"
+        ]
+    },
+    {
+        "chainIndex": 283,
+        "list": [
+            "Zorua",
+            "Zoroark"
+        ]
+    },
+    {
+        "chainIndex": 284,
+        "list": [
+            "Minccino",
+            "Cinccino"
+        ]
+    },
+    {
+        "chainIndex": 285,
+        "list": [
+            "Gothita",
+            "Gothorita",
+            "Gothitelle"
+        ]
+    },
+    {
+        "chainIndex": 286,
+        "list": [
+            "Solosis",
+            "Duosion",
+            "Reuniclus"
+        ]
+    },
+    {
+        "chainIndex": 287,
+        "list": [
+            "Ducklett",
+            "Swanna"
+        ]
+    },
+    {
+        "chainIndex": 288,
+        "list": [
+            "Vanillite",
+            "Vanillish",
+            "Vanilluxe"
+        ]
+    },
+    {
+        "chainIndex": 289,
+        "list": [
+            "Deerling",
+            "Sawsbuck"
+        ]
+    },
+    {
+        "chainIndex": 290,
+        "list": [
+            "Emolga"
+        ]
+    },
+    {
+        "chainIndex": 291,
+        "list": [
+            "Karrablast",
+            "Escavalier"
+        ]
+    },
+    {
+        "chainIndex": 292,
+        "list": [
+            "Foongus",
+            "Amoonguss"
+        ]
+    },
+    {
+        "chainIndex": 293,
+        "list": [
+            "Frillish",
+            "Jellicent"
+        ]
+    },
+    {
+        "chainIndex": 294,
+        "list": [
+            "Alomomola"
+        ]
+    },
+    {
+        "chainIndex": 295,
+        "list": [
+            "Joltik",
+            "Galvantula"
+        ]
+    },
+    {
+        "chainIndex": 296,
+        "list": [
+            "Ferroseed",
+            "Ferrothorn"
+        ]
+    },
+    {
+        "chainIndex": 297,
+        "list": [
+            "Klink",
+            "Klang",
+            "Klinklang"
+        ]
+    },
+    {
+        "chainIndex": 298,
+        "list": [
+            "Tynamo",
+            "Eelektrik",
+            "Eelektross"
+        ]
+    },
+    {
+        "chainIndex": 299,
+        "list": [
+            "Elgyem",
+            "Beheeyem"
+        ]
+    },
+    {
+        "chainIndex": 300,
+        "list": [
+            "Litwick",
+            "Lampent",
+            "Chandelure"
+        ]
+    },
+    {
+        "chainIndex": 301,
+        "list": [
+            "Axew",
+            "Fraxure",
+            "Haxorus"
+        ]
+    },
+    {
+        "chainIndex": 302,
+        "list": [
+            "Cubchoo",
+            "Beartic"
+        ]
+    },
+    {
+        "chainIndex": 303,
+        "list": [
+            "Cryogonal"
+        ]
+    },
+    {
+        "chainIndex": 304,
+        "list": [
+            "Shelmet",
+            "Accelgor"
+        ]
+    },
+    {
+        "chainIndex": 305,
+        "list": [
+            "Stunfisk"
+        ]
+    },
+    {
+        "chainIndex": 306,
+        "list": [
+            "Mienfoo",
+            "Mienshao"
+        ]
+    },
+    {
+        "chainIndex": 307,
+        "list": [
+            "Druddigon"
+        ]
+    },
+    {
+        "chainIndex": 308,
+        "list": [
+            "Golett",
+            "Golurk"
+        ]
+    },
+    {
+        "chainIndex": 309,
+        "list": [
+            "Pawniard",
+            "Bisharp",
+            "Kingambit"
+        ]
+    },
+    {
+        "chainIndex": 310,
+        "list": [
+            "Bouffalant"
+        ]
+    },
+    {
+        "chainIndex": 311,
+        "list": [
+            "Rufflet",
+            "Braviary"
+        ]
+    },
+    {
+        "chainIndex": 312,
+        "list": [
+            "Vullaby",
+            "Mandibuzz"
+        ]
+    },
+    {
+        "chainIndex": 313,
+        "list": [
+            "Heatmor"
+        ]
+    },
+    {
+        "chainIndex": 314,
+        "list": [
+            "Durant"
+        ]
+    },
+    {
+        "chainIndex": 315,
+        "list": [
+            "Deino",
+            "Zweilous",
+            "Hydreigon"
+        ]
+    },
+    {
+        "chainIndex": 316,
+        "list": [
+            "Larvesta",
+            "Volcarona"
+        ]
+    },
+    {
+        "chainIndex": 317,
+        "list": [
+            "Cobalion"
+        ]
+    },
+    {
+        "chainIndex": 318,
+        "list": [
+            "Terrakion"
+        ]
+    },
+    {
+        "chainIndex": 319,
+        "list": [
+            "Virizion"
+        ]
+    },
+    {
+        "chainIndex": 320,
+        "list": [
+            "Tornadus"
+        ]
+    },
+    {
+        "chainIndex": 321,
+        "list": [
+            "Thundurus"
+        ]
+    },
+    {
+        "chainIndex": 322,
+        "list": [
+            "Reshiram"
+        ]
+    },
+    {
+        "chainIndex": 323,
+        "list": [
+            "Zekrom"
+        ]
+    },
+    {
+        "chainIndex": 324,
+        "list": [
+            "Landorus"
+        ]
+    },
+    {
+        "chainIndex": 325,
+        "list": [
+            "Kyurem"
+        ]
+    },
+    {
+        "chainIndex": 326,
+        "list": [
+            "Keldeo"
+        ]
+    },
+    {
+        "chainIndex": 327,
+        "list": [
+            "Meloetta"
+        ]
+    },
+    {
+        "chainIndex": 328,
+        "list": [
+            "Genesect"
+        ]
+    },
+    {
+        "chainIndex": 329,
+        "list": [
+            "Chespin",
+            "Quilladin",
+            "Chesnaught"
+        ]
+    },
+    {
+        "chainIndex": 330,
+        "list": [
+            "Fennekin",
+            "Braixen",
+            "Delphox"
+        ]
+    },
+    {
+        "chainIndex": 331,
+        "list": [
+            "Froakie",
+            "Frogadier",
+            "Greninja"
+        ]
+    },
+    {
+        "chainIndex": 332,
+        "list": [
+            "Bunnelby",
+            "Diggersby"
+        ]
+    },
+    {
+        "chainIndex": 333,
+        "list": [
+            "Fletchling",
+            "Fletchinder",
+            "Talonflame"
+        ]
+    },
+    {
+        "chainIndex": 334,
+        "list": [
+            "Scatterbug",
+            "Spewpa",
+            "Vivillon"
+        ]
+    },
+    {
+        "chainIndex": 335,
+        "list": [
+            "Litleo",
+            "Pyroar"
+        ]
+    },
+    {
+        "chainIndex": 336,
+        "list": [
+            "Flabébé",
+            "Floette",
+            "Florges"
+        ]
+    },
+    {
+        "chainIndex": 337,
+        "list": [
+            "Skiddo",
+            "Gogoat"
+        ]
+    },
+    {
+        "chainIndex": 338,
+        "list": [
+            "Pancham",
+            "Pangoro"
+        ]
+    },
+    {
+        "chainIndex": 339,
+        "list": [
+            "Furfrou"
+        ]
+    },
+    {
+        "chainIndex": 340,
+        "list": [
+            "Espurr",
+            "Meowstic"
+        ]
+    },
+    {
+        "chainIndex": 341,
+        "list": [
+            "Honedge",
+            "Doublade",
+            "Aegislash"
+        ]
+    },
+    {
+        "chainIndex": 342,
+        "list": [
+            "Spritzee",
+            "Aromatisse"
+        ]
+    },
+    {
+        "chainIndex": 343,
+        "list": [
+            "Swirlix",
+            "Slurpuff"
+        ]
+    },
+    {
+        "chainIndex": 344,
+        "list": [
+            "Inkay",
+            "Malamar"
+        ]
+    },
+    {
+        "chainIndex": 345,
+        "list": [
+            "Binacle",
+            "Barbaracle"
+        ]
+    },
+    {
+        "chainIndex": 346,
+        "list": [
+            "Skrelp",
+            "Dragalge"
+        ]
+    },
+    {
+        "chainIndex": 347,
+        "list": [
+            "Clauncher",
+            "Clawitzer"
+        ]
+    },
+    {
+        "chainIndex": 348,
+        "list": [
+            "Helioptile",
+            "Heliolisk"
+        ]
+    },
+    {
+        "chainIndex": 349,
+        "list": [
+            "Tyrunt",
+            "Tyrantrum"
+        ]
+    },
+    {
+        "chainIndex": 350,
+        "list": [
+            "Amaura",
+            "Aurorus"
+        ]
+    },
+    {
+        "chainIndex": 351,
+        "list": [
+            "Hawlucha"
+        ]
+    },
+    {
+        "chainIndex": 352,
+        "list": [
+            "Dedenne"
+        ]
+    },
+    {
+        "chainIndex": 353,
+        "list": [
+            "Carbink"
+        ]
+    },
+    {
+        "chainIndex": 354,
+        "list": [
+            "Goomy",
+            "Sliggoo",
+            "Goodra"
+        ]
+    },
+    {
+        "chainIndex": 355,
+        "list": [
+            "Klefki"
+        ]
+    },
+    {
+        "chainIndex": 356,
+        "list": [
+            "Phantump",
+            "Trevenant"
+        ]
+    },
+    {
+        "chainIndex": 357,
+        "list": [
+            "Pumpkaboo",
+            "Gourgeist"
+        ]
+    },
+    {
+        "chainIndex": 358,
+        "list": [
+            "Bergmite",
+            "Avalugg"
+        ]
+    },
+    {
+        "chainIndex": 359,
+        "list": [
+            "Noibat",
+            "Noivern"
+        ]
+    },
+    {
+        "chainIndex": 360,
+        "list": [
+            "Xerneas"
+        ]
+    },
+    {
+        "chainIndex": 361,
+        "list": [
+            "Yveltal"
+        ]
+    },
+    {
+        "chainIndex": 362,
+        "list": [
+            "Zygarde"
+        ]
+    },
+    {
+        "chainIndex": 363,
+        "list": [
+            "Diancie"
+        ]
+    },
+    {
+        "chainIndex": 364,
+        "list": [
+            "Hoopa"
+        ]
+    },
+    {
+        "chainIndex": 365,
+        "list": [
+            "Volcanion"
+        ]
+    },
+    {
+        "chainIndex": 366,
+        "list": [
+            "Rowlet",
+            "Dartrix",
+            "Decidueye"
+        ]
+    },
+    {
+        "chainIndex": 367,
+        "list": [
+            "Litten",
+            "Torracat",
+            "Incineroar"
+        ]
+    },
+    {
+        "chainIndex": 368,
+        "list": [
+            "Popplio",
+            "Brionne",
+            "Primarina"
+        ]
+    },
+    {
+        "chainIndex": 369,
+        "list": [
+            "Pikipek",
+            "Trumbeak",
+            "Toucannon"
+        ]
+    },
+    {
+        "chainIndex": 370,
+        "list": [
+            "Yungoos",
+            "Gumshoos"
+        ]
+    },
+    {
+        "chainIndex": 371,
+        "list": [
+            "Grubbin",
+            "Charjabug",
+            "Vikavolt"
+        ]
+    },
+    {
+        "chainIndex": 372,
+        "list": [
+            "Crabrawler",
+            "Crabominable"
+        ]
+    },
+    {
+        "chainIndex": 373,
+        "list": [
+            "Oricorio"
+        ]
+    },
+    {
+        "chainIndex": 374,
+        "list": [
+            "Cutiefly",
+            "Ribombee"
+        ]
+    },
+    {
+        "chainIndex": 375,
+        "list": [
+            "Rockruff",
+            "Lycanroc"
+        ]
+    },
+    {
+        "chainIndex": 376,
+        "list": [
+            "Wishiwashi"
+        ]
+    },
+    {
+        "chainIndex": 377,
+        "list": [
+            "Mareanie",
+            "Toxapex"
+        ]
+    },
+    {
+        "chainIndex": 378,
+        "list": [
+            "Mudbray",
+            "Mudsdale"
+        ]
+    },
+    {
+        "chainIndex": 379,
+        "list": [
+            "Dewpider",
+            "Araquanid"
+        ]
+    },
+    {
+        "chainIndex": 380,
+        "list": [
+            "Fomantis",
+            "Lurantis"
+        ]
+    },
+    {
+        "chainIndex": 381,
+        "list": [
+            "Morelull",
+            "Shiinotic"
+        ]
+    },
+    {
+        "chainIndex": 382,
+        "list": [
+            "Salandit",
+            "Salazzle"
+        ]
+    },
+    {
+        "chainIndex": 383,
+        "list": [
+            "Stufful",
+            "Bewear"
+        ]
+    },
+    {
+        "chainIndex": 384,
+        "list": [
+            "Bounsweet",
+            "Steenee",
+            "Tsareena"
+        ]
+    },
+    {
+        "chainIndex": 385,
+        "list": [
+            "Comfey"
+        ]
+    },
+    {
+        "chainIndex": 386,
+        "list": [
+            "Oranguru"
+        ]
+    },
+    {
+        "chainIndex": 387,
+        "list": [
+            "Passimian"
+        ]
+    },
+    {
+        "chainIndex": 388,
+        "list": [
+            "Wimpod",
+            "Golisopod"
+        ]
+    },
+    {
+        "chainIndex": 389,
+        "list": [
+            "Sandygast",
+            "Palossand"
+        ]
+    },
+    {
+        "chainIndex": 390,
+        "list": [
+            "Pyukumuku"
+        ]
+    },
+    {
+        "chainIndex": 391,
+        "list": [
+            "Type: Null",
+            "Silvally"
+        ]
+    },
+    {
+        "chainIndex": 392,
+        "list": [
+            "Minior"
+        ]
+    },
+    {
+        "chainIndex": 393,
+        "list": [
+            "Komala"
+        ]
+    },
+    {
+        "chainIndex": 394,
+        "list": [
+            "Turtonator"
+        ]
+    },
+    {
+        "chainIndex": 395,
+        "list": [
+            "Togedemaru"
+        ]
+    },
+    {
+        "chainIndex": 396,
+        "list": [
+            "Mimikyu"
+        ]
+    },
+    {
+        "chainIndex": 397,
+        "list": [
+            "Bruxish"
+        ]
+    },
+    {
+        "chainIndex": 398,
+        "list": [
+            "Drampa"
+        ]
+    },
+    {
+        "chainIndex": 399,
+        "list": [
+            "Dhelmise"
+        ]
+    },
+    {
+        "chainIndex": 400,
+        "list": [
+            "Jangmo-o",
+            "Hakamo-o",
+            "Kommo-o"
+        ]
+    },
+    {
+        "chainIndex": 401,
+        "list": [
+            "Tapu Koko"
+        ]
+    },
+    {
+        "chainIndex": 402,
+        "list": [
+            "Tapu Lele"
+        ]
+    },
+    {
+        "chainIndex": 403,
+        "list": [
+            "Tapu Bulu"
+        ]
+    },
+    {
+        "chainIndex": 404,
+        "list": [
+            "Tapu Fini"
+        ]
+    },
+    {
+        "chainIndex": 405,
+        "list": [
+            "Cosmog",
+            "Cosmoem",
+            [
+                "Solgaleo",
+                "Lunala"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 406,
+        "list": [
+            "Nihilego"
+        ]
+    },
+    {
+        "chainIndex": 407,
+        "list": [
+            "Buzzwole"
+        ]
+    },
+    {
+        "chainIndex": 408,
+        "list": [
+            "Pheromosa"
+        ]
+    },
+    {
+        "chainIndex": 409,
+        "list": [
+            "Xurkitree"
+        ]
+    },
+    {
+        "chainIndex": 410,
+        "list": [
+            "Celesteela"
+        ]
+    },
+    {
+        "chainIndex": 411,
+        "list": [
+            "Kartana"
+        ]
+    },
+    {
+        "chainIndex": 412,
+        "list": [
+            "Guzzlord"
+        ]
+    },
+    {
+        "chainIndex": 413,
+        "list": [
+            "Necrozma"
+        ]
+    },
+    {
+        "chainIndex": 414,
+        "list": [
+            "Magearna"
+        ]
+    },
+    {
+        "chainIndex": 415,
+        "list": [
+            "Marshadow"
+        ]
+    },
+    {
+        "chainIndex": 416,
+        "list": [
+            "Poipole",
+            "Naganadel"
+        ]
+    },
+    {
+        "chainIndex": 417,
+        "list": [
+            "Stakataka"
+        ]
+    },
+    {
+        "chainIndex": 418,
+        "list": [
+            "Blacephalon"
+        ]
+    },
+    {
+        "chainIndex": 419,
+        "list": [
+            "Zeraora"
+        ]
+    },
+    {
+        "chainIndex": 420,
+        "list": [
+            "Meltan",
+            "Melmetal"
+        ]
+    },
+    {
+        "chainIndex": 421,
+        "list": [
+            "Grookey",
+            "Thwackey",
+            "Rillaboom"
+        ]
+    },
+    {
+        "chainIndex": 422,
+        "list": [
+            "Scorbunny",
+            "Raboot",
+            "Cinderace"
+        ]
+    },
+    {
+        "chainIndex": 423,
+        "list": [
+            "Sobble",
+            "Drizzile",
+            "Inteleon"
+        ]
+    },
+    {
+        "chainIndex": 424,
+        "list": [
+            "Skwovet",
+            "Greedent"
+        ]
+    },
+    {
+        "chainIndex": 425,
+        "list": [
+            "Rookidee",
+            "Corvisquire",
+            "Corviknight"
+        ]
+    },
+    {
+        "chainIndex": 426,
+        "list": [
+            "Blipbug",
+            "Dottler",
+            "Orbeetle"
+        ]
+    },
+    {
+        "chainIndex": 427,
+        "list": [
+            "Nickit",
+            "Thievul"
+        ]
+    },
+    {
+        "chainIndex": 428,
+        "list": [
+            "Gossifleur",
+            "Eldegoss"
+        ]
+    },
+    {
+        "chainIndex": 429,
+        "list": [
+            "Wooloo",
+            "Dubwool"
+        ]
+    },
+    {
+        "chainIndex": 430,
+        "list": [
+            "Chewtle",
+            "Drednaw"
+        ]
+    },
+    {
+        "chainIndex": 431,
+        "list": [
+            "Yamper",
+            "Boltund"
+        ]
+    },
+    {
+        "chainIndex": 432,
+        "list": [
+            "Rolycoly",
+            "Carkol",
+            "Coalossal"
+        ]
+    },
+    {
+        "chainIndex": 433,
+        "list": [
+            "Applin",
+            [
+                "Flapple",
+                "Appletun"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 434,
+        "list": [
+            "Silicobra",
+            "Sandaconda"
+        ]
+    },
+    {
+        "chainIndex": 435,
+        "list": [
+            "Cramorant"
+        ]
+    },
+    {
+        "chainIndex": 436,
+        "list": [
+            "Arrokuda",
+            "Barraskewda"
+        ]
+    },
+    {
+        "chainIndex": 437,
+        "list": [
+            "Toxel",
+            "Toxtricity"
+        ]
+    },
+    {
+        "chainIndex": 438,
+        "list": [
+            "Sizzlipede",
+            "Centiskorch"
+        ]
+    },
+    {
+        "chainIndex": 439,
+        "list": [
+            "Clobbopus",
+            "Grapploct"
+        ]
+    },
+    {
+        "chainIndex": 440,
+        "list": [
+            "Sinistea",
+            "Polteageist"
+        ]
+    },
+    {
+        "chainIndex": 441,
+        "list": [
+            "Hatenna",
+            "Hattrem",
+            "Hatterene"
+        ]
+    },
+    {
+        "chainIndex": 442,
+        "list": [
+            "Impidimp",
+            "Morgrem",
+            "Grimmsnarl"
+        ]
+    },
+    {
+        "chainIndex": 443,
+        "list": [
+            "Milcery",
+            "Alcremie"
+        ]
+    },
+    {
+        "chainIndex": 444,
+        "list": [
+            "Falinks"
+        ]
+    },
+    {
+        "chainIndex": 445,
+        "list": [
+            "Pincurchin"
+        ]
+    },
+    {
+        "chainIndex": 446,
+        "list": [
+            "Snom",
+            "Frosmoth"
+        ]
+    },
+    {
+        "chainIndex": 447,
+        "list": [
+            "Stonjourner"
+        ]
+    },
+    {
+        "chainIndex": 448,
+        "list": [
+            "Eiscue"
+        ]
+    },
+    {
+        "chainIndex": 449,
+        "list": [
+            "Indeedee"
+        ]
+    },
+    {
+        "chainIndex": 450,
+        "list": [
+            "Morpeko"
+        ]
+    },
+    {
+        "chainIndex": 451,
+        "list": [
+            "Cufant",
+            "Copperajah"
+        ]
+    },
+    {
+        "chainIndex": 452,
+        "list": [
+            "Dracozolt"
+        ]
+    },
+    {
+        "chainIndex": 453,
+        "list": [
+            "Arctozolt"
+        ]
+    },
+    {
+        "chainIndex": 454,
+        "list": [
+            "Dracovish"
+        ]
+    },
+    {
+        "chainIndex": 455,
+        "list": [
+            "Arctovish"
+        ]
+    },
+    {
+        "chainIndex": 456,
+        "list": [
+            "Duraludon"
+        ]
+    },
+    {
+        "chainIndex": 457,
+        "list": [
+            "Dreepy",
+            "Drakloak",
+            "Dragapult"
+        ]
+    },
+    {
+        "chainIndex": 458,
+        "list": [
+            "Zacian"
+        ]
+    },
+    {
+        "chainIndex": 459,
+        "list": [
+            "Zamazenta"
+        ]
+    },
+    {
+        "chainIndex": 460,
+        "list": [
+            "Eternatus"
+        ]
+    },
+    {
+        "chainIndex": 461,
+        "list": [
+            "Kubfu",
+            "Urshifu"
+        ]
+    },
+    {
+        "chainIndex": 462,
+        "list": [
+            "Zarude"
+        ]
+    },
+    {
+        "chainIndex": 463,
+        "list": [
+            "Regieleki"
+        ]
+    },
+    {
+        "chainIndex": 464,
+        "list": [
+            "Regidrago"
+        ]
+    },
+    {
+        "chainIndex": 465,
+        "list": [
+            "Glastrier"
+        ]
+    },
+    {
+        "chainIndex": 466,
+        "list": [
+            "Spectrier"
+        ]
+    },
+    {
+        "chainIndex": 467,
+        "list": [
+            "Calyrex"
+        ]
+    },
+    {
+        "chainIndex": 468,
+        "list": [
+            "Enamorus"
+        ]
+    },
+    {
+        "chainIndex": 469,
+        "list": [
+            "Sprigatito",
+            "Floragato",
+            "Meowscarada"
+        ]
+    },
+    {
+        "chainIndex": 470,
+        "list": [
+            "Fuecoco",
+            "Crocalor",
+            "Skeledirge"
+        ]
+    },
+    {
+        "chainIndex": 471,
+        "list": [
+            "Quaxly",
+            "Quaxwell",
+            "Quaquaval"
+        ]
+    },
+    {
+        "chainIndex": 472,
+        "list": [
+            "Lechonk",
+            "Oinkologne"
+        ]
+    },
+    {
+        "chainIndex": 473,
+        "list": [
+            "Tarountula",
+            "Spidops"
+        ]
+    },
+    {
+        "chainIndex": 474,
+        "list": [
+            "Nymble",
+            "Lokix"
+        ]
+    },
+    {
+        "chainIndex": 475,
+        "list": [
+            "Pawmi",
+            "Pawmo",
+            "Pawmot"
+        ]
+    },
+    {
+        "chainIndex": 476,
+        "list": [
+            "Tandemaus",
+            "Maushold"
+        ]
+    },
+    {
+        "chainIndex": 477,
+        "list": [
+            "Fidough",
+            "Dachsbun"
+        ]
+    },
+    {
+        "chainIndex": 478,
+        "list": [
+            "Smoliv",
+            "Dolliv",
+            "Arboliva"
+        ]
+    },
+    {
+        "chainIndex": 479,
+        "list": [
+            "Squawkabilly"
+        ]
+    },
+    {
+        "chainIndex": 480,
+        "list": [
+            "Nacli",
+            "Naclstack",
+            "Garganacl"
+        ]
+    },
+    {
+        "chainIndex": 481,
+        "list": [
+            "Charcadet",
+            [
+                "Armarouge",
+                "Ceruledge"
+            ]
+        ]
+    },
+    {
+        "chainIndex": 482,
+        "list": [
+            "Tadbulb",
+            "Bellibolt"
+        ]
+    },
+    {
+        "chainIndex": 483,
+        "list": [
+            "Wattrel",
+            "Kilowattrel"
+        ]
+    },
+    {
+        "chainIndex": 484,
+        "list": [
+            "Maschiff",
+            "Mabosstiff"
+        ]
+    },
+    {
+        "chainIndex": 485,
+        "list": [
+            "Shroodle",
+            "Grafaiai"
+        ]
+    },
+    {
+        "chainIndex": 486,
+        "list": [
+            "Bramblin",
+            "Brambleghast"
+        ]
+    },
+    {
+        "chainIndex": 487,
+        "list": [
+            "Toedscool",
+            "Toedscruel"
+        ]
+    },
+    {
+        "chainIndex": 488,
+        "list": [
+            "Klawf"
+        ]
+    },
+    {
+        "chainIndex": 489,
+        "list": [
+            "Capsakid",
+            "Scovillain"
+        ]
+    },
+    {
+        "chainIndex": 490,
+        "list": [
+            "Rellor",
+            "Rabsca"
+        ]
+    },
+    {
+        "chainIndex": 491,
+        "list": [
+            "Flittle",
+            "Espathra"
+        ]
+    },
+    {
+        "chainIndex": 492,
+        "list": [
+            "Tinkatink",
+            "Tinkatuff",
+            "Tinkaton"
+        ]
+    },
+    {
+        "chainIndex": 493,
+        "list": [
+            "Wiglett",
+            "Wugtrio"
+        ]
+    },
+    {
+        "chainIndex": 494,
+        "list": [
+            "Bombirdier"
+        ]
+    },
+    {
+        "chainIndex": 495,
+        "list": [
+            "Finizen",
+            "Palafin"
+        ]
+    },
+    {
+        "chainIndex": 496,
+        "list": [
+            "Varoom",
+            "Revavroom"
+        ]
+    },
+    {
+        "chainIndex": 497,
+        "list": [
+            "Cyclizar"
+        ]
+    },
+    {
+        "chainIndex": 498,
+        "list": [
+            "Orthworm"
+        ]
+    },
+    {
+        "chainIndex": 499,
+        "list": [
+            "Glimmet",
+            "Glimmora"
+        ]
+    },
+    {
+        "chainIndex": 500,
+        "list": [
+            "Greavard",
+            "Houndstone"
+        ]
+    },
+    {
+        "chainIndex": 501,
+        "list": [
+            "Flamigo"
+        ]
+    },
+    {
+        "chainIndex": 502,
+        "list": [
+            "Cetoddle",
+            "Cetitan"
+        ]
+    },
+    {
+        "chainIndex": 503,
+        "list": [
+            "Veluza"
+        ]
+    },
+    {
+        "chainIndex": 504,
+        "list": [
+            "Dondozo"
+        ]
+    },
+    {
+        "chainIndex": 505,
+        "list": [
+            "Tatsugiri"
+        ]
+    },
+    {
+        "chainIndex": 506,
+        "list": [
+            "Great Tusk"
+        ]
+    },
+    {
+        "chainIndex": 507,
+        "list": [
+            "Scream Tail"
+        ]
+    },
+    {
+        "chainIndex": 508,
+        "list": [
+            "Brute Bonnet"
+        ]
+    },
+    {
+        "chainIndex": 509,
+        "list": [
+            "Flutter Mane"
+        ]
+    },
+    {
+        "chainIndex": 510,
+        "list": [
+            "Slither Wing"
+        ]
+    },
+    {
+        "chainIndex": 511,
+        "list": [
+            "Sandy Shocks"
+        ]
+    },
+    {
+        "chainIndex": 512,
+        "list": [
+            "Iron Treads"
+        ]
+    },
+    {
+        "chainIndex": 513,
+        "list": [
+            "Iron Bundle"
+        ]
+    },
+    {
+        "chainIndex": 514,
+        "list": [
+            "Iron Hands"
+        ]
+    },
+    {
+        "chainIndex": 515,
+        "list": [
+            "Iron Jugulis"
+        ]
+    },
+    {
+        "chainIndex": 516,
+        "list": [
+            "Iron Moth"
+        ]
+    },
+    {
+        "chainIndex": 517,
+        "list": [
+            "Iron Thorns"
+        ]
+    },
+    {
+        "chainIndex": 518,
+        "list": [
+            "Frigibax",
+            "Arctibax",
+            "Baxcalibur"
+        ]
+    },
+    {
+        "chainIndex": 519,
+        "list": [
+            "Gimmighoul",
+            "Gholdengo"
+        ]
+    },
+    {
+        "chainIndex": 520,
+        "list": [
+            "Wo-Chien"
+        ]
+    },
+    {
+        "chainIndex": 521,
+        "list": [
+            "Chien-Pao"
+        ]
+    },
+    {
+        "chainIndex": 522,
+        "list": [
+            "Ting-Lu"
+        ]
+    },
+    {
+        "chainIndex": 523,
+        "list": [
+            "Chi-Yu"
+        ]
+    },
+    {
+        "chainIndex": 524,
+        "list": [
+            "Roaring Moon"
+        ]
+    },
+    {
+        "chainIndex": 525,
+        "list": [
+            "Iron Valiant"
+        ]
+    },
+    {
+        "chainIndex": 526,
+        "list": [
+            "Koraidon"
+        ]
+    },
+    {
+        "chainIndex": 527,
+        "list": [
+            "Miraidon"
+        ]
+    }
+]}

@@ -39,22 +39,42 @@ function showStats() {
 })();
 
 async function loadPokeCsv() {
-  const response = await fetch(
-    "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv/pokemon.csv"
-  );
-  const text = await response.text();
+	let fileReader = new FileReader();
+	fileReader.onload = function () {
+		console.log(">>", fileReader.result);
+	}
 
-  window.pokeCsv = csvToArray(text, ",");
+	fileReader.readAsText('./csv/pokemon.csv');
 }
+
+// async function loadPokeCsv() {
+//   const response = await fetch(
+//     "./csv/pokemon.csv"
+//   );
+//   const text = await response.text();
+
+//   window.pokeCsv = csvToArray(text, ",");
+// }
 
 async function loadBasicEvolutionJson() {
-  const response = await fetch(
-    `https://lznnwinmjydhyenhcjry.supabase.co/storage/v1/object/public/json/basic-evolutions.json?v=2`
-  );
-  const jsonResponse = await response.json();
+	let fileReader = new FileReader();
+	fileReader.onload = function () {
+		console.log(">>", fileReader.target.result);
+	}
 
-  window.pokelist = jsonResponse.select;
+	console.log("document.getElementById('basic-evolutions')", document.getElementById('basic-evolutions'))
+
+	fileReader.readAsText(document.getElementById('basic-evolutions'));
 }
+
+// async function loadBasicEvolutionJson() {
+//   const response = await fetch(
+//     `./json/basic-evolutions.json?v=2`
+//   );
+//   const jsonResponse = await response.json();
+
+//   window.pokelist = jsonResponse.select;
+// }
 
 function initializeEncounter() {
   window._encounterDuration = -Infinity;
@@ -1084,7 +1104,7 @@ function attachBuyerContextMenu(cellElement) {
     clearElementAttributesByPrefix(cellElement, "data-");
     cellElement.removeAttribute("title");
 
-    cellElement.innerHTML = '<img src="transparent-picture.png" />';
+    cellElement.innerHTML = '<img src="./images/transparent-picture.png" />';
 
     increaseCurrentGold(-10);
 
@@ -1133,7 +1153,7 @@ function onBuyerMouseDown(cellElement) {
 
   navigator.vibrate(150);
 
-  cellElement.innerHTML = '<img src="transparent-picture.png" />';
+  cellElement.innerHTML = '<img src="./images/transparent-picture.png" />';
 
   clearShuffledCell(window.selectedCellElement);
 
