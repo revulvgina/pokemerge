@@ -9,7 +9,8 @@
 	<link href='./styles/styles.css?v=074941' rel='stylesheet' type='text/css'>
 	<link href='./styles/settings.css?v=074942' rel='stylesheet' type='text/css'>
 	<script src="./js/jquery.min.js"></script>
-
+	<script src="./js/load-html.js"></script>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
@@ -18,87 +19,22 @@
 		<div class="square">
 			<div class="content">
 				<div class="header">
-					<div class="header-text">
-						<h1 onclick="showStats()">
-							<span id="pokemerge-brand">PoKeMerge</span>
-						</h1>
-					</div>
-					<div class="header-settings" onclick="openSettings()">
-						<img id="settings" class="pokeball-shake"
-							src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/explorer-kit.png"
-							class="pixelated" />
-					</div>
+					<script>
+						loadHTML('./components/index/header.html', '.header');
+					</script>
 				</div>
 				<div class="box-container">
-					<div class="left-box">
-						<div class="left-box-level">
-							<div style="display: inline-block">
-								<span>Level <span id="current-level">0</span></span>
-							</div>
-
-							<div id="exp-container">
-								<div id="exp-bar"></div>
-								<div id="exp-for-next-level">(0 / 10)</div>
-							</div>
-						</div>
-						<div class="left-box-current-gold"><strong>Gold: <span id="current-gold">0</span></strong></div>
-						<div class="left-box-evolution-chain" id="left-box-evolution-chain"><strong>Evolution Chain: </strong><span
-								id="evolution-chain" style="
-					overflow: hidden;
-					overflow-wrap: break-word;
-					white-space: initial;">...</span></div>
-					</div>
-					<div class="right-box">
-						<div class="right-box-energy-bar no-highlight">
-							<div>
-								<img id="berry-juice"
-									src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/berry-juice.png"
-									style="width: 80px;" class="pixelated" />
-							</div>
-							<div style="text-align: center">
-								<span>Berry</span>
-							</div>
-						</div>
-					</div>
+					<script>
+						loadHTML('./components/index/box-container.html', '.box-container');
+					</script>
 				</div>
 				<div class="buyer-header"><strong>Buyers</strong></div>
-				<div class="buyer-grid no-highlight">
-					<div class="buyer-item-0 no-highlight" id="buyer-0"><img src="./images/transparent-picture.png" /></div>
-					<div class="buyer-item-1 no-highlight" id="buyer-1"></div>
-					<div class="buyer-item-2 no-highlight" id="buyer-2"></div>
-					<div class="buyer-item-3 no-highlight" id="buyer-3"></div>
-					<div class="buyer-item-4 no-highlight" id="buyer-4"><img src="./images/transparent-picture.png" /></div>
-					<div class="buyer-item-empty">&nbsp;</div>
+				<div class="buyer-grid no-highlight" id="buyers-grid">
 				</div>
 				<div class="backpack-header"><strong>Backpack</strong></div>
 				<div id="spinning-box" class="display-none">
 				</div>
-				<div class="backpack-grid no-highlight">
-					<div class="backpack-0 no-highlight" id="shuffled-cell-0"></div>
-					<div class="backpack-1 no-highlight" id="shuffled-cell-1"></div>
-					<div class="backpack-2 no-highlight" id="shuffled-cell-2"></div>
-					<div class="backpack-3 no-highlight" id="shuffled-cell-3"></div>
-					<div class="backpack-4 no-highlight" id="shuffled-cell-4"></div>
-					<div class="backpack-5 no-highlight" id="shuffled-cell-5"></div>
-					<div class="backpack-6 no-highlight" id="shuffled-cell-6"></div>
-					<div class="backpack-7 no-highlight" id="shuffled-cell-7"></div>
-					<div class="backpack-8 no-highlight" id="shuffled-cell-8"></div>
-					<div class="backpack-9 no-highlight" id="shuffled-cell-9"></div>
-					<div class="backpack-10 no-highlight" id="shuffled-cell-10"></div>
-					<div class="backpack-11 no-highlight" id="shuffled-cell-11"></div>
-					<div class="backpack-12 no-highlight" id="shuffled-cell-12"></div>
-					<div class="backpack-13 no-highlight" id="shuffled-cell-13"></div>
-					<div class="backpack-14 no-highlight" id="shuffled-cell-14"></div>
-					<div class="backpack-15 no-highlight" id="shuffled-cell-15"></div>
-					<div class="backpack-16 no-highlight" id="shuffled-cell-16"></div>
-					<div class="backpack-17 no-highlight" id="shuffled-cell-17"></div>
-					<div class="backpack-18 no-highlight" id="shuffled-cell-18"></div>
-					<div class="backpack-19 no-highlight" id="shuffled-cell-19"></div>
-					<div class="backpack-20 no-highlight" id="shuffled-cell-20"></div>
-					<div class="backpack-21 no-highlight" id="shuffled-cell-21"></div>
-					<div class="backpack-22 no-highlight" id="shuffled-cell-22"></div>
-					<div class="backpack-23 no-highlight" id="shuffled-cell-23"></div>
-					<div class="backpack-24 no-highlight" id="shuffled-cell-24"></div>
+				<div class="backpack-grid no-highlight" id="backpack-grid">
 				</div>
 
 				<div id="encounter-container" class="display-none">
@@ -109,30 +45,20 @@
 		</div>
 	</div>
 
-	<audio id="click-sound" src="./mp3/click-sound.mp3?v=1"></audio>
-	<audio id="gold-sound" src="./mp3/gold-sound.mp3?v=2"></audio>
-	<!-- <audio id="coin-sound"
-			src="./mp3/coin-sound.mp3?v=1"></audio> -->
-	<audio id="coin-sound" src="./mp3/pokeball-a-button-sound.mp3?v=1"></audio>
-	<audio id="level-up-sound" src="./mp3/level-up.mp3?v=1"></audio>
-	<audio id="shuffle-sound" src="./mp3/shuffle.mp3?v=2"></audio>
-	<audio id="plus-sound" src="./mp3/plus.mp3?v=1"></audio>
-	<!-- <audio id="pokeball-open-sound"
-			src="./mp3/pokeball-open.mp3?v=1"></audio> -->
-	<audio id="pokeball-open-sound" src="./mp3/pokeball-open-sound.mp3?v=2"></audio>
-	<audio id="pokemon-theme-bgm" src="./mp3/pokemon%20theme.mp3?v=1"></audio>
-	<audio id="pokemon-encounter" src="./mp3/pokemon-encounter.mp3"></audio>
-
-	<div id="audio-cries">
+	<div id="audio-files">
+		<script>
+			loadHTML('./components/index/audio-files.html', '#audio-files');
+		</script>
 	</div>
 
-	<script src="js/load-html.js"></script>
-	<script src="js/csv-to-array.js"></script>
-	<script src="js/main.js?v=074942"></script>
+	<script src="./js/csv-to-array.js"></script>
+	<script src="./js/main.js?v=074942"></script>
 
-	<script>
-		loadHTML('settings.html');
-	</script>
+	<dialog id="settings-dialog" class="no-highlight">
+		<script>
+			loadHTML('settings-dialog.html', '#settings-dialog');
+		</script>
+	</dialog>
 
 </body>
 

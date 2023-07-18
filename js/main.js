@@ -17,7 +17,10 @@ function showStats() {
     "great-ball",
     "ultra-ball",
     "master-ball",
-  ];
+	];
+	
+	createBuyerCells();
+	createBackpackCells();
 
   attachContextMenus();
 
@@ -56,6 +59,30 @@ async function loadBasicEvolutionJson() {
   window.pokelist = jsonResponse.select;
 }
 
+function createBuyerCells() {
+	const buyersGrid = document.getElementById('buyers-grid');
+
+	for (let i = 0; i < 5; i += 1) {
+		const eachBuyerCell = document.createElement('div');
+		eachBuyerCell.id = `buyer-${i}`;
+		eachBuyerCell.classList.add('no-highlight');
+		eachBuyerCell.innerHTML = `<img src="./images/transparent-picture.png" />`;
+		buyersGrid.appendChild(eachBuyerCell);
+	}
+}
+
+function createBackpackCells() {
+	const backpackGrid = document.getElementById('backpack-grid');
+
+	for (let i = 0; i < 25; i += 1) {
+		const eachBackpackCell = document.createElement('div');
+		eachBackpackCell.id = `shuffled-cell-${i}`;
+		eachBackpackCell.classList.add('backpack-0', 'no-highlight');
+		eachBackpackCell.innerHTML = `<img src="./images/transparent-picture.png" />`;
+		backpackGrid.appendChild(eachBackpackCell);
+	}
+}
+
 function initializeEncounter() {
   window._encounterDuration = -Infinity;
   window._encounterPokemonBallList = [2, 2, 2, 2, 3];
@@ -86,6 +113,7 @@ function createRandomPokeBallImage() {
 }
 
 function attachCellWithPokeBallImage(cellElement) {
+	cellElement.innerHTML = '';
   cellElement.appendChild(createRandomPokeBallImage());
   cellElement.setAttribute(
     "data-evolution-count",
