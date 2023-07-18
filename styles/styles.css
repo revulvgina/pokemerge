@@ -35,7 +35,14 @@ body {
 }
 
 body {
-	background-color: rgb(var(--color-E0C9A6));
+	/* background-color: rgb(var(--color-E0C9A6)); */
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(247, 159, 79, 0.3),
+    rgba(247, 159, 79, 0.3) 1px,
+    rgba(247, 159, 79, 0.5) 1px,
+    rgba(247, 159, 79, 0.5) 20px
+  );
 	font-family: 'Press Start 2P', cursive;
 }
 

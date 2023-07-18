@@ -123,24 +123,26 @@
 	<div id="audio-cries">
 	</div>
 
-	<dialog id="settings-dialog">
+	<dialog id="settings-dialog" class="no-highlight">
 		<form>
 			<div class="options">
-				<div class="header">
-					<h2>Settings</h2>
-					<div class="header-close-button cursor-pointer no-highlight" onclick="closeDialog('settings-dialog')">x</div>
+				<div class="settings-header">
+					<div class="inline-block">Settings</div>
+					<div class="inline-block header-close-button cursor-pointer no-highlight"
+						onclick="closeDialog('settings-dialog')">x</div>
 				</div>
 				<div class="settings-content">
 					<div style="margin-top: 10%;">
 						<a id="journal-button" class="no-highlight cursor-pointer" href="./journal.html">Go to Journal</a>
 					</div>
-					<div class="reset-container" oncontextmenu="return false;">
-						<div class="no-highlight cursor-pointer" id="reset-progress">Hold to Reset Progress</div>
-					</div>
 					<div class="vibrate-container">
 						<label class="no-highlight cursor-pointer" for="enable-vibration">
-							Enable vibration&nbsp;<input type="checkbox" value="true" id="enable-vibration" />
+							Enable vibration&nbsp;<input type="checkbox" checked="checked" id="enable-vibration"
+								onchange="onEnableVibration()" />
 						</label>
+					</div>
+					<div class="reset-container" oncontextmenu="return false;">
+						<div class="no-highlight cursor-pointer" id="reset-progress">Hold to Reset Progress</div>
 					</div>
 				</div>
 			</div>
@@ -148,14 +150,40 @@
 	</dialog>
 
 	<style>
+		#settings-dialog {
+			border-radius: 8px;
+			border: 4px solid rgb(var(--color-a76f47));
+			background-color: rgba(var(--color-f79f4f));
+		}
+
+		#settings-dialog::backdrop {
+			background: repeating-linear-gradient(135deg,
+					rgba(104, 69, 44, 0.3),
+					rgba(104, 69, 44, 0.3) 1px,
+					rgba(104, 69, 44, 0.5) 1px,
+					rgba(104, 69, 44, 0.5) 20px);
+		}
+
+		.inline-block {
+			display: inline-block;
+		}
+
 		.header-close-button {
 			margin-left: auto;
 			vertical-align: top;
 			color: #000;
+			right: 30px;
+			position: absolute;
 		}
 
 		.settings-content>div {
 			padding: 2% 0;
+		}
+
+		.reset-container {
+			background: rgb(var(--color-cf4f2f));
+			color: rgb(var(--color-f7df6f));
+			margin-top: 5%;
 		}
 
 		#journal-button,
@@ -167,9 +195,41 @@
 			border-width: 0;
 			outline: none;
 		}
+
+
+		.reset-progress-animation {
+			background: linear-gradient(to right, black 0%, red 50%, red 100%);
+			width: 100%;
+			background-size: 200% auto;
+			background-position: 0 100%;
+			animation: red-gradient 4s linear;
+		}
+
+		@keyframes red-gradient {
+			0% {
+				background-position: 0 0;
+			}
+
+			100% {
+				background-position: -100% 0;
+			}
+		}
 	</style>
 
 	<script>
+
+		function onEnableVibration(event) {
+			window.localStorage.setItem('enable-vibration', !!document.getElementById('enable-vibration').checked);
+		}
+
+		function openSettings() {
+			if (null === window.localStorage.getItem('enable-vibration')) {
+				window.localStorage.setItem('enable-vibration', true);
+			}
+			document.getElementById('enable-vibration').checked = "true" === window.localStorage.getItem('enable-vibration');
+			document.getElementById('settings-dialog').showModal();
+		}
+
 		function onResetProgress() {
 			window.location.reload();
 		}
@@ -181,31 +241,37 @@
 		document.getElementById('reset-progress').addEventListener('mousedown', (event) => {
 			event.preventDefault();
 			if (1 !== event.which) { return; }
-			console.log("mousedown", event)
-			clearTimeout(window._resetProgressTimeout);
-			window._resetProgressTimeout = setTimeout(resetProgressCallback, 2000);
+			startResetProgressHold();
 		});
 
 		document.getElementById('reset-progress').addEventListener('mouseup', (event) => {
 			event.preventDefault();
-			console.log("mouseup", event)
-			clearTimeout(window._resetProgressTimeout);
+			stopResetProgressHold();
 		});
 
 		document.getElementById('reset-progress').addEventListener('touchstart', (event) => {
 			event.preventDefault();
-			console.log("touchstart", event)
-			clearTimeout(window._resetProgressTimeout);
-			window._resetProgressTimeout = setTimeout(resetProgressCallback, 2000);
+			startResetProgressHold();
 		});
 
 		document.getElementById('reset-progress').addEventListener('touchend', (event) => {
 			event.preventDefault();
-			console.log("touchend", event)
-			clearTimeout(window._resetProgressTimeout);
+			stopResetProgressHold();
 		});
 
+		function startResetProgressHold() {
+			stopResetProgressHold();
+			document.querySelector('.reset-container').classList.add('reset-progress-animation');
+			window._resetProgressTimeout = setTimeout(resetProgressCallback, 4000);
+		}
+
+		function stopResetProgressHold() {
+			document.querySelector('.reset-container').classList.remove('reset-progress-animation');
+			clearTimeout(window._resetProgressTimeout);
+		}
+
 		function resetProgressCallback() {
+			document.querySelector('.reset-container').classList.remove('reset-progress-animation');
 			window.alert('Resetting progress...')
 		}
 	</script>
