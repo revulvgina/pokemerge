@@ -47,7 +47,9 @@ function resetProgressCallback() {
   window.location.reload();
 }
 
-document
+
+document.addEventListener('imports-loaded', async () => {
+	document
   .getElementById("reset-progress")
   .addEventListener("mousedown", (event) => {
     event.preventDefault();
@@ -77,3 +79,6 @@ document
     event.preventDefault();
     stopResetProgressHold();
   });
+});
+
+

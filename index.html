@@ -17,15 +17,16 @@
 
 	<div class="container">
 		<div class="square">
-			<div class="content">
+			<div class="content no-highlight">
+				<img id="floating-image" style="position: fixed; pointer-events: none; opacity: 0.5; z-index: 1;" />
 				<div class="header">
 					<script>
-						loadHTML('./components/index/header.html', '.header');
+						loadHTML('./components/index/header.html', true);
 					</script>
 				</div>
 				<div class="box-container">
 					<script>
-						loadHTML('./components/index/box-container.html', '.box-container');
+						loadHTML('./components/index/box-container.html', true);
 					</script>
 				</div>
 				<div class="buyer-header"><strong>Buyers</strong></div>
@@ -47,18 +48,19 @@
 
 	<div id="audio-files">
 		<script>
-			loadHTML('./components/index/audio-files.html', '#audio-files');
+			loadHTML('./components/index/audio-files.html', true);
 		</script>
 	</div>
 
-	<script src="./js/csv-to-array.js"></script>
-	<script src="./js/main.js?v=074942"></script>
-
 	<dialog id="settings-dialog" class="no-highlight">
 		<script>
-			loadHTML('settings-dialog.html', '#settings-dialog');
+			loadHTML('./components/index/settings-dialog.html', true);
 		</script>
 	</dialog>
+
+	<script src="./js/csv-to-array.js"></script>
+	<script src="./js/main.js?v=074942"></script>
+	<script src="./js/settings-dialog.js?v=074942"></script>
 
 </body>
 

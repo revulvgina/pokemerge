@@ -71,6 +71,7 @@ body {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	caret-color: transparent;
 }
 
 div[id^=buyer-]>div.buyer-refresh {
@@ -638,6 +639,24 @@ img[src] {
 [id^=shuffled-cell-].highlight-border,
 [id^=buyer-].highlight-border {
 	border-color: rgba(var(--color-f7df6f), 0.9) !important;
+}
+
+#floating-image ~ #buyers-grid [id^=buyer-].highlight-border,
+#floating-image ~ #buyers-grid [id^=buyer-].highlight-border > div,
+#floating-image ~ #buyers-grid [id^=buyer-].highlight-border > div > img {
+	cursor: cell;
+}
+
+#floating-image ~ #buyers-grid [id^=buyer-]:not(.highlight-border),
+#floating-image ~ #buyers-grid [id^=buyer-]:not(.highlight-border) > div,
+#floating-image ~ #buyers-grid [id^=buyer-]:not(.highlight-border) > div > img {
+	cursor: not-allowed;
+}
+
+#floating-image ~ #backpack-grid [id^=shuffled-cell-].highlight-border:not(.selected-cell),
+#floating-image ~ #backpack-grid [id^=shuffled-cell-].highlight-border:not(.selected-cell) > div,
+#floating-image ~ #backpack-grid [id^=shuffled-cell-].highlight-border:not(.selected-cell) > div > img {
+	cursor: cell;
 }
 
 img {
