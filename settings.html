@@ -1,0 +1,26 @@
+<dialog id="settings-dialog" class="no-highlight">
+	<form>
+		<div class="options">
+			<div class="settings-header">
+				<div class="inline-block">Settings</div>
+				<div class="inline-block header-close-button cursor-pointer no-highlight"
+					onclick="closeDialog('settings-dialog')">X</div>
+			</div>
+			<div class="settings-content">
+				<div style="margin-top: 10%;">
+					<a id="journal-button" class="no-highlight cursor-pointer" href="./journal.html">Go to Journal</a>
+				</div>
+				<div class="vibrate-container">
+					<label class="no-highlight cursor-pointer" for="enable-vibration">
+						Enable vibration&nbsp;<input type="checkbox" checked="checked" id="enable-vibration"
+							onchange="onEnableVibration()" />
+					</label>
+				</div>
+				<div class="reset-container" oncontextmenu="return false;">
+					<div class="no-highlight cursor-pointer" id="reset-progress">Hold to Reset Progress</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</dialog>
+<script src="js/settings.js?v=074942"></script>

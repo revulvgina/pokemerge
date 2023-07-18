@@ -35,7 +35,7 @@ function showStats() {
 
   initializeBackpackBalls();
 
-  initializeEncounter();
+	initializeEncounter();
 })();
 
 async function loadPokeCsv() {
@@ -1131,7 +1131,7 @@ function onBuyerMouseDown(cellElement) {
 
   updateExpForNextLevelCount();
 
-  navigator.vibrate(150);
+	doVibrate();
 
   cellElement.innerHTML = '<img src="./images/transparent-picture.png" />';
 
@@ -1143,6 +1143,19 @@ function onBuyerMouseDown(cellElement) {
 
   playCry(thisIdentifier);
 }
+
+function initializeVibration() {
+	if (null === window.localStorage.getItem('enable-vibration')) {
+		window.localStorage.setItem('enable-vibration', true);
+	}
+}
+
+function doVibrate() {
+	if ('true' === window.localStorage.getItem('enable-vibration')) {
+		navigator.vibrate(150);
+	}
+}
+
 
 function playEncounter() {
   playSound("pokemon-encounter");
