@@ -2,8 +2,13 @@ function showStats() {
   window.alert(`WxH: ${window.innerWidth}x${window.innerHeight}`);
 }
 
-(async () => {
+function isMobile() {
+  return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+    navigator.userAgent.toLowerCase()
+  );
+}
 
+(async () => {
   window.defaultPokeBallCell = `<img src="./images/poke-ball.png" onclick="onPokeBallCellClick(this)" ondragstart="onPokeBallCellClick(this)" />`;
   window.pokeBallRandomIndexList = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -17,9 +22,9 @@ function showStats() {
     "master-ball",
   ];
 
-	document.addEventListener('imports-loaded', async () => {
-		await loadBasicEvolutionJson();
-		await loadPokeCsv();
+  document.addEventListener("imports-loaded", async () => {
+    await loadBasicEvolutionJson();
+    await loadPokeCsv();
 
     createBuyerCells();
     createBackpackCells();
@@ -43,7 +48,7 @@ function showStats() {
     initializeEncounter();
 
     initializeMouseMoveListener();
-	});
+  });
 })();
 
 async function loadPokeCsv() {
@@ -626,14 +631,20 @@ function updateDisplayCell(
 }
 
 function setFloatingImageCoordinates({ clientX, clientY }) {
-	const floatingImageElement = document.getElementById("floating-image");
-	floatingImageElement.style.left = `${window._recordedMouseMoveEvent.clientX-10}px`;
-	floatingImageElement.style.top = `${window._recordedMouseMoveEvent.clientY}px`;
+  const floatingImageElement = document.getElementById("floating-image");
+  floatingImageElement.style.left = `${
+    window._recordedMouseMoveEvent.clientX - 10
+  }px`;
+  floatingImageElement.style.top = `${window._recordedMouseMoveEvent.clientY}px`;
 }
 
 function initializeMouseMoveListener() {
-	document.addEventListener("mousemove", (e) => {
-		window._recordedMouseMoveEvent = e;
+	if (isMobile()) {
+		return;
+	}
+	
+  document.addEventListener("mousemove", (e) => {
+    window._recordedMouseMoveEvent = e;
 
     if (!window.selectedCellElement) {
       return;
@@ -648,9 +659,9 @@ function initializeMouseMoveListener() {
     const floatingImageElement = document.getElementById("floating-image");
     if (!floatingImageElement.getAttribute("src")) {
       return;
-		}
+    }
 
-		setFloatingImageCoordinates(window._recordedMouseMoveEvent);
+    setFloatingImageCoordinates(window._recordedMouseMoveEvent);
   });
 }
 
@@ -659,11 +670,11 @@ function setFloatingImage(pokemonIdString) {
   floatingImage.setAttribute(
     "src",
     `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIdString}.png`
-	);
+  );
 
-	const mouseMoveEvent = window._recordedMouseMoveEvent;
-	
-	setFloatingImageCoordinates(mouseMoveEvent);
+  const mouseMoveEvent = window._recordedMouseMoveEvent;
+
+  setFloatingImageCoordinates(mouseMoveEvent);
 }
 
 function getPokemonDataByDisplayName(pokemonDisplayName) {
@@ -673,39 +684,56 @@ function getPokemonDataByDisplayName(pokemonDisplayName) {
 }
 
 function setEvolutionChain(cellElement) {
-	const chainIndex = Number.parseInt(cellElement.getAttribute('data-chain-index'), 10);
-	const chainData = window.pokelist[chainIndex];
+  const chainIndex = Number.parseInt(
+    cellElement.getAttribute("data-chain-index"),
+    10
+  );
+  const chainData = window.pokelist[chainIndex];
 
-	const displayNameInCell = cellElement.getAttribute('data-display-name');
+  const displayNameInCell = cellElement.getAttribute("data-display-name");
 
-	let collectEach = [];
-	chainData.list.forEach((eachDisplayName) => {
-		let htmlString = '';
-		if (Array.isArray(eachDisplayName)) {
-			let listInList = [];
-			eachDisplayName.forEach((eachInListInList) => {
-				const pokemonData = getPokemonDataByDisplayName(eachInListInList);
-				listInList.push(`<div title="${eachInListInList}"${getSelectedCellBorderStyle(eachInListInList)}><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png" /></div>`);
-			});
+  let collectEach = [];
+  chainData.list.forEach((eachDisplayName) => {
+    let htmlString = "";
+    if (Array.isArray(eachDisplayName)) {
+      let listInList = [];
+      eachDisplayName.forEach((eachInListInList) => {
+        const pokemonData = getPokemonDataByDisplayName(eachInListInList);
+        listInList.push(
+          `<div title="${eachInListInList}"${getSelectedCellBorderStyle(
+            eachInListInList
+          )}><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+            pokemonData.id
+          }.png" /></div>`
+        );
+      });
 
-			collectEach.push(listInList.join('<span>|</span>'));
-			return;
-		}
+      collectEach.push(listInList.join("<span>|</span>"));
+      return;
+    }
 
-		const pokemonData = getPokemonDataByDisplayName(eachDisplayName);
-		
-		collectEach.push(`<div title="${eachDisplayName}"${getSelectedCellBorderStyle(eachDisplayName)}><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png" /></div>`);
-	})
+    const pokemonData = getPokemonDataByDisplayName(eachDisplayName);
 
-	document.getElementById('evolution-chain').innerHTML = collectEach.join('<div><span> > </span></div>');
+    collectEach.push(
+      `<div title="${eachDisplayName}"${getSelectedCellBorderStyle(
+        eachDisplayName
+      )}><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+        pokemonData.id
+      }.png" /></div>`
+    );
+  });
 
-	function getSelectedCellBorderStyle(displayName) {
-		if (displayNameInCell !== displayName) {
-			return '';
-		}
+  document.getElementById("evolution-chain").innerHTML = collectEach.join(
+    "<div><span> > </span></div>"
+  );
 
-		return ` class="evolution-chain-border-current"`;
-	}
+  function getSelectedCellBorderStyle(displayName) {
+    if (displayNameInCell !== displayName) {
+      return "";
+    }
+
+    return ` class="evolution-chain-border-current"`;
+  }
 }
 
 function setSelectedCell(cellElement) {
@@ -715,17 +743,15 @@ function setSelectedCell(cellElement) {
   cellElement.classList.add("selected-cell");
 
   document.getElementById("evolution-chain").innerText =
-		cellElement.getAttribute("data-evolution-chain-string");
-	
-	setEvolutionChain(cellElement);
-	
+    cellElement.getAttribute("data-evolution-chain-string");
+
+  setEvolutionChain(cellElement);
+
   document
     .getElementById("left-box-evolution-chain")
     .setAttribute("data-show-that", "show");
 
-		setFloatingImage(cellElement.getAttribute(
-      "data-pokemon-id"
-    ));
+  !isMobile() && setFloatingImage(cellElement.getAttribute("data-pokemon-id"));
 
   if (
     cellElement.getAttribute("data-evolution-count") !==
@@ -893,7 +919,7 @@ function onPokeBallCellClick(imgElement, pokeBallIndex) {
   increaseCurrentGold(-dataClickPrice);
 
   const parentElement = imgElement.parentElement;
-	randomizeBackpackCell(parentElement, pokeBallIndex);
+  randomizeBackpackCell(parentElement, pokeBallIndex);
   // setSelectedCell(parentElement);
   playSound("pokeball-open-sound");
 }
@@ -1078,7 +1104,8 @@ function clearAllHighlight() {
 }
 
 function clearSelectedCell() {
-	document.getElementById("floating-image").removeAttribute('src');
+	document.getElementById("floating-image").removeAttribute("src");
+	
   if (window.selectedCellElement) {
     window.selectedCellElement.classList.remove("selected-cell");
     window.selectedCellElement = null;
@@ -1292,7 +1319,7 @@ function playEncounter() {
 }
 
 function decorateBuyerCell(cellElement, pokemonDisplayName) {
-	const pokemonData = getPokemonDataByDisplayName(pokemonDisplayName);
+  const pokemonData = getPokemonDataByDisplayName(pokemonDisplayName);
 
   if (!pokemonData) {
     console.error(`No data for ${pokemonDisplayName}`);
