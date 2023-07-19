@@ -766,6 +766,7 @@ img.poke-dollar {
 
 	.a-cell {
 		max-width: 110%;
+		border-width: 3px;
 	}
 }
 

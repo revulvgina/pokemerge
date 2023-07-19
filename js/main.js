@@ -447,23 +447,6 @@ function randomizeBackpackCell(cellElement, pokeBallIndex) {
   cellElement.setAttribute("data-display-name", pokemonDisplayName);
 
 	decorateBackpackCell(cellElement, pokemonDisplayName, evolutionCount);
-	
-	
-	// let { pokemonDisplayName, chainData, evolutionIndex } =
-  //   getChainData(pokeBallIndex);
-
-  // cellElement.setAttribute("data-chain-index", 66);
-  // cellElement.setAttribute("data-chain-length", 2);
-  // cellElement.setAttribute(
-  //   "data-evolution-chain-string",
-  //   getChainStringFromChainDataArray(chainData.list)
-  // );
-
-  // const evolutionCount = 1;
-
-  // cellElement.setAttribute("data-display-name", "Eevee");
-
-  // decorateBackpackCell(cellElement, "Eevee", evolutionCount);
 }
 
 function updateExpForNextLevelElement() {
