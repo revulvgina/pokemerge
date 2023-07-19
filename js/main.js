@@ -75,7 +75,7 @@ function createBuyerCells() {
   for (let i = 0; i < 5; i += 1) {
     const eachBuyerCell = document.createElement("div");
     eachBuyerCell.id = `buyer-${i}`;
-    eachBuyerCell.classList.add("no-highlight");
+    eachBuyerCell.classList.add("no-highlight", "a-cell");
     eachBuyerCell.innerHTML = `<img src="./images/transparent-picture.png" />`;
     buyersGrid.appendChild(eachBuyerCell);
   }
@@ -87,7 +87,7 @@ function createBackpackCells() {
   for (let i = 0; i < 25; i += 1) {
     const eachBackpackCell = document.createElement("div");
     eachBackpackCell.id = `shuffled-cell-${i}`;
-    eachBackpackCell.classList.add("backpack-0", "no-highlight");
+    eachBackpackCell.classList.add("backpack-0", "no-highlight", "a-cell");
     eachBackpackCell.innerHTML = `<img src="./images/transparent-picture.png" />`;
     backpackGrid.appendChild(eachBackpackCell);
   }
@@ -446,7 +446,24 @@ function randomizeBackpackCell(cellElement, pokeBallIndex) {
 
   cellElement.setAttribute("data-display-name", pokemonDisplayName);
 
-  decorateBackpackCell(cellElement, pokemonDisplayName, evolutionCount);
+	decorateBackpackCell(cellElement, pokemonDisplayName, evolutionCount);
+	
+	
+	// let { pokemonDisplayName, chainData, evolutionIndex } =
+  //   getChainData(pokeBallIndex);
+
+  // cellElement.setAttribute("data-chain-index", 66);
+  // cellElement.setAttribute("data-chain-length", 2);
+  // cellElement.setAttribute(
+  //   "data-evolution-chain-string",
+  //   getChainStringFromChainDataArray(chainData.list)
+  // );
+
+  // const evolutionCount = 1;
+
+  // cellElement.setAttribute("data-display-name", "Eevee");
+
+  // decorateBackpackCell(cellElement, "Eevee", evolutionCount);
 }
 
 function updateExpForNextLevelElement() {
@@ -642,7 +659,7 @@ function initializeMouseMoveListener() {
 	if (isMobile()) {
 		return;
 	}
-	
+
   document.addEventListener("mousemove", (e) => {
     window._recordedMouseMoveEvent = e;
 
@@ -751,7 +768,9 @@ function setSelectedCell(cellElement) {
     .getElementById("left-box-evolution-chain")
     .setAttribute("data-show-that", "show");
 
-  !isMobile() && setFloatingImage(cellElement.getAttribute("data-pokemon-id"));
+	if (!isMobile()) {
+		setFloatingImage(cellElement.getAttribute("data-pokemon-id"));
+	}
 
   if (
     cellElement.getAttribute("data-evolution-count") !==
