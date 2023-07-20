@@ -23,15 +23,6 @@
     }
   };
 
-  window.loadPokeCsv = async () => {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/revulvgina/pokemerge/master/csv/pokemon.csv"
-    );
-    const text = await response.text();
-
-    window.pokeCsv = csvToArray(text, ",");
-  };
-
   window.adjustEncounterDisplay = () => {
     const { offsetWidth, offsetHeight } =
       document.querySelector("div.backpack-grid");
@@ -220,12 +211,6 @@
           : eachInList === displayName
       )
     );
-  };
-
-  window.getRandomItem = (listOfItems) => {
-    const totalItems = listOfItems.length;
-
-    return listOfItems[Math.floor(Math.random() * totalItems)];
   };
 
   window.getChainData = (pokeBallIndex) => {

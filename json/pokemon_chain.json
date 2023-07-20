@@ -1,0 +1,9526 @@
+[
+	{
+			"evolution_chain_id": "1",
+			"list": [
+					{
+							"id": "1",
+							"identifier": "bulbasaur",
+							"list": [
+									{
+											"id": "2",
+											"identifier": "ivysaur",
+											"evolves_from_species_id": "1",
+											"list": [
+													{
+															"id": "3",
+															"identifier": "venusaur",
+															"evolves_from_species_id": "2",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "2",
+			"list": [
+					{
+							"id": "4",
+							"identifier": "charmander",
+							"list": [
+									{
+											"id": "5",
+											"identifier": "charmeleon",
+											"evolves_from_species_id": "4",
+											"list": [
+													{
+															"id": "6",
+															"identifier": "charizard",
+															"evolves_from_species_id": "5",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "3",
+			"list": [
+					{
+							"id": "7",
+							"identifier": "squirtle",
+							"list": [
+									{
+											"id": "8",
+											"identifier": "wartortle",
+											"evolves_from_species_id": "7",
+											"list": [
+													{
+															"id": "9",
+															"identifier": "blastoise",
+															"evolves_from_species_id": "8",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "4",
+			"list": [
+					{
+							"id": "10",
+							"identifier": "caterpie",
+							"list": [
+									{
+											"id": "11",
+											"identifier": "metapod",
+											"evolves_from_species_id": "10",
+											"list": [
+													{
+															"id": "12",
+															"identifier": "butterfree",
+															"evolves_from_species_id": "11",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "5",
+			"list": [
+					{
+							"id": "13",
+							"identifier": "weedle",
+							"list": [
+									{
+											"id": "14",
+											"identifier": "kakuna",
+											"evolves_from_species_id": "13",
+											"list": [
+													{
+															"id": "15",
+															"identifier": "beedrill",
+															"evolves_from_species_id": "14",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "6",
+			"list": [
+					{
+							"id": "16",
+							"identifier": "pidgey",
+							"list": [
+									{
+											"id": "17",
+											"identifier": "pidgeotto",
+											"evolves_from_species_id": "16",
+											"list": [
+													{
+															"id": "18",
+															"identifier": "pidgeot",
+															"evolves_from_species_id": "17",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "7",
+			"list": [
+					{
+							"id": "19",
+							"identifier": "rattata",
+							"list": [
+									{
+											"id": "20",
+											"identifier": "raticate",
+											"evolves_from_species_id": "19",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "8",
+			"list": [
+					{
+							"id": "21",
+							"identifier": "spearow",
+							"list": [
+									{
+											"id": "22",
+											"identifier": "fearow",
+											"evolves_from_species_id": "21",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "9",
+			"list": [
+					{
+							"id": "23",
+							"identifier": "ekans",
+							"list": [
+									{
+											"id": "24",
+											"identifier": "arbok",
+											"evolves_from_species_id": "23",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "10",
+			"list": [
+					{
+							"id": "25",
+							"identifier": "pikachu",
+							"list": [
+									{
+											"id": "26",
+											"identifier": "raichu",
+											"evolves_from_species_id": "25",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "172",
+											"identifier": "pichu",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "11",
+			"list": [
+					{
+							"id": "27",
+							"identifier": "sandshrew",
+							"list": [
+									{
+											"id": "28",
+											"identifier": "sandslash",
+											"evolves_from_species_id": "27",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "12",
+			"list": [
+					{
+							"id": "29",
+							"identifier": "nidoran-f",
+							"list": [
+									{
+											"id": "30",
+											"identifier": "nidorina",
+											"evolves_from_species_id": "29",
+											"list": [
+													{
+															"id": "31",
+															"identifier": "nidoqueen",
+															"evolves_from_species_id": "30",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "13",
+			"list": [
+					{
+							"id": "32",
+							"identifier": "nidoran-m",
+							"list": [
+									{
+											"id": "33",
+											"identifier": "nidorino",
+											"evolves_from_species_id": "32",
+											"list": [
+													{
+															"id": "34",
+															"identifier": "nidoking",
+															"evolves_from_species_id": "33",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "14",
+			"list": [
+					{
+							"id": "35",
+							"identifier": "clefairy",
+							"list": [
+									{
+											"id": "36",
+											"identifier": "clefable",
+											"evolves_from_species_id": "35",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "173",
+											"identifier": "cleffa",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "15",
+			"list": [
+					{
+							"id": "37",
+							"identifier": "vulpix",
+							"list": [
+									{
+											"id": "38",
+											"identifier": "ninetales",
+											"evolves_from_species_id": "37",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "16",
+			"list": [
+					{
+							"id": "39",
+							"identifier": "jigglypuff",
+							"list": [
+									{
+											"id": "40",
+											"identifier": "wigglytuff",
+											"evolves_from_species_id": "39",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "174",
+											"identifier": "igglybuff",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "17",
+			"list": [
+					{
+							"id": "41",
+							"identifier": "zubat",
+							"list": [
+									{
+											"id": "42",
+											"identifier": "golbat",
+											"evolves_from_species_id": "41",
+											"list": [
+													{
+															"id": "169",
+															"identifier": "crobat",
+															"evolves_from_species_id": "42",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "18",
+			"list": [
+					{
+							"id": "43",
+							"identifier": "oddish",
+							"list": [
+									{
+											"id": "44",
+											"identifier": "gloom",
+											"evolves_from_species_id": "43",
+											"list": [
+													{
+															"id": "45",
+															"identifier": "vileplume",
+															"evolves_from_species_id": "44",
+															"in": "3rd evolution"
+													},
+													{
+															"id": "182",
+															"identifier": "bellossom",
+															"evolves_from_species_id": "44",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "19",
+			"list": [
+					{
+							"id": "46",
+							"identifier": "paras",
+							"list": [
+									{
+											"id": "47",
+											"identifier": "parasect",
+											"evolves_from_species_id": "46",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "20",
+			"list": [
+					{
+							"id": "48",
+							"identifier": "venonat",
+							"list": [
+									{
+											"id": "49",
+											"identifier": "venomoth",
+											"evolves_from_species_id": "48",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "21",
+			"list": [
+					{
+							"id": "50",
+							"identifier": "diglett",
+							"list": [
+									{
+											"id": "51",
+											"identifier": "dugtrio",
+											"evolves_from_species_id": "50",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "22",
+			"list": [
+					{
+							"id": "52",
+							"identifier": "meowth",
+							"list": [
+									{
+											"id": "53",
+											"identifier": "persian",
+											"evolves_from_species_id": "52",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "863",
+											"identifier": "perrserker",
+											"evolves_from_species_id": "52",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "23",
+			"list": [
+					{
+							"id": "54",
+							"identifier": "psyduck",
+							"list": [
+									{
+											"id": "55",
+											"identifier": "golduck",
+											"evolves_from_species_id": "54",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "24",
+			"list": [
+					{
+							"id": "56",
+							"identifier": "mankey",
+							"list": [
+									{
+											"id": "57",
+											"identifier": "primeape",
+											"evolves_from_species_id": "56",
+											"list": [
+													{
+															"id": "979",
+															"identifier": "annihilape",
+															"evolves_from_species_id": "57",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "25",
+			"list": [
+					{
+							"id": "58",
+							"identifier": "growlithe",
+							"list": [
+									{
+											"id": "59",
+											"identifier": "arcanine",
+											"evolves_from_species_id": "58",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "26",
+			"list": [
+					{
+							"id": "60",
+							"identifier": "poliwag",
+							"list": [
+									{
+											"id": "61",
+											"identifier": "poliwhirl",
+											"evolves_from_species_id": "60",
+											"list": [
+													{
+															"id": "62",
+															"identifier": "poliwrath",
+															"evolves_from_species_id": "61",
+															"in": "3rd evolution"
+													},
+													{
+															"id": "186",
+															"identifier": "politoed",
+															"evolves_from_species_id": "61",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "27",
+			"list": [
+					{
+							"id": "63",
+							"identifier": "abra",
+							"list": [
+									{
+											"id": "64",
+											"identifier": "kadabra",
+											"evolves_from_species_id": "63",
+											"list": [
+													{
+															"id": "65",
+															"identifier": "alakazam",
+															"evolves_from_species_id": "64",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "28",
+			"list": [
+					{
+							"id": "66",
+							"identifier": "machop",
+							"list": [
+									{
+											"id": "67",
+											"identifier": "machoke",
+											"evolves_from_species_id": "66",
+											"list": [
+													{
+															"id": "68",
+															"identifier": "machamp",
+															"evolves_from_species_id": "67",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "29",
+			"list": [
+					{
+							"id": "69",
+							"identifier": "bellsprout",
+							"list": [
+									{
+											"id": "70",
+											"identifier": "weepinbell",
+											"evolves_from_species_id": "69",
+											"list": [
+													{
+															"id": "71",
+															"identifier": "victreebel",
+															"evolves_from_species_id": "70",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "30",
+			"list": [
+					{
+							"id": "72",
+							"identifier": "tentacool",
+							"list": [
+									{
+											"id": "73",
+											"identifier": "tentacruel",
+											"evolves_from_species_id": "72",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "31",
+			"list": [
+					{
+							"id": "74",
+							"identifier": "geodude",
+							"list": [
+									{
+											"id": "75",
+											"identifier": "graveler",
+											"evolves_from_species_id": "74",
+											"list": [
+													{
+															"id": "76",
+															"identifier": "golem",
+															"evolves_from_species_id": "75",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "32",
+			"list": [
+					{
+							"id": "77",
+							"identifier": "ponyta",
+							"list": [
+									{
+											"id": "78",
+											"identifier": "rapidash",
+											"evolves_from_species_id": "77",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "33",
+			"list": [
+					{
+							"id": "79",
+							"identifier": "slowpoke",
+							"list": [
+									{
+											"id": "80",
+											"identifier": "slowbro",
+											"evolves_from_species_id": "79",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "199",
+											"identifier": "slowking",
+											"evolves_from_species_id": "79",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "34",
+			"list": [
+					{
+							"id": "81",
+							"identifier": "magnemite",
+							"list": [
+									{
+											"id": "82",
+											"identifier": "magneton",
+											"evolves_from_species_id": "81",
+											"list": [
+													{
+															"id": "462",
+															"identifier": "magnezone",
+															"evolves_from_species_id": "82",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "35",
+			"list": [
+					{
+							"id": "83",
+							"identifier": "farfetchd",
+							"list": [
+									{
+											"id": "865",
+											"identifier": "sirfetchd",
+											"evolves_from_species_id": "83",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "36",
+			"list": [
+					{
+							"id": "84",
+							"identifier": "doduo",
+							"list": [
+									{
+											"id": "85",
+											"identifier": "dodrio",
+											"evolves_from_species_id": "84",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "37",
+			"list": [
+					{
+							"id": "86",
+							"identifier": "seel",
+							"list": [
+									{
+											"id": "87",
+											"identifier": "dewgong",
+											"evolves_from_species_id": "86",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "38",
+			"list": [
+					{
+							"id": "88",
+							"identifier": "grimer",
+							"list": [
+									{
+											"id": "89",
+											"identifier": "muk",
+											"evolves_from_species_id": "88",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "39",
+			"list": [
+					{
+							"id": "90",
+							"identifier": "shellder",
+							"list": [
+									{
+											"id": "91",
+											"identifier": "cloyster",
+											"evolves_from_species_id": "90",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "40",
+			"list": [
+					{
+							"id": "92",
+							"identifier": "gastly",
+							"list": [
+									{
+											"id": "93",
+											"identifier": "haunter",
+											"evolves_from_species_id": "92",
+											"list": [
+													{
+															"id": "94",
+															"identifier": "gengar",
+															"evolves_from_species_id": "93",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "41",
+			"list": [
+					{
+							"id": "95",
+							"identifier": "onix",
+							"list": [
+									{
+											"id": "208",
+											"identifier": "steelix",
+											"evolves_from_species_id": "95",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "42",
+			"list": [
+					{
+							"id": "96",
+							"identifier": "drowzee",
+							"list": [
+									{
+											"id": "97",
+											"identifier": "hypno",
+											"evolves_from_species_id": "96",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "43",
+			"list": [
+					{
+							"id": "98",
+							"identifier": "krabby",
+							"list": [
+									{
+											"id": "99",
+											"identifier": "kingler",
+											"evolves_from_species_id": "98",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "44",
+			"list": [
+					{
+							"id": "100",
+							"identifier": "voltorb",
+							"list": [
+									{
+											"id": "101",
+											"identifier": "electrode",
+											"evolves_from_species_id": "100",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "45",
+			"list": [
+					{
+							"id": "102",
+							"identifier": "exeggcute",
+							"list": [
+									{
+											"id": "103",
+											"identifier": "exeggutor",
+											"evolves_from_species_id": "102",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "46",
+			"list": [
+					{
+							"id": "104",
+							"identifier": "cubone",
+							"list": [
+									{
+											"id": "105",
+											"identifier": "marowak",
+											"evolves_from_species_id": "104",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "47",
+			"list": [
+					{
+							"id": "106",
+							"identifier": "hitmonlee",
+							"list": [
+									{
+											"id": "107",
+											"identifier": "hitmonchan",
+											"evolves_from_species_id": "236",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "236",
+											"identifier": "tyrogue",
+											"evolves_from_species_id": "",
+											"list": [
+													{
+															"id": "237",
+															"identifier": "hitmontop",
+															"evolves_from_species_id": "236",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "48",
+			"list": [
+					{
+							"id": "108",
+							"identifier": "lickitung",
+							"list": [
+									{
+											"id": "463",
+											"identifier": "lickilicky",
+											"evolves_from_species_id": "108",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "49",
+			"list": [
+					{
+							"id": "109",
+							"identifier": "koffing",
+							"list": [
+									{
+											"id": "110",
+											"identifier": "weezing",
+											"evolves_from_species_id": "109",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "50",
+			"list": [
+					{
+							"id": "111",
+							"identifier": "rhyhorn",
+							"list": [
+									{
+											"id": "112",
+											"identifier": "rhydon",
+											"evolves_from_species_id": "111",
+											"list": [
+													{
+															"id": "464",
+															"identifier": "rhyperior",
+															"evolves_from_species_id": "112",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "51",
+			"list": [
+					{
+							"id": "113",
+							"identifier": "chansey",
+							"list": [
+									{
+											"id": "242",
+											"identifier": "blissey",
+											"evolves_from_species_id": "113",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "440",
+											"identifier": "happiny",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "52",
+			"list": [
+					{
+							"id": "114",
+							"identifier": "tangela",
+							"list": [
+									{
+											"id": "465",
+											"identifier": "tangrowth",
+											"evolves_from_species_id": "114",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "53",
+			"list": [
+					{
+							"id": "115",
+							"identifier": "kangaskhan",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "54",
+			"list": [
+					{
+							"id": "116",
+							"identifier": "horsea",
+							"list": [
+									{
+											"id": "117",
+											"identifier": "seadra",
+											"evolves_from_species_id": "116",
+											"list": [
+													{
+															"id": "230",
+															"identifier": "kingdra",
+															"evolves_from_species_id": "117",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "55",
+			"list": [
+					{
+							"id": "118",
+							"identifier": "goldeen",
+							"list": [
+									{
+											"id": "119",
+											"identifier": "seaking",
+											"evolves_from_species_id": "118",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "56",
+			"list": [
+					{
+							"id": "120",
+							"identifier": "staryu",
+							"list": [
+									{
+											"id": "121",
+											"identifier": "starmie",
+											"evolves_from_species_id": "120",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "57",
+			"list": [
+					{
+							"id": "122",
+							"identifier": "mr-mime",
+							"list": [
+									{
+											"id": "439",
+											"identifier": "mime-jr",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "866",
+											"identifier": "mr-rime",
+											"evolves_from_species_id": "122",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "58",
+			"list": [
+					{
+							"id": "123",
+							"identifier": "scyther",
+							"list": [
+									{
+											"id": "212",
+											"identifier": "scizor",
+											"evolves_from_species_id": "123",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "900",
+											"identifier": "kleavor",
+											"evolves_from_species_id": "123",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "59",
+			"list": [
+					{
+							"id": "124",
+							"identifier": "jynx",
+							"list": [
+									{
+											"id": "238",
+											"identifier": "smoochum",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "60",
+			"list": [
+					{
+							"id": "125",
+							"identifier": "electabuzz",
+							"list": [
+									{
+											"id": "239",
+											"identifier": "elekid",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "466",
+											"identifier": "electivire",
+											"evolves_from_species_id": "125",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "61",
+			"list": [
+					{
+							"id": "126",
+							"identifier": "magmar",
+							"list": [
+									{
+											"id": "240",
+											"identifier": "magby",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "467",
+											"identifier": "magmortar",
+											"evolves_from_species_id": "126",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "62",
+			"list": [
+					{
+							"id": "127",
+							"identifier": "pinsir",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "63",
+			"list": [
+					{
+							"id": "128",
+							"identifier": "tauros",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "64",
+			"list": [
+					{
+							"id": "129",
+							"identifier": "magikarp",
+							"list": [
+									{
+											"id": "130",
+											"identifier": "gyarados",
+											"evolves_from_species_id": "129",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "65",
+			"list": [
+					{
+							"id": "131",
+							"identifier": "lapras",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "66",
+			"list": [
+					{
+							"id": "132",
+							"identifier": "ditto",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "67",
+			"list": [
+					{
+							"id": "133",
+							"identifier": "eevee",
+							"list": [
+									{
+											"id": "134",
+											"identifier": "vaporeon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "135",
+											"identifier": "jolteon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "136",
+											"identifier": "flareon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "196",
+											"identifier": "espeon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "197",
+											"identifier": "umbreon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "470",
+											"identifier": "leafeon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "471",
+											"identifier": "glaceon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "700",
+											"identifier": "sylveon",
+											"evolves_from_species_id": "133",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "68",
+			"list": [
+					{
+							"id": "137",
+							"identifier": "porygon",
+							"list": [
+									{
+											"id": "233",
+											"identifier": "porygon2",
+											"evolves_from_species_id": "137",
+											"list": [
+													{
+															"id": "474",
+															"identifier": "porygon-z",
+															"evolves_from_species_id": "233",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "69",
+			"list": [
+					{
+							"id": "138",
+							"identifier": "omanyte",
+							"list": [
+									{
+											"id": "139",
+											"identifier": "omastar",
+											"evolves_from_species_id": "138",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "70",
+			"list": [
+					{
+							"id": "140",
+							"identifier": "kabuto",
+							"list": [
+									{
+											"id": "141",
+											"identifier": "kabutops",
+											"evolves_from_species_id": "140",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "71",
+			"list": [
+					{
+							"id": "142",
+							"identifier": "aerodactyl",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "72",
+			"list": [
+					{
+							"id": "143",
+							"identifier": "snorlax",
+							"list": [
+									{
+											"id": "446",
+											"identifier": "munchlax",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "73",
+			"list": [
+					{
+							"id": "144",
+							"identifier": "articuno",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "74",
+			"list": [
+					{
+							"id": "145",
+							"identifier": "zapdos",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "75",
+			"list": [
+					{
+							"id": "146",
+							"identifier": "moltres",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "76",
+			"list": [
+					{
+							"id": "147",
+							"identifier": "dratini",
+							"list": [
+									{
+											"id": "148",
+											"identifier": "dragonair",
+											"evolves_from_species_id": "147",
+											"list": [
+													{
+															"id": "149",
+															"identifier": "dragonite",
+															"evolves_from_species_id": "148",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "77",
+			"list": [
+					{
+							"id": "150",
+							"identifier": "mewtwo",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "78",
+			"list": [
+					{
+							"id": "151",
+							"identifier": "mew",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "79",
+			"list": [
+					{
+							"id": "152",
+							"identifier": "chikorita",
+							"list": [
+									{
+											"id": "153",
+											"identifier": "bayleef",
+											"evolves_from_species_id": "152",
+											"list": [
+													{
+															"id": "154",
+															"identifier": "meganium",
+															"evolves_from_species_id": "153",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "80",
+			"list": [
+					{
+							"id": "155",
+							"identifier": "cyndaquil",
+							"list": [
+									{
+											"id": "156",
+											"identifier": "quilava",
+											"evolves_from_species_id": "155",
+											"list": [
+													{
+															"id": "157",
+															"identifier": "typhlosion",
+															"evolves_from_species_id": "156",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "81",
+			"list": [
+					{
+							"id": "158",
+							"identifier": "totodile",
+							"list": [
+									{
+											"id": "159",
+											"identifier": "croconaw",
+											"evolves_from_species_id": "158",
+											"list": [
+													{
+															"id": "160",
+															"identifier": "feraligatr",
+															"evolves_from_species_id": "159",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "82",
+			"list": [
+					{
+							"id": "161",
+							"identifier": "sentret",
+							"list": [
+									{
+											"id": "162",
+											"identifier": "furret",
+											"evolves_from_species_id": "161",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "83",
+			"list": [
+					{
+							"id": "163",
+							"identifier": "hoothoot",
+							"list": [
+									{
+											"id": "164",
+											"identifier": "noctowl",
+											"evolves_from_species_id": "163",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "84",
+			"list": [
+					{
+							"id": "165",
+							"identifier": "ledyba",
+							"list": [
+									{
+											"id": "166",
+											"identifier": "ledian",
+											"evolves_from_species_id": "165",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "85",
+			"list": [
+					{
+							"id": "167",
+							"identifier": "spinarak",
+							"list": [
+									{
+											"id": "168",
+											"identifier": "ariados",
+											"evolves_from_species_id": "167",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "86",
+			"list": [
+					{
+							"id": "170",
+							"identifier": "chinchou",
+							"list": [
+									{
+											"id": "171",
+											"identifier": "lanturn",
+											"evolves_from_species_id": "170",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "87",
+			"list": [
+					{
+							"id": "175",
+							"identifier": "togepi",
+							"list": [
+									{
+											"id": "176",
+											"identifier": "togetic",
+											"evolves_from_species_id": "175",
+											"list": [
+													{
+															"id": "468",
+															"identifier": "togekiss",
+															"evolves_from_species_id": "176",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "88",
+			"list": [
+					{
+							"id": "177",
+							"identifier": "natu",
+							"list": [
+									{
+											"id": "178",
+											"identifier": "xatu",
+											"evolves_from_species_id": "177",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "89",
+			"list": [
+					{
+							"id": "179",
+							"identifier": "mareep",
+							"list": [
+									{
+											"id": "180",
+											"identifier": "flaaffy",
+											"evolves_from_species_id": "179",
+											"list": [
+													{
+															"id": "181",
+															"identifier": "ampharos",
+															"evolves_from_species_id": "180",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "90",
+			"list": [
+					{
+							"id": "183",
+							"identifier": "marill",
+							"list": [
+									{
+											"id": "184",
+											"identifier": "azumarill",
+											"evolves_from_species_id": "183",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "298",
+											"identifier": "azurill",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "91",
+			"list": [
+					{
+							"id": "185",
+							"identifier": "sudowoodo",
+							"list": [
+									{
+											"id": "438",
+											"identifier": "bonsly",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "92",
+			"list": [
+					{
+							"id": "187",
+							"identifier": "hoppip",
+							"list": [
+									{
+											"id": "188",
+											"identifier": "skiploom",
+											"evolves_from_species_id": "187",
+											"list": [
+													{
+															"id": "189",
+															"identifier": "jumpluff",
+															"evolves_from_species_id": "188",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "93",
+			"list": [
+					{
+							"id": "190",
+							"identifier": "aipom",
+							"list": [
+									{
+											"id": "424",
+											"identifier": "ambipom",
+											"evolves_from_species_id": "190",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "94",
+			"list": [
+					{
+							"id": "191",
+							"identifier": "sunkern",
+							"list": [
+									{
+											"id": "192",
+											"identifier": "sunflora",
+											"evolves_from_species_id": "191",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "95",
+			"list": [
+					{
+							"id": "193",
+							"identifier": "yanma",
+							"list": [
+									{
+											"id": "469",
+											"identifier": "yanmega",
+											"evolves_from_species_id": "193",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "96",
+			"list": [
+					{
+							"id": "194",
+							"identifier": "wooper",
+							"list": [
+									{
+											"id": "195",
+											"identifier": "quagsire",
+											"evolves_from_species_id": "194",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "980",
+											"identifier": "clodsire",
+											"evolves_from_species_id": "194",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "97",
+			"list": [
+					{
+							"id": "198",
+							"identifier": "murkrow",
+							"list": [
+									{
+											"id": "430",
+											"identifier": "honchkrow",
+											"evolves_from_species_id": "198",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "98",
+			"list": [
+					{
+							"id": "200",
+							"identifier": "misdreavus",
+							"list": [
+									{
+											"id": "429",
+											"identifier": "mismagius",
+											"evolves_from_species_id": "200",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "99",
+			"list": [
+					{
+							"id": "201",
+							"identifier": "unown",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "100",
+			"list": [
+					{
+							"id": "202",
+							"identifier": "wobbuffet",
+							"list": [
+									{
+											"id": "360",
+											"identifier": "wynaut",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "101",
+			"list": [
+					{
+							"id": "203",
+							"identifier": "girafarig",
+							"list": [
+									{
+											"id": "981",
+											"identifier": "farigiraf",
+											"evolves_from_species_id": "203",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "102",
+			"list": [
+					{
+							"id": "204",
+							"identifier": "pineco",
+							"list": [
+									{
+											"id": "205",
+											"identifier": "forretress",
+											"evolves_from_species_id": "204",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "103",
+			"list": [
+					{
+							"id": "206",
+							"identifier": "dunsparce",
+							"list": [
+									{
+											"id": "982",
+											"identifier": "dudunsparce",
+											"evolves_from_species_id": "206",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "104",
+			"list": [
+					{
+							"id": "207",
+							"identifier": "gligar",
+							"list": [
+									{
+											"id": "472",
+											"identifier": "gliscor",
+											"evolves_from_species_id": "207",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "105",
+			"list": [
+					{
+							"id": "209",
+							"identifier": "snubbull",
+							"list": [
+									{
+											"id": "210",
+											"identifier": "granbull",
+											"evolves_from_species_id": "209",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "106",
+			"list": [
+					{
+							"id": "211",
+							"identifier": "qwilfish",
+							"list": [
+									{
+											"id": "904",
+											"identifier": "overqwil",
+											"evolves_from_species_id": "211",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "107",
+			"list": [
+					{
+							"id": "213",
+							"identifier": "shuckle",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "108",
+			"list": [
+					{
+							"id": "214",
+							"identifier": "heracross",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "109",
+			"list": [
+					{
+							"id": "215",
+							"identifier": "sneasel",
+							"list": [
+									{
+											"id": "461",
+											"identifier": "weavile",
+											"evolves_from_species_id": "215",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "903",
+											"identifier": "sneasler",
+											"evolves_from_species_id": "215",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "110",
+			"list": [
+					{
+							"id": "216",
+							"identifier": "teddiursa",
+							"list": [
+									{
+											"id": "217",
+											"identifier": "ursaring",
+											"evolves_from_species_id": "216",
+											"list": [
+													{
+															"id": "901",
+															"identifier": "ursaluna",
+															"evolves_from_species_id": "217",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "111",
+			"list": [
+					{
+							"id": "218",
+							"identifier": "slugma",
+							"list": [
+									{
+											"id": "219",
+											"identifier": "magcargo",
+											"evolves_from_species_id": "218",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "112",
+			"list": [
+					{
+							"id": "220",
+							"identifier": "swinub",
+							"list": [
+									{
+											"id": "221",
+											"identifier": "piloswine",
+											"evolves_from_species_id": "220",
+											"list": [
+													{
+															"id": "473",
+															"identifier": "mamoswine",
+															"evolves_from_species_id": "221",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "113",
+			"list": [
+					{
+							"id": "222",
+							"identifier": "corsola",
+							"list": [
+									{
+											"id": "864",
+											"identifier": "cursola",
+											"evolves_from_species_id": "222",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "114",
+			"list": [
+					{
+							"id": "223",
+							"identifier": "remoraid",
+							"list": [
+									{
+											"id": "224",
+											"identifier": "octillery",
+											"evolves_from_species_id": "223",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "115",
+			"list": [
+					{
+							"id": "225",
+							"identifier": "delibird",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "116",
+			"list": [
+					{
+							"id": "226",
+							"identifier": "mantine",
+							"list": [
+									{
+											"id": "458",
+											"identifier": "mantyke",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "117",
+			"list": [
+					{
+							"id": "227",
+							"identifier": "skarmory",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "118",
+			"list": [
+					{
+							"id": "228",
+							"identifier": "houndour",
+							"list": [
+									{
+											"id": "229",
+											"identifier": "houndoom",
+											"evolves_from_species_id": "228",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "119",
+			"list": [
+					{
+							"id": "231",
+							"identifier": "phanpy",
+							"list": [
+									{
+											"id": "232",
+											"identifier": "donphan",
+											"evolves_from_species_id": "231",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "120",
+			"list": [
+					{
+							"id": "234",
+							"identifier": "stantler",
+							"list": [
+									{
+											"id": "899",
+											"identifier": "wyrdeer",
+											"evolves_from_species_id": "234",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "121",
+			"list": [
+					{
+							"id": "235",
+							"identifier": "smeargle",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "122",
+			"list": [
+					{
+							"id": "241",
+							"identifier": "miltank",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "123",
+			"list": [
+					{
+							"id": "243",
+							"identifier": "raikou",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "124",
+			"list": [
+					{
+							"id": "244",
+							"identifier": "entei",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "125",
+			"list": [
+					{
+							"id": "245",
+							"identifier": "suicune",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "126",
+			"list": [
+					{
+							"id": "246",
+							"identifier": "larvitar",
+							"list": [
+									{
+											"id": "247",
+											"identifier": "pupitar",
+											"evolves_from_species_id": "246",
+											"list": [
+													{
+															"id": "248",
+															"identifier": "tyranitar",
+															"evolves_from_species_id": "247",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "127",
+			"list": [
+					{
+							"id": "249",
+							"identifier": "lugia",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "128",
+			"list": [
+					{
+							"id": "250",
+							"identifier": "ho-oh",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "129",
+			"list": [
+					{
+							"id": "251",
+							"identifier": "celebi",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "130",
+			"list": [
+					{
+							"id": "252",
+							"identifier": "treecko",
+							"list": [
+									{
+											"id": "253",
+											"identifier": "grovyle",
+											"evolves_from_species_id": "252",
+											"list": [
+													{
+															"id": "254",
+															"identifier": "sceptile",
+															"evolves_from_species_id": "253",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "131",
+			"list": [
+					{
+							"id": "255",
+							"identifier": "torchic",
+							"list": [
+									{
+											"id": "256",
+											"identifier": "combusken",
+											"evolves_from_species_id": "255",
+											"list": [
+													{
+															"id": "257",
+															"identifier": "blaziken",
+															"evolves_from_species_id": "256",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "132",
+			"list": [
+					{
+							"id": "258",
+							"identifier": "mudkip",
+							"list": [
+									{
+											"id": "259",
+											"identifier": "marshtomp",
+											"evolves_from_species_id": "258",
+											"list": [
+													{
+															"id": "260",
+															"identifier": "swampert",
+															"evolves_from_species_id": "259",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "133",
+			"list": [
+					{
+							"id": "261",
+							"identifier": "poochyena",
+							"list": [
+									{
+											"id": "262",
+											"identifier": "mightyena",
+											"evolves_from_species_id": "261",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "134",
+			"list": [
+					{
+							"id": "263",
+							"identifier": "zigzagoon",
+							"list": [
+									{
+											"id": "264",
+											"identifier": "linoone",
+											"evolves_from_species_id": "263",
+											"list": [
+													{
+															"id": "862",
+															"identifier": "obstagoon",
+															"evolves_from_species_id": "264",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "135",
+			"list": [
+					{
+							"id": "265",
+							"identifier": "wurmple",
+							"list": [
+									{
+											"id": "266",
+											"identifier": "silcoon",
+											"evolves_from_species_id": "265",
+											"list": [
+													{
+															"id": "267",
+															"identifier": "beautifly",
+															"evolves_from_species_id": "266",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "268",
+											"identifier": "cascoon",
+											"evolves_from_species_id": "265",
+											"list": [
+													{
+															"id": "269",
+															"identifier": "dustox",
+															"evolves_from_species_id": "268",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "136",
+			"list": [
+					{
+							"id": "270",
+							"identifier": "lotad",
+							"list": [
+									{
+											"id": "271",
+											"identifier": "lombre",
+											"evolves_from_species_id": "270",
+											"list": [
+													{
+															"id": "272",
+															"identifier": "ludicolo",
+															"evolves_from_species_id": "271",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "137",
+			"list": [
+					{
+							"id": "273",
+							"identifier": "seedot",
+							"list": [
+									{
+											"id": "274",
+											"identifier": "nuzleaf",
+											"evolves_from_species_id": "273",
+											"list": [
+													{
+															"id": "275",
+															"identifier": "shiftry",
+															"evolves_from_species_id": "274",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "138",
+			"list": [
+					{
+							"id": "276",
+							"identifier": "taillow",
+							"list": [
+									{
+											"id": "277",
+											"identifier": "swellow",
+											"evolves_from_species_id": "276",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "139",
+			"list": [
+					{
+							"id": "278",
+							"identifier": "wingull",
+							"list": [
+									{
+											"id": "279",
+											"identifier": "pelipper",
+											"evolves_from_species_id": "278",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "140",
+			"list": [
+					{
+							"id": "280",
+							"identifier": "ralts",
+							"list": [
+									{
+											"id": "281",
+											"identifier": "kirlia",
+											"evolves_from_species_id": "280",
+											"list": [
+													{
+															"id": "282",
+															"identifier": "gardevoir",
+															"evolves_from_species_id": "281",
+															"in": "3rd evolution"
+													},
+													{
+															"id": "475",
+															"identifier": "gallade",
+															"evolves_from_species_id": "281",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "141",
+			"list": [
+					{
+							"id": "283",
+							"identifier": "surskit",
+							"list": [
+									{
+											"id": "284",
+											"identifier": "masquerain",
+											"evolves_from_species_id": "283",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "142",
+			"list": [
+					{
+							"id": "285",
+							"identifier": "shroomish",
+							"list": [
+									{
+											"id": "286",
+											"identifier": "breloom",
+											"evolves_from_species_id": "285",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "143",
+			"list": [
+					{
+							"id": "287",
+							"identifier": "slakoth",
+							"list": [
+									{
+											"id": "288",
+											"identifier": "vigoroth",
+											"evolves_from_species_id": "287",
+											"list": [
+													{
+															"id": "289",
+															"identifier": "slaking",
+															"evolves_from_species_id": "288",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "144",
+			"list": [
+					{
+							"id": "290",
+							"identifier": "nincada",
+							"list": [
+									{
+											"id": "291",
+											"identifier": "ninjask",
+											"evolves_from_species_id": "290",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "292",
+											"identifier": "shedinja",
+											"evolves_from_species_id": "290",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "145",
+			"list": [
+					{
+							"id": "293",
+							"identifier": "whismur",
+							"list": [
+									{
+											"id": "294",
+											"identifier": "loudred",
+											"evolves_from_species_id": "293",
+											"list": [
+													{
+															"id": "295",
+															"identifier": "exploud",
+															"evolves_from_species_id": "294",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "146",
+			"list": [
+					{
+							"id": "296",
+							"identifier": "makuhita",
+							"list": [
+									{
+											"id": "297",
+											"identifier": "hariyama",
+											"evolves_from_species_id": "296",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "147",
+			"list": [
+					{
+							"id": "299",
+							"identifier": "nosepass",
+							"list": [
+									{
+											"id": "476",
+											"identifier": "probopass",
+											"evolves_from_species_id": "299",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "148",
+			"list": [
+					{
+							"id": "300",
+							"identifier": "skitty",
+							"list": [
+									{
+											"id": "301",
+											"identifier": "delcatty",
+											"evolves_from_species_id": "300",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "149",
+			"list": [
+					{
+							"id": "302",
+							"identifier": "sableye",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "150",
+			"list": [
+					{
+							"id": "303",
+							"identifier": "mawile",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "151",
+			"list": [
+					{
+							"id": "304",
+							"identifier": "aron",
+							"list": [
+									{
+											"id": "305",
+											"identifier": "lairon",
+											"evolves_from_species_id": "304",
+											"list": [
+													{
+															"id": "306",
+															"identifier": "aggron",
+															"evolves_from_species_id": "305",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "152",
+			"list": [
+					{
+							"id": "307",
+							"identifier": "meditite",
+							"list": [
+									{
+											"id": "308",
+											"identifier": "medicham",
+											"evolves_from_species_id": "307",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "153",
+			"list": [
+					{
+							"id": "309",
+							"identifier": "electrike",
+							"list": [
+									{
+											"id": "310",
+											"identifier": "manectric",
+											"evolves_from_species_id": "309",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "154",
+			"list": [
+					{
+							"id": "311",
+							"identifier": "plusle",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "155",
+			"list": [
+					{
+							"id": "312",
+							"identifier": "minun",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "156",
+			"list": [
+					{
+							"id": "313",
+							"identifier": "volbeat",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "157",
+			"list": [
+					{
+							"id": "314",
+							"identifier": "illumise",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "158",
+			"list": [
+					{
+							"id": "315",
+							"identifier": "roselia",
+							"list": [
+									{
+											"id": "406",
+											"identifier": "budew",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "407",
+											"identifier": "roserade",
+											"evolves_from_species_id": "315",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "159",
+			"list": [
+					{
+							"id": "316",
+							"identifier": "gulpin",
+							"list": [
+									{
+											"id": "317",
+											"identifier": "swalot",
+											"evolves_from_species_id": "316",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "160",
+			"list": [
+					{
+							"id": "318",
+							"identifier": "carvanha",
+							"list": [
+									{
+											"id": "319",
+											"identifier": "sharpedo",
+											"evolves_from_species_id": "318",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "161",
+			"list": [
+					{
+							"id": "320",
+							"identifier": "wailmer",
+							"list": [
+									{
+											"id": "321",
+											"identifier": "wailord",
+											"evolves_from_species_id": "320",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "162",
+			"list": [
+					{
+							"id": "322",
+							"identifier": "numel",
+							"list": [
+									{
+											"id": "323",
+											"identifier": "camerupt",
+											"evolves_from_species_id": "322",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "163",
+			"list": [
+					{
+							"id": "324",
+							"identifier": "torkoal",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "164",
+			"list": [
+					{
+							"id": "325",
+							"identifier": "spoink",
+							"list": [
+									{
+											"id": "326",
+											"identifier": "grumpig",
+											"evolves_from_species_id": "325",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "165",
+			"list": [
+					{
+							"id": "327",
+							"identifier": "spinda",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "166",
+			"list": [
+					{
+							"id": "328",
+							"identifier": "trapinch",
+							"list": [
+									{
+											"id": "329",
+											"identifier": "vibrava",
+											"evolves_from_species_id": "328",
+											"list": [
+													{
+															"id": "330",
+															"identifier": "flygon",
+															"evolves_from_species_id": "329",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "167",
+			"list": [
+					{
+							"id": "331",
+							"identifier": "cacnea",
+							"list": [
+									{
+											"id": "332",
+											"identifier": "cacturne",
+											"evolves_from_species_id": "331",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "168",
+			"list": [
+					{
+							"id": "333",
+							"identifier": "swablu",
+							"list": [
+									{
+											"id": "334",
+											"identifier": "altaria",
+											"evolves_from_species_id": "333",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "169",
+			"list": [
+					{
+							"id": "335",
+							"identifier": "zangoose",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "170",
+			"list": [
+					{
+							"id": "336",
+							"identifier": "seviper",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "171",
+			"list": [
+					{
+							"id": "337",
+							"identifier": "lunatone",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "172",
+			"list": [
+					{
+							"id": "338",
+							"identifier": "solrock",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "173",
+			"list": [
+					{
+							"id": "339",
+							"identifier": "barboach",
+							"list": [
+									{
+											"id": "340",
+											"identifier": "whiscash",
+											"evolves_from_species_id": "339",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "174",
+			"list": [
+					{
+							"id": "341",
+							"identifier": "corphish",
+							"list": [
+									{
+											"id": "342",
+											"identifier": "crawdaunt",
+											"evolves_from_species_id": "341",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "175",
+			"list": [
+					{
+							"id": "343",
+							"identifier": "baltoy",
+							"list": [
+									{
+											"id": "344",
+											"identifier": "claydol",
+											"evolves_from_species_id": "343",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "176",
+			"list": [
+					{
+							"id": "345",
+							"identifier": "lileep",
+							"list": [
+									{
+											"id": "346",
+											"identifier": "cradily",
+											"evolves_from_species_id": "345",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "177",
+			"list": [
+					{
+							"id": "347",
+							"identifier": "anorith",
+							"list": [
+									{
+											"id": "348",
+											"identifier": "armaldo",
+											"evolves_from_species_id": "347",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "178",
+			"list": [
+					{
+							"id": "349",
+							"identifier": "feebas",
+							"list": [
+									{
+											"id": "350",
+											"identifier": "milotic",
+											"evolves_from_species_id": "349",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "179",
+			"list": [
+					{
+							"id": "351",
+							"identifier": "castform",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "180",
+			"list": [
+					{
+							"id": "352",
+							"identifier": "kecleon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "181",
+			"list": [
+					{
+							"id": "353",
+							"identifier": "shuppet",
+							"list": [
+									{
+											"id": "354",
+											"identifier": "banette",
+											"evolves_from_species_id": "353",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "182",
+			"list": [
+					{
+							"id": "355",
+							"identifier": "duskull",
+							"list": [
+									{
+											"id": "356",
+											"identifier": "dusclops",
+											"evolves_from_species_id": "355",
+											"list": [
+													{
+															"id": "477",
+															"identifier": "dusknoir",
+															"evolves_from_species_id": "356",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "183",
+			"list": [
+					{
+							"id": "357",
+							"identifier": "tropius",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "184",
+			"list": [
+					{
+							"id": "358",
+							"identifier": "chimecho",
+							"list": [
+									{
+											"id": "433",
+											"identifier": "chingling",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "185",
+			"list": [
+					{
+							"id": "359",
+							"identifier": "absol",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "186",
+			"list": [
+					{
+							"id": "361",
+							"identifier": "snorunt",
+							"list": [
+									{
+											"id": "362",
+											"identifier": "glalie",
+											"evolves_from_species_id": "361",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "478",
+											"identifier": "froslass",
+											"evolves_from_species_id": "361",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "187",
+			"list": [
+					{
+							"id": "363",
+							"identifier": "spheal",
+							"list": [
+									{
+											"id": "364",
+											"identifier": "sealeo",
+											"evolves_from_species_id": "363",
+											"list": [
+													{
+															"id": "365",
+															"identifier": "walrein",
+															"evolves_from_species_id": "364",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "188",
+			"list": [
+					{
+							"id": "366",
+							"identifier": "clamperl",
+							"list": [
+									{
+											"id": "367",
+											"identifier": "huntail",
+											"evolves_from_species_id": "366",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "368",
+											"identifier": "gorebyss",
+											"evolves_from_species_id": "366",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "189",
+			"list": [
+					{
+							"id": "369",
+							"identifier": "relicanth",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "190",
+			"list": [
+					{
+							"id": "370",
+							"identifier": "luvdisc",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "191",
+			"list": [
+					{
+							"id": "371",
+							"identifier": "bagon",
+							"list": [
+									{
+											"id": "372",
+											"identifier": "shelgon",
+											"evolves_from_species_id": "371",
+											"list": [
+													{
+															"id": "373",
+															"identifier": "salamence",
+															"evolves_from_species_id": "372",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "192",
+			"list": [
+					{
+							"id": "374",
+							"identifier": "beldum",
+							"list": [
+									{
+											"id": "375",
+											"identifier": "metang",
+											"evolves_from_species_id": "374",
+											"list": [
+													{
+															"id": "376",
+															"identifier": "metagross",
+															"evolves_from_species_id": "375",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "193",
+			"list": [
+					{
+							"id": "377",
+							"identifier": "regirock",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "194",
+			"list": [
+					{
+							"id": "378",
+							"identifier": "regice",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "195",
+			"list": [
+					{
+							"id": "379",
+							"identifier": "registeel",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "196",
+			"list": [
+					{
+							"id": "380",
+							"identifier": "latias",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "197",
+			"list": [
+					{
+							"id": "381",
+							"identifier": "latios",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "198",
+			"list": [
+					{
+							"id": "382",
+							"identifier": "kyogre",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "199",
+			"list": [
+					{
+							"id": "383",
+							"identifier": "groudon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "200",
+			"list": [
+					{
+							"id": "384",
+							"identifier": "rayquaza",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "201",
+			"list": [
+					{
+							"id": "385",
+							"identifier": "jirachi",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "202",
+			"list": [
+					{
+							"id": "386",
+							"identifier": "deoxys",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "203",
+			"list": [
+					{
+							"id": "387",
+							"identifier": "turtwig",
+							"list": [
+									{
+											"id": "388",
+											"identifier": "grotle",
+											"evolves_from_species_id": "387",
+											"list": [
+													{
+															"id": "389",
+															"identifier": "torterra",
+															"evolves_from_species_id": "388",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "204",
+			"list": [
+					{
+							"id": "390",
+							"identifier": "chimchar",
+							"list": [
+									{
+											"id": "391",
+											"identifier": "monferno",
+											"evolves_from_species_id": "390",
+											"list": [
+													{
+															"id": "392",
+															"identifier": "infernape",
+															"evolves_from_species_id": "391",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "205",
+			"list": [
+					{
+							"id": "393",
+							"identifier": "piplup",
+							"list": [
+									{
+											"id": "394",
+											"identifier": "prinplup",
+											"evolves_from_species_id": "393",
+											"list": [
+													{
+															"id": "395",
+															"identifier": "empoleon",
+															"evolves_from_species_id": "394",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "206",
+			"list": [
+					{
+							"id": "396",
+							"identifier": "starly",
+							"list": [
+									{
+											"id": "397",
+											"identifier": "staravia",
+											"evolves_from_species_id": "396",
+											"list": [
+													{
+															"id": "398",
+															"identifier": "staraptor",
+															"evolves_from_species_id": "397",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "207",
+			"list": [
+					{
+							"id": "399",
+							"identifier": "bidoof",
+							"list": [
+									{
+											"id": "400",
+											"identifier": "bibarel",
+											"evolves_from_species_id": "399",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "208",
+			"list": [
+					{
+							"id": "401",
+							"identifier": "kricketot",
+							"list": [
+									{
+											"id": "402",
+											"identifier": "kricketune",
+											"evolves_from_species_id": "401",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "209",
+			"list": [
+					{
+							"id": "403",
+							"identifier": "shinx",
+							"list": [
+									{
+											"id": "404",
+											"identifier": "luxio",
+											"evolves_from_species_id": "403",
+											"list": [
+													{
+															"id": "405",
+															"identifier": "luxray",
+															"evolves_from_species_id": "404",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "211",
+			"list": [
+					{
+							"id": "408",
+							"identifier": "cranidos",
+							"list": [
+									{
+											"id": "409",
+											"identifier": "rampardos",
+											"evolves_from_species_id": "408",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "212",
+			"list": [
+					{
+							"id": "410",
+							"identifier": "shieldon",
+							"list": [
+									{
+											"id": "411",
+											"identifier": "bastiodon",
+											"evolves_from_species_id": "410",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "213",
+			"list": [
+					{
+							"id": "412",
+							"identifier": "burmy",
+							"list": [
+									{
+											"id": "413",
+											"identifier": "wormadam",
+											"evolves_from_species_id": "412",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "414",
+											"identifier": "mothim",
+											"evolves_from_species_id": "412",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "214",
+			"list": [
+					{
+							"id": "415",
+							"identifier": "combee",
+							"list": [
+									{
+											"id": "416",
+											"identifier": "vespiquen",
+											"evolves_from_species_id": "415",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "215",
+			"list": [
+					{
+							"id": "417",
+							"identifier": "pachirisu",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "216",
+			"list": [
+					{
+							"id": "418",
+							"identifier": "buizel",
+							"list": [
+									{
+											"id": "419",
+											"identifier": "floatzel",
+											"evolves_from_species_id": "418",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "217",
+			"list": [
+					{
+							"id": "420",
+							"identifier": "cherubi",
+							"list": [
+									{
+											"id": "421",
+											"identifier": "cherrim",
+											"evolves_from_species_id": "420",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "218",
+			"list": [
+					{
+							"id": "422",
+							"identifier": "shellos",
+							"list": [
+									{
+											"id": "423",
+											"identifier": "gastrodon",
+											"evolves_from_species_id": "422",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "219",
+			"list": [
+					{
+							"id": "425",
+							"identifier": "drifloon",
+							"list": [
+									{
+											"id": "426",
+											"identifier": "drifblim",
+											"evolves_from_species_id": "425",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "220",
+			"list": [
+					{
+							"id": "427",
+							"identifier": "buneary",
+							"list": [
+									{
+											"id": "428",
+											"identifier": "lopunny",
+											"evolves_from_species_id": "427",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "221",
+			"list": [
+					{
+							"id": "431",
+							"identifier": "glameow",
+							"list": [
+									{
+											"id": "432",
+											"identifier": "purugly",
+											"evolves_from_species_id": "431",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "223",
+			"list": [
+					{
+							"id": "434",
+							"identifier": "stunky",
+							"list": [
+									{
+											"id": "435",
+											"identifier": "skuntank",
+											"evolves_from_species_id": "434",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "224",
+			"list": [
+					{
+							"id": "436",
+							"identifier": "bronzor",
+							"list": [
+									{
+											"id": "437",
+											"identifier": "bronzong",
+											"evolves_from_species_id": "436",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "228",
+			"list": [
+					{
+							"id": "441",
+							"identifier": "chatot",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "229",
+			"list": [
+					{
+							"id": "442",
+							"identifier": "spiritomb",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "230",
+			"list": [
+					{
+							"id": "443",
+							"identifier": "gible",
+							"list": [
+									{
+											"id": "444",
+											"identifier": "gabite",
+											"evolves_from_species_id": "443",
+											"list": [
+													{
+															"id": "445",
+															"identifier": "garchomp",
+															"evolves_from_species_id": "444",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "232",
+			"list": [
+					{
+							"id": "447",
+							"identifier": "riolu",
+							"list": [
+									{
+											"id": "448",
+											"identifier": "lucario",
+											"evolves_from_species_id": "447",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "233",
+			"list": [
+					{
+							"id": "449",
+							"identifier": "hippopotas",
+							"list": [
+									{
+											"id": "450",
+											"identifier": "hippowdon",
+											"evolves_from_species_id": "449",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "234",
+			"list": [
+					{
+							"id": "451",
+							"identifier": "skorupi",
+							"list": [
+									{
+											"id": "452",
+											"identifier": "drapion",
+											"evolves_from_species_id": "451",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "235",
+			"list": [
+					{
+							"id": "453",
+							"identifier": "croagunk",
+							"list": [
+									{
+											"id": "454",
+											"identifier": "toxicroak",
+											"evolves_from_species_id": "453",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "236",
+			"list": [
+					{
+							"id": "455",
+							"identifier": "carnivine",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "237",
+			"list": [
+					{
+							"id": "456",
+							"identifier": "finneon",
+							"list": [
+									{
+											"id": "457",
+											"identifier": "lumineon",
+											"evolves_from_species_id": "456",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "239",
+			"list": [
+					{
+							"id": "459",
+							"identifier": "snover",
+							"list": [
+									{
+											"id": "460",
+											"identifier": "abomasnow",
+											"evolves_from_species_id": "459",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "240",
+			"list": [
+					{
+							"id": "479",
+							"identifier": "rotom",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "241",
+			"list": [
+					{
+							"id": "480",
+							"identifier": "uxie",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "242",
+			"list": [
+					{
+							"id": "481",
+							"identifier": "mesprit",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "243",
+			"list": [
+					{
+							"id": "482",
+							"identifier": "azelf",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "244",
+			"list": [
+					{
+							"id": "483",
+							"identifier": "dialga",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "245",
+			"list": [
+					{
+							"id": "484",
+							"identifier": "palkia",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "246",
+			"list": [
+					{
+							"id": "485",
+							"identifier": "heatran",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "247",
+			"list": [
+					{
+							"id": "486",
+							"identifier": "regigigas",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "248",
+			"list": [
+					{
+							"id": "487",
+							"identifier": "giratina",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "249",
+			"list": [
+					{
+							"id": "488",
+							"identifier": "cresselia",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "250",
+			"list": [
+					{
+							"id": "489",
+							"identifier": "phione",
+							"list": [
+									{
+											"id": "490",
+											"identifier": "manaphy",
+											"evolves_from_species_id": "",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "252",
+			"list": [
+					{
+							"id": "491",
+							"identifier": "darkrai",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "253",
+			"list": [
+					{
+							"id": "492",
+							"identifier": "shaymin",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "254",
+			"list": [
+					{
+							"id": "493",
+							"identifier": "arceus",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "255",
+			"list": [
+					{
+							"id": "494",
+							"identifier": "victini",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "256",
+			"list": [
+					{
+							"id": "495",
+							"identifier": "snivy",
+							"list": [
+									{
+											"id": "496",
+											"identifier": "servine",
+											"evolves_from_species_id": "495",
+											"list": [
+													{
+															"id": "497",
+															"identifier": "serperior",
+															"evolves_from_species_id": "496",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "257",
+			"list": [
+					{
+							"id": "498",
+							"identifier": "tepig",
+							"list": [
+									{
+											"id": "499",
+											"identifier": "pignite",
+											"evolves_from_species_id": "498",
+											"list": [
+													{
+															"id": "500",
+															"identifier": "emboar",
+															"evolves_from_species_id": "499",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "258",
+			"list": [
+					{
+							"id": "501",
+							"identifier": "oshawott",
+							"list": [
+									{
+											"id": "502",
+											"identifier": "dewott",
+											"evolves_from_species_id": "501",
+											"list": [
+													{
+															"id": "503",
+															"identifier": "samurott",
+															"evolves_from_species_id": "502",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "259",
+			"list": [
+					{
+							"id": "504",
+							"identifier": "patrat",
+							"list": [
+									{
+											"id": "505",
+											"identifier": "watchog",
+											"evolves_from_species_id": "504",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "260",
+			"list": [
+					{
+							"id": "506",
+							"identifier": "lillipup",
+							"list": [
+									{
+											"id": "507",
+											"identifier": "herdier",
+											"evolves_from_species_id": "506",
+											"list": [
+													{
+															"id": "508",
+															"identifier": "stoutland",
+															"evolves_from_species_id": "507",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "261",
+			"list": [
+					{
+							"id": "509",
+							"identifier": "purrloin",
+							"list": [
+									{
+											"id": "510",
+											"identifier": "liepard",
+											"evolves_from_species_id": "509",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "262",
+			"list": [
+					{
+							"id": "511",
+							"identifier": "pansage",
+							"list": [
+									{
+											"id": "512",
+											"identifier": "simisage",
+											"evolves_from_species_id": "511",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "263",
+			"list": [
+					{
+							"id": "513",
+							"identifier": "pansear",
+							"list": [
+									{
+											"id": "514",
+											"identifier": "simisear",
+											"evolves_from_species_id": "513",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "264",
+			"list": [
+					{
+							"id": "515",
+							"identifier": "panpour",
+							"list": [
+									{
+											"id": "516",
+											"identifier": "simipour",
+											"evolves_from_species_id": "515",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "265",
+			"list": [
+					{
+							"id": "517",
+							"identifier": "munna",
+							"list": [
+									{
+											"id": "518",
+											"identifier": "musharna",
+											"evolves_from_species_id": "517",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "266",
+			"list": [
+					{
+							"id": "519",
+							"identifier": "pidove",
+							"list": [
+									{
+											"id": "520",
+											"identifier": "tranquill",
+											"evolves_from_species_id": "519",
+											"list": [
+													{
+															"id": "521",
+															"identifier": "unfezant",
+															"evolves_from_species_id": "520",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "267",
+			"list": [
+					{
+							"id": "522",
+							"identifier": "blitzle",
+							"list": [
+									{
+											"id": "523",
+											"identifier": "zebstrika",
+											"evolves_from_species_id": "522",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "268",
+			"list": [
+					{
+							"id": "524",
+							"identifier": "roggenrola",
+							"list": [
+									{
+											"id": "525",
+											"identifier": "boldore",
+											"evolves_from_species_id": "524",
+											"list": [
+													{
+															"id": "526",
+															"identifier": "gigalith",
+															"evolves_from_species_id": "525",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "269",
+			"list": [
+					{
+							"id": "527",
+							"identifier": "woobat",
+							"list": [
+									{
+											"id": "528",
+											"identifier": "swoobat",
+											"evolves_from_species_id": "527",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "270",
+			"list": [
+					{
+							"id": "529",
+							"identifier": "drilbur",
+							"list": [
+									{
+											"id": "530",
+											"identifier": "excadrill",
+											"evolves_from_species_id": "529",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "271",
+			"list": [
+					{
+							"id": "531",
+							"identifier": "audino",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "272",
+			"list": [
+					{
+							"id": "532",
+							"identifier": "timburr",
+							"list": [
+									{
+											"id": "533",
+											"identifier": "gurdurr",
+											"evolves_from_species_id": "532",
+											"list": [
+													{
+															"id": "534",
+															"identifier": "conkeldurr",
+															"evolves_from_species_id": "533",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "273",
+			"list": [
+					{
+							"id": "535",
+							"identifier": "tympole",
+							"list": [
+									{
+											"id": "536",
+											"identifier": "palpitoad",
+											"evolves_from_species_id": "535",
+											"list": [
+													{
+															"id": "537",
+															"identifier": "seismitoad",
+															"evolves_from_species_id": "536",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "274",
+			"list": [
+					{
+							"id": "538",
+							"identifier": "throh",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "275",
+			"list": [
+					{
+							"id": "539",
+							"identifier": "sawk",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "276",
+			"list": [
+					{
+							"id": "540",
+							"identifier": "sewaddle",
+							"list": [
+									{
+											"id": "541",
+											"identifier": "swadloon",
+											"evolves_from_species_id": "540",
+											"list": [
+													{
+															"id": "542",
+															"identifier": "leavanny",
+															"evolves_from_species_id": "541",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "277",
+			"list": [
+					{
+							"id": "543",
+							"identifier": "venipede",
+							"list": [
+									{
+											"id": "544",
+											"identifier": "whirlipede",
+											"evolves_from_species_id": "543",
+											"list": [
+													{
+															"id": "545",
+															"identifier": "scolipede",
+															"evolves_from_species_id": "544",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "278",
+			"list": [
+					{
+							"id": "546",
+							"identifier": "cottonee",
+							"list": [
+									{
+											"id": "547",
+											"identifier": "whimsicott",
+											"evolves_from_species_id": "546",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "279",
+			"list": [
+					{
+							"id": "548",
+							"identifier": "petilil",
+							"list": [
+									{
+											"id": "549",
+											"identifier": "lilligant",
+											"evolves_from_species_id": "548",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "280",
+			"list": [
+					{
+							"id": "550",
+							"identifier": "basculin",
+							"list": [
+									{
+											"id": "902",
+											"identifier": "basculegion",
+											"evolves_from_species_id": "550",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "281",
+			"list": [
+					{
+							"id": "551",
+							"identifier": "sandile",
+							"list": [
+									{
+											"id": "552",
+											"identifier": "krokorok",
+											"evolves_from_species_id": "551",
+											"list": [
+													{
+															"id": "553",
+															"identifier": "krookodile",
+															"evolves_from_species_id": "552",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "282",
+			"list": [
+					{
+							"id": "554",
+							"identifier": "darumaka",
+							"list": [
+									{
+											"id": "555",
+											"identifier": "darmanitan",
+											"evolves_from_species_id": "554",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "283",
+			"list": [
+					{
+							"id": "556",
+							"identifier": "maractus",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "284",
+			"list": [
+					{
+							"id": "557",
+							"identifier": "dwebble",
+							"list": [
+									{
+											"id": "558",
+											"identifier": "crustle",
+											"evolves_from_species_id": "557",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "285",
+			"list": [
+					{
+							"id": "559",
+							"identifier": "scraggy",
+							"list": [
+									{
+											"id": "560",
+											"identifier": "scrafty",
+											"evolves_from_species_id": "559",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "286",
+			"list": [
+					{
+							"id": "561",
+							"identifier": "sigilyph",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "287",
+			"list": [
+					{
+							"id": "562",
+							"identifier": "yamask",
+							"list": [
+									{
+											"id": "563",
+											"identifier": "cofagrigus",
+											"evolves_from_species_id": "562",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "867",
+											"identifier": "runerigus",
+											"evolves_from_species_id": "562",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "288",
+			"list": [
+					{
+							"id": "564",
+							"identifier": "tirtouga",
+							"list": [
+									{
+											"id": "565",
+											"identifier": "carracosta",
+											"evolves_from_species_id": "564",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "289",
+			"list": [
+					{
+							"id": "566",
+							"identifier": "archen",
+							"list": [
+									{
+											"id": "567",
+											"identifier": "archeops",
+											"evolves_from_species_id": "566",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "290",
+			"list": [
+					{
+							"id": "568",
+							"identifier": "trubbish",
+							"list": [
+									{
+											"id": "569",
+											"identifier": "garbodor",
+											"evolves_from_species_id": "568",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "291",
+			"list": [
+					{
+							"id": "570",
+							"identifier": "zorua",
+							"list": [
+									{
+											"id": "571",
+											"identifier": "zoroark",
+											"evolves_from_species_id": "570",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "292",
+			"list": [
+					{
+							"id": "572",
+							"identifier": "minccino",
+							"list": [
+									{
+											"id": "573",
+											"identifier": "cinccino",
+											"evolves_from_species_id": "572",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "293",
+			"list": [
+					{
+							"id": "574",
+							"identifier": "gothita",
+							"list": [
+									{
+											"id": "575",
+											"identifier": "gothorita",
+											"evolves_from_species_id": "574",
+											"list": [
+													{
+															"id": "576",
+															"identifier": "gothitelle",
+															"evolves_from_species_id": "575",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "294",
+			"list": [
+					{
+							"id": "577",
+							"identifier": "solosis",
+							"list": [
+									{
+											"id": "578",
+											"identifier": "duosion",
+											"evolves_from_species_id": "577",
+											"list": [
+													{
+															"id": "579",
+															"identifier": "reuniclus",
+															"evolves_from_species_id": "578",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "295",
+			"list": [
+					{
+							"id": "580",
+							"identifier": "ducklett",
+							"list": [
+									{
+											"id": "581",
+											"identifier": "swanna",
+											"evolves_from_species_id": "580",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "296",
+			"list": [
+					{
+							"id": "582",
+							"identifier": "vanillite",
+							"list": [
+									{
+											"id": "583",
+											"identifier": "vanillish",
+											"evolves_from_species_id": "582",
+											"list": [
+													{
+															"id": "584",
+															"identifier": "vanilluxe",
+															"evolves_from_species_id": "583",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "297",
+			"list": [
+					{
+							"id": "585",
+							"identifier": "deerling",
+							"list": [
+									{
+											"id": "586",
+											"identifier": "sawsbuck",
+											"evolves_from_species_id": "585",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "298",
+			"list": [
+					{
+							"id": "587",
+							"identifier": "emolga",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "299",
+			"list": [
+					{
+							"id": "588",
+							"identifier": "karrablast",
+							"list": [
+									{
+											"id": "589",
+											"identifier": "escavalier",
+											"evolves_from_species_id": "588",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "300",
+			"list": [
+					{
+							"id": "590",
+							"identifier": "foongus",
+							"list": [
+									{
+											"id": "591",
+											"identifier": "amoonguss",
+											"evolves_from_species_id": "590",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "301",
+			"list": [
+					{
+							"id": "592",
+							"identifier": "frillish",
+							"list": [
+									{
+											"id": "593",
+											"identifier": "jellicent",
+											"evolves_from_species_id": "592",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "302",
+			"list": [
+					{
+							"id": "594",
+							"identifier": "alomomola",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "303",
+			"list": [
+					{
+							"id": "595",
+							"identifier": "joltik",
+							"list": [
+									{
+											"id": "596",
+											"identifier": "galvantula",
+											"evolves_from_species_id": "595",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "304",
+			"list": [
+					{
+							"id": "597",
+							"identifier": "ferroseed",
+							"list": [
+									{
+											"id": "598",
+											"identifier": "ferrothorn",
+											"evolves_from_species_id": "597",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "305",
+			"list": [
+					{
+							"id": "599",
+							"identifier": "klink",
+							"list": [
+									{
+											"id": "600",
+											"identifier": "klang",
+											"evolves_from_species_id": "599",
+											"list": [
+													{
+															"id": "601",
+															"identifier": "klinklang",
+															"evolves_from_species_id": "600",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "306",
+			"list": [
+					{
+							"id": "602",
+							"identifier": "tynamo",
+							"list": [
+									{
+											"id": "603",
+											"identifier": "eelektrik",
+											"evolves_from_species_id": "602",
+											"list": [
+													{
+															"id": "604",
+															"identifier": "eelektross",
+															"evolves_from_species_id": "603",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "307",
+			"list": [
+					{
+							"id": "605",
+							"identifier": "elgyem",
+							"list": [
+									{
+											"id": "606",
+											"identifier": "beheeyem",
+											"evolves_from_species_id": "605",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "308",
+			"list": [
+					{
+							"id": "607",
+							"identifier": "litwick",
+							"list": [
+									{
+											"id": "608",
+											"identifier": "lampent",
+											"evolves_from_species_id": "607",
+											"list": [
+													{
+															"id": "609",
+															"identifier": "chandelure",
+															"evolves_from_species_id": "608",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "309",
+			"list": [
+					{
+							"id": "610",
+							"identifier": "axew",
+							"list": [
+									{
+											"id": "611",
+											"identifier": "fraxure",
+											"evolves_from_species_id": "610",
+											"list": [
+													{
+															"id": "612",
+															"identifier": "haxorus",
+															"evolves_from_species_id": "611",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "310",
+			"list": [
+					{
+							"id": "613",
+							"identifier": "cubchoo",
+							"list": [
+									{
+											"id": "614",
+											"identifier": "beartic",
+											"evolves_from_species_id": "613",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "311",
+			"list": [
+					{
+							"id": "615",
+							"identifier": "cryogonal",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "312",
+			"list": [
+					{
+							"id": "616",
+							"identifier": "shelmet",
+							"list": [
+									{
+											"id": "617",
+											"identifier": "accelgor",
+											"evolves_from_species_id": "616",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "313",
+			"list": [
+					{
+							"id": "618",
+							"identifier": "stunfisk",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "314",
+			"list": [
+					{
+							"id": "619",
+							"identifier": "mienfoo",
+							"list": [
+									{
+											"id": "620",
+											"identifier": "mienshao",
+											"evolves_from_species_id": "619",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "315",
+			"list": [
+					{
+							"id": "621",
+							"identifier": "druddigon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "316",
+			"list": [
+					{
+							"id": "622",
+							"identifier": "golett",
+							"list": [
+									{
+											"id": "623",
+											"identifier": "golurk",
+											"evolves_from_species_id": "622",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "317",
+			"list": [
+					{
+							"id": "624",
+							"identifier": "pawniard",
+							"list": [
+									{
+											"id": "625",
+											"identifier": "bisharp",
+											"evolves_from_species_id": "624",
+											"list": [
+													{
+															"id": "983",
+															"identifier": "kingambit",
+															"evolves_from_species_id": "625",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "318",
+			"list": [
+					{
+							"id": "626",
+							"identifier": "bouffalant",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "319",
+			"list": [
+					{
+							"id": "627",
+							"identifier": "rufflet",
+							"list": [
+									{
+											"id": "628",
+											"identifier": "braviary",
+											"evolves_from_species_id": "627",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "320",
+			"list": [
+					{
+							"id": "629",
+							"identifier": "vullaby",
+							"list": [
+									{
+											"id": "630",
+											"identifier": "mandibuzz",
+											"evolves_from_species_id": "629",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "321",
+			"list": [
+					{
+							"id": "631",
+							"identifier": "heatmor",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "322",
+			"list": [
+					{
+							"id": "632",
+							"identifier": "durant",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "323",
+			"list": [
+					{
+							"id": "633",
+							"identifier": "deino",
+							"list": [
+									{
+											"id": "634",
+											"identifier": "zweilous",
+											"evolves_from_species_id": "633",
+											"list": [
+													{
+															"id": "635",
+															"identifier": "hydreigon",
+															"evolves_from_species_id": "634",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "324",
+			"list": [
+					{
+							"id": "636",
+							"identifier": "larvesta",
+							"list": [
+									{
+											"id": "637",
+											"identifier": "volcarona",
+											"evolves_from_species_id": "636",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "325",
+			"list": [
+					{
+							"id": "638",
+							"identifier": "cobalion",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "326",
+			"list": [
+					{
+							"id": "639",
+							"identifier": "terrakion",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "327",
+			"list": [
+					{
+							"id": "640",
+							"identifier": "virizion",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "328",
+			"list": [
+					{
+							"id": "641",
+							"identifier": "tornadus",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "329",
+			"list": [
+					{
+							"id": "642",
+							"identifier": "thundurus",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "330",
+			"list": [
+					{
+							"id": "643",
+							"identifier": "reshiram",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "331",
+			"list": [
+					{
+							"id": "644",
+							"identifier": "zekrom",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "332",
+			"list": [
+					{
+							"id": "645",
+							"identifier": "landorus",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "333",
+			"list": [
+					{
+							"id": "646",
+							"identifier": "kyurem",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "334",
+			"list": [
+					{
+							"id": "647",
+							"identifier": "keldeo",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "335",
+			"list": [
+					{
+							"id": "648",
+							"identifier": "meloetta",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "336",
+			"list": [
+					{
+							"id": "649",
+							"identifier": "genesect",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "337",
+			"list": [
+					{
+							"id": "650",
+							"identifier": "chespin",
+							"list": [
+									{
+											"id": "651",
+											"identifier": "quilladin",
+											"evolves_from_species_id": "650",
+											"list": [
+													{
+															"id": "652",
+															"identifier": "chesnaught",
+															"evolves_from_species_id": "651",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "338",
+			"list": [
+					{
+							"id": "653",
+							"identifier": "fennekin",
+							"list": [
+									{
+											"id": "654",
+											"identifier": "braixen",
+											"evolves_from_species_id": "653",
+											"list": [
+													{
+															"id": "655",
+															"identifier": "delphox",
+															"evolves_from_species_id": "654",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "339",
+			"list": [
+					{
+							"id": "656",
+							"identifier": "froakie",
+							"list": [
+									{
+											"id": "657",
+											"identifier": "frogadier",
+											"evolves_from_species_id": "656",
+											"list": [
+													{
+															"id": "658",
+															"identifier": "greninja",
+															"evolves_from_species_id": "657",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "340",
+			"list": [
+					{
+							"id": "659",
+							"identifier": "bunnelby",
+							"list": [
+									{
+											"id": "660",
+											"identifier": "diggersby",
+											"evolves_from_species_id": "659",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "341",
+			"list": [
+					{
+							"id": "661",
+							"identifier": "fletchling",
+							"list": [
+									{
+											"id": "662",
+											"identifier": "fletchinder",
+											"evolves_from_species_id": "661",
+											"list": [
+													{
+															"id": "663",
+															"identifier": "talonflame",
+															"evolves_from_species_id": "662",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "342",
+			"list": [
+					{
+							"id": "664",
+							"identifier": "scatterbug",
+							"list": [
+									{
+											"id": "665",
+											"identifier": "spewpa",
+											"evolves_from_species_id": "664",
+											"list": [
+													{
+															"id": "666",
+															"identifier": "vivillon",
+															"evolves_from_species_id": "665",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "343",
+			"list": [
+					{
+							"id": "667",
+							"identifier": "litleo",
+							"list": [
+									{
+											"id": "668",
+											"identifier": "pyroar",
+											"evolves_from_species_id": "667",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "344",
+			"list": [
+					{
+							"id": "669",
+							"identifier": "flabebe",
+							"list": [
+									{
+											"id": "670",
+											"identifier": "floette",
+											"evolves_from_species_id": "669",
+											"list": [
+													{
+															"id": "671",
+															"identifier": "florges",
+															"evolves_from_species_id": "670",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "345",
+			"list": [
+					{
+							"id": "672",
+							"identifier": "skiddo",
+							"list": [
+									{
+											"id": "673",
+											"identifier": "gogoat",
+											"evolves_from_species_id": "672",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "346",
+			"list": [
+					{
+							"id": "674",
+							"identifier": "pancham",
+							"list": [
+									{
+											"id": "675",
+											"identifier": "pangoro",
+											"evolves_from_species_id": "674",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "347",
+			"list": [
+					{
+							"id": "676",
+							"identifier": "furfrou",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "348",
+			"list": [
+					{
+							"id": "677",
+							"identifier": "espurr",
+							"list": [
+									{
+											"id": "678",
+											"identifier": "meowstic",
+											"evolves_from_species_id": "677",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "349",
+			"list": [
+					{
+							"id": "679",
+							"identifier": "honedge",
+							"list": [
+									{
+											"id": "680",
+											"identifier": "doublade",
+											"evolves_from_species_id": "679",
+											"list": [
+													{
+															"id": "681",
+															"identifier": "aegislash",
+															"evolves_from_species_id": "680",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "350",
+			"list": [
+					{
+							"id": "682",
+							"identifier": "spritzee",
+							"list": [
+									{
+											"id": "683",
+											"identifier": "aromatisse",
+											"evolves_from_species_id": "682",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "351",
+			"list": [
+					{
+							"id": "684",
+							"identifier": "swirlix",
+							"list": [
+									{
+											"id": "685",
+											"identifier": "slurpuff",
+											"evolves_from_species_id": "684",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "352",
+			"list": [
+					{
+							"id": "686",
+							"identifier": "inkay",
+							"list": [
+									{
+											"id": "687",
+											"identifier": "malamar",
+											"evolves_from_species_id": "686",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "353",
+			"list": [
+					{
+							"id": "688",
+							"identifier": "binacle",
+							"list": [
+									{
+											"id": "689",
+											"identifier": "barbaracle",
+											"evolves_from_species_id": "688",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "354",
+			"list": [
+					{
+							"id": "690",
+							"identifier": "skrelp",
+							"list": [
+									{
+											"id": "691",
+											"identifier": "dragalge",
+											"evolves_from_species_id": "690",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "355",
+			"list": [
+					{
+							"id": "692",
+							"identifier": "clauncher",
+							"list": [
+									{
+											"id": "693",
+											"identifier": "clawitzer",
+											"evolves_from_species_id": "692",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "356",
+			"list": [
+					{
+							"id": "694",
+							"identifier": "helioptile",
+							"list": [
+									{
+											"id": "695",
+											"identifier": "heliolisk",
+											"evolves_from_species_id": "694",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "357",
+			"list": [
+					{
+							"id": "696",
+							"identifier": "tyrunt",
+							"list": [
+									{
+											"id": "697",
+											"identifier": "tyrantrum",
+											"evolves_from_species_id": "696",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "358",
+			"list": [
+					{
+							"id": "698",
+							"identifier": "amaura",
+							"list": [
+									{
+											"id": "699",
+											"identifier": "aurorus",
+											"evolves_from_species_id": "698",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "359",
+			"list": [
+					{
+							"id": "701",
+							"identifier": "hawlucha",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "360",
+			"list": [
+					{
+							"id": "702",
+							"identifier": "dedenne",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "361",
+			"list": [
+					{
+							"id": "703",
+							"identifier": "carbink",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "362",
+			"list": [
+					{
+							"id": "704",
+							"identifier": "goomy",
+							"list": [
+									{
+											"id": "705",
+											"identifier": "sliggoo",
+											"evolves_from_species_id": "704",
+											"list": [
+													{
+															"id": "706",
+															"identifier": "goodra",
+															"evolves_from_species_id": "705",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "363",
+			"list": [
+					{
+							"id": "707",
+							"identifier": "klefki",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "364",
+			"list": [
+					{
+							"id": "708",
+							"identifier": "phantump",
+							"list": [
+									{
+											"id": "709",
+											"identifier": "trevenant",
+											"evolves_from_species_id": "708",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "365",
+			"list": [
+					{
+							"id": "710",
+							"identifier": "pumpkaboo",
+							"list": [
+									{
+											"id": "711",
+											"identifier": "gourgeist",
+											"evolves_from_species_id": "710",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "366",
+			"list": [
+					{
+							"id": "712",
+							"identifier": "bergmite",
+							"list": [
+									{
+											"id": "713",
+											"identifier": "avalugg",
+											"evolves_from_species_id": "712",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "367",
+			"list": [
+					{
+							"id": "714",
+							"identifier": "noibat",
+							"list": [
+									{
+											"id": "715",
+											"identifier": "noivern",
+											"evolves_from_species_id": "714",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "368",
+			"list": [
+					{
+							"id": "716",
+							"identifier": "xerneas",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "369",
+			"list": [
+					{
+							"id": "717",
+							"identifier": "yveltal",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "370",
+			"list": [
+					{
+							"id": "718",
+							"identifier": "zygarde",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "371",
+			"list": [
+					{
+							"id": "719",
+							"identifier": "diancie",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "372",
+			"list": [
+					{
+							"id": "720",
+							"identifier": "hoopa",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "373",
+			"list": [
+					{
+							"id": "721",
+							"identifier": "volcanion",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "374",
+			"list": [
+					{
+							"id": "722",
+							"identifier": "rowlet",
+							"list": [
+									{
+											"id": "723",
+											"identifier": "dartrix",
+											"evolves_from_species_id": "722",
+											"list": [
+													{
+															"id": "724",
+															"identifier": "decidueye",
+															"evolves_from_species_id": "723",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "375",
+			"list": [
+					{
+							"id": "725",
+							"identifier": "litten",
+							"list": [
+									{
+											"id": "726",
+											"identifier": "torracat",
+											"evolves_from_species_id": "725",
+											"list": [
+													{
+															"id": "727",
+															"identifier": "incineroar",
+															"evolves_from_species_id": "726",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "376",
+			"list": [
+					{
+							"id": "728",
+							"identifier": "popplio",
+							"list": [
+									{
+											"id": "729",
+											"identifier": "brionne",
+											"evolves_from_species_id": "728",
+											"list": [
+													{
+															"id": "730",
+															"identifier": "primarina",
+															"evolves_from_species_id": "729",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "377",
+			"list": [
+					{
+							"id": "731",
+							"identifier": "pikipek",
+							"list": [
+									{
+											"id": "732",
+											"identifier": "trumbeak",
+											"evolves_from_species_id": "731",
+											"list": [
+													{
+															"id": "733",
+															"identifier": "toucannon",
+															"evolves_from_species_id": "732",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "378",
+			"list": [
+					{
+							"id": "734",
+							"identifier": "yungoos",
+							"list": [
+									{
+											"id": "735",
+											"identifier": "gumshoos",
+											"evolves_from_species_id": "734",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "379",
+			"list": [
+					{
+							"id": "736",
+							"identifier": "grubbin",
+							"list": [
+									{
+											"id": "737",
+											"identifier": "charjabug",
+											"evolves_from_species_id": "736",
+											"list": [
+													{
+															"id": "738",
+															"identifier": "vikavolt",
+															"evolves_from_species_id": "737",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "380",
+			"list": [
+					{
+							"id": "739",
+							"identifier": "crabrawler",
+							"list": [
+									{
+											"id": "740",
+											"identifier": "crabominable",
+											"evolves_from_species_id": "739",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "381",
+			"list": [
+					{
+							"id": "741",
+							"identifier": "oricorio",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "382",
+			"list": [
+					{
+							"id": "742",
+							"identifier": "cutiefly",
+							"list": [
+									{
+											"id": "743",
+											"identifier": "ribombee",
+											"evolves_from_species_id": "742",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "383",
+			"list": [
+					{
+							"id": "744",
+							"identifier": "rockruff",
+							"list": [
+									{
+											"id": "745",
+											"identifier": "lycanroc",
+											"evolves_from_species_id": "744",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "384",
+			"list": [
+					{
+							"id": "746",
+							"identifier": "wishiwashi",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "385",
+			"list": [
+					{
+							"id": "747",
+							"identifier": "mareanie",
+							"list": [
+									{
+											"id": "748",
+											"identifier": "toxapex",
+											"evolves_from_species_id": "747",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "386",
+			"list": [
+					{
+							"id": "749",
+							"identifier": "mudbray",
+							"list": [
+									{
+											"id": "750",
+											"identifier": "mudsdale",
+											"evolves_from_species_id": "749",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "387",
+			"list": [
+					{
+							"id": "751",
+							"identifier": "dewpider",
+							"list": [
+									{
+											"id": "752",
+											"identifier": "araquanid",
+											"evolves_from_species_id": "751",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "388",
+			"list": [
+					{
+							"id": "753",
+							"identifier": "fomantis",
+							"list": [
+									{
+											"id": "754",
+											"identifier": "lurantis",
+											"evolves_from_species_id": "753",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "389",
+			"list": [
+					{
+							"id": "755",
+							"identifier": "morelull",
+							"list": [
+									{
+											"id": "756",
+											"identifier": "shiinotic",
+											"evolves_from_species_id": "755",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "390",
+			"list": [
+					{
+							"id": "757",
+							"identifier": "salandit",
+							"list": [
+									{
+											"id": "758",
+											"identifier": "salazzle",
+											"evolves_from_species_id": "757",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "391",
+			"list": [
+					{
+							"id": "759",
+							"identifier": "stufful",
+							"list": [
+									{
+											"id": "760",
+											"identifier": "bewear",
+											"evolves_from_species_id": "759",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "392",
+			"list": [
+					{
+							"id": "761",
+							"identifier": "bounsweet",
+							"list": [
+									{
+											"id": "762",
+											"identifier": "steenee",
+											"evolves_from_species_id": "761",
+											"list": [
+													{
+															"id": "763",
+															"identifier": "tsareena",
+															"evolves_from_species_id": "762",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "393",
+			"list": [
+					{
+							"id": "764",
+							"identifier": "comfey",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "394",
+			"list": [
+					{
+							"id": "765",
+							"identifier": "oranguru",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "395",
+			"list": [
+					{
+							"id": "766",
+							"identifier": "passimian",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "396",
+			"list": [
+					{
+							"id": "767",
+							"identifier": "wimpod",
+							"list": [
+									{
+											"id": "768",
+											"identifier": "golisopod",
+											"evolves_from_species_id": "767",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "397",
+			"list": [
+					{
+							"id": "769",
+							"identifier": "sandygast",
+							"list": [
+									{
+											"id": "770",
+											"identifier": "palossand",
+											"evolves_from_species_id": "769",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "398",
+			"list": [
+					{
+							"id": "771",
+							"identifier": "pyukumuku",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "399",
+			"list": [
+					{
+							"id": "772",
+							"identifier": "type-null",
+							"list": [
+									{
+											"id": "773",
+											"identifier": "silvally",
+											"evolves_from_species_id": "772",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "400",
+			"list": [
+					{
+							"id": "774",
+							"identifier": "minior",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "401",
+			"list": [
+					{
+							"id": "775",
+							"identifier": "komala",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "402",
+			"list": [
+					{
+							"id": "776",
+							"identifier": "turtonator",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "403",
+			"list": [
+					{
+							"id": "777",
+							"identifier": "togedemaru",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "404",
+			"list": [
+					{
+							"id": "778",
+							"identifier": "mimikyu",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "405",
+			"list": [
+					{
+							"id": "779",
+							"identifier": "bruxish",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "406",
+			"list": [
+					{
+							"id": "780",
+							"identifier": "drampa",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "407",
+			"list": [
+					{
+							"id": "781",
+							"identifier": "dhelmise",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "408",
+			"list": [
+					{
+							"id": "782",
+							"identifier": "jangmo-o",
+							"list": [
+									{
+											"id": "783",
+											"identifier": "hakamo-o",
+											"evolves_from_species_id": "782",
+											"list": [
+													{
+															"id": "784",
+															"identifier": "kommo-o",
+															"evolves_from_species_id": "783",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "409",
+			"list": [
+					{
+							"id": "785",
+							"identifier": "tapu-koko",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "410",
+			"list": [
+					{
+							"id": "786",
+							"identifier": "tapu-lele",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "411",
+			"list": [
+					{
+							"id": "787",
+							"identifier": "tapu-bulu",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "412",
+			"list": [
+					{
+							"id": "788",
+							"identifier": "tapu-fini",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "413",
+			"list": [
+					{
+							"id": "789",
+							"identifier": "cosmog",
+							"list": [
+									{
+											"id": "790",
+											"identifier": "cosmoem",
+											"evolves_from_species_id": "789",
+											"list": [
+													{
+															"id": "791",
+															"identifier": "solgaleo",
+															"evolves_from_species_id": "790",
+															"in": "3rd evolution"
+													},
+													{
+															"id": "792",
+															"identifier": "lunala",
+															"evolves_from_species_id": "790",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "414",
+			"list": [
+					{
+							"id": "793",
+							"identifier": "nihilego",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "415",
+			"list": [
+					{
+							"id": "794",
+							"identifier": "buzzwole",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "416",
+			"list": [
+					{
+							"id": "795",
+							"identifier": "pheromosa",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "417",
+			"list": [
+					{
+							"id": "796",
+							"identifier": "xurkitree",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "418",
+			"list": [
+					{
+							"id": "797",
+							"identifier": "celesteela",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "419",
+			"list": [
+					{
+							"id": "798",
+							"identifier": "kartana",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "420",
+			"list": [
+					{
+							"id": "799",
+							"identifier": "guzzlord",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "421",
+			"list": [
+					{
+							"id": "800",
+							"identifier": "necrozma",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "422",
+			"list": [
+					{
+							"id": "801",
+							"identifier": "magearna",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "423",
+			"list": [
+					{
+							"id": "802",
+							"identifier": "marshadow",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "424",
+			"list": [
+					{
+							"id": "803",
+							"identifier": "poipole",
+							"list": [
+									{
+											"id": "804",
+											"identifier": "naganadel",
+											"evolves_from_species_id": "803",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "425",
+			"list": [
+					{
+							"id": "805",
+							"identifier": "stakataka",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "426",
+			"list": [
+					{
+							"id": "806",
+							"identifier": "blacephalon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "427",
+			"list": [
+					{
+							"id": "807",
+							"identifier": "zeraora",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "428",
+			"list": [
+					{
+							"id": "808",
+							"identifier": "meltan",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "429",
+			"list": [
+					{
+							"id": "809",
+							"identifier": "melmetal",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "430",
+			"list": [
+					{
+							"id": "810",
+							"identifier": "grookey",
+							"list": [
+									{
+											"id": "811",
+											"identifier": "thwackey",
+											"evolves_from_species_id": "810",
+											"list": [
+													{
+															"id": "812",
+															"identifier": "rillaboom",
+															"evolves_from_species_id": "811",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "431",
+			"list": [
+					{
+							"id": "813",
+							"identifier": "scorbunny",
+							"list": [
+									{
+											"id": "814",
+											"identifier": "raboot",
+											"evolves_from_species_id": "813",
+											"list": [
+													{
+															"id": "815",
+															"identifier": "cinderace",
+															"evolves_from_species_id": "814",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "432",
+			"list": [
+					{
+							"id": "816",
+							"identifier": "sobble",
+							"list": [
+									{
+											"id": "817",
+											"identifier": "drizzile",
+											"evolves_from_species_id": "816",
+											"list": [
+													{
+															"id": "818",
+															"identifier": "inteleon",
+															"evolves_from_species_id": "817",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "433",
+			"list": [
+					{
+							"id": "819",
+							"identifier": "skwovet",
+							"list": [
+									{
+											"id": "820",
+											"identifier": "greedent",
+											"evolves_from_species_id": "819",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "434",
+			"list": [
+					{
+							"id": "821",
+							"identifier": "rookidee",
+							"list": [
+									{
+											"id": "822",
+											"identifier": "corvisquire",
+											"evolves_from_species_id": "821",
+											"list": [
+													{
+															"id": "823",
+															"identifier": "corviknight",
+															"evolves_from_species_id": "822",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "435",
+			"list": [
+					{
+							"id": "824",
+							"identifier": "blipbug",
+							"list": [
+									{
+											"id": "825",
+											"identifier": "dottler",
+											"evolves_from_species_id": "824",
+											"list": [
+													{
+															"id": "826",
+															"identifier": "orbeetle",
+															"evolves_from_species_id": "825",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "436",
+			"list": [
+					{
+							"id": "827",
+							"identifier": "nickit",
+							"list": [
+									{
+											"id": "828",
+											"identifier": "thievul",
+											"evolves_from_species_id": "827",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "437",
+			"list": [
+					{
+							"id": "829",
+							"identifier": "gossifleur",
+							"list": [
+									{
+											"id": "830",
+											"identifier": "eldegoss",
+											"evolves_from_species_id": "829",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "438",
+			"list": [
+					{
+							"id": "831",
+							"identifier": "wooloo",
+							"list": [
+									{
+											"id": "832",
+											"identifier": "dubwool",
+											"evolves_from_species_id": "831",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "439",
+			"list": [
+					{
+							"id": "833",
+							"identifier": "chewtle",
+							"list": [
+									{
+											"id": "834",
+											"identifier": "drednaw",
+											"evolves_from_species_id": "833",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "440",
+			"list": [
+					{
+							"id": "835",
+							"identifier": "yamper",
+							"list": [
+									{
+											"id": "836",
+											"identifier": "boltund",
+											"evolves_from_species_id": "835",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "441",
+			"list": [
+					{
+							"id": "837",
+							"identifier": "rolycoly",
+							"list": [
+									{
+											"id": "838",
+											"identifier": "carkol",
+											"evolves_from_species_id": "837",
+											"list": [
+													{
+															"id": "839",
+															"identifier": "coalossal",
+															"evolves_from_species_id": "838",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "442",
+			"list": [
+					{
+							"id": "840",
+							"identifier": "applin",
+							"list": [
+									{
+											"id": "841",
+											"identifier": "flapple",
+											"evolves_from_species_id": "840",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "842",
+											"identifier": "appletun",
+											"evolves_from_species_id": "840",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "443",
+			"list": [
+					{
+							"id": "843",
+							"identifier": "silicobra",
+							"list": [
+									{
+											"id": "844",
+											"identifier": "sandaconda",
+											"evolves_from_species_id": "843",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "444",
+			"list": [
+					{
+							"id": "845",
+							"identifier": "cramorant",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "445",
+			"list": [
+					{
+							"id": "846",
+							"identifier": "arrokuda",
+							"list": [
+									{
+											"id": "847",
+											"identifier": "barraskewda",
+											"evolves_from_species_id": "846",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "446",
+			"list": [
+					{
+							"id": "848",
+							"identifier": "toxel",
+							"list": [
+									{
+											"id": "849",
+											"identifier": "toxtricity",
+											"evolves_from_species_id": "848",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "447",
+			"list": [
+					{
+							"id": "850",
+							"identifier": "sizzlipede",
+							"list": [
+									{
+											"id": "851",
+											"identifier": "centiskorch",
+											"evolves_from_species_id": "850",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "448",
+			"list": [
+					{
+							"id": "852",
+							"identifier": "clobbopus",
+							"list": [
+									{
+											"id": "853",
+											"identifier": "grapploct",
+											"evolves_from_species_id": "852",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "449",
+			"list": [
+					{
+							"id": "854",
+							"identifier": "sinistea",
+							"list": [
+									{
+											"id": "855",
+											"identifier": "polteageist",
+											"evolves_from_species_id": "854",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "450",
+			"list": [
+					{
+							"id": "856",
+							"identifier": "hatenna",
+							"list": [
+									{
+											"id": "857",
+											"identifier": "hattrem",
+											"evolves_from_species_id": "856",
+											"list": [
+													{
+															"id": "858",
+															"identifier": "hatterene",
+															"evolves_from_species_id": "857",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "451",
+			"list": [
+					{
+							"id": "859",
+							"identifier": "impidimp",
+							"list": [
+									{
+											"id": "860",
+											"identifier": "morgrem",
+											"evolves_from_species_id": "859",
+											"list": [
+													{
+															"id": "861",
+															"identifier": "grimmsnarl",
+															"evolves_from_species_id": "860",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "452",
+			"list": [
+					{
+							"id": "868",
+							"identifier": "milcery",
+							"list": [
+									{
+											"id": "869",
+											"identifier": "alcremie",
+											"evolves_from_species_id": "868",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "453",
+			"list": [
+					{
+							"id": "870",
+							"identifier": "falinks",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "454",
+			"list": [
+					{
+							"id": "871",
+							"identifier": "pincurchin",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "455",
+			"list": [
+					{
+							"id": "872",
+							"identifier": "snom",
+							"list": [
+									{
+											"id": "873",
+											"identifier": "frosmoth",
+											"evolves_from_species_id": "872",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "456",
+			"list": [
+					{
+							"id": "874",
+							"identifier": "stonjourner",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "457",
+			"list": [
+					{
+							"id": "875",
+							"identifier": "eiscue",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "458",
+			"list": [
+					{
+							"id": "876",
+							"identifier": "indeedee",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "459",
+			"list": [
+					{
+							"id": "877",
+							"identifier": "morpeko",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "460",
+			"list": [
+					{
+							"id": "878",
+							"identifier": "cufant",
+							"list": [
+									{
+											"id": "879",
+											"identifier": "copperajah",
+											"evolves_from_species_id": "878",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "461",
+			"list": [
+					{
+							"id": "880",
+							"identifier": "dracozolt",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "462",
+			"list": [
+					{
+							"id": "881",
+							"identifier": "arctozolt",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "463",
+			"list": [
+					{
+							"id": "882",
+							"identifier": "dracovish",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "464",
+			"list": [
+					{
+							"id": "883",
+							"identifier": "arctovish",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "465",
+			"list": [
+					{
+							"id": "884",
+							"identifier": "duraludon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "466",
+			"list": [
+					{
+							"id": "885",
+							"identifier": "dreepy",
+							"list": [
+									{
+											"id": "886",
+											"identifier": "drakloak",
+											"evolves_from_species_id": "885",
+											"list": [
+													{
+															"id": "887",
+															"identifier": "dragapult",
+															"evolves_from_species_id": "886",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "467",
+			"list": [
+					{
+							"id": "888",
+							"identifier": "zacian",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "468",
+			"list": [
+					{
+							"id": "889",
+							"identifier": "zamazenta",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "469",
+			"list": [
+					{
+							"id": "890",
+							"identifier": "eternatus",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "470",
+			"list": [
+					{
+							"id": "891",
+							"identifier": "kubfu",
+							"list": [
+									{
+											"id": "892",
+											"identifier": "urshifu",
+											"evolves_from_species_id": "891",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "471",
+			"list": [
+					{
+							"id": "893",
+							"identifier": "zarude",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "472",
+			"list": [
+					{
+							"id": "894",
+							"identifier": "regieleki",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "473",
+			"list": [
+					{
+							"id": "895",
+							"identifier": "regidrago",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "474",
+			"list": [
+					{
+							"id": "896",
+							"identifier": "glastrier",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "475",
+			"list": [
+					{
+							"id": "897",
+							"identifier": "spectrier",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "476",
+			"list": [
+					{
+							"id": "898",
+							"identifier": "calyrex",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "477",
+			"list": [
+					{
+							"id": "905",
+							"identifier": "enamorus",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "478",
+			"list": [
+					{
+							"id": "906",
+							"identifier": "sprigatito",
+							"list": [
+									{
+											"id": "907",
+											"identifier": "floragato",
+											"evolves_from_species_id": "906",
+											"list": [
+													{
+															"id": "908",
+															"identifier": "meowscarada",
+															"evolves_from_species_id": "907",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "479",
+			"list": [
+					{
+							"id": "909",
+							"identifier": "fuecoco",
+							"list": [
+									{
+											"id": "910",
+											"identifier": "crocalor",
+											"evolves_from_species_id": "909",
+											"list": [
+													{
+															"id": "911",
+															"identifier": "skeledirge",
+															"evolves_from_species_id": "910",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "480",
+			"list": [
+					{
+							"id": "912",
+							"identifier": "quaxly",
+							"list": [
+									{
+											"id": "913",
+											"identifier": "quaxwell",
+											"evolves_from_species_id": "912",
+											"list": [
+													{
+															"id": "914",
+															"identifier": "quaquaval",
+															"evolves_from_species_id": "913",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "481",
+			"list": [
+					{
+							"id": "915",
+							"identifier": "lechonk",
+							"list": [
+									{
+											"id": "916",
+											"identifier": "oinkologne",
+											"evolves_from_species_id": "915",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "482",
+			"list": [
+					{
+							"id": "917",
+							"identifier": "tarountula",
+							"list": [
+									{
+											"id": "918",
+											"identifier": "spidops",
+											"evolves_from_species_id": "917",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "483",
+			"list": [
+					{
+							"id": "919",
+							"identifier": "nymble",
+							"list": [
+									{
+											"id": "920",
+											"identifier": "lokix",
+											"evolves_from_species_id": "919",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "484",
+			"list": [
+					{
+							"id": "921",
+							"identifier": "pawmi",
+							"list": [
+									{
+											"id": "922",
+											"identifier": "pawmo",
+											"evolves_from_species_id": "921",
+											"list": [
+													{
+															"id": "923",
+															"identifier": "pawmot",
+															"evolves_from_species_id": "922",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "485",
+			"list": [
+					{
+							"id": "924",
+							"identifier": "tandemaus",
+							"list": [
+									{
+											"id": "925",
+											"identifier": "maushold",
+											"evolves_from_species_id": "924",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "486",
+			"list": [
+					{
+							"id": "926",
+							"identifier": "fidough",
+							"list": [
+									{
+											"id": "927",
+											"identifier": "dachsbun",
+											"evolves_from_species_id": "926",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "487",
+			"list": [
+					{
+							"id": "928",
+							"identifier": "smoliv",
+							"list": [
+									{
+											"id": "929",
+											"identifier": "dolliv",
+											"evolves_from_species_id": "928",
+											"list": [
+													{
+															"id": "930",
+															"identifier": "arboliva",
+															"evolves_from_species_id": "929",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "488",
+			"list": [
+					{
+							"id": "931",
+							"identifier": "squawkabilly",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "489",
+			"list": [
+					{
+							"id": "932",
+							"identifier": "nacli",
+							"list": [
+									{
+											"id": "933",
+											"identifier": "naclstack",
+											"evolves_from_species_id": "932",
+											"list": [
+													{
+															"id": "934",
+															"identifier": "garganacl",
+															"evolves_from_species_id": "933",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "490",
+			"list": [
+					{
+							"id": "935",
+							"identifier": "charcadet",
+							"list": [
+									{
+											"id": "936",
+											"identifier": "armarouge",
+											"evolves_from_species_id": "935",
+											"list": [],
+											"text": "2nd evolution"
+									},
+									{
+											"id": "937",
+											"identifier": "ceruledge",
+											"evolves_from_species_id": "935",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "491",
+			"list": [
+					{
+							"id": "938",
+							"identifier": "tadbulb",
+							"list": [
+									{
+											"id": "939",
+											"identifier": "bellibolt",
+											"evolves_from_species_id": "938",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "492",
+			"list": [
+					{
+							"id": "940",
+							"identifier": "wattrel",
+							"list": [
+									{
+											"id": "941",
+											"identifier": "kilowattrel",
+											"evolves_from_species_id": "940",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "493",
+			"list": [
+					{
+							"id": "942",
+							"identifier": "maschiff",
+							"list": [
+									{
+											"id": "943",
+											"identifier": "mabosstiff",
+											"evolves_from_species_id": "942",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "494",
+			"list": [
+					{
+							"id": "944",
+							"identifier": "shroodle",
+							"list": [
+									{
+											"id": "945",
+											"identifier": "grafaiai",
+											"evolves_from_species_id": "944",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "495",
+			"list": [
+					{
+							"id": "946",
+							"identifier": "bramblin",
+							"list": [
+									{
+											"id": "947",
+											"identifier": "brambleghast",
+											"evolves_from_species_id": "946",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "496",
+			"list": [
+					{
+							"id": "948",
+							"identifier": "toedscool",
+							"list": [
+									{
+											"id": "949",
+											"identifier": "toedscruel",
+											"evolves_from_species_id": "948",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "497",
+			"list": [
+					{
+							"id": "950",
+							"identifier": "klawf",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "498",
+			"list": [
+					{
+							"id": "951",
+							"identifier": "capsakid",
+							"list": [
+									{
+											"id": "952",
+											"identifier": "scovillain",
+											"evolves_from_species_id": "951",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "499",
+			"list": [
+					{
+							"id": "953",
+							"identifier": "rellor",
+							"list": [
+									{
+											"id": "954",
+											"identifier": "rabsca",
+											"evolves_from_species_id": "953",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "500",
+			"list": [
+					{
+							"id": "955",
+							"identifier": "flittle",
+							"list": [
+									{
+											"id": "956",
+											"identifier": "espathra",
+											"evolves_from_species_id": "955",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "501",
+			"list": [
+					{
+							"id": "957",
+							"identifier": "tinkatink",
+							"list": [
+									{
+											"id": "958",
+											"identifier": "tinkatuff",
+											"evolves_from_species_id": "957",
+											"list": [
+													{
+															"id": "959",
+															"identifier": "tinkaton",
+															"evolves_from_species_id": "958",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "502",
+			"list": [
+					{
+							"id": "960",
+							"identifier": "wiglett",
+							"list": [
+									{
+											"id": "961",
+											"identifier": "wugtrio",
+											"evolves_from_species_id": "960",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "503",
+			"list": [
+					{
+							"id": "962",
+							"identifier": "bombirdier",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "504",
+			"list": [
+					{
+							"id": "963",
+							"identifier": "finizen",
+							"list": [
+									{
+											"id": "964",
+											"identifier": "palafin",
+											"evolves_from_species_id": "963",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "505",
+			"list": [
+					{
+							"id": "965",
+							"identifier": "varoom",
+							"list": [
+									{
+											"id": "966",
+											"identifier": "revavroom",
+											"evolves_from_species_id": "965",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "506",
+			"list": [
+					{
+							"id": "967",
+							"identifier": "cyclizar",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "507",
+			"list": [
+					{
+							"id": "968",
+							"identifier": "orthworm",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "508",
+			"list": [
+					{
+							"id": "969",
+							"identifier": "glimmet",
+							"list": [
+									{
+											"id": "970",
+											"identifier": "glimmora",
+											"evolves_from_species_id": "969",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "509",
+			"list": [
+					{
+							"id": "971",
+							"identifier": "greavard",
+							"list": [
+									{
+											"id": "972",
+											"identifier": "houndstone",
+											"evolves_from_species_id": "971",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "510",
+			"list": [
+					{
+							"id": "973",
+							"identifier": "flamigo",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "511",
+			"list": [
+					{
+							"id": "974",
+							"identifier": "cetoddle",
+							"list": [
+									{
+											"id": "975",
+											"identifier": "cetitan",
+											"evolves_from_species_id": "974",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "512",
+			"list": [
+					{
+							"id": "976",
+							"identifier": "veluza",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "513",
+			"list": [
+					{
+							"id": "977",
+							"identifier": "dondozo",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "514",
+			"list": [
+					{
+							"id": "978",
+							"identifier": "tatsugiri",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "515",
+			"list": [
+					{
+							"id": "984",
+							"identifier": "great-tusk",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "516",
+			"list": [
+					{
+							"id": "985",
+							"identifier": "scream-tail",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "517",
+			"list": [
+					{
+							"id": "986",
+							"identifier": "brute-bonnet",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "518",
+			"list": [
+					{
+							"id": "987",
+							"identifier": "flutter-mane",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "519",
+			"list": [
+					{
+							"id": "988",
+							"identifier": "slither-wing",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "520",
+			"list": [
+					{
+							"id": "989",
+							"identifier": "sandy-shocks",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "521",
+			"list": [
+					{
+							"id": "990",
+							"identifier": "iron-treads",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "522",
+			"list": [
+					{
+							"id": "991",
+							"identifier": "iron-bundle",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "523",
+			"list": [
+					{
+							"id": "992",
+							"identifier": "iron-hands",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "524",
+			"list": [
+					{
+							"id": "993",
+							"identifier": "iron-jugulis",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "525",
+			"list": [
+					{
+							"id": "994",
+							"identifier": "iron-moth",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "526",
+			"list": [
+					{
+							"id": "995",
+							"identifier": "iron-thorns",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "527",
+			"list": [
+					{
+							"id": "996",
+							"identifier": "frigibax",
+							"list": [
+									{
+											"id": "997",
+											"identifier": "arctibax",
+											"evolves_from_species_id": "996",
+											"list": [
+													{
+															"id": "998",
+															"identifier": "baxcalibur",
+															"evolves_from_species_id": "997",
+															"in": "3rd evolution"
+													}
+											],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "528",
+			"list": [
+					{
+							"id": "999",
+							"identifier": "gimmighoul",
+							"list": [
+									{
+											"id": "1000",
+											"identifier": "gholdengo",
+											"evolves_from_species_id": "999",
+											"list": [],
+											"text": "2nd evolution"
+									}
+							],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "529",
+			"list": [
+					{
+							"id": "1001",
+							"identifier": "wo-chien",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "530",
+			"list": [
+					{
+							"id": "1002",
+							"identifier": "chien-pao",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "531",
+			"list": [
+					{
+							"id": "1003",
+							"identifier": "ting-lu",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "532",
+			"list": [
+					{
+							"id": "1004",
+							"identifier": "chi-yu",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "533",
+			"list": [
+					{
+							"id": "1005",
+							"identifier": "roaring-moon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "534",
+			"list": [
+					{
+							"id": "1006",
+							"identifier": "iron-valiant",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "535",
+			"list": [
+					{
+							"id": "1007",
+							"identifier": "koraidon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "536",
+			"list": [
+					{
+							"id": "1008",
+							"identifier": "miraidon",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "537",
+			"list": [
+					{
+							"id": "1009",
+							"identifier": "walking-wake",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	},
+	{
+			"evolution_chain_id": "538",
+			"list": [
+					{
+							"id": "1010",
+							"identifier": "iron-leaves",
+							"list": [],
+							"text": "1st evolution"
+					}
+			]
+	}
+]
