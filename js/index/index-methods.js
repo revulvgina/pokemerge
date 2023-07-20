@@ -32,15 +32,6 @@
     window.pokeCsv = csvToArray(text, ",");
   };
 
-  window.loadBasicEvolutionJson = async () => {
-    const response = await fetch(
-      `https://raw.githubusercontent.com/revulvgina/pokemerge/master/json/basic-evolutions.json`
-    );
-    const jsonResponse = await response.json();
-
-    window.pokelist = jsonResponse.select;
-  };
-
   window.adjustEncounterDisplay = () => {
     const { offsetWidth, offsetHeight } =
       document.querySelector("div.backpack-grid");
@@ -170,18 +161,6 @@
 
   window.getPool = () => {
     return window.pokelist.slice(0, window.currentLevel);
-  };
-
-  window.formatDisplayNameAsIdentifierForCsv = (displayName) => {
-    return displayName
-      .replaceAll(".", "")
-      .replaceAll(" ", "-")
-      .replaceAll(":", "")
-      .replaceAll("♀", "-m")
-      .replaceAll("♂", "-f")
-      .replaceAll(`'`, "")
-      .replaceAll("é", "e")
-      .toLowerCase();
   };
 
   window.shuffleArray = (anArrayCopy) => {
@@ -517,20 +496,6 @@
 
     playSound("plus-sound");
   }
-
-	window.findPokemonFromCsv = (identifierPrefix) => {
-		const exactMatch = window.pokeCsv.find(
-			(eachPokemon) => eachPokemon.identifier === identifierPrefix
-		);
-	
-		if (exactMatch) {
-			return exactMatch;
-		}
-	
-		return window.pokeCsv.find((eachPokemon) =>
-			eachPokemon.identifier.match(`^${identifierPrefix}`)
-		);
-	}
 	
 	window.getPokemonImageUrl = (pokemonId) => {
 		return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
@@ -621,12 +586,6 @@
 		const mouseMoveEvent = window._recordedMouseMoveEvent;
 	
 		setFloatingImageCoordinates(mouseMoveEvent);
-	}
-	
-	window.getPokemonDataByDisplayName = (pokemonDisplayName) => {
-		const csvIdentifier = formatDisplayNameAsIdentifierForCsv(pokemonDisplayName);
-	
-		return findPokemonFromCsv(csvIdentifier);
 	}
 	
 	window.getSelectedCellBorderStyle = (displayNameInCell, displayName) => {
