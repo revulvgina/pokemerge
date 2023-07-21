@@ -66,7 +66,9 @@
 
     backpackCells.forEach((eachCell) => {
       attachCellWithPokeBallImage(eachCell);
-    });
+		});
+		
+		window.startLevel = Date.now();
   };
 
   window.getBasePrice = (evolutionCount) => {
@@ -409,7 +411,8 @@
     updateCurrentLevel();
     playSound("level-up-sound");
 
-    publishHighestLevel();
+		publishHighestLevel();
+		publishFastestLevel();
 
     if (0 === window.currentLevel % 5) {
       adjustEncounterDisplay();
@@ -1278,11 +1281,10 @@
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        mode: "no-cors",
+				mode: "no-cors",
+				next: { revalidate: 0 }
       }
     );
-		
-		console.info(`/api/highest-level Response status`, response);
   };
 
 	window.publishHighestBackpack = async () => {
@@ -1299,11 +1301,10 @@
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        mode: "no-cors",
+				mode: "no-cors",
+				next: { revalidate: 0 }
       }
     );
-		
-		console.info(`/api/highest-back Response status`, response);
 	};
 	
 	window.publishHighestGold = async () => {
@@ -1318,10 +1319,28 @@
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        mode: "no-cors",
+				mode: "no-cors",
+				next: { revalidate: 0 }
       }
 		);
-		
-		console.info(`/api/highest-gold Response status`, response);
+	};
+	
+	window.publishFastestLevel = async () => {
+    const response = await fetch(
+      `https://pokemerge-endpoint.vercel.app/api/fastest-level/${window.sessionId}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+					value: (Date.now() - window.startLevel),
+					level: window.currentLevel - 1
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+				mode: "no-cors",
+				next: { revalidate: 0 }
+      }
+		);
 	};
 })();

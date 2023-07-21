@@ -11,6 +11,7 @@
 	<script src="./js/common/jquery.min.js"></script>
 	<script src="./js/common/load-html.js"></script>
 	<script src="./js/common/csv-to-array.js"></script>
+	<script src="./js/common/nanoid.js"></script>
 	<script src="./js/common/common.js"></script>
 	<script src="./js/common/common-constants.js"></script>
 	<script src="./js/common/color-thief.js"></script>
@@ -25,8 +26,20 @@
 			</script>
 		</div>
 		<div class="content">
-			<div class="highest-level-header"><h2>Highest Level</h2></div>
-			<div id="highest-level-grid"></div>
+			<div class="leaderboard-grids">
+				<div class="grid-item-container">
+					<div class="grid-header">Highest Level</div>
+					<div id="highest-level" class="category-grid"></div>
+				</div>
+				<div class="grid-item-container">
+					<div class="grid-header">Highest Gold</div>
+					<div id="highest-gold" class="category-grid"></div>
+				</div>
+				<div class="grid-item-container">
+					<div class="grid-header">Most Discovered Pokemons</div>
+					<div id="highest-backpack" class="category-grid"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 

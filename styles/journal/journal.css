@@ -26,7 +26,7 @@ body {
 .content {
 	background-color: #292929;
 	height: 40px;
-	padding: 20px 20px;
+	padding: 40px 30px;
 	height: calc(100vh - 60px);
 	overflow: hidden scroll;
 }

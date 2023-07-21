@@ -162,6 +162,11 @@
 
 	window.getPokemonChainData = (evolutionChainId) => {
 		return window.pokemonChain.find((eachPokemonChain) => evolutionChainId === eachPokemonChain.evolution_chain_id);
+	};
+
+	window.getNanoId = (length = 16) => {
+		const _ID_CHARACTERS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+		return customAlphabet(_ID_CHARACTERS, length)();
 	}
 
 	window.getSessionId = () => {
@@ -172,9 +177,7 @@
 			return currentSessionId;
 		}
 
-		const _ID_CHARACTERS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-		const _MAXIMUM_LENGTH = 16;
-		const newSessionId = customAlphabet(_ID_CHARACTERS, _MAXIMUM_LENGTH)();
+		const newSessionId = window.getNanoId(16);
 		window.localStorage.setItem('session-id', newSessionId);
 		window.sessionId = newSessionId;
 	};
@@ -182,4 +185,8 @@
 	window.getDateTimeFormat = (thatTimestamp) => {
 		return new Date(thatTimestamp).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 	};
+
+	window.extraCacheBusterFetchUrl = (fetchUrl) => {
+		return `${fetchUrl}/${Date.now()}${window.getNanoId(16)}`;
+	}
 })();
