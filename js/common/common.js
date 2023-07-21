@@ -163,4 +163,23 @@
 	window.getPokemonChainData = (evolutionChainId) => {
 		return window.pokemonChain.find((eachPokemonChain) => evolutionChainId === eachPokemonChain.evolution_chain_id);
 	}
+
+	window.getSessionId = () => {
+		const currentSessionId = window.localStorage.getItem('session-id');
+
+		if (null !== currentSessionId) {
+			window.sessionId = currentSessionId;
+			return currentSessionId;
+		}
+
+		const _ID_CHARACTERS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+		const _MAXIMUM_LENGTH = 16;
+		const newSessionId = customAlphabet(_ID_CHARACTERS, _MAXIMUM_LENGTH)();
+		window.localStorage.setItem('session-id', newSessionId);
+		window.sessionId = newSessionId;
+	};
+
+	window.getDateTimeFormat = (thatTimestamp) => {
+		return new Date(thatTimestamp).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+	};
 })();

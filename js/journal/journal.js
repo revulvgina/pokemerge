@@ -1,15 +1,18 @@
 (async () => {
-  await loadPokeCsv();
-  await loadPokemonChainJson();
-  await loadPokemonSpeciesNames();
-  await loadPokemonTypes();
-  await loadTypeNames();
-  await loadPokemonSpeciesFlavorText();
-  await loadPokemonSpecies();
-
-  createCells();
-  initializeIntersectionObserver();
-  attachClickListenerToEveryCell();
+	
+	document.addEventListener("imports-loaded", async () => {
+		await loadPokeCsv();
+		await loadPokemonChainJson();
+		await loadPokemonSpeciesNames();
+		await loadPokemonTypes();
+		await loadTypeNames();
+		await loadPokemonSpeciesFlavorText();
+		await loadPokemonSpecies();
+	
+		createCells();
+		initializeIntersectionObserver();
+		attachClickListenerToEveryCell();
+	});
 
   async function createCells() {
     const pokemonList =
@@ -159,7 +162,8 @@
       `${top}px auto auto ${left}px`
     );
 
-    if (isDiscovered(cellElement.getAttribute("data-pokemon-identifier"))) {
+		const pokemonIdentifier = cellElement.getAttribute("data-pokemon-identifier");
+    if (isDiscovered(pokemonIdentifier)) {
       fullScreenDetailElement.style.backgroundColor =
         imageElement.style.backgroundColor;
     } else {
@@ -168,7 +172,7 @@
 
     const clonedImageElement = imageElement.cloneNode(true);
 
-    if (!isDiscovered(cellElement.getAttribute("data-pokemon-identifier"))) {
+    if (!isDiscovered(pokemonIdentifier)) {
       clonedImageElement.style.backgroundColor = "#292929";
       clonedImageElement.style.filter = "grayscale(0)";
     }
@@ -213,9 +217,15 @@
       cellElement.getAttribute("data-pokemon-id")
 		);
 		
+		
 		const dateDiscoveredElement = document.getElementById("date-discovered");
-		const dateDiscovered = new Date().toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-		dateDiscoveredElement.innerText = `discovered last ${dateDiscovered}`;
+		const lastDiscovered = getDiscovered(pokemonIdentifier);
+		if (null !== lastDiscovered) {
+			const dateDiscovered = window.getDateTimeFormat(Number.parseInt(lastDiscovered, 10));
+			dateDiscoveredElement.innerText = `discovered last ${dateDiscovered}`;
+		} else {
+			dateDiscoveredElement.innerText = `not yet discovered.`;
+		}
 
     const evolutionChainElement = document.getElementById("evolution-chain");
     const evolutionChainData = window.getPokemonChainData(
@@ -272,6 +282,10 @@
       "string" ===
       typeof window.localStorage.getItem(`discovered-${pokemonIdentifier}`)
     );
+  }
+
+  function getDiscovered(pokemonIdentifier) {
+    return window.localStorage.getItem(`discovered-${pokemonIdentifier}`);
   }
 
   function attachClickListenerToEveryCell() {

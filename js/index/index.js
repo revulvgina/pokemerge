@@ -2,6 +2,7 @@
   document.addEventListener("imports-loaded", async () => {
     await loadBasicEvolutionJson();
     await loadPokeCsv();
+    getSessionId();
 
     createBuyerCells();
     createBackpackCells();
@@ -23,5 +24,9 @@
     initializeBackpackBalls();
 
     initializeMouseMoveListener();
+
+    // fetch("http://ip-api.com/json")
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data));
   });
 })();

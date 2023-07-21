@@ -44,6 +44,20 @@
 	outline: none;
 }
 
+#leaderboard-button,
+#leaderboard-button:visited,
+#leaderboard-button:hover,
+#leaderboard-button:active {
+	color: inherit;
+	text-decoration: none;
+	border-width: 0;
+	outline: none;
+}
+
+.vibrate-container {
+	margin-top: 10%;
+}
+
 
 .reset-progress-animation {
 	background: linear-gradient(to right, black 0%, red 50%, red 100%);
