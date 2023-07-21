@@ -124,7 +124,7 @@
       return;
     }
 
-    bgmElement.volume = 0.03;
+    bgmElement.volume = 0.025;
     bgmElement.play();
   };
 
@@ -387,29 +387,41 @@
 
 		updateCurrentGold();
 
-		console.log("goldIncrease > 0", goldIncrease > 0)
-		
 		if (goldIncrease > 0) {
 			publishHighestGold();
 		}
   };
 
-  window.updateExpForNextLevelCount = () => {
-    window.expCountForNextLevel = (window.expCountForNextLevel || 0) + 1;
+	window.updateExpForNextLevelCount = (increaseValue) => {
+    window.expCountForNextLevel = (window.expCountForNextLevel || 0) + Math.floor(increaseValue * Math.max(1, (window.currentLevel/40)));
 
     if (window.expCountForNextLevel < window.currentLevel) {
       updateExpForNextLevelElement();
       return;
     }
 
-    increaseCurrentGold(window.currentLevel * 5);
+		increaseCurrentGold(window.currentLevel * 5);
+		
+		let excessValue = window.expCountForNextLevel - window.currentLevel;
 
-    window.currentLevel += 1;
-    localStorage.setItem("current_lv", window.currentLevel);
-    window.expCountForNextLevel = 0;
+		
+		if (excessValue >= window.currentLevel + 1) {
+			window.currentLevel += 2;
+			excessValue = Math.max(0, excessValue - (window.currentLevel - 1));
+		} else {
+			window.currentLevel += 1;
+		}
+
+		localStorage.setItem("current_lv", window.currentLevel);
+
+		window.expCountForNextLevel = excessValue;
+		
     updateExpForNextLevelElement();
-    updateCurrentLevel();
-    playSound("level-up-sound");
+		updateCurrentLevel();
+		
+		playSound("level-up-sound");
+		
+		window.levelUpSoundPriorityTimeout = Date.now() + 2000;
 
 		publishHighestLevel();
 		publishFastestLevel();
@@ -488,7 +500,7 @@
 
     setSelectedCell(cellElement);
 
-    updateExpForNextLevelCount();
+    updateExpForNextLevelCount(currentEvolutionCount);
 
     playSound("plus-sound");
   };
@@ -785,10 +797,19 @@
     const thisAudio = document.getElementById(audioId);
 
     const volumeMap = {
-      ["pokeball-open-sound"]: 0.25,
+			["pokeball-open-sound"]: 0.05,
+			['click-sound']: 0.25
     };
 
-    thisAudio.volume = volumeMap[audioId] || 1;
+		thisAudio.volume = volumeMap[audioId] || 1;
+
+		if (/^pokemon-cry-/.test(audioId)) {
+			thisAudio.volume = 0.5;
+		}
+		
+		if ((window.levelUpSoundPriorityTimeout || 0) > Date.now()) {
+			thisAudio.volume = 0.15;
+		}
 
     // thisAudio.pause();
     thisAudio.currentTime = 0;
@@ -1201,9 +1222,11 @@
 
     reanimateElement(document.getElementById("pokemerge-brand"));
     reanimateElement(document.querySelector(".header-text > h1"));
-    reanimateElement(document.querySelector("#exp-bar"));
+		reanimateElement(document.querySelector("#exp-bar"));
 
-    updateExpForNextLevelCount();
+		const evolutionCount = Number.parseInt(window.selectedCellElement.getAttribute('data-evolution-count'), 10);
+
+    updateExpForNextLevelCount(evolutionCount);
 
     doVibrate();
 

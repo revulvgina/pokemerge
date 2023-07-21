@@ -6,6 +6,12 @@
 	border-radius: 8px;
 	border: 4px solid rgb(var(--color-a76f47));
 	background-color: rgba(var(--color-f79f4f));
+
+	/* background-image: url(https://thecatapi.com/api/images/get?format=src&type=png&size=small);
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center; */
 }
 
 #settings-dialog::backdrop {
