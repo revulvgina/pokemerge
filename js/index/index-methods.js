@@ -702,6 +702,8 @@
 		cellElement.setAttribute("data-pokemon-id", pokemonId);
 	
 		const pokemonIdentifier = pokemonData.identifier;
+
+		window.localStorage.setItem(`discovered-${pokemonIdentifier}`, Date.now());
 	
 		updateDisplayCell(cellElement, pokemonId, pokemonDisplayName);
 	

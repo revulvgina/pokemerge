@@ -146,4 +146,21 @@
 		const flavorTexts = window.getPokemonFlavorText(pokemonId);
 		return getRandomItem(flavorTexts);
 	}
+
+	window.loadPokemonSpecies = async () => {
+		const response = await fetch(
+			'./csv/pokemon_species.csv'
+		);
+		const text = await response.text();
+
+		window.pokemonSpecies = csvToArray(text, ",");
+	};
+
+	window.getPokemonSpeciesRow = (pokemonId) => {
+		return window.pokemonSpecies.find(({ id }) => pokemonId.toString() === id);
+	};
+
+	window.getPokemonChainData = (evolutionChainId) => {
+		return window.pokemonChain.find((eachPokemonChain) => evolutionChainId === eachPokemonChain.evolution_chain_id);
+	}
 })();

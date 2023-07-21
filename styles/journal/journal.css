@@ -194,7 +194,39 @@ body {
 	padding: 4% 0;
 }
 
+#evolution-chain img {
+	max-width: 5%;
+	filter: grayscale(1);
+}
 
+#evolution-chain img.discovered {
+	filter: grayscale(0);
+}
+
+#evolution-chain {
+	text-align: center;
+}
+
+.pokemon-image {
+	filter: grayscale(1);
+}
+
+.pokemon-image.discovered {
+	filter: grayscale(0);
+}
+
+.full-screen-back-button {
+	position: absolute;
+	left: 2%;
+	top: 1%;
+}
+
+#date-discovered {
+	text-align: center;
+	font-size: 60%;
+	font-style: italic;
+	padding: 1% 0;
+}
 
 .full-screen>img {
 	width: 50%;
@@ -210,12 +242,20 @@ body {
 }
 
 @media (max-width: 720px) {
+	:root {
+		font-size: 13px;
+	}
+
 	#image-container img {
 		max-width: 80%;
 	}
 }
 
 @media (max-width: 600px) {
+	:root {
+		font-size: 11px;
+	}
+
 	#image-container img {
 		max-width: 100%;
 	}
