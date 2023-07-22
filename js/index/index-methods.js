@@ -506,7 +506,9 @@
   };
 
   window.getPokemonImageUrl = (pokemonId) => {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+    // return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+    // return `/images/official-artwork/${pokemonId}.png`;
+    return `/images/bit/${pokemonId}.png`;
   };
 
   window.updateDisplayCell = (
