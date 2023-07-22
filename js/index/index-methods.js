@@ -508,7 +508,7 @@
   window.getPokemonImageUrl = (pokemonId) => {
     // return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
     // return `/images/official-artwork/${pokemonId}.png`;
-    return `/images/bit/${pokemonId}.png`;
+    return `.	/images/bit/${pokemonId}.png`;
   };
 
   window.updateDisplayCell = (
@@ -590,7 +590,7 @@
     const floatingImage = document.getElementById("floating-image");
     floatingImage.setAttribute(
       "src",
-      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonIdString}.png`
+      `./images/bit/${pokemonIdString}.png`
     );
 
     const mouseMoveEvent = window._recordedMouseMoveEvent;
