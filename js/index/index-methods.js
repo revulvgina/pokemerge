@@ -818,12 +818,6 @@
     thisAudio.play();
   };
 
-  window.reanimateElement = (element) => {
-    element.style.animation = "none";
-    element.offsetHeight; /* trigger reflow */
-    element.style.animation = null;
-  };
-
   window.onPokeBallClick = () => {
     let indexWithoutDisplayName = getEmptyShuffledCell();
 

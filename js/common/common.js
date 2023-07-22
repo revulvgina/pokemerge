@@ -189,4 +189,10 @@
 	window.extraCacheBusterFetchUrl = (fetchUrl) => {
 		return `${fetchUrl}/${Date.now()}${window.getNanoId(16)}`;
 	}
+
+  window.reanimateElement = (element) => {
+    element.style.animation = "none";
+    element.offsetHeight; /* trigger reflow */
+    element.style.animation = null;
+  };
 })();

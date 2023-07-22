@@ -96,7 +96,9 @@
 
     img.addEventListener("load", function () {
       const colorThiefed = colorThief.getColor(img);
-      imageElement.style.backgroundColor = `rgb(${colorThiefed.join(",")})`;
+			imageElement.style.backgroundColor = `rgb(${colorThiefed.join(",")})`;
+			imageElement.parentElement.classList.add('image-is-loaded');
+			imageElement.removeAttribute('loading');
     });
 
     img.crossOrigin = "Anonymous";
@@ -106,7 +108,7 @@
   function initializeIntersectionObserver() {
     const cells = document.querySelectorAll(".cell");
 
-    const observer = new IntersectionObserver((entries) => {
+    window.observer = new IntersectionObserver((entries) => {
       entries.forEach((eachEntry) => {
         const targetCell = eachEntry.target;
         targetCell.classList.toggle("show-image", eachEntry.isIntersecting);
@@ -117,9 +119,9 @@
           );
         }
       });
-    });
+    }, {threshold: 0});
 
-    cells.forEach((eachCell) => observer.observe(eachCell));
+    cells.forEach((eachCell) => window.observer.observe(eachCell));
   }
 
   window.unFullScreen = (e) => {
@@ -234,7 +236,7 @@
 			const dateDiscovered = window.getDateTimeFormat(Number.parseInt(lastDiscovered, 10));
 			dateDiscoveredElement.innerText = `discovered last ${dateDiscovered}`;
 		} else {
-			dateDiscoveredElement.innerText = `not yet discovered.`;
+			dateDiscoveredElement.innerText = `can be discovered at Lv ${cellElement.getAttribute('data-evolution-chain-id')}.`;
 		}
 
     const evolutionChainElement = document.getElementById("evolution-chain");

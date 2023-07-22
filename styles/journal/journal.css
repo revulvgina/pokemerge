@@ -89,7 +89,7 @@ body {
 	visibility: hidden;
 }
 
-.cell.show-image {
+.cell.show-image.image-is-loaded {
 	filter: blur(0) opacity(1);
 	visibility: visible;
 	transition: opacity 1s, filter 0.8s;
@@ -257,7 +257,8 @@ body {
 }
 
 #full-screen-detail.full-screen~#pokemon-grid {
-	display: none;
+	/* display: none; */
+	visibility: hidden;
 }
 
 .parent:hover .child
