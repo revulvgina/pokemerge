@@ -1,6 +1,6 @@
 body {
 	/* background-color: rgb(var(--color-E0C9A6)); */
-	background-color: rgb(var(--color-0F0F1B));
+	background-color: #000;
 }
 
 .container {
@@ -9,6 +9,17 @@ body {
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
+}
+
+.fixed-background {
+	background-image: url(/images/background.jpg);
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	filter: blur(4px) brightness(0.3);
 }
 
 .square {
@@ -77,7 +88,7 @@ div.buyer-refresh {
 
 #exp-container {
 	border: 1px solid #000;
-	padding: 0.4%;
+	padding: 0.3%;
 	flex: 0.5;
 	height: 14px;
 	margin-left: 30px;
@@ -550,15 +561,6 @@ img.poke-dollar {
 
 .cursor-pointer {
 	cursor: pointer;
-}
-
-#settings-dialog {
-	left: 0;
-    right: 0;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10%;
-    padding: 30px;
 }
 
 @keyframes bg-spin {
