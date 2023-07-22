@@ -12,7 +12,7 @@ body {
 }
 
 .fixed-background {
-	background-image: url(/images/background.jpg);
+	background-image: url(../../images/background.jpg);
 	position: absolute;
 	width: 100vw;
 	height: 100vh;

@@ -1,6 +1,6 @@
 body {
 	background-color: rgb(var(--color-0F0F1B));
-	background: url('/images/leaderboard.jpg');
+	background: url(../../images/leaderboard.jpg);
 	background-size: cover;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
