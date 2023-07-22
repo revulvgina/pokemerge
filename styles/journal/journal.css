@@ -28,13 +28,20 @@ body {
 	height: 40px;
 	padding: 40px 30px;
 	height: calc(100vh - 60px);
-	overflow: hidden scroll;
+	overflow: hidden auto;
 }
 
 #pokemon-grid {
 	display: grid;
 	gap: 20px;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+#pokemon-grid:not(.display-none) ~ .pokemon-spinner-container {
+	/* display: none; */
+	pointer-events: none;
+	filter: blur(1px);
+	opacity: 0;
 }
 
 .cell {
@@ -77,12 +84,15 @@ body {
 	font-size: 60%;
 }
 
-.cell .pokemon-image {
-	display: none;
+.cell {
+	filter: blur(5px) opacity(0);
+	visibility: hidden;
 }
 
-.cell.show-image .pokemon-image {
-	display: inline;
+.cell.show-image {
+	filter: blur(0) opacity(1);
+	visibility: visible;
+	transition: opacity 1s, filter 0.8s;
 }
 
 .pokemon-image {
@@ -215,10 +225,19 @@ body {
 	filter: grayscale(0);
 }
 
+.not-yet-discovered .details .discovered-details {
+	display: none;
+}
+
+.not-yet-discovered #types {
+	display: none;
+}
+
 .full-screen-back-button {
 	position: absolute;
 	left: 2%;
 	top: 1%;
+	width: 40px;
 }
 
 #date-discovered {
@@ -228,7 +247,7 @@ body {
 	padding: 1% 0;
 }
 
-.full-screen>img {
+.full-screen-container>img {
 	width: 50%;
 }
 
@@ -237,8 +256,32 @@ body {
 	animation: go-full-screen reverse backwards 250ms ease-in-out !important;
 }
 
-#full-screen-detail.full-screen~.cell {
+#full-screen-detail.full-screen~#pokemon-grid {
 	display: none;
+}
+
+.parent:hover .child
+{
+    display: block;
+
+    -webkit-animation: fadeInFromNone 0.5s ease-out;
+    -moz-animation: fadeInFromNone 0.5s ease-out;
+    -o-animation: fadeInFromNone 0.5s ease-out;
+    animation: fadeInFromNone 0.5s ease-out;
+}
+
+@-webkit-keyframes pokemon-grid-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    1% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 720px) {

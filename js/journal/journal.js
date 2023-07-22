@@ -32,7 +32,9 @@
       const cellElement = createCell(pokemonData, i);
 
       document.getElementById("pokemon-grid").appendChild(cellElement);
-    }
+		}
+		
+		document.getElementById('pokemon-grid').classList.remove('display-none');
   }
 
   function createCell(pokemonData, i) {
@@ -176,9 +178,10 @@
     const clonedImageElement = imageElement.cloneNode(true);
 
     if (isPokemonDiscovered) {
-      clonedImageElement.style.backgroundColor = "#292929";
       clonedImageElement.style.filter = "grayscale(0)";
-    }
+		} else {
+      clonedImageElement.style.backgroundColor = "#292929";
+		}
 
     const imageContainerElement = document.getElementById("image-container");
     imageContainerElement.innerHTML = "";
@@ -189,39 +192,41 @@
       "data-display-name"
     )}</span>`;
 
-    const typesElement = document.getElementById("types");
-    let typesInnerHTML = "";
-    for (let i = 0; i < 10; i += 1) {
-      const typeName = cellElement.getAttribute(`data-type-${i}`);
-
-      if (null === typeName) {
-        break;
-      }
-
-      typesInnerHTML += `<div class="pokemon-type-box" style="background-color: ${
-        window.POKEMON_TYPE_COLORS[typeName.toLowerCase()]
-      }">${typeName}</div>`;
-    }
-
-    typesElement.innerHTML = typesInnerHTML;
-
-    const heightElement = document.getElementById("height-value");
-    heightElement.innerText = `${
-      Number.parseInt(cellElement.getAttribute("data-height"), 10) / 10
-    } M`;
-
-    const weightElement = document.getElementById("weight-value");
-    weightElement.innerText = `${
-      Number.parseInt(cellElement.getAttribute("data-weight"), 10) / 10
-    } KG`;
-
 		if (isPokemonDiscovered) {
+			const typesElement = document.getElementById("types");
+			let typesInnerHTML = "";
+			for (let i = 0; i < 10; i += 1) {
+				const typeName = cellElement.getAttribute(`data-type-${i}`);
+
+				if (null === typeName) {
+					break;
+				}
+
+				typesInnerHTML += `<div class="pokemon-type-box" style="background-color: ${
+					window.POKEMON_TYPE_COLORS[typeName.toLowerCase()]
+				}">${typeName}</div>`;
+			}
+
+			typesElement.innerHTML = typesInnerHTML;
+
+			const heightElement = document.getElementById("height-value");
+			heightElement.innerText = `${
+				Number.parseInt(cellElement.getAttribute("data-height"), 10) / 10
+			} M`;
+
+			const weightElement = document.getElementById("weight-value");
+			weightElement.innerText = `${
+				Number.parseInt(cellElement.getAttribute("data-weight"), 10) / 10
+			} KG`;
+
 			const flavorTextElement = document.getElementById("flavor-text");
 			flavorTextElement.innerText = window.getRandomPokemonFlavorText(
 				cellElement.getAttribute("data-pokemon-id")
 			);
+		} else {
+			fullScreenDetailElement.classList.add('not-yet-discovered');
 		}
-		
+
 		
 		const dateDiscoveredElement = document.getElementById("date-discovered");
 		const lastDiscovered = getDiscovered(pokemonIdentifier);

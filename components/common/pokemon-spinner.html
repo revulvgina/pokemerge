@@ -1,0 +1,60 @@
+<style>
+	.pokemon-spinner-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+		box-sizing: border-box;
+		min-height: 100%;
+    top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+		transition: opacity 1.2s;
+	}
+
+	.pokemon-spinner {
+		position: relative;
+		height: 100px;
+		width: 100px;
+		background: linear-gradient(to bottom, rgb(254, 0, 1) 50%, white 50%);
+		border-radius: 50%;
+		border: 8px solid black;
+		animation: pokemon-let-it-rip 1s linear infinite;
+	}
+
+	.pokemon-spinner::before {
+    content: '';
+    position: absolute;
+    height: 8px;
+    width: 92px;
+    background: black;
+    top: 42px;
+    transform: translatey(-50%);
+	}
+
+	.pokemon-spinner::after {
+		content: '';
+		position: absolute;
+		height: 38px;
+		width: 38px;
+		border-radius: 50%;
+		background: white;
+		top: 42px;
+		left: 42px;
+		transform: translate(-50%, -50%);
+		box-shadow: inset 0 0 0 8px black, inset 0 0 0 10px white, inset 0 0 0 12px black;
+
+	}
+
+	/* Spin Animation */
+	@keyframes pokemon-let-it-rip {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
+		}
+	}
+</style>

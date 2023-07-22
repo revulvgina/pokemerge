@@ -20,17 +20,25 @@
 <body>
 	<div class="container no-highlight">
 		<div class="header">
-			<img src="./images/arrow-back.svg" class="arrow-back" alt="Go back" onclick="window.location.href = '../pokemerge'" />
+			<img src="./images/arrow-back.svg" class="arrow-back" alt="Go back"
+				onclick="window.location.href = '../pokemerge'" />
 			<div class="header-text">
 				<span><strong>Journal</strong></span>
 			</div>
 		</div>
 		<div class="content">
-			<div id="pokemon-grid"></div>
 			<div id="full-screen-detail" onClick="unFullScreen()">
 				<script>
 					loadHTML('./components/journal/full-screen-detail.html', true);
 				</script>
+			</div>
+			<div id="pokemon-grid" class="display-none"></div>
+			<div class="pokemon-spinner-container">
+				<div class="pokemon-spinner">
+					<script>
+						loadHTML('./components/common/pokemon-spinner.html', true);
+					</script>
+				</div>
 			</div>
 		</div>
 	</div>
