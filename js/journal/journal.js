@@ -163,7 +163,10 @@
     );
 
 		const pokemonIdentifier = cellElement.getAttribute("data-pokemon-identifier");
-    if (isDiscovered(pokemonIdentifier)) {
+
+		const isPokemonDiscovered = isDiscovered(pokemonIdentifier);
+
+    if (isPokemonDiscovered) {
       fullScreenDetailElement.style.backgroundColor =
         imageElement.style.backgroundColor;
     } else {
@@ -172,7 +175,7 @@
 
     const clonedImageElement = imageElement.cloneNode(true);
 
-    if (!isDiscovered(pokemonIdentifier)) {
+    if (isPokemonDiscovered) {
       clonedImageElement.style.backgroundColor = "#292929";
       clonedImageElement.style.filter = "grayscale(0)";
     }
@@ -212,10 +215,12 @@
       Number.parseInt(cellElement.getAttribute("data-weight"), 10) / 10
     } KG`;
 
-    const flavorTextElement = document.getElementById("flavor-text");
-    flavorTextElement.innerText = window.getRandomPokemonFlavorText(
-      cellElement.getAttribute("data-pokemon-id")
-		);
+		if (isPokemonDiscovered) {
+			const flavorTextElement = document.getElementById("flavor-text");
+			flavorTextElement.innerText = window.getRandomPokemonFlavorText(
+				cellElement.getAttribute("data-pokemon-id")
+			);
+		}
 		
 		
 		const dateDiscoveredElement = document.getElementById("date-discovered");
