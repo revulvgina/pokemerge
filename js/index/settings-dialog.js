@@ -46,6 +46,53 @@ function resetProgressCallback() {
   window.localStorage.removeItem("current_lv");
   window.location.reload();
 }
+	
+function saveNickname(_) {
+	clearTimeout(window.updateNicknameTimeout);
+	window.updateNicknameTimeout = setTimeout(async () => {
+		const inputValue = document.getElementById('nickname').value;
+
+		if (!inputValue || 'string' !== typeof inputValue || 0 === inputValue.trim().length) {
+			return;
+		}
+
+		const formattedInputValue = inputValue.trim();
+
+		if (formattedInputValue.length > 12) {
+			return;
+		}
+
+		if (!/^[a-zA-Z0-9]+$/.test(formattedInputValue)) {
+			return;
+		}
+
+		console.info(`Saving ${formattedInputValue}...`);
+
+		const sessionId = window.getSessionId();
+
+		let response;
+		try {
+			response = await fetch(
+				`https://pokemerge-endpoint.vercel.app/api/nickname/${sessionId}`, {
+					method: 'POST',
+					body: JSON.stringify({value:formattedInputValue})
+				}
+			);
+		} catch (e) {
+			console.error(e);
+			return;
+		}
+		
+		console.info('Saved', formattedInputValue);
+
+		window.nickname = formattedInputValue;
+		window.localStorage.setItem('nickname', formattedInputValue);
+	}, 1000);
+}
+
+function initializeNickname() {
+	document.getElementById('nickname').value = window.localStorage.getItem('nickname') || '';
+}
 
 document.addEventListener("imports-loaded", async () => {
   document
@@ -79,47 +126,7 @@ document.addEventListener("imports-loaded", async () => {
       stopResetProgressHold();
 		});
 	
-	function saveNickname(_) {
-		clearTimeout(window.updateNicknameTimeout);
-		window.updateNicknameTimeout = setTimeout(async () => {
-			const inputValue = document.getElementById('nickname').value;
-	
-			if (!inputValue || 'string' !== typeof inputValue || 0 === inputValue.trim().length) {
-				return;
-			}
-	
-			const formattedInputValue = inputValue.trim();
-	
-			if (formattedInputValue.length > 12) {
-				return;
-			}
-	
-			if (!/^[a-zA-Z0-9]+$/.test(formattedInputValue)) {
-				return;
-			}
-
-			console.info(`Saving ${formattedInputValue}...`);
-
-			const sessionId = window.getSessionId();
-
-			let response;
-			try {
-				response = await fetch(
-					`https://pokemerge-endpoint.vercel.app/api/nickname/${sessionId}`, {
-						method: 'POST',
-						body: JSON.stringify({value:formattedInputValue})
-					}
-				);
-			} catch (e) {
-				console.error(e);
-				return;
-			}
-			
-			console.info('Saved', formattedInputValue);
-	
-			window.nickname = formattedInputValue;
-		}, 1000);
-	}
+	initializeNickname();
 	
   document.getElementById('nickname').addEventListener('keyup', saveNickname);
 });
