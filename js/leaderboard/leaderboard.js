@@ -22,8 +22,8 @@
     let response;
     try {
 			response = await fetch(
-				// extraCacheBusterFetchUrl(`https://pokemerge-endpoint.vercel.app/api/${destinationUrl}`)
-				`https://pokemerge-endpoint.vercel.app/api/${destinationUrl}/cached`
+				extraCacheBusterFetchUrl(`https://pokemerge-endpoint.vercel.app/api/${destinationUrl}`)
+				// `https://pokemerge-endpoint.vercel.app/api/${destinationUrl}/cached`
       );
     } catch (e) {
       console.error(e);
