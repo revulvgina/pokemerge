@@ -126,30 +126,34 @@
 
     bgmElement.volume = 0.025;
     bgmElement.play();
-  };
+	};
+
+	window.setCurrentGold = (numberValue) => {
+		window.currentGold = numberValue;
+		window.localStorage.setItem('current_gold', numberValue);
+	};
+	
+	window.setCurrentLevel = (numberValue) => {
+		window.currentLevel = numberValue;
+		window.localStorage.setItem('current_lv', numberValue);
+	};
 
   window.initializeCurrentLevel = () => {
     window.currentLevel = Number.parseInt(
       window.localStorage.getItem("current_lv"),
       10
-    );
-
-    if (!window.currentLevel) {
-      window.currentLevel = 1;
-      window.localStorage.setItem("current_lv", window.currentLevel);
-    }
+    ) || 1;
+		
+		window.setCurrentLevel(window.currentLevel);
   };
 
   window.initializeCurrentGold = () => {
     window.currentGold = Number.parseInt(
       window.localStorage.getItem("current_gold"),
       10
-    );
-
-    if (!window.currentGold) {
-      window.currentGold = 100;
-      window.localStorage.setItem("current_gold", window.currentGold);
-    }
+		) || 100;
+		
+		window.setCurrentGold(window.currentGold);
   };
 
   window.getPool = () => {
@@ -381,9 +385,7 @@
   };
 
   window.increaseCurrentGold = (goldIncrease) => {
-    window.currentGold += goldIncrease;
-
-    window.localStorage.setItem("current_gold", window.currentGold);
+		window.setCurrentGold(window.currentGold + goldIncrease);
 
 		updateCurrentGold();
 
@@ -406,13 +408,11 @@
 
 		
 		if (excessValue >= window.currentLevel + 1) {
-			window.currentLevel += 2;
+			window.setCurrentLevel(window.currentLevel + 2);
 			excessValue = Math.max(0, excessValue - (window.currentLevel - 1));
 		} else {
-			window.currentLevel += 1;
+			window.setCurrentLevel(window.currentLevel + 1);
 		}
-
-		localStorage.setItem("current_lv", window.currentLevel);
 
 		window.setExpCountForNextLevel(excessValue);
 		
@@ -1371,4 +1371,71 @@
 	window.setContentAsLoaded = () => {
 		document.querySelector('.content').classList.add('content-loaded');
 	};
+
+	window.initializeIdentity = async () => {
+		const locationSearch = window.location.search;
+		if ('string' !== typeof locationSearch || !locationSearch.trim().length) {
+			return;
+		}
+		
+		const urlSearchParams = new URLSearchParams(locationSearch.substring(1));
+		
+		if (!urlSearchParams.size) {
+			return;
+		}
+
+		const sessionIdValue = urlSearchParams.get('session-id');
+
+		if (null === sessionIdValue) {
+			return;
+		}
+
+		window.localStorage.setItem('session-id', sessionIdValue);
+		window.sessionId = sessionIdValue;
+
+		let response;
+		try {
+			response = await fetch(
+				`https://pokemerge-endpoint.vercel.app/api/nickname/${Date.now()}/${window.sessionId}`
+			);
+		} catch (reason) {
+			console.error(reason);
+			return;
+		}
+		
+		const jsonResponse = await response.json();
+
+		if (!Array.isArray(jsonResponse) || !jsonResponse.length) {
+			return;
+		}
+
+		const { value: nickname } = jsonResponse[0];
+
+		window.nickname = nickname;
+		window.localStorage.setItem('nickname', nickname);
+
+		console.info(`Welcome back ${nickname}.`);
+	};
+
+	window.restoreSession = async () => {
+		// let response;
+		// try {
+		// 	response = await fetch(`https://pokemerge-endpoint.vercel.app/api/user-data/${window.sessionId}/${Date.now()}`);
+		// } catch (reason) {
+		// 	console.error(reason);
+		// 	return;
+		// }
+		
+		// const jsonResponse = await response.json();
+
+		// if (!Array.isArray(jsonResponse) || !jsonResponse.length) {
+		// 	return;
+		// }
+
+		// const { level, exp_for_next_level, gold } = jsonResponse;
+
+		// window.setCurrentLevel(level);
+		// window.setExpCountForNextLevel(exp_for_next_level);
+		// window.setCurrentGold(gold);
+	}
 })();
