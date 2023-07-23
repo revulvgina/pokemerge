@@ -47,38 +47,79 @@ function resetProgressCallback() {
   window.location.reload();
 }
 
+document.addEventListener("imports-loaded", async () => {
+  document
+    .getElementById("reset-progress")
+    .addEventListener("mousedown", (event) => {
+      event.preventDefault();
+      if (1 !== event.which) {
+        return;
+      }
+      startResetProgressHold();
+    });
 
-document.addEventListener('imports-loaded', async () => {
-	document
-  .getElementById("reset-progress")
-  .addEventListener("mousedown", (event) => {
-    event.preventDefault();
-    if (1 !== event.which) {
-      return;
-    }
-    startResetProgressHold();
-  });
+  document
+    .getElementById("reset-progress")
+    .addEventListener("mouseup", (event) => {
+      event.preventDefault();
+      stopResetProgressHold();
+    });
 
-document
-  .getElementById("reset-progress")
-  .addEventListener("mouseup", (event) => {
-    event.preventDefault();
-    stopResetProgressHold();
-  });
+  document
+    .getElementById("reset-progress")
+    .addEventListener("touchstart", (event) => {
+      event.preventDefault();
+      startResetProgressHold();
+    });
 
-document
-  .getElementById("reset-progress")
-  .addEventListener("touchstart", (event) => {
-    event.preventDefault();
-    startResetProgressHold();
-  });
+  document
+    .getElementById("reset-progress")
+    .addEventListener("touchend", (event) => {
+      event.preventDefault();
+      stopResetProgressHold();
+		});
+	
+	function saveNickname(_) {
+		clearTimeout(window.updateNicknameTimeout);
+		window.updateNicknameTimeout = setTimeout(async () => {
+			const inputValue = document.getElementById('nickname').value;
+	
+			if (!inputValue || 'string' !== typeof inputValue || 0 === inputValue.trim().length) {
+				return;
+			}
+	
+			const formattedInputValue = inputValue.trim();
+	
+			if (formattedInputValue.length > 12) {
+				return;
+			}
+	
+			if (!/^[a-zA-Z0-9]+$/.test(formattedInputValue)) {
+				return;
+			}
 
-document
-  .getElementById("reset-progress")
-  .addEventListener("touchend", (event) => {
-    event.preventDefault();
-    stopResetProgressHold();
-  });
+			console.info(`Saving ${formattedInputValue}...`);
+
+			const sessionId = window.getSessionId();
+
+			let response;
+			try {
+				response = await fetch(
+					`https://pokemerge-endpoint.vercel.app/api/nickname/${sessionId}`, {
+						method: 'POST',
+						body: JSON.stringify({value:formattedInputValue})
+					}
+				);
+			} catch (e) {
+				console.error(e);
+				return;
+			}
+			
+			console.info('Saved', formattedInputValue);
+	
+			window.nickname = formattedInputValue;
+		}, 1000);
+	}
+	
+  document.getElementById('nickname').addEventListener('keyup', saveNickname);
 });
-
-

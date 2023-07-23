@@ -85,6 +85,13 @@
 	margin-top: 10%;
 }
 
+.nickname-container {
+	margin-top: 10%;
+}
+
+#nickname {
+	padding: 4px 5px;
+}
 
 .reset-progress-animation {
 	background: linear-gradient(to right, black 0%, red 50%, red 100%);
