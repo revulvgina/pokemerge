@@ -82,8 +82,12 @@
     window.pokemonSpeciesNames = csvToArray(text, ",");
 	}
 	
+	window.getCommonSpeciesData = (pokemonId) => {
+		return window.pokemonSpeciesNames.find(({ pokemon_species_id, local_language_id }) => pokemonId.toString() === pokemon_species_id && '9' === local_language_id);
+	}
+	
 	window.getCommonSpeciesName = (pokemonId) => {
-		return window.pokemonSpeciesNames.find(({ pokemon_species_id, local_language_id }) => pokemonId.toString() === pokemon_species_id && '9' === local_language_id).name;
+		return window.getCommonSpeciesData(pokemonId).name;
 	}
 
 	window.loadPokemonChainJson = async () => {

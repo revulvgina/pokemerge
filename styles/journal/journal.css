@@ -271,6 +271,14 @@ body {
     animation: fadeInFromNone 0.5s ease-out;
 }
 
+.search-box {
+	margin-left: auto;
+}
+
+#pokemon-names-input {
+	padding: 0 10px;
+}
+
 @-webkit-keyframes pokemon-grid-fade-in {
     0% {
         opacity: 0;

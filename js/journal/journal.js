@@ -12,6 +12,7 @@
 		createCells();
 		initializeIntersectionObserver();
 		attachClickListenerToEveryCell();
+		initializeDatalistListener();
 	});
 
   async function createCells() {
@@ -41,7 +42,7 @@
     const { id, identifier, height, weight } = pokemonData;
     const cellElement = document.createElement("div");
 
-    const displayName = getCommonSpeciesName(id);
+		const { name: displayName, genus } = getCommonSpeciesData(id);
 
     cellElement.id = `cell-${i}`;
     cellElement.classList.add("cell");
@@ -67,8 +68,9 @@
 
     const divElement = document.createElement("div");
     divElement.classList.add("pokemon-name-container");
-    const pokemonNameElement = document.createElement("div");
-    pokemonNameElement.innerText = displayName;
+		const pokemonNameElement = document.createElement("div");
+		pokemonNameElement.innerText = displayName;
+		addNameToDatalist(id, displayName, genus);
     pokemonNameElement.classList.add("pokemon-name");
     divElement.appendChild(pokemonNameElement);
     cellElement.appendChild(divElement);
@@ -103,7 +105,48 @@
 
     img.crossOrigin = "Anonymous";
     img.src = imageUrl;
-  }
+	}
+	
+	function addNameToDatalist(id, displayName, genus) {
+		const datalistOption = document.createElement('option');
+		datalistOption.setAttribute('value', displayName);
+		datalistOption.innerText = genus;
+		document.getElementById('pokemon-names').appendChild(datalistOption);
+	}
+
+	function initializeDatalistListener() {
+		document.getElementById('pokemon-names-input').addEventListener('change', (evt) => {
+			if (!evt.target) {
+				return;
+			}
+
+			const inputValue = evt.target.value
+
+			scrollCellIntoView(inputValue);
+		});
+		
+		document.getElementById('pokemon-names-input').addEventListener('keydown', (e) => {
+			eventSource = e.key ? 'input' : 'list';
+
+			if ('list' === e.key) {
+				scrollCellIntoView(e.target.value);
+			}
+		});
+
+		function scrollCellIntoView(inputValue) {
+			if ('string' !== typeof inputValue || 0 === inputValue.trim().length) {
+				return;
+			}
+
+			const cellMatched = document.querySelector(`div.cell[data-display-name="${inputValue}"]`);
+
+			if (!cellMatched) {
+				return;
+			}
+
+			cellMatched.scrollIntoView();
+		}
+	}
 
   function initializeIntersectionObserver() {
     const cells = document.querySelectorAll(".cell");
