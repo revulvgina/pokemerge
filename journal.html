@@ -25,10 +25,13 @@
 			<div class="header-text">
 				<span><strong>Journal</strong></span>
 			</div>
+			<div class="progress-percent">
+				<span id="discovered-percent"></span><span class="big-screen">&nbsp;of&nbsp;</span><span class="big-screen" id="total-to-be-discovered"></span>
+			</div>
 			<div class="search-box">
-				<input list="pokemon-names" name="pokemon-names" id="pokemon-names-input">
-				<datalist id="pokemon-names">
-				</datalist>
+				<input name="pokemon-names" id="pokemon-names-input" placeholder="Search Pokemon">
+				<div id="pokemon-names" class="initial-list">
+				</div>
 			</div>
 		</div>
 		<div class="content">

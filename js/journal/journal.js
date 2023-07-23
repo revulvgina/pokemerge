@@ -1,19 +1,20 @@
 (async () => {
-	
-	document.addEventListener("imports-loaded", async () => {
-		await loadPokeCsv();
-		await loadPokemonChainJson();
-		await loadPokemonSpeciesNames();
-		await loadPokemonTypes();
-		await loadTypeNames();
-		await loadPokemonSpeciesFlavorText();
-		await loadPokemonSpecies();
-	
-		createCells();
-		initializeIntersectionObserver();
-		attachClickListenerToEveryCell();
-		initializeDatalistListener();
-	});
+  document.addEventListener("imports-loaded", async () => {
+    await loadPokeCsv();
+    await loadPokemonChainJson();
+    await loadPokemonSpeciesNames();
+    await loadPokemonTypes();
+    await loadTypeNames();
+    await loadPokemonSpeciesFlavorText();
+    await loadPokemonSpecies();
+
+    initializeCommonVars();
+    initializeImageUrlLoadedListener();
+    createCells();
+    initializeIntersectionObserver();
+    attachClickListenerToEveryCell();
+    initializeDatalistListener();
+  });
 
   async function createCells() {
     const pokemonList =
@@ -33,16 +34,20 @@
       const cellElement = createCell(pokemonData, i);
 
       document.getElementById("pokemon-grid").appendChild(cellElement);
-		}
+    }
+
+		document.getElementById("pokemon-grid").classList.remove("display-none");
 		
-		document.getElementById('pokemon-grid').classList.remove('display-none');
+		document.getElementById('discovered-percent').innerText = `${((window.totalDiscovered / window.pokeCsv.length).toFixed(1) * 100)}%`;
+		document.getElementById('total-to-be-discovered').innerText = window.pokeCsv.length;
+
   }
 
   function createCell(pokemonData, i) {
     const { id, identifier, height, weight } = pokemonData;
     const cellElement = document.createElement("div");
 
-		const { name: displayName, genus } = getCommonSpeciesData(id);
+    const { name: displayName, genus } = getCommonSpeciesData(id);
 
     cellElement.id = `cell-${i}`;
     cellElement.classList.add("cell");
@@ -68,20 +73,22 @@
 
     const divElement = document.createElement("div");
     divElement.classList.add("pokemon-name-container");
-		const pokemonNameElement = document.createElement("div");
-		pokemonNameElement.innerText = displayName;
-		addNameToDatalist(id, displayName, genus);
+    const pokemonNameElement = document.createElement("div");
+    pokemonNameElement.innerText = displayName;
+    addNameToDatalist(id, displayName, genus);
     pokemonNameElement.classList.add("pokemon-name");
     divElement.appendChild(pokemonNameElement);
     cellElement.appendChild(divElement);
 
     const imageElement = document.createElement("img");
     imageElement.setAttribute("loading", "lazy");
+    imageElement.setAttribute("data-image-url", imageUrl);
     imageElement.classList.add("pokemon-image");
     if (isDiscovered(identifier)) {
       imageElement.classList.add("discovered");
-    }
-
+			window.totalDiscovered = (window.totalDiscovered || 0) + 1;
+		}
+		
     cellElement.appendChild(imageElement);
 
     return cellElement;
@@ -98,71 +105,150 @@
 
     img.addEventListener("load", function () {
       const colorThiefed = colorThief.getColor(img);
-			imageElement.style.backgroundColor = `rgb(${colorThiefed.join(",")})`;
-			imageElement.parentElement.classList.add('image-is-loaded');
-			imageElement.removeAttribute('loading');
+      imageElement.style.backgroundColor = `rgb(${colorThiefed.join(",")})`;
+      imageElement.parentElement.classList.add("image-is-loaded");
+      imageElement.removeAttribute("loading");
+      window.containerElement.dispatchEvent(
+        new CustomEvent("image-url-loaded", { detail: { imageUrl } })
+      );
     });
 
     img.crossOrigin = "Anonymous";
     img.src = imageUrl;
-	}
-	
-	function addNameToDatalist(id, displayName, genus) {
-		const datalistOption = document.createElement('option');
-		datalistOption.setAttribute('value', displayName);
-		datalistOption.innerText = genus;
-		document.getElementById('pokemon-names').appendChild(datalistOption);
-	}
+  }
+
+  function addNameToDatalist(id, displayName, genus) {
+		const divElement = document.createElement("div");
+		divElement.classList.add('search-result-item');
+    divElement.innerText = displayName;
+    document.getElementById("pokemon-names").appendChild(divElement);
+  }
+
+  function initializeCommonVars() {
+    window.containerElement = document.querySelector(".container");
+    window.searchPokemonInputElement = document.getElementById(
+      "pokemon-names-input"
+		);
+		window.searchBoxElement = document.querySelector('.search-box');
+		window.pokemonNames = document.querySelector('#pokemon-names');
+  }
+
+  function requestImageLoadedImmediately(imageElement) {
+    imageElement.removeAttribute("loading");
+    window.requestedImageUrl = imageElement.getAttribute("data-image-url");
+  }
+
+  function initializeImageUrlLoadedListener() {
+    window.containerElement.addEventListener(
+      "image-url-loaded",
+      ({ detail: { imageUrl } }) => {
+        if (imageUrl === window.requestedImageUrl) {
+          const imageElement = window.containerElement.querySelector(
+            `img[data-image-url="${imageUrl}"]`
+          );
+
+          toggleCellFullScreen(imageElement);
+
+          window.requestedImageUrl = null;
+          imageElement.setAttribute("loading", "lazy");
+        }
+      }
+    );
+  }
 
 	function initializeDatalistListener() {
-		document.getElementById('pokemon-names-input').addEventListener('change', (evt) => {
-			if (!evt.target) {
+		window.searchPokemonInputElement.addEventListener('keyup', (evt) => {
+			const inputValue = evt.target.value;
+			if (!inputValue || 'string' !== typeof inputValue || !inputValue.trim().length) {
+				resetAllSearchItem();
+				window.pokemonNames.classList.add('initial-list');
 				return;
 			}
 
-			const inputValue = evt.target.value
+			if (inputValue.trim().length <= 2) {
+				resetAllSearchItem();
+				window.pokemonNames.classList.add('initial-list');
+				return;
+			}
 
-			scrollCellIntoView(inputValue);
+			let resultsShown = 0;
+
+			window.pokemonNames.classList.remove('initial-list');
+			document.querySelector('#pokemon-names').classList.remove('has-selected');
+
+			window.pokemonNames.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
+				if (resultsShown >= 10) {
+					return false;
+				}
+				if (new RegExp(inputValue, 'ig').test(eachChildDiv.innerText)) {
+					eachChildDiv.classList.add('show-result');
+					eachChildDiv.classList.remove('hide-result');
+					resultsShown += 1;
+				} else {
+					eachChildDiv.classList.add('hide-result');
+					eachChildDiv.classList.remove('show-result');
+				}
+			});
 		});
-		
-		document.getElementById('pokemon-names-input').addEventListener('keydown', (e) => {
-			eventSource = e.key ? 'input' : 'list';
 
-			if ('list' === e.key) {
-				scrollCellIntoView(e.target.value);
-			}
-		});
-
-		function scrollCellIntoView(inputValue) {
-			if ('string' !== typeof inputValue || 0 === inputValue.trim().length) {
-				return;
-			}
-
-			const cellMatched = document.querySelector(`div.cell[data-display-name="${inputValue}"]`);
-
-			if (!cellMatched) {
-				return;
-			}
-
-			cellMatched.scrollIntoView();
-		}
+		window.pokemonNames.addEventListener('click', (evt) => {
+			window.searchPokemonInputElement.value = evt.target.innerText;
+			document.querySelector('#pokemon-names').classList.add('has-selected');
+			scrollCellIntoView(evt.target.innerText);
+		})
 	}
+
+	function resetAllSearchItem() {
+		window.pokemonNames.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
+			eachChildDiv.classList.remove('show-result');
+			eachChildDiv.classList.remove('hide-result');
+		});
+
+	}
+	
+  function scrollCellIntoView(inputValue) {
+    if ("string" !== typeof inputValue || 0 === inputValue.trim().length) {
+      return;
+    }
+
+    const cellMatched = document.querySelector(
+      `div.cell[data-display-name="${inputValue}"]`
+    );
+
+    if (!cellMatched) {
+      return;
+    }
+
+    cellMatched.scrollIntoView();
+
+    const imageElement = cellMatched.querySelector("img");
+
+    if (imageElement.complete && imageElement.src) {
+      toggleCellFullScreen(imageElement);
+      return;
+    }
+
+    requestImageLoadedImmediately(imageElement);
+  }
 
   function initializeIntersectionObserver() {
     const cells = document.querySelectorAll(".cell");
 
-    window.observer = new IntersectionObserver((entries) => {
-      entries.forEach((eachEntry) => {
-        const targetCell = eachEntry.target;
-        targetCell.classList.toggle("show-image", eachEntry.isIntersecting);
-        if (eachEntry.isIntersecting) {
-          addBackgroundColor(
-            targetCell.children[1],
-            targetCell.getAttribute("data-image-url")
-          );
-        }
-      });
-    }, {threshold: 0});
+    window.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((eachEntry) => {
+          const targetCell = eachEntry.target;
+          targetCell.classList.toggle("show-image", eachEntry.isIntersecting);
+          if (eachEntry.isIntersecting) {
+            addBackgroundColor(
+              targetCell.children[1],
+              targetCell.getAttribute("data-image-url")
+            );
+          }
+        });
+      },
+      { threshold: 0 }
+    );
 
     cells.forEach((eachCell) => window.observer.observe(eachCell));
   }
@@ -187,17 +273,15 @@
       document.getElementById("image-container").innerHTML = "";
     });
 
-    // Trigger browser reflow to start animation
     el.style.animation = "none";
     el.offsetHeight;
     el.style.animation = "";
     el.classList.add("shrink-down");
   };
 
-  function toggleFullScreen(e) {
-    // Get position values for element
-    const { top, left } = e.target.getBoundingClientRect();
-    const cellElement = e.target.parentElement;
+  function toggleCellFullScreen(target) {
+    const { top, left } = target.getBoundingClientRect();
+    const cellElement = target.parentElement;
     const imageElement = cellElement.children[1];
 
     const fullScreenDetailElement =
@@ -209,10 +293,12 @@
       `${top}px auto auto ${left}px`
     );
 
-		const pokemonIdentifier = cellElement.getAttribute("data-pokemon-identifier");
+    const pokemonIdentifier = cellElement.getAttribute(
+      "data-pokemon-identifier"
+    );
 
 		const isPokemonDiscovered = isDiscovered(pokemonIdentifier);
-
+		
     if (isPokemonDiscovered) {
       fullScreenDetailElement.style.backgroundColor =
         imageElement.style.backgroundColor;
@@ -224,9 +310,9 @@
 
     if (isPokemonDiscovered) {
       clonedImageElement.style.filter = "grayscale(0)";
-		} else {
+    } else {
       clonedImageElement.style.backgroundColor = "#292929";
-		}
+    }
 
     const imageContainerElement = document.getElementById("image-container");
     imageContainerElement.innerHTML = "";
@@ -237,50 +323,55 @@
       "data-display-name"
     )}</span>`;
 
-		if (isPokemonDiscovered) {
-			const typesElement = document.getElementById("types");
-			let typesInnerHTML = "";
-			for (let i = 0; i < 10; i += 1) {
-				const typeName = cellElement.getAttribute(`data-type-${i}`);
+    if (isPokemonDiscovered) {
+      const typesElement = document.getElementById("types");
+      let typesInnerHTML = "";
+      for (let i = 0; i < 10; i += 1) {
+        const typeName = cellElement.getAttribute(`data-type-${i}`);
 
-				if (null === typeName) {
-					break;
-				}
+        if (null === typeName) {
+          break;
+        }
 
-				typesInnerHTML += `<div class="pokemon-type-box" style="background-color: ${
-					window.POKEMON_TYPE_COLORS[typeName.toLowerCase()]
-				}">${typeName}</div>`;
-			}
+        typesInnerHTML += `<div class="pokemon-type-box" style="background-color: ${
+          window.POKEMON_TYPE_COLORS[typeName.toLowerCase()]
+        }">${typeName}</div>`;
+      }
 
-			typesElement.innerHTML = typesInnerHTML;
+      typesElement.innerHTML = typesInnerHTML;
 
-			const heightElement = document.getElementById("height-value");
-			heightElement.innerText = `${
-				Number.parseInt(cellElement.getAttribute("data-height"), 10) / 10
-			} M`;
+      const heightElement = document.getElementById("height-value");
+      heightElement.innerText = `${
+        Number.parseInt(cellElement.getAttribute("data-height"), 10) / 10
+      } M`;
 
-			const weightElement = document.getElementById("weight-value");
-			weightElement.innerText = `${
-				Number.parseInt(cellElement.getAttribute("data-weight"), 10) / 10
-			} KG`;
+      const weightElement = document.getElementById("weight-value");
+      weightElement.innerText = `${
+        Number.parseInt(cellElement.getAttribute("data-weight"), 10) / 10
+      } KG`;
 
-			const flavorTextElement = document.getElementById("flavor-text");
-			flavorTextElement.innerText = window.getRandomPokemonFlavorText(
-				cellElement.getAttribute("data-pokemon-id")
-			);
-		} else {
-			fullScreenDetailElement.classList.add('not-yet-discovered');
-		}
+      const flavorTextElement = document.getElementById("flavor-text");
+      flavorTextElement.innerText = window.getRandomPokemonFlavorText(
+        cellElement.getAttribute("data-pokemon-id")
+      );
 
-		
-		const dateDiscoveredElement = document.getElementById("date-discovered");
-		const lastDiscovered = getDiscovered(pokemonIdentifier);
-		if (null !== lastDiscovered) {
-			const dateDiscovered = window.getDateTimeFormat(Number.parseInt(lastDiscovered, 10));
-			dateDiscoveredElement.innerText = `discovered last ${dateDiscovered}`;
-		} else {
-			dateDiscoveredElement.innerText = `can be discovered at Lv ${cellElement.getAttribute('data-evolution-chain-id')}.`;
-		}
+			fullScreenDetailElement.classList.remove("not-yet-discovered");
+    } else {
+      fullScreenDetailElement.classList.add("not-yet-discovered");
+    }
+
+    const dateDiscoveredElement = document.getElementById("date-discovered");
+    const lastDiscovered = getDiscovered(pokemonIdentifier);
+    if (null !== lastDiscovered) {
+      const dateDiscovered = window.getDateTimeFormat(
+        Number.parseInt(lastDiscovered, 10)
+      );
+      dateDiscoveredElement.innerText = `discovered last ${dateDiscovered}`;
+    } else {
+      dateDiscoveredElement.innerText = `can be discovered at Lv ${cellElement.getAttribute(
+        "data-evolution-chain-id"
+      )}.`;
+    }
 
     const evolutionChainElement = document.getElementById("evolution-chain");
     const evolutionChainData = window.getPokemonChainData(
@@ -288,7 +379,7 @@
     );
     let evolutionChainString = "";
     evolutionChainData.list.map((firstEvolution) => {
-			const firstDisplayName = getCommonSpeciesName(firstEvolution.id);
+      const firstDisplayName = getCommonSpeciesName(firstEvolution.id);
       evolutionChainString += `<img src="./images/official-artwork/${
         firstEvolution.id
       }.png" title="#${firstEvolution.id} ${firstDisplayName}" class="${
@@ -296,7 +387,7 @@
       }" />`;
 
       const secondEvolutionList = firstEvolution.list.map((secondEvolution) => {
-				const secondDisplayName = getCommonSpeciesName(secondEvolution.id);
+        const secondDisplayName = getCommonSpeciesName(secondEvolution.id);
         let baseSecondEvolutionListString = `<img src="./images/official-artwork/${
           secondEvolution.id
         }.png" title="#${secondEvolution.id} ${secondDisplayName}" class="${
@@ -304,8 +395,8 @@
         }" />`;
 
         const thirdEvolutionList = secondEvolution.list.map(
-					(thirdEvolution) => {
-    				const thirdDisplayName = getCommonSpeciesName(thirdEvolution.id);
+          (thirdEvolution) => {
+            const thirdDisplayName = getCommonSpeciesName(thirdEvolution.id);
             return `<img src="./images/official-artwork/${
               thirdEvolution.id
             }.png" title="#${thirdEvolution.id} ${thirdDisplayName}" class="${
@@ -330,6 +421,10 @@
 
     fullScreenDetailElement.classList.add("full-screen");
     window.lastFullScreenTimeout = Date.now() + 1000;
+  }
+
+  function toggleFullScreen(e) {
+    toggleCellFullScreen(e.target);
   }
 
   function isDiscovered(pokemonIdentifier) {
