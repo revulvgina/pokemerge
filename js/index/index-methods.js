@@ -360,8 +360,8 @@
     decorateBackpackCell(cellElement, pokemonDisplayName, evolutionCount);1
   };
 
-  window.updateExpForNextLevelElement = () => {
-    window.expCountForNextLevel = window.expCountForNextLevel || 0;
+	window.updateExpForNextLevelElement = () => {
+		window.setExpCountForNextLevel(window.expCountForNextLevel || Number.parseInt(window.localStorage.getItem('exp-count-for-next-level')) || 0);
     const expForNextLevelElement =
       document.getElementById("exp-for-next-level");
     expForNextLevelElement.innerText = `(${window.expCountForNextLevel} / ${window.currentLevel})`;
@@ -393,7 +393,7 @@
   };
 
 	window.updateExpForNextLevelCount = (increaseValue) => {
-    window.expCountForNextLevel = (window.expCountForNextLevel || 0) + Math.floor(increaseValue * Math.max(1, (window.currentLevel/40)));
+		window.setExpCountForNextLevel((window.expCountForNextLevel || 0) + Math.floor(increaseValue * Math.max(1, (window.currentLevel / 40))));
 
     if (window.expCountForNextLevel < window.currentLevel) {
       updateExpForNextLevelElement();
@@ -414,7 +414,7 @@
 
 		localStorage.setItem("current_lv", window.currentLevel);
 
-		window.expCountForNextLevel = excessValue;
+		window.setExpCountForNextLevel(excessValue);
 		
     updateExpForNextLevelElement();
 		updateCurrentLevel();
@@ -439,7 +439,12 @@
           .classList.add("display-none");
       }, 30000);
     }
-  };
+	};
+	
+	window.setExpCountForNextLevel = (thatValue) => {
+		window.expCountForNextLevel = thatValue;
+		window.localStorage.setItem('exp-count-for-next-level', thatValue);
+	}
 
   window.clearElementAttributesByPrefix = (cellElement, attributePrefix) => {
     const attributeNames = Array.from(cellElement.attributes).map(
@@ -1361,5 +1366,9 @@
 				next: { revalidate: 0 }
       }
 		);
+	};
+
+	window.setContentAsLoaded = () => {
+		document.querySelector('.content').classList.add('content-loaded');
 	};
 })();

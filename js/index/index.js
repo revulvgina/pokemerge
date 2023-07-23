@@ -23,7 +23,9 @@
 
     initializeBackpackBalls();
 
-    initializeMouseMoveListener();
+		initializeMouseMoveListener();
+		
+		window.setContentAsLoaded();
 
     // fetch("http://ip-api.com/json")
     //   .then((response) => response.json())

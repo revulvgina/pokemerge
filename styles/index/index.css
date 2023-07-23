@@ -334,6 +334,34 @@ img[src="./images/master-ball.png"] {
 	animation: pulse-text 0.5s infinite;
 }
 
+.content > *:not(.pokemon-spinner-container) {
+	visibility: hidden;
+}
+
+.content.content-loaded > *:not(.pokemon-spinner-container) {
+	visibility: visible;
+}
+
+.content.content-loaded > .pokemon-spinner-container {
+	pointer-events: none;
+	filter: blur(1px);
+	opacity: 0;
+}
+
+.pokemon-spinner-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	box-sizing: border-box;
+	min-height: 100%;
+	top: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	transition: opacity 1.2s;
+}
+
 @keyframes pulse-text {
 	25% {
 		color: red;

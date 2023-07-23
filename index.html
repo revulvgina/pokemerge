@@ -15,6 +15,11 @@
 	<script src="./js/common/nanoid.js"></script>
 	<script src="./js/common/common.js"></script>
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="preload" as="image" href="./images/transparent-picture.png">
+	<link rel="preload" as="image" href="./images/poke-ball.png">
+	<link rel="preload" as="image" href="./images/great-ball.png">
+	<link rel="preload" as="image" href="./images/ultra-ball.png">
+	<link rel="preload" as="image" href="./images/master-ball.png">
 </head>
 
 <body>
@@ -46,7 +51,13 @@
 				<div id="encounter-container" class="display-none pulse-text">
 					Master Ball and Ultra Ball only for 30 seconds.
 				</div>
-
+				<div class="pokemon-spinner-container">
+					<div class="pokemon-spinner">
+						<script>
+							loadHTML('./components/common/pokemon-spinner.html', true);
+						</script>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
