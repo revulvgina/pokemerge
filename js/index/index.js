@@ -15,10 +15,12 @@
     attachContextMenus();
 
     initializeCurrentLevel();
+		window.initializeCurrentGold();
+		window.initializeExpCountForNextLevel();
+
     updateCurrentLevel();
-    initializeCurrentGold();
     updateCurrentGold();
-    updateExpForNextLevelElement();
+    updateExpCountForNextLevelElement();
 
     resetBuyers();
 

@@ -37,13 +37,20 @@ function stopResetProgressHold() {
   clearTimeout(window._resetProgressTimeout);
 }
 
-function resetProgressCallback() {
+async function resetProgressCallback() {
   document
     .querySelector(".reset-container")
     .classList.remove("reset-progress-animation");
 
-  window.localStorage.removeItem("current_gold");
   window.localStorage.removeItem("current_lv");
+  window.currentLevel = 1;
+  window.localStorage.removeItem("current_gold");
+  window.currentGold = 100;
+  window.localStorage.removeItem("exp-count-for-next-level");
+  window.expCountForNextLevel = 0;
+
+  await window.saveSessionToCloud();
+
   window.location.reload();
 }
 
@@ -100,6 +107,29 @@ window.initializeNickname = () => {
     window.localStorage.getItem("nickname") || "";
 };
 
+const _saveCurrentSession = async () => {
+	if (window.shareSessionContainerElement.classList.contains('is-sharing-session')) {
+		return;
+	}
+
+	window.shareSessionContainerElement.classList.add('is-sharing-session');
+	window.shareSessionStatusElement.innerHTML = '<span>Sharing...</span>';
+
+	let fileLocation;
+	try {
+		fileLocation = await window.saveSessionToCloud();
+	} catch (_) {
+		window.shareSessionContainerElement.classList.remove('is-sharing-session');
+		window.shareSessionStatusElement.innerHTML = '<span class="session-saving-error">Failed.</span>';
+		return;
+	}
+	
+	window.shareSessionStatusElement.innerHTML = '<span class="session-saving-success">Copied link to clipboard.</span>';
+	window.shareSessionContainerElement.classList.remove('is-sharing-session');
+
+	navigator.clipboard.writeText(`${window.location.origin + window.location.pathname}?session-id=${window.sessionId}`);
+};
+
 document.addEventListener("imports-loaded", async () => {
   document
     .getElementById("reset-progress")
@@ -132,5 +162,14 @@ document.addEventListener("imports-loaded", async () => {
       stopResetProgressHold();
     });
 
-  document.getElementById("nickname").addEventListener("keyup", saveNickname);
+	document.getElementById("nickname").addEventListener("keyup", saveNickname);
+
+	window.shareSessionContainerElement = document.getElementById('share-session');
+	window.shareSessionStatusElement = document.getElementById('share-session-status');
+	
+	window.shareSessionContainerElement
+		.addEventListener('click', async (event) => {
+			event.preventDefault();
+			await _saveCurrentSession();
+	})
 });

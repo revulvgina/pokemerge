@@ -2,28 +2,37 @@
 	<form>
 		<div class="options">
 			<div class="settings-header">
-				<div class="inline-block">Settings</div>
+				<div class="inline-block" style="font-size: 140%;">Settings</div>
 				<div class="inline-block header-close-button cursor-pointer no-highlight"
 					onclick="closeDialog('settings-dialog')">X</div>
 			</div>
-			<div class="settings-content">
-				<div style="margin-top: 10%;">
+			<div class="settings-content settings-items-container cursor-pointer no-highlight">
+				<div class="journal-link-container settings-item-container">
 					<a id="journal-button" class="no-highlight cursor-pointer" href="./journal.html">Go to Journal</a>
 				</div>
-				<div style="margin-top: 10%;">
+
+				<div class="leaderboard-link-container settings-item-container cursor-pointer no-highlight">
 					<a id="leaderboard-button" class="no-highlight cursor-pointer" href="./leaderboard.html">Go to Leaderboard</a>
 				</div>
-				<div class="vibrate-container">
+
+				<div class="vibrate-container settings-item-container cursor-pointer no-highlight">
 					<label class="no-highlight cursor-pointer" for="enable-vibration">
 						Enable vibration&nbsp;<input type="checkbox" checked="checked" id="enable-vibration"
 							onchange="onEnableVibration()" />
 					</label>
 				</div>
-				<div class="nickname-container">
+
+				<div class="nickname-container settings-item-container">
 					<div class="nickname-label">Nickname</div>
 					<input type="text" id="nickname" maxlength="12"/>
 				</div>
-				<div class="reset-container cursor-pointer" id="reset-progress" oncontextmenu="return false;">
+
+				<div class="share-session-container settings-item-container cursor-pointer no-highlight" id="share-session" oncontextmenu="return false;">
+					<div class="share-session-button">Share Session</div>
+					<div id="share-session-status">&nbsp;</div>
+				</div>
+
+				<div class="reset-container settings-item-container cursor-pointer" id="reset-progress" oncontextmenu="return false;">
 					<div class="no-highlight">Hold to Reset Progress</div>
 				</div>
 			</div>
