@@ -198,5 +198,13 @@
     element.style.animation = "none";
     element.offsetHeight; /* trigger reflow */
     element.style.animation = null;
-  };
+	};
+	
+	window.backLocation = () => {
+		if ('localhost' === window.location.hostname) {
+			return '/';
+		}
+
+		return '/pokemerge';
+	};
 })();

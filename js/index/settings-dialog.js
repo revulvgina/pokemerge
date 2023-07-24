@@ -171,5 +171,5 @@ document.addEventListener("imports-loaded", async () => {
 		.addEventListener('click', async (event) => {
 			event.preventDefault();
 			await _saveCurrentSession();
-	})
+		});
 });
