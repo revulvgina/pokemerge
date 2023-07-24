@@ -210,4 +210,18 @@
 
 		return '/pokemerge';
 	};
+
+  window.playSound = (audioId, volume = 1) => {
+		const thisAudio = document.getElementById(audioId);
+		
+		if (!thisAudio) {
+			return;
+		}
+
+		thisAudio.volume = volume;
+
+    // thisAudio.pause();
+    thisAudio.currentTime = 0;
+    thisAudio.play();
+  };
 })();

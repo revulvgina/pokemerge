@@ -16,6 +16,7 @@
     await populateGrid('highest-gold');
 		await populateGrid('highest-backpack');
 		await populateFastestLevelGrid('fastest-level');
+		window.playSound('magikarp-song', 0.2);
   });
 
 	async function fetchCategory(destinationUrl) {

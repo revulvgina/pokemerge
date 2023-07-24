@@ -453,7 +453,7 @@
     updateExpCountForNextLevelElement();
     updateCurrentLevel();
 
-    playSound("level-up-sound");
+    playIndexSound("level-up-sound");
 
     window.levelUpSoundPriorityTimeout = Date.now() + 2000;
 
@@ -541,7 +541,7 @@
 
     updateExpForNextLevelCount(currentEvolutionCount);
 
-    playSound("plus-sound");
+    playIndexSound("plus-sound");
   };
 
   window.getPokemonImageUrl = (pokemonId) => {
@@ -719,7 +719,7 @@
       highlightBuyerSameIdentifier(cellElement.getAttribute("data-identifier"));
     }
 
-    playSound("click-sound");
+    playIndexSound("click-sound");
     playBgm();
   };
 
@@ -734,7 +734,7 @@
 
     increaseCurrentGold(getBasePrice(evolutionCount));
 
-    playSound("coin-sound");
+    playIndexSound("coin-sound");
   };
 
   window.attachBackpackContextMenu = (cellElement) => {
@@ -831,27 +831,23 @@
     return Array.from(document.querySelectorAll("[id^=shuffled-cell-]"));
   };
 
-  window.playSound = (audioId) => {
-    const thisAudio = document.getElementById(audioId);
-
+  window.playIndexSound = (audioId) => {
     const volumeMap = {
       ["pokeball-open-sound"]: 0.05,
       ["click-sound"]: 0.25,
     };
 
-    thisAudio.volume = volumeMap[audioId] || 1;
+    let volume = volumeMap[audioId] || 1;
 
     if (/^pokemon-cry-/.test(audioId)) {
-      thisAudio.volume = 0.5;
+      volume = 0.5;
     }
 
     if ((window.levelUpSoundPriorityTimeout || 0) > Date.now()) {
-      thisAudio.volume = 0.15;
+      volume = 0.15;
     }
-
-    // thisAudio.pause();
-    thisAudio.currentTime = 0;
-    thisAudio.play();
+		
+		window.playSound(audioId, volume);
   };
 
   window.onPokeBallClick = () => {
@@ -871,7 +867,7 @@
           1
       );
 
-      playSound("pokeball-open-sound");
+      playIndexSound("pokeball-open-sound");
     }
 
     clearSelectedCell();
@@ -895,7 +891,7 @@
     const parentElement = imgElement.parentElement;
     randomizeBackpackCell(parentElement, pokeBallIndex);
     // setSelectedCell(parentElement);
-    playSound("pokeball-open-sound");
+    playIndexSound("pokeball-open-sound");
   };
 
   window.getEvolutionIndexByChainString = (pokemonDisplayName, chainString) => {
@@ -1185,7 +1181,7 @@
   window.playCry = (pokemonIdentifier) => {
     const audioElement = createOrUpdateCryElement(pokemonIdentifier);
 
-    playSound(audioElement.id);
+    playIndexSound(audioElement.id);
   };
 
   window.attachBuyerContextMenu = (cellElement) => {
@@ -1217,7 +1213,7 @@
 
       restartBuyerRandomizeTimeout(cellElement);
 
-      playSound("shuffle-sound");
+      playIndexSound("shuffle-sound");
     };
 
     cellElement.addEventListener("contextmenu", onBuyerContextMenu, true);
@@ -1271,7 +1267,7 @@
 
     clearSelectedCell();
 
-    playSound("gold-sound");
+    playIndexSound("gold-sound");
 
     playCry(thisIdentifier);
   };
@@ -1289,7 +1285,7 @@
   };
 
   window.playEncounter = () => {
-    playSound("pokemon-encounter");
+    playIndexSound("pokemon-encounter");
 
     clearTimeout(window._showStreakAnimation);
     document.getElementById("spinning-box").classList.remove("display-none");

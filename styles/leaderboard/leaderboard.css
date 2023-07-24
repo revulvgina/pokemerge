@@ -39,7 +39,7 @@ body {
 .leaderboard-grids {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 10% 10%;
+	gap: 40px 10%;
 }
 
 .grid-item-container {
