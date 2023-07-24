@@ -77,14 +77,12 @@ function saveNickname(_) {
       return;
     }
 
-    console.info(`Saving ${formattedInputValue}...`);
-
-    const sessionId = window.getSessionId();
+    console.info(`Saving nickname ${formattedInputValue}...`);
 
     let response;
     try {
       response = await fetch(
-        `https://pokemerge-endpoint.vercel.app/api/nickname/${sessionId}`,
+        `https://pokemerge-endpoint.vercel.app/api/nickname/${window.sessionId}`,
         {
           method: "POST",
           body: JSON.stringify({ value: formattedInputValue }),
@@ -95,39 +93,71 @@ function saveNickname(_) {
       return;
     }
 
-    console.info("Saved", formattedInputValue);
+    console.info(`Saved nickname ${formattedInputValue}.`);
 
     window.nickname = formattedInputValue;
     window.localStorage.setItem("nickname", formattedInputValue);
   }, 1000);
 }
 
-window.initializeNickname = () => {
-  document.getElementById("nickname").value =
-    window.localStorage.getItem("nickname") || "";
+window.initializeNickname = async () => {
+  let response;
+  try {
+    response = await fetch(
+      `https://pokemerge-endpoint.vercel.app/api/nickname/${Date.now()}/${
+        window.sessionId
+      }`
+    );
+  } catch (reason) {
+    console.error(reason);
+    return;
+  }
+
+  const jsonResponse = await response.json();
+
+  if (!Array.isArray(jsonResponse) || !jsonResponse.length) {
+    return;
+  }
+
+  const { value: nickname } = jsonResponse[0];
+
+  window.nickname = nickname;
+  window.localStorage.setItem("nickname", nickname);
+
+  document.getElementById("nickname").value = window.nickname = nickname;
+
+  console.info(`Welcome back ${nickname}.`);
 };
 
 const _saveCurrentSession = async () => {
-	if (window.shareSessionContainerElement.classList.contains('is-sharing-session')) {
-		return;
-	}
+  if (
+    window.shareSessionContainerElement.classList.contains("is-sharing-session")
+  ) {
+    return;
+  }
 
-	window.shareSessionContainerElement.classList.add('is-sharing-session');
-	window.shareSessionStatusElement.innerHTML = '<span>Sharing...</span>';
+  window.shareSessionContainerElement.classList.add("is-sharing-session");
+  window.shareSessionStatusElement.innerHTML = "<span>Sharing...</span>";
 
-	let fileLocation;
-	try {
-		fileLocation = await window.saveSessionToCloud();
-	} catch (_) {
-		window.shareSessionContainerElement.classList.remove('is-sharing-session');
-		window.shareSessionStatusElement.innerHTML = '<span class="session-saving-error">Failed.</span>';
-		return;
-	}
-	
-	window.shareSessionStatusElement.innerHTML = '<span class="session-saving-success">Copied link to clipboard.</span>';
-	window.shareSessionContainerElement.classList.remove('is-sharing-session');
+  let fileLocation;
+  try {
+    fileLocation = await window.saveSessionToCloud();
+  } catch (_) {
+    window.shareSessionContainerElement.classList.remove("is-sharing-session");
+    window.shareSessionStatusElement.innerHTML =
+      '<span class="session-saving-error">Failed.</span>';
+    return;
+  }
 
-	navigator.clipboard.writeText(`${window.location.origin + window.location.pathname}?session-id=${window.sessionId}`);
+  window.shareSessionStatusElement.innerHTML =
+    '<span class="session-saving-success">Copied link to clipboard.</span>';
+  window.shareSessionContainerElement.classList.remove("is-sharing-session");
+
+  navigator.clipboard.writeText(
+    `${window.location.origin + window.location.pathname}?session-id=${
+      window.sessionId
+    }`
+  );
 };
 
 document.addEventListener("imports-loaded", async () => {
@@ -162,14 +192,19 @@ document.addEventListener("imports-loaded", async () => {
       stopResetProgressHold();
     });
 
-	document.getElementById("nickname").addEventListener("keyup", saveNickname);
+  document.getElementById("nickname").addEventListener("keyup", saveNickname);
 
-	window.shareSessionContainerElement = document.getElementById('share-session');
-	window.shareSessionStatusElement = document.getElementById('share-session-status');
-	
-	window.shareSessionContainerElement
-		.addEventListener('click', async (event) => {
-			event.preventDefault();
-			await _saveCurrentSession();
-		});
+  window.shareSessionContainerElement =
+    document.getElementById("share-session");
+  window.shareSessionStatusElement = document.getElementById(
+    "share-session-status"
+  );
+
+  window.shareSessionContainerElement.addEventListener(
+    "click",
+    async (event) => {
+      event.preventDefault();
+      await _saveCurrentSession();
+    }
+  );
 });

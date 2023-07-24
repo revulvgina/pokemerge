@@ -171,19 +171,22 @@
 	window.getNanoId = (length = 16) => {
 		const _ID_CHARACTERS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 		return customAlphabet(_ID_CHARACTERS, length)();
-	}
+	};
 
-	window.getSessionId = () => {
-		const currentSessionId = window.localStorage.getItem('session-id');
+	window.setSessionId = (sessionIdValue) => {
+		window.localStorage.setItem('session-id', sessionIdValue);
+		window.sessionId = sessionIdValue;
+	};
 
-		if (null !== currentSessionId) {
-			window.sessionId = currentSessionId;
-			return currentSessionId;
+	window.initializeSessionId = () => {
+		window.sessionId = window.localStorage.getItem('session-id');
+
+		if (null !== window.sessionId) {
+			return;
 		}
 
 		const newSessionId = window.getNanoId(16);
-		window.localStorage.setItem('session-id', newSessionId);
-		window.sessionId = newSessionId;
+		window.setSessionId(newSessionId);
 	};
 
 	window.getDateTimeFormat = (thatTimestamp) => {

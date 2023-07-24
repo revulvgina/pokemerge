@@ -3,11 +3,9 @@
     await loadBasicEvolutionJson();
 		await loadPokeCsv();
 		
-		await window.initializeIdentity();
-		// TODO
-		// await window.restoreSession();
-		window.initializeNickname();
-    getSessionId();
+		await window.initializeSessionFromCloud();
+    window.initializeSessionId();
+		await window.initializeNickname();
 
     createBuyerCells();
     createBackpackCells();
