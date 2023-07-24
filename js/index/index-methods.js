@@ -162,9 +162,9 @@
 
   window.initializeExpCountForNextLevel = () => {
     const savedExpCountForNextLevel = Number.parseInt(
-      window.localStorage.getItem("exp_for_next_level"),
+      window.localStorage.getItem('exp-count-for-next-level'),
       10
-    );
+		);
 
     if (
       "number" === typeof savedExpCountForNextLevel &&

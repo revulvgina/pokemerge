@@ -1,6 +1,6 @@
 body {
 	/* background-color: rgb(var(--color-E0C9A6)); */
-	background-color: #000;
+	background-color: rgb(var(--color-3a3a3a));
 }
 
 .container {
@@ -87,7 +87,7 @@ div.buyer-refresh {
 }
 
 #exp-container {
-	border: 1px solid #000;
+	border: 1px solid rgb(var(--color-3a3a3a));
 	padding: 0.3%;
 	flex: 0.5;
 	height: 14px;
@@ -430,7 +430,7 @@ img[src="./images/master-ball.png"] {
 	text-align: center;
 	font-weight: 700;
 
-	color: #000;
+	color: rgb(var(--color-3a3a3a));
 	font-size: 70%;
 	/* background-color: #00000033; */
 	-webkit-text-stroke-width: 1px;
