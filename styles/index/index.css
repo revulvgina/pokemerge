@@ -42,12 +42,12 @@ body {
 	height: 100%;
 	caret-color: transparent;
   background: repeating-linear-gradient(
-    45deg,
-    rgba(247, 159, 79, 0.3),
-    rgba(247, 159, 79, 0.3) 1px,
-    rgba(247, 159, 79, 0.5) 1px,
-    rgba(247, 159, 79, 0.5) 20px
-  ) #fff;
+    25deg,
+    rgba(var(--color-f8d898), 0.3),
+    rgba(var(--color-f8d898), 0.3) 1px,
+    rgba(var(--color-f8d898), 0.5) 1px,
+    rgba(var(--color-f8d898), 0.5) 10px
+  ) #e8c080;
 	padding: 0 20px;
 }
 
@@ -96,7 +96,7 @@ div.buyer-refresh {
 }
 
 #exp-bar {
-	background: #6dca16;
+	background: rgb(var(--color-479f57));
 	width: 50%;
 	height: 100%;
 	min-height: 2px;
@@ -169,7 +169,7 @@ div.buyer-refresh {
 
 .evolution-chain-border-current {
 	border: 1px solid rgb(var(--color-cf4f2f));
-	border-radius: 4px;
+	border-radius: 10px;
 	border-style: dashed;
 }
 
@@ -220,7 +220,7 @@ div[id^=shuffled-cell-][data-evolution-count="4"]:after {
 	content: "•";
 	position: absolute;
 	font-size: 13px;
-	color: #000;
+	color: rgb(var(--color-3a3a3a));
 	top: 8%;
 	left: 5%;
 }
@@ -411,8 +411,8 @@ img[src="./images/master-ball.png"] {
 		border-color: #eeff00;
 	}
 	50% {
-		box-shadow: 0 0 4px #ffffff;
-		border-color: #ffffff;
+		box-shadow: 0 0 4px rgb(var(--color-ffffee));
+		border-color: rgb(var(--color-ffffee));
 	}
 	25% {
 		box-shadow: 0 0 4px #eeff00;
@@ -481,9 +481,7 @@ img[src="./images/master-ball.png"] {
 
 img[src$="-ball.png"] {
 	opacity: 0.5;
-
-	animation: pokeball-shake 0.5s;
-	animation-iteration-count: linear;
+	transition: opacity 0.2s;
 }
 
 img[src$="-ball.png"]:hover {
@@ -560,8 +558,8 @@ img.poke-dollar {
 #encounter-container {
 	position: fixed;
 	bottom: 0;
-	color: #fff;
-	background-color: #000;
+	color: rgb(var(--color-ffffee));
+	background-color: rgb(var(--color-3a3a3a));
 	width: 100%;
 	padding: 5px 10px;
 	left: 0;
@@ -666,6 +664,10 @@ img.poke-dollar {
 
 	.text-container {
 		font-size: 100%;
+	}
+
+	.evolution-chain-border-current {
+		border-radius: 4px;
 	}
 }
 

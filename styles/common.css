@@ -14,12 +14,15 @@
 	--color-9fcf7f: 159, 207, 127;
 	--color-a0d0f8: 160, 208, 248;
 	--color-88a0f0: 136, 160, 240;
-	--color-f8e8f8: 248, 232, 248;
+	--color-ffffee: 248, 232, 248;
 	--color-E0C9A6: 224, 201, 166;
 	--color-0F0F1B: 15, 15, 27;
+	--color-ffffee: 255, 255, 238;
+	--color-f8d898: 248, 216, 152;
 
 	font-size: 15px;
 	font-family: 'Press Start 2P', cursive;
+	color: rgb(var(--color-3a3a3a));
 }
 
 * {

@@ -25,7 +25,7 @@ body {
 
 .header-text {
 	margin-left: 2%;
-	color: #fff;
+	color: rgb(var(--color-ffffee));
 }
 
 .content {
@@ -39,7 +39,7 @@ body {
 .leaderboard-grids {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 40% 10%;
+	gap: 10% 10%;
 }
 
 .grid-item-container {
@@ -70,7 +70,7 @@ body {
 .category-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	color: #fff;
+	color: rgb(var(--color-ffffee));
 }
 
 .grid-item-position {
@@ -111,15 +111,15 @@ body {
 		grid-template-columns: 1fr;
 		gap: 5% 10%;
 	}
+
+	.category-grid > div:nth-child(n+16) {
+		display: none;
+	}
 }
 
 @media (max-width: 720px) {
 	:root {
 		font-size: 12px;
-	}
-
-	.category-grid > div:nth-child(n+16) {
-		display: none;
 	}
 }
 

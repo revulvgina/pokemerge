@@ -20,7 +20,7 @@ body {
 
 .header-text {
 	margin-left: 2%;
-	color: #fff;
+	color: rgb(var(--color-ffffee));
 }
 
 .content {
@@ -79,7 +79,7 @@ body {
 	width: 100%;
 	text-align: center;
 	background: rgba(0, 0, 0, 0.2);
-	color: #fff;
+	color: rgb(var(--color-ffffee));
 	padding: 20px 0;
 	font-size: 60%;
 }
@@ -150,7 +150,7 @@ body {
 	background-color: #292929;
 	flex: 1;
 	padding: 20px;
-	color: #fff;
+	color: rgb(var(--color-ffffee));
 }
 
 #display-name {
@@ -196,6 +196,7 @@ body {
 	color: #696969;
 	font-size: 75%;
 	text-align: center;
+	margin-top: 5%;
 }
 
 #flavor-text {
@@ -311,22 +312,22 @@ body {
 }
 
 .search-result-item {
-	background-color: #fff;
-	color: #000;
+	background-color: rgb(var(--color-ffffee));
+	color: rgb(var(--color-3a3a3a));
 	padding: 4px 4px;
 	display: none;
 	font-size: 70%;
 }
 
 .search-result-item:hover {
-	background-color: #000;
-	color: #fff;
+	background-color: rgb(var(--color-3a3a3a));
+	color: rgb(var(--color-ffffee));
 }
 
 .progress-percent {
 	font-size: 70%;
 	margin-left: 3%;
-	color: #fff;
+	color: rgb(var(--color-ffffee));
 }
 
 @-webkit-keyframes pokemon-grid-fade-in {
