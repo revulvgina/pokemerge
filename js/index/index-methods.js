@@ -124,7 +124,7 @@
       return;
     }
 
-    bgmElement.volume = 0.025;
+    bgmElement.volume = 0.1;
     bgmElement.play();
   };
 

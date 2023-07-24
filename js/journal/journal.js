@@ -10,10 +10,12 @@
 
     initializeCommonVars();
     initializeImageUrlLoadedListener();
-    createCells();
+		createCells();
+		initializeDiscoveredTexts();
     initializeIntersectionObserver();
     attachClickListenerToEveryCell();
-    initializeDatalistListener();
+		initializeDatalistListener();
+		window.playSound('pokemon-theme-bgm', 0.05);
   });
 
   async function createCells() {
@@ -37,11 +39,12 @@
     }
 
 		document.getElementById("pokemon-grid").classList.remove("display-none");
-		
-		document.getElementById('discovered-percent').innerText = `${((window.totalDiscovered / window.pokeCsv.length).toFixed(1) * 100)}%`;
-		document.getElementById('total-to-be-discovered').innerText = window.pokeCsv.length;
-
-  }
+	}
+	
+	function initializeDiscoveredTexts() {
+		document.getElementById('discovered-text').innerText = `${window.totalDiscovered} / ${window.pokeCsv.length}`;
+		document.getElementById('discovered-percent').innerText = `(${((window.totalDiscovered / window.pokeCsv.length).toFixed(1) * 100)}%)`;
+	}
 
   function createCell(pokemonData, i) {
     const { id, identifier, height, weight } = pokemonData;

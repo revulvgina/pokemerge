@@ -380,7 +380,7 @@ body {
 		max-width: 100%;
 	}
 
-	.progress-percent .big-screen {
+	.progress-percent #discovered-percent {
 		display: none;
 	}
 }
