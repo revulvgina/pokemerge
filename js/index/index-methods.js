@@ -135,8 +135,12 @@
 
   window.setCurrentLevel = (numberValue) => {
     window.currentLevel = numberValue;
-    window.localStorage.setItem("current_lv", numberValue);
-  };
+		window.localStorage.setItem("current_lv", numberValue);
+	};
+	
+	window.updateLastUpdated = (lastUpdatedValue = Date.now()) => {
+		window.localStorage.setItem('last-updated', lastUpdatedValue);
+	}
 
   window.initializeCurrentLevel = () => {
     window.currentLevel =
@@ -409,7 +413,9 @@
   window.increaseCurrentGold = (goldIncrease) => {
     window.setCurrentGold(window.currentGold + goldIncrease);
 
-    updateCurrentGold();
+		updateCurrentGold();
+		
+		window.updateLastUpdated();
 
     if (goldIncrease > 0) {
       publishHighestGold();
@@ -420,7 +426,9 @@
     window.setExpCountForNextLevel(
       (window.expCountForNextLevel || 0) +
         Math.floor(increaseValue * Math.max(1, window.currentLevel / 40))
-    );
+		);
+		
+		window.updateLastUpdated();
 
     if (window.expCountForNextLevel < window.currentLevel) {
       updateExpCountForNextLevelElement();
@@ -436,9 +444,11 @@
       excessValue = Math.max(0, excessValue - (window.currentLevel - 1));
     } else {
       window.setCurrentLevel(window.currentLevel + 1);
-    }
-
+		}
+		
     window.setExpCountForNextLevel(excessValue);
+		
+		window.updateLastUpdated();
 
     updateExpCountForNextLevelElement();
     updateCurrentLevel();
@@ -465,9 +475,9 @@
     }
   };
 
-  window.setExpCountForNextLevel = (thatValue) => {
+  window.setExpCountForNextLevel = (thatValue, isRestored = false) => {
     window.expCountForNextLevel = thatValue;
-    window.localStorage.setItem("exp-count-for-next-level", thatValue);
+		window.localStorage.setItem("exp-count-for-next-level", thatValue);
   };
 
   window.clearElementAttributesByPrefix = (cellElement, attributePrefix) => {
@@ -1414,9 +1424,11 @@
 
     if (null === sessionIdParamValue) {
       return;
-    }
+		}
 
     window.setSessionId(sessionIdParamValue);
+		
+		window.history.replaceState({}, document.title, '/');
 
     await window.restoreSessionFromCloud();
   };
@@ -1437,6 +1449,8 @@
     allDiscoveredLocalStorageKeys.forEach(([k, v]) => {
       sessionMap.discovered[k] = v;
     });
+		
+		sessionMap.lastUpdated = Date.now();
 
     const jsonFileName = `${window.sessionId}.json`;
 
@@ -1463,7 +1477,26 @@
       throw reason;
     }
 
-    const { level, expCountForNextLevel, gold, discovered } = responseObject;
+		const { level, expCountForNextLevel, gold, discovered, lastUpdated } = responseObject;
+
+		let deviceDataAndDateString = 'No data';
+
+		const localStorageLastUpdated = window.localStorage.getItem('last-updated');
+		if (null !== localStorageLastUpdated) {
+			deviceDataAndDateString = `${new Date(Number.parseInt(localStorageLastUpdated, 10)).toLocaleString()} (Lv${window.localStorage.getItem('current_lv')}|${window.localStorage.getItem('current_gold')}G)`;
+		}
+
+		const lastUpdatedDateString = `${new Date(lastUpdated).toLocaleString()} (Lv${level}|${gold}G)`;
+
+		if (lastUpdatedDateString !== deviceDataAndDateString && !confirm(
+			`Do you want to overwrite this device with cloud data?\n` +
+			`Cloud Data Date: ${lastUpdatedDateString}\n` +
+			`Device Data Date: ${deviceDataAndDateString}\n\n` + 
+			`You can go to [Settings] > [Share Session] to upload this device data.`)) {
+			return;
+		}
+
+		window.updateLastUpdated(lastUpdated);
 
     if ("number" === typeof level) {
       window.setCurrentLevel(level);
