@@ -17,7 +17,10 @@
 		window.playSound('pokemon-theme-bgm', 0.05);
   });
 
-  async function createCells() {
+	async function createCells() {
+		
+		window.totalDiscovered = 0;
+
     const pokemonList =
       window.pokeCsv; /* [window.pokeCsv.slice(0, 1), window.pokeCsv.slice(264, 265), window.pokeCsv.slice(132, 133)].flat(); */
     // .slice(0, 100)
@@ -88,7 +91,7 @@
     imageElement.classList.add("pokemon-image");
     if (isDiscovered(identifier)) {
       imageElement.classList.add("discovered");
-			window.totalDiscovered = (window.totalDiscovered || 0) + 1;
+			window.totalDiscovered += 1;
 		}
 		
 		cellElement.appendChild(imageElement);
@@ -386,7 +389,7 @@
 			if (cellElement.getAttribute('data-pokemon-id') === eachSpecies.id.toString()) {
 				return;
 			}
-			
+
 			eachEvolutionChainSpeciesElement.classList.add('cursor-pointer');
 
 			eachEvolutionChainSpeciesElement.onclick = () => {
