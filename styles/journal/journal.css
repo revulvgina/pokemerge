@@ -25,9 +25,8 @@ body {
 
 .content {
 	background-color: #292929;
-	height: 40px;
-	padding: 40px 30px;
-	height: calc(100vh - 60px);
+	padding: 30px 30px;
+	height: calc(100vh - 105px);
 	overflow: hidden auto;
 }
 
@@ -273,13 +272,19 @@ body {
 
 .search-box {
 	margin-left: auto;
+	padding: 10px 10%;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 100%;
 }
 
 #pokemon-names {
 	position: absolute;
-	margin-top: 10px;
 	z-index: 1;
-	width: 200px;
+	top: 36px;
+	width: 100%;
+	padding: 0 10%;
 }
 
 #pokemon-names.initial-list>div:nth-child(n+20) {
@@ -301,6 +306,10 @@ body {
 	font-size: 80%;
 	border-radius: 6px;
 	padding: 5px 4px;
+	text-align: center;
+	width: -webkit-fill-available;
+	background-color: rgb(var(--color-ffffee));
+	color: rgb(var(--color-3a3a3a));
 }
 
 #pokemon-names:not(.initial-list) {
@@ -317,6 +326,8 @@ body {
 	padding: 4px 4px;
 	display: none;
 	font-size: 70%;
+	text-align: center;
+	width: -webkit-fill-available;
 }
 
 .search-result-item:hover {
@@ -362,12 +373,7 @@ body {
 
 	#pokemon-names-input {
 		font-size: 8px;
-		width: 130px;
 		border-radius: 4px;
-	}
-
-	#pokemon-names {
-		width: 130px;
 	}
 }
 
@@ -378,10 +384,6 @@ body {
 
 	#image-container img {
 		max-width: 100%;
-	}
-
-	.progress-percent #discovered-percent {
-		display: none;
 	}
 }
 
