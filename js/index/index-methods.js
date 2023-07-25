@@ -1361,9 +1361,23 @@
         next: { revalidate: 0 },
       }
     );
-  };
+	};
 
-  window.publishHighestGold = async () => {
+	window.publishHighestGold = async () => {
+		if (window.highestGoldAttained > window.currentGold) {
+			clearTimeout(window.highestGoldPublishTimeout);
+			window.highestGoldPublishTimeout = setTimeout(window.postHighestGold, 5000);
+			return;
+		}
+
+		window.highestGoldAttained = window.currentGold;
+
+		await window.postHighestGold();
+	};
+	
+	window.postHighestGold = async () => {
+		clearTimeout(window.highestGoldPublishTimeout);
+
     const response = await fetch(
       `https://pokemerge-endpoint.vercel.app/api/highest-gold/${window.sessionId}`,
       {
@@ -1379,7 +1393,7 @@
         next: { revalidate: 0 },
       }
     );
-  };
+	};
 
   window.publishFastestLevel = async () => {
     const response = await fetch(
