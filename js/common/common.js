@@ -91,12 +91,6 @@
     return window.getCommonSpeciesData(pokemonId).name;
   };
 
-  window.loadPokemonChainJson = async () => {
-    const response = await fetch("./json/pokemon_chain.json");
-
-    window.pokemonChain = await response.json();
-  };
-
   window.loadPokemonTypes = async () => {
     const response = await fetch("./csv/pokemon_types.csv");
     const text = await response.text();
@@ -169,13 +163,6 @@
     return window.pokemonSpecies.find(({ id }) => pokemonId.toString() === id);
   };
 
-  window.getPokemonChainData = (evolutionChainId) => {
-    return window.pokemonChain.find(
-      (eachPokemonChain) =>
-        evolutionChainId === eachPokemonChain.evolution_chain_id
-    );
-  };
-
   window.getNanoId = (length = 16) => {
     const _ID_CHARACTERS =
       "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -238,4 +225,31 @@
     thisAudio.currentTime = 0;
     thisAudio.play();
 	};	
+
+  window.loadPokemonOrderedChainJson = async () => {
+    const response = await fetch("./json/pokemon-ordered-chain.json");
+
+    window.pokemonOrderedChain = await response.json();
+  };
+
+  window.getPokemonOrderedChainData = (evolutionChainId) => {
+    return window.pokemonOrderedChain.find(
+      ({evolution_chain_id}) =>
+        evolutionChainId === evolution_chain_id
+    );
+	};
+	
+	window.getGenerationOrdinalByGenerationNumber = (generationNumber) => {
+		if (1 === generationNumber) {
+			return '1st generation';
+		}
+		if (2 === generationNumber) {
+			return '2nd generation';
+		}
+		if (3 === generationNumber) {
+			return '3rd generation';
+		}
+
+		return 'unknown generation';
+	}
 })();

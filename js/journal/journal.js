@@ -1,19 +1,18 @@
 (async () => {
   document.addEventListener("imports-loaded", async () => {
     await loadPokeCsv();
-    await loadPokemonChainJson();
     await loadPokemonSpeciesNames();
     await loadPokemonTypes();
     await loadTypeNames();
     await loadPokemonSpeciesFlavorText();
-    await loadPokemonSpecies();
+		await loadPokemonSpecies();
+		await window.loadPokemonOrderedChainJson();
 
     initializeCommonVars();
     initializeImageUrlLoadedListener();
 		createCells();
 		initializeDiscoveredTexts();
     initializeIntersectionObserver();
-    attachClickListenerToEveryCell();
 		initializeDatalistListener();
 		window.playSound('pokemon-theme-bgm', 0.05);
   });
@@ -92,7 +91,9 @@
 			window.totalDiscovered = (window.totalDiscovered || 0) + 1;
 		}
 		
-    cellElement.appendChild(imageElement);
+		cellElement.appendChild(imageElement);
+		
+		cellElement.onclick = () => toggleCellFullScreen(imageElement);
 
     return cellElement;
   }
@@ -220,9 +221,11 @@
 
     if (!cellMatched) {
       return;
-    }
-
-    cellMatched.scrollIntoView();
+		}
+		
+		cellMatched.scrollIntoView();
+		
+		clearTimeout(window.speciesChainScrollTimeout);
 
     const imageElement = cellMatched.querySelector("img");
 
@@ -282,7 +285,9 @@
     el.classList.add("shrink-down");
   };
 
-  function toggleCellFullScreen(target) {
+	function toggleCellFullScreen(target) {
+		clearTimeout(window.speciesChainScrollTimeout);
+
     const { top, left } = target.getBoundingClientRect();
     const cellElement = target.parentElement;
     const imageElement = cellElement.children[1];
@@ -362,51 +367,40 @@
       )}.`;
     }
 
-    const evolutionChainElement = document.getElementById("evolution-chain");
-    const evolutionChainData = window.getPokemonChainData(
+		const evolutionChainElement = document.getElementById("evolution-chain");
+		evolutionChainElement.innerHTML = '';
+
+    const evolutionChainData = window.getPokemonOrderedChainData(
       cellElement.getAttribute("data-evolution-chain-id")
     );
-    let evolutionChainString = "";
-    evolutionChainData.list.map((firstEvolution) => {
-      const firstDisplayName = getCommonSpeciesName(firstEvolution.id);
-      evolutionChainString += `<img src="./images/official-artwork/${
-        firstEvolution.id
-      }.png" title="#${firstEvolution.id} ${firstDisplayName} (1st evolution)" class="${
-        isDiscovered(firstEvolution.identifier) ? "discovered" : ""
-      }" />`;
+		evolutionChainData.list.forEach((eachSpecies) => {
+			const speciesDisplayName = getCommonSpeciesName(eachSpecies.id);
+			const eachEvolutionChainSpeciesElement = document.createElement('img');
+			const speciesImageUrl = `./images/official-artwork/${eachSpecies.id}.png`;
+			eachEvolutionChainSpeciesElement.setAttribute('src', speciesImageUrl);
+			eachEvolutionChainSpeciesElement.setAttribute('title', `#${eachSpecies.id} ${speciesDisplayName} (${window.getGenerationOrdinalByGenerationNumber(eachSpecies.generationNumber)})`);
+			eachEvolutionChainSpeciesElement.classList.toggle('discovered', isDiscovered(eachSpecies.identifier));
+			
+			evolutionChainElement.appendChild(eachEvolutionChainSpeciesElement);
 
-      const secondEvolutionList = firstEvolution.list.map((secondEvolution) => {
-        const secondDisplayName = getCommonSpeciesName(secondEvolution.id);
-        let baseSecondEvolutionListString = `<img src="./images/official-artwork/${
-          secondEvolution.id
-        }.png" title="#${secondEvolution.id} ${secondDisplayName} (2nd evolution)" class="${
-          isDiscovered(secondEvolution.identifier) ? "discovered" : ""
-        }" />`;
+			if (cellElement.getAttribute('data-pokemon-id') === eachSpecies.id.toString()) {
+				return;
+			}
+			
+			eachEvolutionChainSpeciesElement.classList.add('cursor-pointer');
 
-        const thirdEvolutionList = secondEvolution.list.map(
-          (thirdEvolution) => {
-            const thirdDisplayName = getCommonSpeciesName(thirdEvolution.id);
-            return `<img src="./images/official-artwork/${
-              thirdEvolution.id
-            }.png" title="#${thirdEvolution.id} ${thirdDisplayName} (3rd evolution)" class="${
-              isDiscovered(thirdEvolution.identifier) ? "discovered" : ""
-            }" />`;
-          }
-        );
+			eachEvolutionChainSpeciesElement.onclick = () => {
+				const el = document.getElementById("full-screen-detail");
 
-        if (thirdEvolutionList.length) {
-          baseSecondEvolutionListString += `${thirdEvolutionList.join("")}`;
-        }
+			// Remove cloned element from DOM after animation is over
+				el.classList.remove("full-screen");
+				el.classList.remove("shrink-down");
+				document.getElementById("image-container").innerHTML = '';
 
-        return baseSecondEvolutionListString;
-      });
-
-      if (secondEvolutionList.length) {
-        evolutionChainString += `${secondEvolutionList.join("")}`;
-      }
-    });
-
-    evolutionChainElement.innerHTML = "<div>" + evolutionChainString + "</div>";
+				clearTimeout(window.speciesChainScrollTimeout);
+				window.speciesChainScrollTimeout = setTimeout(() => { scrollCellIntoView(speciesDisplayName); }, 500);
+			}
+		});
 
     fullScreenDetailElement.classList.add("full-screen");
     window.lastFullScreenTimeout = Date.now() + 1000;
@@ -443,11 +437,5 @@
 
   function getDiscovered(pokemonIdentifier) {
     return window.localStorage.getItem(`discovered-${pokemonIdentifier}`);
-  }
-
-  function attachClickListenerToEveryCell() {
-    document.querySelectorAll(".cell").forEach((box) => {
-      box.addEventListener("click", toggleFullScreen);
-    });
   }
 })();

@@ -56,3 +56,7 @@ body {
 .vertical-align {
 	vertical-align: middle;
 }
+
+.cursor-pointer {
+	cursor: pointer;
+}

@@ -1,17 +1,5 @@
 (async () => {
   document.addEventListener("imports-loaded", async () => {
-    // await loadPokeCsv();
-    // await loadPokemonChainJson();
-    // await loadPokemonSpeciesNames();
-    // await loadPokemonTypes();
-    // await loadTypeNames();
-    // await loadPokemonSpeciesFlavorText();
-    // await loadPokemonSpecies();
-
-    // createCells();
-    // initializeIntersectionObserver();
-    // attachClickListenerToEveryCell();
-
 		await populateGrid('highest-level');
     await populateGrid('highest-gold');
 		await populateGrid('highest-backpack');
