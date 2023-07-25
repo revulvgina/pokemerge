@@ -324,25 +324,11 @@
     const displayNameElement = document.getElementById("display-name");
     displayNameElement.innerHTML = `<span>${cellElement.getAttribute(
       "data-display-name"
-    )}</span>`;
+		)}</span>`;
+		
+		setPokemonTypes(cellElement);
 
     if (isPokemonDiscovered) {
-      const typesElement = document.getElementById("types");
-      let typesInnerHTML = "";
-      for (let i = 0; i < 10; i += 1) {
-        const typeName = cellElement.getAttribute(`data-type-${i}`);
-
-        if (null === typeName) {
-          break;
-        }
-
-        typesInnerHTML += `<div class="pokemon-type-box" style="background-color: ${
-          window.POKEMON_TYPE_COLORS[typeName.toLowerCase()]
-        }">${typeName}</div>`;
-      }
-
-      typesElement.innerHTML = typesInnerHTML;
-
       const heightElement = document.getElementById("height-value");
       heightElement.innerText = `${
         Number.parseInt(cellElement.getAttribute("data-height"), 10) / 10
@@ -385,7 +371,7 @@
       const firstDisplayName = getCommonSpeciesName(firstEvolution.id);
       evolutionChainString += `<img src="./images/official-artwork/${
         firstEvolution.id
-      }.png" title="#${firstEvolution.id} ${firstDisplayName}" class="${
+      }.png" title="#${firstEvolution.id} ${firstDisplayName} (1st evolution)" class="${
         isDiscovered(firstEvolution.identifier) ? "discovered" : ""
       }" />`;
 
@@ -393,7 +379,7 @@
         const secondDisplayName = getCommonSpeciesName(secondEvolution.id);
         let baseSecondEvolutionListString = `<img src="./images/official-artwork/${
           secondEvolution.id
-        }.png" title="#${secondEvolution.id} ${secondDisplayName}" class="${
+        }.png" title="#${secondEvolution.id} ${secondDisplayName} (2nd evolution)" class="${
           isDiscovered(secondEvolution.identifier) ? "discovered" : ""
         }" />`;
 
@@ -402,7 +388,7 @@
             const thirdDisplayName = getCommonSpeciesName(thirdEvolution.id);
             return `<img src="./images/official-artwork/${
               thirdEvolution.id
-            }.png" title="#${thirdEvolution.id} ${thirdDisplayName}" class="${
+            }.png" title="#${thirdEvolution.id} ${thirdDisplayName} (3rd evolution)" class="${
               isDiscovered(thirdEvolution.identifier) ? "discovered" : ""
             }" />`;
           }
@@ -435,7 +421,25 @@
       "string" ===
       typeof window.localStorage.getItem(`discovered-${pokemonIdentifier}`)
     );
-  }
+	}
+	
+	function setPokemonTypes(cellElement) {
+		const typesElement = document.getElementById("types");
+		let typesInnerHTML = "";
+		for (let i = 0; i < 10; i += 1) {
+			const typeName = cellElement.getAttribute(`data-type-${i}`);
+
+			if (null === typeName) {
+				break;
+			}
+
+			typesInnerHTML += `<div class="pokemon-type-box" style="background-color: ${
+				window.POKEMON_TYPE_COLORS[typeName.toLowerCase()]
+			}">${typeName}</div>`;
+		}
+
+		typesElement.innerHTML = typesInnerHTML;
+	}
 
   function getDiscovered(pokemonIdentifier) {
     return window.localStorage.getItem(`discovered-${pokemonIdentifier}`);
