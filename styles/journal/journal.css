@@ -1,5 +1,8 @@
 body {
 	background-color: rgb(var(--color-0F0F1B));
+	overflow: hidden;
+	margin: 0;
+	height: 100%;
 }
 
 .container {
