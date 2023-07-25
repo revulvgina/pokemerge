@@ -16,6 +16,9 @@ body {
 	padding: 10px 20px;
 	display: flex;
 	align-items: center;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 .header-text {
@@ -28,6 +31,8 @@ body {
 	padding: 30px 30px;
 	height: calc(100vh - 105px);
 	overflow: hidden auto;
+	position: relative;
+	top: 60px;
 }
 
 #pokemon-grid {
@@ -274,6 +279,7 @@ body {
 	justify-content: center;
 	position: relative;
 	width: 100%;
+	top: 60px;
 }
 
 #pokemon-names {
