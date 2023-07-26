@@ -177,7 +177,7 @@
 				return;
 			}
 
-			if (inputValue.trim().length <= 2) {
+			if (inputValue.trim().length <= 1) {
 				resetAllSearchItem();
 				window.pokemonNames.classList.add('initial-list');
 				return;
@@ -189,7 +189,7 @@
 			document.querySelector('#pokemon-names').classList.remove('has-selected');
 
 			window.pokemonNames.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
-				if (resultsShown >= 10) {
+				if (resultsShown >= 5) {
 					return false;
 				}
 				if (new RegExp(inputValue, 'ig').test(eachChildDiv.innerText)) {
