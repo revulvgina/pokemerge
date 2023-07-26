@@ -189,16 +189,13 @@
 			document.querySelector('#pokemon-names').classList.remove('has-selected');
 
 			window.pokemonNames.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
-				if (resultsShown >= 5) {
-					return false;
-				}
-				if (new RegExp(inputValue, 'ig').test(eachChildDiv.innerText)) {
+				eachChildDiv.classList.add('hide-result');
+				eachChildDiv.classList.remove('show-result');
+
+				if (resultsShown <= 5 && new RegExp(inputValue, 'ig').test(eachChildDiv.innerText)) {
 					eachChildDiv.classList.add('show-result');
 					eachChildDiv.classList.remove('hide-result');
 					resultsShown += 1;
-				} else {
-					eachChildDiv.classList.add('hide-result');
-					eachChildDiv.classList.remove('show-result');
 				}
 			});
 		});
