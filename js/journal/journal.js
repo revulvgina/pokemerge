@@ -233,8 +233,6 @@
 		
 		cellMatched.scrollIntoView();
 		
-		clearTimeout(window.speciesChainScrollTimeout);
-
     const imageElement = cellMatched.querySelector("img");
 
     if (imageElement.complete && imageElement.src) {
@@ -268,6 +266,8 @@
   }
 
   window.unFullScreen = (e) => {
+		document.querySelector('.header').scrollIntoView();
+		
     if (window.lastUnFullScreenTimeout > Date.now()) {
       return;
     }
@@ -294,8 +294,6 @@
   };
 
 	function toggleCellFullScreen(target) {
-		clearTimeout(window.speciesChainScrollTimeout);
-
     const { top, left } = target.getBoundingClientRect();
     const cellElement = target.parentElement;
     const imageElement = cellElement.children[1];
@@ -405,8 +403,7 @@
 				el.classList.remove("shrink-down");
 				document.getElementById("image-container").innerHTML = '';
 
-				clearTimeout(window.speciesChainScrollTimeout);
-				window.speciesChainScrollTimeout = setTimeout(() => { scrollCellIntoView(speciesDisplayName); }, 500);
+				scrollCellIntoView(speciesDisplayName);
 			}
 		});
 
