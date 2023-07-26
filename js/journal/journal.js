@@ -192,7 +192,7 @@
 				eachChildDiv.classList.add('hide-result');
 				eachChildDiv.classList.remove('show-result');
 
-				if (resultsShown <= 5 && new RegExp(inputValue, 'ig').test(eachChildDiv.innerText)) {
+				if (resultsShown < 5 && new RegExp(inputValue, 'ig').test(eachChildDiv.innerText)) {
 					eachChildDiv.classList.add('show-result');
 					eachChildDiv.classList.remove('hide-result');
 					resultsShown += 1;
