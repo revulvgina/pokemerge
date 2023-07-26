@@ -18,6 +18,8 @@
 		initializeDatalistListener();
 
 		window.playSound('pokemon-theme-bgm', 0.05);
+		
+		document.body.scrollTo(0, 0);
   });
 
 	async function createCells() {
