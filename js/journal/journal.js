@@ -1,4 +1,6 @@
 (async () => {
+	document.body.scrollTo(0, 0);
+
   document.addEventListener("imports-loaded", async () => {
     await loadPokeCsv();
     await loadPokemonSpeciesNames();
@@ -14,6 +16,7 @@
 		initializeDiscoveredTexts();
     initializeIntersectionObserver();
 		initializeDatalistListener();
+
 		window.playSound('pokemon-theme-bgm', 0.05);
   });
 

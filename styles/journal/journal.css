@@ -1,12 +1,9 @@
-html, body {
-	background-color: rgb(var(--color-0F0F1B));
-	overflow: hidden;
-	margin: 0;
-	height: 100%;
-}
-
 body {
-	position: relative;
+	background-color: rgb(var(--color-0F0F1B));
+
+	touch-action: none;
+	-ms-touch-action: none;
+	height: 100vh;
 }
 
 .container {
@@ -23,9 +20,6 @@ body {
 	padding: 10px 20px;
 	display: flex;
 	align-items: center;
-	position: absolute;
-	top: 0;
-	width: 100%;
 }
 
 .header-text {
@@ -38,8 +32,6 @@ body {
 	padding: 30px 30px;
 	height: calc(100vh - 105px);
 	overflow: hidden auto;
-	position: relative;
-	top: 60px;
 }
 
 #pokemon-grid {
@@ -286,7 +278,6 @@ body {
 	justify-content: center;
 	position: relative;
 	width: 100%;
-	top: 60px;
 }
 
 #pokemon-names {
@@ -346,9 +337,10 @@ body {
 }
 
 .progress-percent {
-	font-size: 70%;
+	font-size: 80%;
 	margin-left: 3%;
 	color: rgb(var(--color-ffffee));
+	margin-left: auto;
 }
 
 @-webkit-keyframes pokemon-grid-fade-in {

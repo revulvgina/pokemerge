@@ -1,4 +1,6 @@
 (async () => {
+	document.body.scrollTo(0, 0);
+	
   document.addEventListener("imports-loaded", async () => {
     await loadBasicEvolutionJson();
 		await loadPokeCsv();

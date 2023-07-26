@@ -1,6 +1,10 @@
 body {
 	/* background-color: rgb(var(--color-E0C9A6)); */
 	background-color: rgb(var(--color-3a3a3a));
+
+	touch-action: none;
+	-ms-touch-action: none;
+	height: 100vh;
 }
 
 .container {

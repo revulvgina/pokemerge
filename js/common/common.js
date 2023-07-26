@@ -219,7 +219,8 @@
       return;
     }
 
-    thisAudio.volume = volume;
+		thisAudio.volume = volume;
+		thisAudio.muted = false;
 
     // thisAudio.pause();
     thisAudio.currentTime = 0;
