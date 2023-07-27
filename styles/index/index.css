@@ -381,8 +381,8 @@ img[src="./images/master-ball.png"] {
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
-	top: 25%;
+	width: 80%;
+	top: 10%;
 }
 
 @keyframes pulse-text {
