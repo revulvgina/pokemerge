@@ -92,7 +92,8 @@
 
     const imageElement = document.createElement("img");
     imageElement.setAttribute("loading", "lazy");
-    imageElement.setAttribute("data-image-url", imageUrl);
+		imageElement.setAttribute("data-image-url", imageUrl);
+		imageElement.setAttribute('data-pokemon-id', id);
     imageElement.classList.add("pokemon-image");
     if (isDiscovered(identifier)) {
       imageElement.classList.add("discovered");
