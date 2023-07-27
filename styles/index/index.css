@@ -317,7 +317,7 @@ img[src="./images/master-ball.png"] {
 
 [id^=backpack-cell],
 [id^=buyer-] {
-	border: 4px solid rgb(var(--color-a76f47));
+	border: 4px dashed rgb(var(--color-a76f47));
 	cursor: pointer;
 	background-color: rgba(var(--color-f79f4f), 0.9);
 	justify-content: center;
@@ -383,6 +383,15 @@ img[src="./images/master-ball.png"] {
 	margin-right: auto;
 	width: 80%;
 	top: 10%;
+}
+
+.pokemon-buff-container {
+	position: absolute;
+	aspect-ratio: 1;
+	bottom: 0;
+	border: 1px solid red;
+	max-width: 10%;
+	width: 7%;
 }
 
 @keyframes pulse-text {
@@ -524,10 +533,22 @@ img[src] {
 
 .buyer-header {
 	margin-top: 2%;
+	margin-bottom: 1%;
+}
+
+.buyer-header > img {
+	width: 3%;
+	margin-left: 1%;
 }
 
 .backpack-header {
-	margin-top: 7%;
+	margin-top: 3%;
+	margin-bottom: 1%;
+}
+
+.backpack-header > img {
+	width: 3%;
+	margin-left: 1%;
 }
 
 .selected-cell {
@@ -625,8 +646,16 @@ img.poke-dollar {
 }
 
 .grid-cell {
-	max-width: 55%;
+	max-width: 52%;
 	aspect-ratio: 1;
+}
+
+.grid-cell[data-pokemon-id] {
+	border-style: solid;
+}
+
+.grid-cell[data-evolution-number="4"] {
+	border-style: solid;
 }
 
 /* IPAD PRO */
@@ -640,7 +669,7 @@ img.poke-dollar {
 	}
 
 	.grid-cell {
-		max-width: 70%;
+		max-width: 55%;
 	}
 
 	.text-container {
@@ -652,7 +681,7 @@ img.poke-dollar {
 	}
 
 	.backpack-header {
-		margin-top: 8%;
+		margin-top: 3%;
 	}
 
 	#exp-container {
@@ -661,10 +690,6 @@ img.poke-dollar {
 
 	#exp-for-next-level {
 		bottom: 120%;
-	}
-
-	.grid-cell {
-		max-width: 72%;
 	}
 }
 
@@ -679,7 +704,7 @@ img.poke-dollar {
 	}
 
 	.grid-cell {
-		max-width: 90%;
+		max-width: 65%;
 	}
 
 	.text-container {
@@ -711,7 +736,7 @@ img.poke-dollar {
 	}
 
 	.grid-cell {
-		max-width: 80%;
+		max-width: 72%;
 	}
 
 	.text-container {

@@ -43,10 +43,16 @@
 						loadHTML('./components/index/box-container.html', true);
 					</script>
 				</div>
-				<div class="buyer-header"><strong>Buyers</strong></div>
+				<div class="buyer-header">
+					<img src="./images/professor-oak.png" class="pixelated" />
+					<strong>Requests</strong>
+				</div>
 				<div class="buyer-grid no-highlight" id="buyers-grid">
 				</div>
-				<div class="backpack-header"><strong>Backpack</strong></div>
+				<div class="backpack-header">
+					<img src="./images/backpack.png" class="pixelated"/>
+					<strong>Backpack</strong>
+				</div>
 				<div id="spinning-box" class="display-none">
 				</div>
 				<div class="backpack-grid no-highlight" id="backpack-grid">
@@ -61,6 +67,13 @@
 							loadHTML('./components/common/pokemon-spinner.html', true);
 						</script>
 					</div>
+				</div>
+				<div class="pokemon-buff-container display-none">
+					<div class="pokemon-buff-image-container">
+						<img class="pokemon-buff-image" />
+					</div>
+					<div class="pokemon-buff-type-0"></div>
+					<div class="pokemon-buff-type-1"></div>
 				</div>
 			</div>
 		</div>

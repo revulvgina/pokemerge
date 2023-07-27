@@ -650,19 +650,39 @@
     playBgm();
   };
 
-  window.sellCell = (cellElement) => {
+  window.sellBackpackCell = (cellElement) => {
     const evolutionNumber = Number.parseInt(
       cellElement.getAttribute("data-evolution-number"),
       10
     );
+
+		addTypeBuff(cellElement);
 
     cellElement.classList.remove("selected-cell");
     clearSelectedCell();
 
     increaseCurrentGold(getBasePrice(evolutionNumber));
 
-    playIndexSound("coin-sound");
-  };
+		playIndexSound("coin-sound");
+	};
+	
+	window.addTypeBuff = (cellElement) => {
+		const soldPokemonId = cellElement.getAttribute('data-pokemon-id');
+
+		const pokemonHasNextEvolutions = hasNextEvolutions(cellElement.getAttribute('data-evolution-chain-id'), soldPokemonId);
+
+		console.log("addTypeBuff soldPokemonId", soldPokemonId)
+
+    const allExistingBuyerCellsPokemonId = Array.from(
+      document.querySelectorAll("[id^=buyer-][data-pokemon-id]")
+		).map((eachBuyerCell) => eachBuyerCell.getAttribute('data-pokemon-id'));
+		
+		if (pokemonHasNextEvolutions || !allExistingBuyerCellsPokemonId.includes(soldPokemonId)) {
+			return;
+		}
+
+		console.log("addbuff");
+	};
 
   window.attachBackpackContextMenu = (cellElement) => {
     const onBackpackContextMenu = (event) => {
@@ -672,7 +692,7 @@
         return;
       }
 
-      sellCell(cellElement);
+      sellBackpackCell(cellElement);
       clearBackpackCellAndCreateRandomPokeball(cellElement);
     };
 
@@ -704,7 +724,7 @@
       "title",
       `${cellElement.getAttribute(
         "data-evolution-chain-names"
-      )}\nRight click to sell for ${sellValue} gold.`
+      )}\nRight click to dispose for ${sellValue} gold.`
     );
 
     cellElement.setAttribute("data-sell-value", sellValue);
