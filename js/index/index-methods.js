@@ -5,7 +5,7 @@
     for (let i = 0; i < 5; i += 1) {
       const eachBuyerCell = document.createElement("div");
       eachBuyerCell.id = `buyer-${i}`;
-      eachBuyerCell.classList.add("no-highlight", "a-cell");
+      eachBuyerCell.classList.add("no-highlight", "grid-cell");
       eachBuyerCell.innerHTML = `<img src="./images/transparent-picture.png" />`;
       buyersGrid.appendChild(eachBuyerCell);
     }
@@ -16,8 +16,8 @@
 
     for (let i = 0; i < 25; i += 1) {
       const eachBackpackCell = document.createElement("div");
-      eachBackpackCell.id = `shuffled-cell-${i}`;
-      eachBackpackCell.classList.add("backpack-0", "no-highlight", "a-cell");
+      eachBackpackCell.id = `backpack-cell-${i}`;
+      eachBackpackCell.classList.add("backpack-0", "no-highlight", "grid-cell");
       eachBackpackCell.innerHTML = `<img src="./images/transparent-picture.png" />`;
       backpackGrid.appendChild(eachBackpackCell);
     }
@@ -61,15 +61,24 @@
 
   window.initializeBackpackBalls = () => {
     const backpackCells = Array.from(
-      document.querySelectorAll("[id^=shuffled-cell-]")
+      document.querySelectorAll("[id^=backpack-cell-]")
     );
 
     backpackCells.forEach((eachCell) => {
       attachCellWithPokeBallImage(eachCell);
     });
+	};
+	
+	window.initializeLevelStarted = () => {
+		const savedLevelStarted = window.localStorage.getItem('level-started');
 
-    window.startLevel = Date.now();
-  };
+		if (null !== savedLevelStarted) {
+			window.setLevelStarted(Number.parseInt(savedLevelStarted, 10));
+			return;
+		}
+
+		window.setLevelStarted(Date.now());
+	};
 
   window.getBasePrice = (evolution_number) => {
     return Math.pow(evolution_number, evolution_number);
@@ -102,16 +111,16 @@
   };
 
   window.attachContextMenus = () => {
-    const shuffledCells = getAllShuffledCells();
+    const backpackCells = getAllBackpackCells();
 
-    shuffledCells.forEach((eachShuffledCell) => {
-      attachBackpackContextMenu(eachShuffledCell);
+    backpackCells.forEach((eachBackpackCell) => {
+      attachBackpackContextMenu(eachBackpackCell);
     });
 
     const buyerCells = Array.from(document.querySelectorAll("[id^=buyer-]"));
 
-    buyerCells.forEach((eachShuffledCell) => {
-      attachBuyerContextMenu(eachShuffledCell);
+    buyerCells.forEach((eachBuyerCell) => {
+      attachBuyerContextMenu(eachBuyerCell);
     });
   };
 
@@ -250,7 +259,7 @@
       0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))
     ) {
       const backpackCellsWithPokemonId = Array.from(
-        document.querySelectorAll("[id^=shuffled-cell-][data-pokemon-id]")
+        document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
       );
 
       if (backpackCellsWithPokemonId.length > 0) {
@@ -374,7 +383,9 @@
     window.levelUpSoundPriorityTimeout = Date.now() + 2000;
 
     publishHighestLevel();
-    publishFastestLevel();
+		publishFastestLevel();
+		
+		window.setLevelStarted(Date.now());
 
     if (0 === window.currentLevel % 5) {
       adjustEncounterDisplay();
@@ -394,7 +405,12 @@
   window.setExpCountForNextLevel = (thatValue, isRestored = false) => {
     window.expCountForNextLevel = thatValue;
     window.localStorage.setItem("exp-count-for-next-level", thatValue);
-  };
+	};
+	
+	window.setLevelStarted = (timestamp) => {
+		window.levelStarted = timestamp;
+		window.localStorage.setItem('level-started', timestamp);
+	};
 
   window.clearElementAttributesByPrefix = (cellElement, attributePrefix) => {
     const attributeNames = Array.from(cellElement.attributes).map(
@@ -466,7 +482,7 @@
 
     decorateBackpackCell(cellElement, nextRandomEvolutionSpeciesObject.id);
 
-    clearShuffledCellAndCreateRandomPokeball(window.selectedCellElement);
+    clearBackpackCellAndCreateRandomPokeball(window.selectedCellElement);
 
     clearSelectedCell();
 
@@ -657,7 +673,7 @@
       }
 
       sellCell(cellElement);
-      clearShuffledCellAndCreateRandomPokeball(cellElement);
+      clearBackpackCellAndCreateRandomPokeball(cellElement);
     };
 
     cellElement.addEventListener("contextmenu", onBackpackContextMenu);
@@ -727,16 +743,16 @@
     setSelectedCell(cellElement);
   };
 
-  window.getEmptyShuffledCell = () => {
-    const everyCells = getAllShuffledCells();
+  window.getEmptyBackpackCell = () => {
+    const everyCells = getAllBackpackCells();
 
     return everyCells.findIndex(
       (eachCell) => null === eachCell.getAttribute("data-display-name")
     );
   };
 
-  window.getAllShuffledCells = () => {
-    return Array.from(document.querySelectorAll("[id^=shuffled-cell-]"));
+  window.getAllBackpackCells = () => {
+    return Array.from(document.querySelectorAll("[id^=backpack-cell-]"));
   };
 
   window.playIndexSound = (audioId) => {
@@ -759,14 +775,14 @@
   };
 
   window.onPokeBallClick = () => {
-    let indexWithoutDisplayName = getEmptyShuffledCell();
+    let indexWithoutDisplayName = getEmptyBackpackCell();
 
     if (
       "number" === typeof indexWithoutDisplayName &&
       indexWithoutDisplayName >= 0
     ) {
       const cellElement = document.getElementById(
-        `shuffled-cell-${indexWithoutDisplayName}`
+        `backpack-cell-${indexWithoutDisplayName}`
       );
 
       randomizeBackpackCell(
@@ -811,11 +827,11 @@
   };
 
   window.randomizeBuyerCell = (cellElement) => {
-    const openedShuffledCells = document.querySelectorAll(
-      "[id^=shuffled-cell-][data-pokemon-id]"
+    const openedBackpackCells = document.querySelectorAll(
+      "[id^=backpack-cell-][data-pokemon-id]"
     );
 
-    if (openedShuffledCells.length <= 1) {
+    if (openedBackpackCells.length <= 1) {
       return;
     }
 
@@ -824,7 +840,7 @@
     }
 
     const allBackpackPokemonIds = Array.from(
-      document.querySelectorAll("[id^=shuffled-cell-][data-pokemon-id]")
+      document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
     ).map((eachBackpackCell) =>
       eachBackpackCell.getAttribute("data-pokemon-id")
     );
@@ -868,7 +884,7 @@
       window.pokemonNames[`pokemon-id-${tentativeRandomPokemonId}`];
 
     const thatElement = Array.from(
-      document.querySelectorAll("[id^=shuffled-cell-]")
+      document.querySelectorAll("[id^=backpack-cell-]")
     ).find(
       (eachCell) =>
         eachCell &&
@@ -877,7 +893,7 @@
     );
 
     const randomBackpackCellElement = document.querySelector(
-      `[id^=shuffled-cell-][data-pokemon-id="${tentativeRandomPokemonId}"]`
+      `[id^=backpack-cell-][data-pokemon-id="${tentativeRandomPokemonId}"]`
     );
 
     const pokemonNextEvolutions = window.getNextEvolutions(
@@ -995,7 +1011,7 @@
     Array.from(document.querySelectorAll(`[id^=buyer-]`)).forEach((eachItem) =>
       eachItem.classList.remove("highlight-border")
     );
-    Array.from(document.querySelectorAll(`[id^=shuffled-cell-]`)).forEach(
+    Array.from(document.querySelectorAll(`[id^=backpack-cell-]`)).forEach(
       (eachItem) => eachItem.classList.remove("highlight-border")
     );
   };
@@ -1029,7 +1045,7 @@
     ).forEach((eachItem) => eachItem.classList.add("highlight-border"));
   };
 
-  window.clearShuffledCellAndCreateRandomPokeball = (cellElement) => {
+  window.clearBackpackCellAndCreateRandomPokeball = (cellElement) => {
     cellElement.classList.remove("selected-cell");
     cellElement.removeAttribute("title");
     clearElementAttributesByPrefix(cellElement, "data-");
@@ -1186,7 +1202,7 @@
 
     cellElement.innerHTML = '<img src="./images/transparent-picture.png" />';
 
-    clearShuffledCellAndCreateRandomPokeball(window.selectedCellElement);
+    clearBackpackCellAndCreateRandomPokeball(window.selectedCellElement);
 
     clearSelectedCell();
 
@@ -1341,7 +1357,7 @@
       {
         method: "POST",
         body: JSON.stringify({
-          value: Date.now() - window.startLevel,
+          value: Date.now() - window.levelStarted,
           level: window.currentLevel - 1,
         }),
         headers: {
@@ -1387,7 +1403,8 @@
     let sessionMap = {
       level: window.currentLevel,
       gold: window.currentGold,
-      expCountForNextLevel: window.expCountForNextLevel,
+			expCountForNextLevel: window.expCountForNextLevel,
+			levelStarted: window.levelStarted
     };
 
     const allDiscoveredLocalStorageKeys = Object.entries({
@@ -1427,7 +1444,7 @@
       throw reason;
     }
 
-    const { level, expCountForNextLevel, gold, discovered, lastUpdated } =
+    const { level, expCountForNextLevel, levelStarted, gold, discovered, lastUpdated } =
       responseObject;
 
     let deviceDataAndDateString = "No data";
@@ -1467,7 +1484,11 @@
     if ("number" === typeof expCountForNextLevel) {
       window.setExpCountForNextLevel(expCountForNextLevel);
       window.updateExpCountForNextLevelElement();
-    }
+		}
+		
+		if ("number" === typeof levelStarted) {
+			window.setLevelStarted(levelStarted);
+		}
 
     if ("number" === typeof gold) {
       window.setCurrentGold(gold);

@@ -34,6 +34,8 @@
 		window.initializeMouseMoveListener();
 		
 		window.setContentAsLoaded();
+
+		window.initializeLevelStarted();
 		
 		document.body.scrollTo(0, 0);
   });

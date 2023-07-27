@@ -42,14 +42,14 @@ async function resetProgressCallback() {
     .querySelector(".reset-container")
     .classList.remove("reset-progress-animation");
 
-  window.localStorage.removeItem("current_lv");
-  window.currentLevel = 1;
-  window.localStorage.removeItem("current_gold");
-  window.currentGold = 100;
-  window.localStorage.removeItem("exp-count-for-next-level");
-  window.expCountForNextLevel = 0;
+	window.setCurrentLevel(1);
+	window.setCurrentGold(100);
+	window.setExpCountForNextLevel(0);
+	window.setLevelStarted(Date.now());
 
-  await window.saveSessionToCloud();
+	await window.saveSessionToCloud();
+	
+	window.setLevelStarted(Date.now()); //NOTE: reset due to network latency after saving
 
   window.location.reload();
 }
@@ -150,7 +150,7 @@ const _saveCurrentSession = async () => {
   }
 
   window.shareSessionStatusElement.innerHTML =
-    '<span class="session-saving-success">Copied link to clipboard. Use this on your other device.</span>';
+    '<span class="session-saving-success">Copied link.</span>';
   window.shareSessionContainerElement.classList.remove("is-sharing-session");
 
   navigator.clipboard.writeText(
