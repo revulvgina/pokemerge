@@ -209,7 +209,10 @@
     );
   };
 
-  window.getRandomPokemonId = (pokeBallIndex) => {
+	window.getRandomPokemonId = (pokeBallIndex) => {
+		// return {
+		// 	pokemonId: 133
+		// };
     let pool = getPool();
 
     const poolByPokeBallIndex = pool.filter((eachEvolutionChainList) => {
@@ -393,11 +396,15 @@
       window._encounterDuration = Date.now() + 30000;
       document
         .getElementById("encounter-container")
-        .classList.remove("display-none");
+				.classList.remove("display-none");
+			document.getElementById('backpack-icon')
+			.setAttribute('src', './images/master-ball.png')
       window._encounterDurationNotification = setTimeout(() => {
         document
           .getElementById("encounter-container")
           .classList.add("display-none");
+				document.getElementById('backpack-icon')
+					.setAttribute('src', './images/backpack.png')
       }, 30000);
     }
   };
@@ -587,7 +594,7 @@
       return "";
     }
 
-    return ` class="evolution-chain-border-current"`;
+    return ` evolution-chain-border-current`;
   };
 
   window.setEvolutionChain = (cellElement) => {
@@ -600,17 +607,19 @@
       "data-evolution-chain-ids"
     );
 
-    const displayNameInCell = cellElement.getAttribute("data-display-name");
+		const displayNameInCell = cellElement.getAttribute("data-display-name");
+
+		document.getElementById("evolution-chain").innerHTML = '';
 
     let collectEach = [];
     evolutionChainIds.split(/,/).forEach((eachEvolutionSpeciesId) => {
       const eachDisplayName =
         window.pokemonNames[`pokemon-id-${eachEvolutionSpeciesId}`];
       collectEach.push(
-        `<div title="${eachDisplayName}"${getSelectedCellBorderStyle(
+        `<div title="${eachDisplayName}" class="evolution-chain-image-container${getSelectedCellBorderStyle(
           displayNameInCell,
           eachDisplayName
-        )}><img src="./images/bit/${eachEvolutionSpeciesId}.png" /></div>`
+        )}"><img src="./images/bit/${eachEvolutionSpeciesId}.png" /></div>`
       );
     });
 
@@ -1292,8 +1301,8 @@
     cellElement.setAttribute("data-identifier", pokemonIdentifier);
     cellElement.setAttribute(`data-identifier-${pokemonIdentifier}`, "true");
 
-    cellElement.onclick = () => onBuyerMouseDown(cellElement);
-    cellElement.ondragstart = () => onBuyerMouseDown(cellElement);
+    cellElement.onclick = () => window.onBuyerMouseDown(cellElement);
+    cellElement.ondragstart = () =>  window.onBuyerMouseDown(cellElement);
   };
 
   window.publishHighestLevel = async () => {

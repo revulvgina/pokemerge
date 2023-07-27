@@ -1,0 +1,303 @@
+
+
+/* IPAD PRO */
+@media (max-width: 1024px) {
+	:root {
+		font-size: 12px;
+	}
+	
+	.box-container {
+		height: 10%;
+	}
+
+	.grid-cell {
+		max-width: 55%;
+	}
+
+	.text-container {
+		font-size: 100%;
+	}
+
+	.buyer-header{
+		margin-top: 0;
+	}
+
+	.backpack-header {
+		margin-top: 3%;
+	}
+
+	#exp-container {
+		height: 13px;
+	}
+
+	#exp-for-next-level {
+		bottom: 120%;
+	}
+
+	div[id^=buyer-][data-evolution-number="1"]:after,
+	div[id^=buyer-][data-evolution-number="2"]:after,
+	div[id^=buyer-][data-evolution-number="3"]:after,
+	div[id^=buyer-][data-evolution-number="4"]:after,
+	div[id^=backpack-cell-][data-evolution-number="1"]:after,
+	div[id^=backpack-cell-][data-evolution-number="2"]:after,
+	div[id^=backpack-cell-][data-evolution-number="3"]:after,
+	div[id^=backpack-cell-][data-evolution-number="4"]:after {
+		font-size: 7px;
+	}
+}
+
+/* IPAD AIR */
+@media (max-width: 820px) {
+	:root {
+		font-size: 11px;
+	}
+	
+	.box-container {
+		height: 10%;
+	}
+
+	.grid-cell {
+		max-width: 65%;
+	}
+
+	.text-container {
+		font-size: 100%;
+	}
+
+	.evolution-chain-border-current {
+		border-radius: 4px;
+	}
+}
+
+/* IPAD MINI */
+@media (max-width: 768px) {
+	:root {
+		font-size: 11px;
+	}
+	
+	.box-container {
+		height: 11%;
+	}
+
+	#evolution-chain img {
+		max-width: 45px;
+		max-height: 45px;
+	}
+
+	.buyer-header {
+		margin-top: 1%;
+	}
+
+	.grid-cell {
+		max-width: 72%;
+	}
+
+	.text-container {
+		font-size: 100%;
+	}
+
+	#exp-container {
+		height: 11px;
+	}
+}
+
+/* for evolution chain only */
+@media (max-width: 650px) {
+	#evolution-chain img {
+		max-width: 32px;
+		max-height: 32px;
+	}
+
+	.text-container {
+		font-size: 75%;
+	}
+}
+
+/* SURFACE DUO */
+@media (max-width: 540px) {
+	:root {
+		font-size: 8px;
+	}
+
+	.box-container {
+		height: 10%;
+	}
+
+	body [id^=buyer-].buyer-refresh {
+		top: 3px;
+	}
+
+	.evolution-chain-label {
+		font-size: 100%;
+	}
+
+	#evolution-chain img {
+		max-width: 28px;
+		max-height: 28px;
+	}
+
+	#exp-container {
+		height: 8px;
+	}
+
+	.text-container {
+		font-size: 75%;
+	}
+
+	#exp-for-next-level {
+		bottom: 3px;
+		font-size: 65%;
+	}
+}
+
+/* IPHONE 678 */
+@media (max-width: 414px) {
+	:root {
+		font-size: 8px;
+	}
+
+	.box-container {
+		height: 10%;
+	}
+
+	.evolution-chain-label {
+		font-size: 100%;
+	}
+
+	#evolution-chain img {
+		max-width: 23px;
+		max-height: 23px;
+	}
+
+	#exp-container {
+		height: 6px;
+	}
+
+	.text-container {
+		font-size: 75%;
+	}
+
+	#exp-for-next-level {
+		bottom: 3px;
+		font-size: 60%;
+	}
+
+	.grid-cell {
+		max-width: 110%;
+		border-width: 3px;
+	}
+
+	.backpack-header {
+		margin-top: 11%;
+	}
+}
+
+/* PIXEL 5 */
+@media (max-width: 393px) {
+	:root {
+		font-size: 8px;
+	}
+
+	.box-container {
+		height: 10%;
+	}
+
+	.evolution-chain-label {
+		font-size: 100%;
+	}
+
+	#evolution-chain img {
+		max-width: 23px;
+		max-height: 23px;
+	}
+
+	#exp-container {
+		height: 7px;
+		padding: 0 0.4%;
+	}
+
+	#exp-for-next-level {
+		bottom: 4px;
+		font-size: 65%;
+	}
+
+	.text-container {
+		font-size: 75%;
+	}
+
+	.grid-cell {
+		max-width: 100%;
+	}
+}
+
+/* IPHONE SE */
+@media (max-width: 375px) {
+	:root {
+		font-size: 8px;
+	}
+
+	.box-container {
+		height: 10%;
+	}
+
+	.evolution-chain-label {
+		font-size: 100%;
+	}
+
+	#evolution-chain img {
+		max-width: 23px;
+		max-height: 23px;
+	}
+
+	#exp-container {
+		height: 6px;
+	}
+
+	.text-container {
+		font-size: 75%;
+	}
+
+	#exp-for-next-level {
+		bottom: 4px;
+	}
+}
+
+/* GALAXY SIII */
+@media (max-width: 360px) {
+	:root {
+		font-size: 8px;
+	}
+
+	.box-container {
+		height: 10%;
+	}
+
+	.evolution-chain-label {
+		font-size: 100%;
+	}
+
+	#evolution-chain img {
+		max-width: 23px;
+		max-height: 23px;
+	}
+
+	#exp-container {
+		height: 6px;
+	}
+
+	.text-container {
+		font-size: 73%;
+	}
+
+	#exp-for-next-level {
+		bottom: 4px;
+	}
+
+	.grid-cell {
+		max-width: 100%;
+	}
+
+	.evolution-chain-label {
+		font-size: 87%;
+	}
+}

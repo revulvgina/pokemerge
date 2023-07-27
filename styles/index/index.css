@@ -52,7 +52,7 @@ body {
     rgba(var(--color-f8d898), 0.5) 1px,
     rgba(var(--color-f8d898), 0.5) 10px
   ) #e8c080;
-	padding: 0 20px;
+	padding: 0 30px;
 }
 
 div.buyer-refresh {
@@ -87,7 +87,14 @@ div.buyer-refresh {
 
 .header-settings {
 	position: absolute;
-	right: 10px;
+	right: 30px;
+	width: 25px;
+}
+
+.header-qr {
+	width: 25px;
+	position: absolute;
+	right: 70px;
 }
 
 #exp-container {
@@ -97,6 +104,7 @@ div.buyer-refresh {
 	height: 14px;
 	margin-left: 30px;
 	border-radius: 4px;
+	position: relative;
 }
 
 #exp-bar {
@@ -109,14 +117,11 @@ div.buyer-refresh {
 }
 
 #exp-for-next-level {
-	position: relative;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
+	position: absolute;
 	text-align: center;
-	bottom: 170%;
-	font-size: 70%;
+	font-size: 80%;
+	width: 100%;
+	bottom: 10%;
 }
 
 #settings {
@@ -130,8 +135,9 @@ div.buyer-refresh {
 	display: flex;
 	flex-flow: row wrap;
 	margin-top: 10px;
-	height: 10%;
 	font-size: 100%;
+	/* height: 12%; */
+	height: fit-content;
 }
 
 .box-container > div > div {
@@ -140,6 +146,8 @@ div.buyer-refresh {
 
 .left-box {
 	flex-basis: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .left-box-level,
@@ -166,9 +174,15 @@ div.buyer-refresh {
 	align-items: center;
 }
 
+.evolution-chain-image-container {
+	max-width: 8vmin;
+	max-height: 8vmin;
+	min-width: 8vmin;
+	min-height: 8vmin;
+}
+
 #evolution-chain img {
-	max-width: 60px;
-	max-height: 60px;
+	width: 100%;
 }
 
 .evolution-chain-border-current {
@@ -205,42 +219,31 @@ div.buyer-refresh {
 	/* border-style: dotted; */
 }
 
-div[id^=backpack-cell]>div,
-div[id^=buyer-]>div,
+.grid-cell>div,
 .right-box-pokeball>div,
 .right-box-energy-bar>div {
 	text-align: center;
 }
 
 
-div[id^=buyer-][data-evolution-number="1"]:after,
-div[id^=buyer-][data-evolution-number="2"]:after,
-div[id^=buyer-][data-evolution-number="3"]:after,
-div[id^=buyer-][data-evolution-number="4"]:after,
-div[id^=backpack-cell-][data-evolution-number="1"]:after,
-div[id^=backpack-cell-][data-evolution-number="2"]:after,
-div[id^=backpack-cell-][data-evolution-number="3"]:after,
-div[id^=backpack-cell-][data-evolution-number="4"]:after {
+.grid-cell[data-evolution-number]:after {
 	content: "•";
 	position: absolute;
-	font-size: 13px;
+	font-size: 95%;
 	color: rgb(var(--color-3a3a3a));
 	top: 8%;
 	left: 5%;
 }
 
-div[id^=buyer-][data-evolution-number="2"]:after,
-div[id^=backpack-cell-][data-evolution-number="2"]:after {
+.grid-cell[data-evolution-number="2"]:after {
 	content: "••";
 }
 
-div[id^=buyer-][data-evolution-number="3"]:after,
-div[id^=backpack-cell-][data-evolution-number="3"]:after {
+.grid-cell[data-evolution-number="3"]:after {
 	content: "•••";
 }
 
-div[id^=buyer-][data-evolution-number="4"]:after,
-div[id^=backpack-cell-][data-evolution-number="4"]:after {
+.grid-cell[data-evolution-number="4"]:after {
 	content: "••••";
 }
 
@@ -285,7 +288,7 @@ img[src="./images/ultra-ball.png"] {
 	background-position-y: 94%;
 }
 
-img[src="./images/master-ball.png"] {
+img[src="./images/master-ball.png"]:not(#backpack-icon) {
 	background-image: radial-gradient(rgba(126, 9, 189, 1), rgba(251, 114, 163, 0.01));
 	background-size: 100% 50%;
 	background-repeat: no-repeat;
@@ -299,7 +302,6 @@ img[src="./images/master-ball.png"] {
 	top: 0px;
 	cursor: pointer;
 	font-weight: 700;
-	border: 0px;
 	height: 0px;
 	text-align: right;
 	font-size: 120%;
@@ -308,22 +310,10 @@ img[src="./images/master-ball.png"] {
 	top: 5px;
 }
 
-[id^=backpack-cell] img,
-[id^=buyer-] img {
+.grid-cell img {
 	object-fit: fill;
 	width: 100%;
 	height: auto;
-}
-
-[id^=backpack-cell],
-[id^=buyer-] {
-	border: 4px dashed rgb(var(--color-a76f47));
-	cursor: pointer;
-	background-color: rgba(var(--color-f79f4f), 0.9);
-	justify-content: center;
-	max-height: 100%;
-	max-width: 60%;
-	position: relative;
 }
 
 [id^=buyer-] {
@@ -488,20 +478,6 @@ img[src="./images/master-ball.png"] {
 	}
 }
 
-@media (max-width: 900px) {
-
-	div[id^=buyer-][data-evolution-number="1"]:after,
-	div[id^=buyer-][data-evolution-number="2"]:after,
-	div[id^=buyer-][data-evolution-number="3"]:after,
-	div[id^=buyer-][data-evolution-number="4"]:after,
-	div[id^=backpack-cell-][data-evolution-number="1"]:after,
-	div[id^=backpack-cell-][data-evolution-number="2"]:after,
-	div[id^=backpack-cell-][data-evolution-number="3"]:after,
-	div[id^=backpack-cell-][data-evolution-number="4"]:after {
-		font-size: 7px;
-	}
-}
-
 [id^=backpack-cell-]:not([data-identifier]) {
 	background-color: #0000;
 }
@@ -511,12 +487,12 @@ img[src="./images/master-ball.png"] {
 	cursor: help;
 }
 
-img[src$="-ball.png"] {
+img[src$="-ball.png"]:not(#backpack-icon) {
 	opacity: 0.5;
 	transition: opacity 0.2s;
 }
 
-img[src$="-ball.png"]:hover {
+img[src$="-ball.png"]:not(#backpack-icon):hover {
 	opacity: 1;
 
 	animation: pokeball-shake 0.5s;
@@ -532,7 +508,7 @@ img[src] {
 }
 
 .buyer-header {
-	margin-top: 2%;
+	margin-top: 0%;
 	margin-bottom: 1%;
 }
 
@@ -543,20 +519,24 @@ img[src] {
 
 .backpack-header {
 	margin-top: 3%;
+	height: 2%;
 	margin-bottom: 1%;
 }
 
 .backpack-header > img {
-	width: 3%;
+	height: 100%;
 	margin-left: 1%;
+}
+
+img#backpack-icon[src="./images/master-ball.png"] {
+	animation: pokeball-shake 0.5s infinite;
 }
 
 .selected-cell {
 	background-color: rgba(var(--color-f7df6f), 0.9) !important;
 }
 
-[id^=backpack-cell-].highlight-border,
-[id^=buyer-].highlight-border {
+.grid-cell.highlight-border {
 	border-color: rgba(var(--color-f7df6f), 0.9) !important;
 }
 
@@ -585,19 +565,6 @@ img[src] {
 img {
 	cursor: pointer;
 }
-
-img.poke-dollar {
-	width: 10px;
-	height: 10px;
-	object-fit: fill;
-	content: url("https://archives.bulbagarden.net/media/upload/archive/8/8c/20100212184142%21Pok%C3%A9monDollar.png");
-}
-
-/* [id^=backpack-cell]:after, [id^=buyer-]:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-} */
 
 #encounter-container {
 	position: fixed;
@@ -629,6 +596,30 @@ img.poke-dollar {
 	display: none;
 }
 
+.inline-block {
+	display: inline-block;
+}
+
+.grid-cell {
+	border: 4px dashed rgb(var(--color-a76f47));
+	cursor: pointer;
+	background-color: rgba(var(--color-f79f4f), 0.9);
+	justify-content: center;
+	max-height: 100%;
+	position: relative;
+	max-width: 55%;
+	aspect-ratio: 1;
+	justify-self: center;
+}
+
+.grid-cell[data-pokemon-id] {
+	border-style: solid;
+}
+
+.grid-cell[data-evolution-number="4"] {
+	border-style: solid;
+}
+
 @keyframes bg-spin {
 	to {
 		--border-angle: 1turn;
@@ -641,271 +632,39 @@ img.poke-dollar {
 	initial-value: 0turn;
 }
 
-.inline-block {
-	display: inline-block;
-}
-
-.grid-cell {
-	max-width: 52%;
-	aspect-ratio: 1;
-}
-
-.grid-cell[data-pokemon-id] {
-	border-style: solid;
-}
-
-.grid-cell[data-evolution-number="4"] {
-	border-style: solid;
-}
-
-/* IPAD PRO */
-@media (max-width: 1024px) {
-	:root {
-		font-size: 12px;
-	}
-	
-	.box-container {
-		height: 10%;
-	}
-
+@media (max-aspect-ratio: 4/3) {
 	.grid-cell {
 		max-width: 55%;
 	}
-
-	.text-container {
-		font-size: 100%;
-	}
-
-	.buyer-header{
-		margin-top: 0;
-	}
-
-	.backpack-header {
-		margin-top: 3%;
-	}
-
-	#exp-container {
-		height: 13px;
-	}
-
-	#exp-for-next-level {
-		bottom: 120%;
-	}
 }
 
-/* IPAD AIR */
-@media (max-width: 820px) {
-	:root {
-		font-size: 11px;
-	}
-	
-	.box-container {
-		height: 10%;
-	}
+@media (max-aspect-ratio: 1) {
+}
 
+
+@media (max-aspect-ratio: 3/4) {
 	.grid-cell {
-		max-width: 65%;
-	}
-
-	.text-container {
-		font-size: 100%;
-	}
-
-	.evolution-chain-border-current {
-		border-radius: 4px;
+		max-width: 85%;
 	}
 }
 
+@media (max-width: 1024px) {
+	:root {
+		font-size: 10px;
+	}
+}
 /* IPAD MINI */
 @media (max-width: 768px) {
-	:root {
-		font-size: 11px;
-	}
-	
-	.box-container {
-		height: 11%;
-	}
-
-	#evolution-chain img {
-		max-width: 45px;
-		max-height: 45px;
-	}
-
-	.buyer-header {
-		margin-top: 1%;
-	}
-
-	.grid-cell {
-		max-width: 72%;
-	}
-
-	.text-container {
-		font-size: 100%;
-	}
-
-	#exp-container {
-		height: 11px;
-	}
 }
 
-/* for evolution chain only */
-@media (max-width: 650px) {
-	#evolution-chain img {
-		max-width: 32px;
-		max-height: 32px;
-	}
-
-	.text-container {
-		font-size: 75%;
-	}
-}
-
-/* SURFACE DUO */
 @media (max-width: 540px) {
-	:root {
-		font-size: 8px;
-	}
-
-	.box-container {
-		height: 10%;
-	}
-
-	body [id^=buyer-].buyer-refresh {
-		top: 3px;
-	}
-
-	.evolution-chain-label {
-		font-size: 100%;
-	}
-
-	#evolution-chain img {
-		max-width: 28px;
-		max-height: 28px;
-	}
-
-	#exp-container {
-		height: 8px;
-	}
-
-	.text-container {
-		font-size: 75%;
-	}
-
-	#exp-for-next-level {
-		bottom: 3px;
-		font-size: 65%;
-	}
-}
-
-/* IPHONE 678 */
-@media (max-width: 414px) {
-	:root {
-		font-size: 8px;
-	}
-
-	.box-container {
-		height: 10%;
-	}
-
-	.evolution-chain-label {
-		font-size: 100%;
-	}
-
-	#evolution-chain img {
-		max-width: 23px;
-		max-height: 23px;
-	}
-
-	#exp-container {
-		height: 6px;
-	}
-
-	.text-container {
-		font-size: 75%;
-	}
-
-	#exp-for-next-level {
-		bottom: 3px;
-		font-size: 60%;
+	.content {
+		padding: 0 20px;
 	}
 
 	.grid-cell {
-		max-width: 110%;
+		max-width: 80%;
 		border-width: 3px;
-	}
-
-	.backpack-header {
-		margin-top: 11%;
-	}
-}
-
-/* PIXEL 5 */
-@media (max-width: 393px) {
-	:root {
-		font-size: 8px;
-	}
-
-	.box-container {
-		height: 10%;
-	}
-
-	.evolution-chain-label {
-		font-size: 100%;
-	}
-
-	#evolution-chain img {
-		max-width: 23px;
-		max-height: 23px;
-	}
-
-	#exp-container {
-		height: 7px;
-		padding: 0 0.4%;
-	}
-
-	#exp-for-next-level {
-		bottom: 4px;
-		font-size: 65%;
-	}
-
-	.text-container {
-		font-size: 75%;
-	}
-
-	.grid-cell {
-		max-width: 100%;
-	}
-}
-
-/* IPHONE SE */
-@media (max-width: 375px) {
-	:root {
-		font-size: 8px;
-	}
-
-	.box-container {
-		height: 10%;
-	}
-
-	.evolution-chain-label {
-		font-size: 100%;
-	}
-
-	#evolution-chain img {
-		max-width: 23px;
-		max-height: 23px;
-	}
-
-	#exp-container {
-		height: 6px;
-	}
-
-	.text-container {
-		font-size: 75%;
-	}
-
-	#exp-for-next-level {
-		bottom: 4px;
 	}
 }
 
@@ -915,36 +674,7 @@ img.poke-dollar {
 		font-size: 8px;
 	}
 
-	.box-container {
-		height: 10%;
-	}
-
-	.evolution-chain-label {
-		font-size: 100%;
-	}
-
-	#evolution-chain img {
-		max-width: 23px;
-		max-height: 23px;
-	}
-
-	#exp-container {
-		height: 6px;
-	}
-
-	.text-container {
-		font-size: 73%;
-	}
-
-	#exp-for-next-level {
-		bottom: 4px;
-	}
-
 	.grid-cell {
 		max-width: 100%;
-	}
-
-	.evolution-chain-label {
-		font-size: 87%;
 	}
 }
