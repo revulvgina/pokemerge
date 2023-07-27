@@ -3,12 +3,12 @@
 
   document.addEventListener("imports-loaded", async () => {
     await loadPokeCsv();
-    await loadPokemonSpeciesNames();
-    await loadPokemonTypes();
-    await loadTypeNames();
-    await loadPokemonSpeciesFlavorText();
-		await loadPokemonSpecies();
-		await window.loadPokemonOrderedChainJson();
+    await window.loadPokemonTypesJson();
+    await window.loadPokemonTypeNamesJson();
+    await window.loadPokemonSpeciesFlavorTextJson();
+		await window.loadPokemonSpeciesChainJson();
+		await window.loadPokemonNamesJson();
+		await window.loadPokemonSpeciesJson();
 
     initializeCommonVars();
     initializeImageUrlLoadedListener();
@@ -17,7 +17,7 @@
     initializeIntersectionObserver();
 		initializeDatalistListener();
 
-		window.playSound('pokemon-theme-bgm', 0.05);
+		window.playSound('pokemon-theme-bgm', 0.1);
 		
 		document.body.scrollTo(0, 0);
   });
@@ -50,14 +50,14 @@
 	
 	function initializeDiscoveredTexts() {
 		document.getElementById('discovered-text').innerText = `${window.totalDiscovered} / ${window.pokeCsv.length}`;
-		document.getElementById('discovered-percent').innerText = `(${((window.totalDiscovered / window.pokeCsv.length).toFixed(1) * 100)}%)`;
+		document.getElementById('discovered-percent').innerText = `(${((window.totalDiscovered / window.pokeCsv.length) * 100).toFixed(1)}%)`;
 	}
 
   function createCell(pokemonData, i) {
     const { id, identifier, height, weight } = pokemonData;
     const cellElement = document.createElement("div");
 
-    const { name: displayName, genus } = getCommonSpeciesData(id);
+		const displayName = window.pokemonNames[`pokemon-id-${id}`];
 
     cellElement.id = `cell-${i}`;
     cellElement.classList.add("cell");
@@ -68,15 +68,15 @@
     cellElement.setAttribute("data-pokemon-id", id);
     cellElement.setAttribute("data-pokemon-identifier", identifier);
 
-    const { evolution_chain_id } = window.getPokemonSpeciesRow(id);
+    const { evolution_chain_id } = window.pokemonSpecies[`pokemon-id-${id}`];
     cellElement.setAttribute("data-evolution-chain-id", evolution_chain_id);
 
-    const pokemonTypeNames = window.getPokemonTypeNames(id);
-    if (Array.isArray(pokemonTypeNames)) {
-      pokemonTypeNames.forEach((eachTypeName, i) => {
-        cellElement.setAttribute(`data-type-${i}`, eachTypeName);
-      });
-    }
+		const thisPokemonTypes = window.pokemonTypes[`pokemon-id-${id}`];
+		if (Array.isArray(thisPokemonTypes)) {
+			thisPokemonTypes.forEach(({ type_id }, thatPokemonTypeIndex) => {
+				cellElement.setAttribute(`data-type-${thatPokemonTypeIndex}`, window.pokemonTypeNames[`type-id-${type_id}`]);
+			});
+		}
 
     const imageUrl = `./images/official-artwork/${id}.png`;
     cellElement.setAttribute("data-image-url", imageUrl);
@@ -85,7 +85,7 @@
     divElement.classList.add("pokemon-name-container");
     const pokemonNameElement = document.createElement("div");
     pokemonNameElement.innerText = displayName;
-    addNameToDatalist(id, displayName, genus);
+    addNameToDatalist(id, displayName);
     pokemonNameElement.classList.add("pokemon-name");
     divElement.appendChild(pokemonNameElement);
     cellElement.appendChild(divElement);
@@ -115,7 +115,7 @@
     const colorThief = new ColorThief();
     const img = new Image();
 
-    img.addEventListener("load", function () {
+		img.addEventListener("load", function () {
       const colorThiefed = colorThief.getColor(img);
       imageElement.style.backgroundColor = `rgb(${colorThiefed.join(",")})`;
       imageElement.parentElement.classList.add("image-is-loaded");
@@ -129,7 +129,7 @@
     img.src = imageUrl;
   }
 
-  function addNameToDatalist(id, displayName, genus) {
+  function addNameToDatalist(id, displayName) {
 		const divElement = document.createElement("div");
 		divElement.classList.add('search-result-item');
     divElement.innerText = displayName;
@@ -142,7 +142,7 @@
       "pokemon-names-input"
 		);
 		window.searchBoxElement = document.querySelector('.search-box');
-		window.pokemonNames = document.querySelector('#pokemon-names');
+		window.pokemonNamesElement = document.querySelector('#pokemon-names');
   }
 
   function requestImageLoadedImmediately(imageElement) {
@@ -173,22 +173,22 @@
 			const inputValue = evt.target.value;
 			if (!inputValue || 'string' !== typeof inputValue || !inputValue.trim().length) {
 				resetAllSearchItem();
-				window.pokemonNames.classList.add('initial-list');
+				window.pokemonNamesElement.classList.add('initial-list');
 				return;
 			}
 
 			if (inputValue.trim().length <= 1) {
 				resetAllSearchItem();
-				window.pokemonNames.classList.add('initial-list');
+				window.pokemonNamesElement.classList.add('initial-list');
 				return;
 			}
 
 			let resultsShown = 0;
 
-			window.pokemonNames.classList.remove('initial-list');
+			window.pokemonNamesElement.classList.remove('initial-list');
 			document.querySelector('#pokemon-names').classList.remove('has-selected');
 
-			window.pokemonNames.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
+			window.pokemonNamesElement.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
 				eachChildDiv.classList.add('hide-result');
 				eachChildDiv.classList.remove('show-result');
 
@@ -200,7 +200,7 @@
 			});
 		});
 
-		window.pokemonNames.addEventListener('click', (evt) => {
+		window.pokemonNamesElement.addEventListener('click', (evt) => {
 			window.searchPokemonInputElement.value = evt.target.innerText;
 			document.querySelector('#pokemon-names').classList.add('has-selected');
 			scrollCellIntoView(evt.target.innerText);
@@ -208,7 +208,7 @@
 	}
 
 	function resetAllSearchItem() {
-		window.pokemonNames.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
+		window.pokemonNamesElement.querySelectorAll('.search-result-item').forEach((eachChildDiv) => {
 			eachChildDiv.classList.remove('show-result');
 			eachChildDiv.classList.remove('hide-result');
 		});
@@ -347,10 +347,9 @@
         Number.parseInt(cellElement.getAttribute("data-weight"), 10) / 10
       } KG`;
 
-      const flavorTextElement = document.getElementById("flavor-text");
-      flavorTextElement.innerText = window.getRandomPokemonFlavorText(
-        cellElement.getAttribute("data-pokemon-id")
-      );
+			const { flavor_text } = window.getRandomItem(window.pokemonSpeciesFlavorText[`pokemon-id-${cellElement.getAttribute("data-pokemon-id")}`]);
+			const flavorTextElement = document.getElementById("flavor-text");
+      flavorTextElement.innerText = flavor_text;
 
 			fullScreenDetailElement.classList.remove("not-yet-discovered");
     } else {
@@ -373,15 +372,13 @@
 		const evolutionChainElement = document.getElementById("evolution-chain");
 		evolutionChainElement.innerHTML = '';
 
-    const evolutionChainData = window.getPokemonOrderedChainData(
-      cellElement.getAttribute("data-evolution-chain-id")
-    );
-		evolutionChainData.list.forEach((eachSpecies) => {
-			const speciesDisplayName = getCommonSpeciesName(eachSpecies.id);
+		const speciesChainList = window.pokemonSpeciesChain[`evolution_chain_id-${cellElement.getAttribute("data-evolution-chain-id")}`]
+		speciesChainList.forEach((eachSpecies) => {
+			const speciesDisplayName = window.pokemonNames[`pokemon-id-${eachSpecies.id}`];
 			const eachEvolutionChainSpeciesElement = document.createElement('img');
 			const speciesImageUrl = `./images/official-artwork/${eachSpecies.id}.png`;
 			eachEvolutionChainSpeciesElement.setAttribute('src', speciesImageUrl);
-			eachEvolutionChainSpeciesElement.setAttribute('title', `#${eachSpecies.id} ${speciesDisplayName} (${window.getGenerationOrdinalByGenerationNumber(eachSpecies.generationNumber)})`);
+			eachEvolutionChainSpeciesElement.setAttribute('title', `#${eachSpecies.id} ${speciesDisplayName} (${window.getEvolutionOrdinalByNumber(eachSpecies.evolution_number)})`);
 			eachEvolutionChainSpeciesElement.classList.toggle('discovered', isDiscovered(eachSpecies.identifier));
 			
 			evolutionChainElement.appendChild(eachEvolutionChainSpeciesElement);

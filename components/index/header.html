@@ -1,10 +1,19 @@
+
+<div class="qr-code-container display-none" onclick="hideQr()">
+	<img src="./images/qr-code.png"/>
+</div>
 <div class="header-text">
 	<h1>
 		<span id="pokemerge-brand">PoKeMerge</span>
 	</h1>
+	<img src="./images/qr-code.png" style="
+	width: 50px;
+	position: absolute;
+	right: 50px;
+	top: 10px;" onclick="showQr()" />
 </div>
 <div class="header-settings" onclick="openSettings()">
 	<img id="settings" class="pokeball-shake"
-		src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/explorer-kit.png"
+		src="./images/explorer-kit.png"
 		class="pixelated" />
 </div>

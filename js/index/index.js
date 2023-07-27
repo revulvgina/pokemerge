@@ -2,41 +2,39 @@
 	document.body.scrollTo(0, 0);
 
   document.addEventListener("imports-loaded", async () => {
-    await loadBasicEvolutionJson();
-		await loadPokeCsv();
+		await window.loadPokemonSpeciesChainJson();
+		await window.loadPokemonNamesJson();
+		await window.loadPokemonSpeciesJson();
 		
 		await window.initializeSessionFromCloud();
     window.initializeSessionId();
 		await window.initializeNickname();
 
-    createBuyerCells();
-    createBackpackCells();
+    window.createBuyerCells();
+    window.createBackpackCells();
 
-    attachContextMenus();
+    window.attachContextMenus();
 
-    initializeCurrentLevel();
+    window.initializeCurrentLevel();
 		window.initializeCurrentGold();
 		window.initializeExpCountForNextLevel();
 
-    updateCurrentLevel();
-    updateCurrentGold();
-    updateExpCountForNextLevelElement();
+    window.updateCurrentLevel();
+    window.updateCurrentGold();
+    window.updateExpCountForNextLevelElement();
 
-    resetBuyers();
+    window.resetBuyers();
 
-    deleteAudioElementCriesInterval();
+    window.deleteAudioElementCriesInterval();
 
-    addEventListeners();
+    window.addEventListeners();
 
-    initializeBackpackBalls();
+    window.initializeBackpackBalls();
 
-		initializeMouseMoveListener();
+		window.initializeMouseMoveListener();
 		
 		window.setContentAsLoaded();
-
-    // fetch("http://ip-api.com/json")
-    //   .then((response) => response.json())
-    //   .then((data) => console.log(data));
+		
 		document.body.scrollTo(0, 0);
   });
 })();

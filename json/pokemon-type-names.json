@@ -1,0 +1,22 @@
+{
+	"type-id-1": "Normal",
+	"type-id-2": "Fighting",
+	"type-id-3": "Flying",
+	"type-id-4": "Poison",
+	"type-id-5": "Ground",
+	"type-id-6": "Rock",
+	"type-id-7": "Bug",
+	"type-id-8": "Ghost",
+	"type-id-9": "Steel",
+	"type-id-10": "Fire",
+	"type-id-11": "Water",
+	"type-id-12": "Grass",
+	"type-id-13": "Electric",
+	"type-id-14": "Psychic",
+	"type-id-15": "Ice",
+	"type-id-16": "Dragon",
+	"type-id-17": "Dark",
+	"type-id-18": "Fairy",
+	"type-id-10001": "???",
+	"type-id-10002": "Shadow"
+}

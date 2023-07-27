@@ -13,20 +13,11 @@
 
   window.loadPokeCsv = async () => {
     const response = await fetch(
-      "https://raw.githubusercontent.com/revulvgina/pokemerge/master/csv/pokemon.csv"
+      "./csv/pokemon.csv"
     );
     const text = await response.text();
 
     window.pokeCsv = csvToArray(text, ",");
-  };
-
-  window.loadBasicEvolutionJson = async () => {
-    const response = await fetch(
-      `https://raw.githubusercontent.com/revulvgina/pokemerge/master/json/basic-evolutions.json`
-    );
-    const jsonResponse = await response.json();
-
-    window.pokelist = jsonResponse.select;
   };
 
   window.formatDisplayNameAsIdentifierForCsv = (displayName) => {
@@ -39,20 +30,6 @@
       .replaceAll(`'`, "")
       .replaceAll("é", "e")
       .toLowerCase();
-  };
-
-  window.findPokemonFromCsv = (identifierPrefix) => {
-    const exactMatch = window.pokeCsv.find(
-      (eachPokemon) => eachPokemon.identifier === identifierPrefix
-    );
-
-    if (exactMatch) {
-      return exactMatch;
-    }
-
-    return window.pokeCsv.find((eachPokemon) =>
-      eachPokemon.identifier.match(`^${identifierPrefix}`)
-    );
   };
 
   window.getPokemonDataByDisplayName = (pokemonDisplayName) => {
@@ -71,96 +48,6 @@
         (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
-  };
-
-  window.loadPokemonSpeciesNames = async () => {
-    const response = await fetch("./csv/pokemon_species_names.csv");
-    const text = await response.text();
-
-    window.pokemonSpeciesNames = csvToArray(text, ",");
-  };
-
-  window.getCommonSpeciesData = (pokemonId) => {
-    return window.pokemonSpeciesNames.find(
-      ({ pokemon_species_id, local_language_id }) =>
-        pokemonId.toString() === pokemon_species_id && "9" === local_language_id
-    );
-  };
-
-  window.getCommonSpeciesName = (pokemonId) => {
-    return window.getCommonSpeciesData(pokemonId).name;
-  };
-
-  window.loadPokemonTypes = async () => {
-    const response = await fetch("./csv/pokemon_types.csv");
-    const text = await response.text();
-
-    window.pokemonTypes = csvToArray(text, ",");
-  };
-
-  window.loadTypeNames = async () => {
-    const response = await fetch("./csv/type_names.csv");
-    const text = await response.text();
-
-    window.typeNames = csvToArray(text, ",");
-  };
-
-  window.getPokemonTypeNames = (pokemonId) => {
-    const pokemonTypes = window.pokemonTypes.filter(
-      (eachItem) => eachItem.pokemon_id === pokemonId.toString()
-    );
-
-    return pokemonTypes.map(
-      (eachType) =>
-        window.typeNames.find(
-          (eachTypeName) =>
-            eachTypeName.type_id === eachType.type_id &&
-            "9" === eachTypeName.local_language_id
-        ).name
-    );
-  };
-
-  window.loadPokemonSpeciesFlavorText = async () => {
-    const response = await fetch("./csv/pokemon_species_flavor_text.csv");
-    const text = await response.text();
-
-    window.pokemonSpeciesFlavorText = csvToArray(text, ",");
-  };
-
-  window.pokemonFlavorTextCache = {};
-
-  window.getPokemonFlavorText = (pokemonId) => {
-    const cachedFlavorText = window.pokemonFlavorTextCache[pokemonId];
-    if (cachedFlavorText) {
-      return cachedFlavorText;
-    }
-
-    const assembledFlavorText = window.pokemonSpeciesFlavorText
-      .filter(
-        ({ species_id, language_id }) =>
-          pokemonId === species_id && "9" === language_id
-      )
-      .map((eachFiltered) => eachFiltered.flavor_text);
-
-    window.pokemonFlavorTextCache[pokemonId] = assembledFlavorText;
-
-    return assembledFlavorText;
-  };
-
-  window.getRandomPokemonFlavorText = (pokemonId) => {
-    const flavorTexts = window.getPokemonFlavorText(pokemonId);
-    return getRandomItem(flavorTexts);
-  };
-
-  window.loadPokemonSpecies = async () => {
-    const response = await fetch("./csv/pokemon_species.csv");
-    const text = await response.text();
-
-    window.pokemonSpecies = csvToArray(text, ",");
-  };
-
-  window.getPokemonSpeciesRow = (pokemonId) => {
-    return window.pokemonSpecies.find(({ id }) => pokemonId.toString() === id);
   };
 
   window.getNanoId = (length = 16) => {
@@ -225,32 +112,55 @@
     // thisAudio.pause();
     thisAudio.currentTime = 0;
     thisAudio.play();
-	};	
+	};
 
-  window.loadPokemonOrderedChainJson = async () => {
-    const response = await fetch("./json/pokemon-ordered-chain.json");
+  window.loadPokemonSpeciesChainJson = async () => {
+    const response = await fetch("./json/pokemon-species-chain.json");
 
-    window.pokemonOrderedChain = await response.json();
+    window.pokemonSpeciesChain = await response.json();
   };
 
-  window.getPokemonOrderedChainData = (evolutionChainId) => {
-    return window.pokemonOrderedChain.find(
-      ({evolution_chain_id}) =>
-        evolutionChainId === evolution_chain_id
-    );
-	};
+  window.loadPokemonNamesJson = async () => {
+    const response = await fetch("./json/pokemon-names.json");
+
+    window.pokemonNames = await response.json();
+  };
 	
-	window.getGenerationOrdinalByGenerationNumber = (generationNumber) => {
-		if (1 === generationNumber) {
-			return '1st generation';
+	window.getEvolutionOrdinalByNumber = (evolutionNumber) => {
+		if (1 === evolutionNumber) {
+			return '1st evolution';
 		}
-		if (2 === generationNumber) {
-			return '2nd generation';
+		if (2 === evolutionNumber) {
+			return '2nd evolution';
 		}
-		if (3 === generationNumber) {
-			return '3rd generation';
+		if (3 === evolutionNumber) {
+			return '3rd evolution';
 		}
 
-		return 'unknown generation';
+		return 'unknown evolution';
 	}
+
+  window.loadPokemonSpeciesJson = async () => {
+    const response = await fetch("./json/pokemon-species.json");
+
+    window.pokemonSpecies = await response.json();
+  };
+
+  window.loadPokemonSpeciesFlavorTextJson = async () => {
+    const response = await fetch("./json/pokemon-species-flavor-text.json");
+
+    window.pokemonSpeciesFlavorText = await response.json();
+	};
+
+  window.loadPokemonTypeNamesJson = async () => {
+    const response = await fetch("./json/pokemon-type-names.json");
+
+    window.pokemonTypeNames = await response.json();
+	};
+
+  window.loadPokemonTypesJson = async () => {
+    const response = await fetch("./json/pokemon-types.json");
+
+    window.pokemonTypes = await response.json();
+	};
 })();

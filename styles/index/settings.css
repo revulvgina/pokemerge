@@ -156,6 +156,10 @@
 	animation: red-gradient 4s linear;
 }
 
+.ko-fi-container {
+	margin-top: 20%;
+}
+
 @keyframes red-gradient {
 	0% {
 		background-position: 0 0;

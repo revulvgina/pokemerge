@@ -4,7 +4,7 @@
     await populateGrid('highest-gold');
 		await populateGrid('highest-backpack');
 		await populateFastestLevelGrid('fastest-level');
-		window.playSound('magikarp-song', 0.2);
+		window.playSound('trainer-battle', 0.1);
   });
 
 	async function fetchCategory(destinationUrl) {
@@ -38,9 +38,9 @@
       const nameGridItem = document.createElement("div");
       nameGridItem.classList.add("grid-item", "grid-item-name");
       nameGridItem.innerText = eachHighestLevelRow.name;
-      nameGridItem.title = window.getDateTimeFormat(
+      nameGridItem.title = new Date(
         Number.parseInt(eachHighestLevelRow.last_updated, 10)
-      );
+      ).toLocaleString();
       gridCategory.appendChild(nameGridItem);
 
       const valueGridItem = document.createElement("div");
@@ -66,9 +66,9 @@
       const nameGridItem = document.createElement("div");
       nameGridItem.classList.add("grid-item", "grid-item-name");
       nameGridItem.innerHTML = `<span>${eachHighestLevelRow.name}</span>`;
-      nameGridItem.title = window.getDateTimeFormat(
+      nameGridItem.title = new Date(
         Number.parseInt(eachHighestLevelRow.last_updated, 10)
-      );
+      ).toLocaleString();
       gridCategory.appendChild(nameGridItem);
 
       const valueGridItem = document.createElement("div");

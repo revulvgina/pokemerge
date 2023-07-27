@@ -150,7 +150,7 @@ const _saveCurrentSession = async () => {
   }
 
   window.shareSessionStatusElement.innerHTML =
-    '<span class="session-saving-success">Copied link to clipboard.</span>';
+    '<span class="session-saving-success">Copied link to clipboard. Use this on your other device.</span>';
   window.shareSessionContainerElement.classList.remove("is-sharing-session");
 
   navigator.clipboard.writeText(
