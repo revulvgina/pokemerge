@@ -25,7 +25,7 @@
 
     window.resetBuyers();
 
-    window.deleteAudioElementCriesInterval();
+    window.audioElementCriesDeleteInterval();
 
     window.addEventListeners();
 
@@ -38,6 +38,7 @@
 		window.initializeLevelStarted();
 
 		window.muteAllAudioWhenAway();
+		window.initializeVibration();
 		
 		document.body.scrollTo(0, 0);
   });

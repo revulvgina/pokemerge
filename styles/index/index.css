@@ -97,11 +97,21 @@ div.buyer-refresh {
 	right: 70px;
 }
 
+.header-full-screen {
+	width: 25px;
+	position: absolute;
+	right: 110px;
+}
+.header-full-screen > img {
+	width: 25px;
+	height: 25px;
+}
+
 #exp-container {
 	border: 1px solid rgb(var(--color-3a3a3a));
 	padding: 0.3%;
-	flex: 0.5;
-	height: 14px;
+	flex: 1;
+	height: 100%;
 	margin-left: 30px;
 	border-radius: 4px;
 	position: relative;
@@ -201,12 +211,11 @@ div.buyer-refresh {
 	width: fit-content;
 }
 
-.backpack-grid,
-.buyer-grid {
+.grid-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr;
-	gap: 10px;
+	gap: 1em;
 }
 
 .backpack-grid {
@@ -519,13 +528,12 @@ img[src] {
 
 .backpack-header {
 	margin-top: 3%;
-	height: 2%;
 	margin-bottom: 1%;
 }
 
 .backpack-header > img {
-	height: 100%;
 	margin-left: 1%;
+	width: 3%;
 }
 
 img#backpack-icon[src="./images/master-ball.png"] {
@@ -610,6 +618,9 @@ img {
 	max-width: 55%;
 	aspect-ratio: 1;
 	justify-self: center;
+	min-height: 10vmin;
+	max-height: 10vmin;
+	min-width: 10vmin;
 }
 
 .grid-cell[data-pokemon-id] {
@@ -632,6 +643,25 @@ img {
 	initial-value: 0turn;
 }
 
+.header-full-screen > .icon-full {
+	display: inline;
+}
+
+.header-full-screen > .icon-un-full {
+	display: none;
+}
+
+@media (display-mode: fullscreen) {
+
+	.header-full-screen > .icon-full {
+		display: none;
+	}
+	
+	.header-full-screen > .icon-un-full {
+		display: inline;
+	}
+}
+
 @media (max-aspect-ratio: 4/3) {
 	.grid-cell {
 		max-width: 55%;
@@ -652,9 +682,19 @@ img {
 	:root {
 		font-size: 10px;
 	}
+
+	.grid-cell {
+    min-height: 10vmin;
+    max-height: 10vmin;
+    min-width: 10vmin;
+		border-width: 3px;
+	}
 }
 /* IPAD MINI */
 @media (max-width: 768px) {
+	.grid-container {
+    gap: 0.25em;
+	}
 }
 
 @media (max-width: 540px) {
@@ -663,7 +703,9 @@ img {
 	}
 
 	.grid-cell {
-		max-width: 80%;
+    min-height: 13.5vmin;
+    max-height: 13.5vmin;
+    min-width: 13.5vmin;
 		border-width: 3px;
 	}
 }
@@ -675,6 +717,56 @@ img {
 	}
 
 	.grid-cell {
-		max-width: 100%;
+    min-height: 16vmin;
+    max-height: 16vmin;
+    min-width: 16vmin;
+	}
+}
+
+@media (width: 1024px) and (height: 1366px) {
+	:root {
+		font-size: 20px;
+	}
+
+	.grid-cell {
+    min-height: 15vmin;
+    max-height: 15vmin;
+    min-width: 15vmin;
+	}
+}
+
+@media (width: 1024px) and (height: 1366px) {
+	:root {
+		font-size: 20px;
+	}
+
+	.grid-cell {
+    min-height: 14.5vmin;
+    max-height: 14.5vmin;
+    min-width: 14.5vmin;
+	}
+}
+
+@media (width: 768px) and (height: 1024px) {
+	:root {
+		font-size: 18px;
+	}
+
+	.grid-cell {
+    min-height: 13.5vmin;
+    max-height: 13.5vmin;
+    min-width: 13.5vmin;
+	}
+}
+
+@media (width: 375px) and (height: 667px) {
+	:root {
+		font-size: 8px;
+	}
+
+	.grid-cell {
+    min-height: 16vmin;
+    max-height: 16vmin;
+    min-width: 16vmin;
 	}
 }

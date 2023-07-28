@@ -67,18 +67,18 @@
     backpackCells.forEach((eachCell) => {
       attachCellWithPokeBallImage(eachCell);
     });
-	};
-	
-	window.initializeLevelStarted = () => {
-		const savedLevelStarted = window.localStorage.getItem('level-started');
+  };
 
-		if (null !== savedLevelStarted) {
-			window.setLevelStarted(Number.parseInt(savedLevelStarted, 10));
-			return;
-		}
+  window.initializeLevelStarted = () => {
+    const savedLevelStarted = window.localStorage.getItem("level-started");
 
-		window.setLevelStarted(Date.now());
-	};
+    if (null !== savedLevelStarted) {
+      window.setLevelStarted(Number.parseInt(savedLevelStarted, 10));
+      return;
+    }
+
+    window.setLevelStarted(Date.now());
+  };
 
   window.getBasePrice = (evolution_number) => {
     return Math.pow(evolution_number, evolution_number);
@@ -91,7 +91,10 @@
   };
 
   window.getClickPrice = (pokeBallIndex) => {
-    return Math.min(window.MAXIMUM_POKEBALL_OPEN_PRICE, (pokeBallIndex + 1) * 3);
+    return Math.min(
+      window.MAXIMUM_POKEBALL_OPEN_PRICE,
+      (pokeBallIndex + 1) * 3
+    );
   };
 
   window.getRandomPokeBallIndex = () => {
@@ -120,7 +123,7 @@
     const buyerCells = Array.from(document.querySelectorAll("[id^=buyer-]"));
 
     buyerCells.forEach((eachBuyerCell) => {
-      attachBuyerContextMenu(eachBuyerCell);
+      _attachBuyerContextMenu(eachBuyerCell);
     });
   };
 
@@ -189,9 +192,14 @@
     window.setExpCountForNextLevel(window.expCountForNextLevel);
   };
 
-	window.getPoolByLevel = () => {
-		const totalSpeciesChainEvolution = Object.keys(window.pokemonSpeciesChain).length;
-		const maxEvolutionChainNumber = Math.min(window.currentLevel, totalSpeciesChainEvolution);
+  window.getPoolByLevel = () => {
+    const totalSpeciesChainEvolution = Object.keys(
+      window.pokemonSpeciesChain
+    ).length;
+    const maxEvolutionChainNumber = Math.min(
+      window.currentLevel,
+      totalSpeciesChainEvolution
+    );
 
     return [...Array(maxEvolutionChainNumber).keys()].map((levelIndex) => {
       return window.pokemonSpeciesChain[`evolution_chain_id-${levelIndex + 1}`];
@@ -202,16 +210,17 @@
     return Math.min(maxIncrease, Math.floor(window.currentLevel / 1.5));
   };
 
-	window.getBackpackRandomPokemonId = (pokeBallIndex) => {
-		// return {
-		// 	pokemonId: 133
-		// };
+  window.getBackpackRandomPokemonId = (pokeBallIndex) => {
+    // return {
+    // 	pokemonId: 133
+    // };
     let pool = getPoolByLevel();
 
     const poolByPokeBallIndex = pool.filter((eachEvolutionChainList) => {
       return eachEvolutionChainList.some(
         ({ evolution_number }) =>
-          evolution_number >= Math.min(window.MAXIMUM_POKEMON_EVOLUTION_NUMBER, pokeBallIndex + 1)
+          evolution_number >=
+          Math.min(window.MAXIMUM_POKEMON_EVOLUTION_NUMBER, pokeBallIndex + 1)
       );
     });
 
@@ -219,7 +228,10 @@
       .map((eachEvolutionChainList) => {
         if (3 === pokeBallIndex) {
           return eachEvolutionChainList
-            .filter(({ evolution_number }) => window.MAXIMUM_POKEMON_EVOLUTION_NUMBER === evolution_number)
+            .filter(
+              ({ evolution_number }) =>
+                window.MAXIMUM_POKEMON_EVOLUTION_NUMBER === evolution_number
+            )
             .map(({ id }) => id);
         }
 
@@ -234,16 +246,16 @@
     if (
       0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))
     ) {
-      const buyerCellsWithPokemonId = Array.from(
-        document.querySelectorAll("[id^=buyer-][data-pokemon-id]")
+      const buyerCellsPokemonId = _collectBuyerCellsPokemonId();
+      const randomBuyerPokemonOverlapWithPool = buyerCellsPokemonId.filter(
+        (buyerCellPokemonId) =>
+          allPokemonIdsInPool.includes(buyerCellsPokemonId)
       );
 
-      if (buyerCellsWithPokemonId.length > 0) {
-        const allBuyerPokemonIds = buyerCellsWithPokemonId.map(
-          (eachBuyerCell) => eachBuyerCell.getAttribute("data-pokemon-id")
+      if (randomBuyerPokemonOverlapWithPool.length > 0) {
+        const randomBuyerPokemonId = window.getRandomItem(
+          randomBuyerPokemonOverlapWithPool
         );
-
-        const randomBuyerPokemonId = window.getRandomItem(allBuyerPokemonIds);
 
         return {
           pokemonId: randomBuyerPokemonId,
@@ -254,17 +266,17 @@
     if (
       0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))
     ) {
-      const backpackCellsWithPokemonId = Array.from(
+      const backpackCellsPokemonId = Array.from(
         document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
-      );
+      ).map((eachBackpackCell) =>
+        eachBackpackCell.getAttribute("data-pokemon-id")
+			);
+			
+			const randomBackpackCellOverlapWithPool = backpackCellsPokemonId.filter((eachBackpackCellPokemonId) => allPokemonIdsInPool.includes(eachBackpackCellPokemonId));
 
-      if (backpackCellsWithPokemonId.length > 0) {
-        const allBackpackPokemonIds = backpackCellsWithPokemonId.map(
-          (eachBackpackCell) => eachBackpackCell.getAttribute("data-pokemon-id")
-        );
-
+      if (randomBackpackCellOverlapWithPool.length > 0) {
         const randomBackpackPokemonId = window.getRandomItem(
-          allBackpackPokemonIds
+          randomBackpackCellOverlapWithPool
         );
 
         return {
@@ -291,8 +303,8 @@
   };
 
   window.randomizeBackpackCell = (cellElement, pokeBallIndex) => {
-		const { pokemonId } = window.getBackpackRandomPokemonId(pokeBallIndex);
-		
+    const { pokemonId } = window.getBackpackRandomPokemonId(pokeBallIndex);
+
     const pokemonSpeciesObject =
       window.pokemonSpecies[`pokemon-id-${pokemonId}`];
 
@@ -379,9 +391,9 @@
     window.levelUpSoundPriorityTimeout = Date.now() + 2000;
 
     publishHighestLevel();
-		publishFastestLevel();
-		
-		window.setLevelStarted(Date.now());
+    publishFastestLevel();
+
+    window.setLevelStarted(Date.now());
 
     if (0 === window.currentLevel % 5) {
       adjustEncounterDisplay();
@@ -389,15 +401,17 @@
       window._encounterDuration = Date.now() + 30000;
       document
         .getElementById("encounter-container")
-				.classList.remove("display-none");
-			document.getElementById('backpack-icon')
-			.setAttribute('src', './images/master-ball.png')
+        .classList.remove("display-none");
+      document
+        .getElementById("backpack-icon")
+        .setAttribute("src", "./images/master-ball.png");
       window._encounterDurationNotification = setTimeout(() => {
         document
           .getElementById("encounter-container")
           .classList.add("display-none");
-				document.getElementById('backpack-icon')
-					.setAttribute('src', './images/backpack.png')
+        document
+          .getElementById("backpack-icon")
+          .setAttribute("src", "./images/backpack.png");
       }, 30000);
     }
   };
@@ -405,12 +419,12 @@
   window.setExpCountForNextLevel = (thatValue, isRestored = false) => {
     window.expCountForNextLevel = thatValue;
     window.localStorage.setItem("exp-count-for-next-level", thatValue);
-	};
-	
-	window.setLevelStarted = (timestamp) => {
-		window.levelStarted = timestamp;
-		window.localStorage.setItem('level-started', timestamp);
-	};
+  };
+
+  window.setLevelStarted = (timestamp) => {
+    window.levelStarted = timestamp;
+    window.localStorage.setItem("level-started", timestamp);
+  };
 
   window.clearElementAttributesByPrefix = (cellElement, attributePrefix) => {
     const attributeNames = Array.from(cellElement.attributes).map(
@@ -482,9 +496,9 @@
 
     decorateBackpackCell(cellElement, nextRandomEvolutionSpeciesObject.id);
 
-    clearBackpackCellAndCreateRandomPokeball(window.selectedCellElement);
+    _clearBackpackCellAndCreateRandomPokeball(window.selectedCellElement);
 
-    clearSelectedCell();
+    _clearSelectedCell();
 
     setSelectedCell(cellElement);
 
@@ -569,7 +583,8 @@
         return;
       }
 
-      window._recordedMouseMoveEvent.clientX >= 0 && setFloatingImageCoordinates(window._recordedMouseMoveEvent);
+      window._recordedMouseMoveEvent.clientX >= 0 &&
+        setFloatingImageCoordinates(window._recordedMouseMoveEvent);
     });
   };
 
@@ -600,9 +615,9 @@
       "data-evolution-chain-ids"
     );
 
-		const displayNameInCell = cellElement.getAttribute("data-display-name");
+    const displayNameInCell = cellElement.getAttribute("data-display-name");
 
-		document.getElementById("evolution-chain").innerHTML = '';
+    document.getElementById("evolution-chain").innerHTML = "";
 
     let collectEach = [];
     evolutionChainIds.split(/,/).forEach((eachEvolutionSpeciesId) => {
@@ -620,7 +635,7 @@
   };
 
   window.setSelectedCell = (cellElement) => {
-    clearSelectedCell();
+    _clearSelectedCell();
 
     window.selectedCellElement = cellElement;
     cellElement.classList.add("selected-cell");
@@ -641,11 +656,13 @@
         cellElement.getAttribute("data-pokemon-id")
       )
     ) {
-      highlightBackpackAndBuyerSameIdentifier(
+      _highlightBackpackAndBuyerSameIdentifier(
         cellElement.getAttribute("data-identifier")
       );
     } else {
-      highlightBuyerSameIdentifier(cellElement.getAttribute("data-identifier"));
+      _highlightBuyerSameIdentifier(
+        cellElement.getAttribute("data-identifier")
+      );
     }
 
     playIndexSound("click-sound");
@@ -658,29 +675,35 @@
       10
     );
 
-		addTypeBuff(cellElement);
+    addTypeBuff(cellElement);
 
     cellElement.classList.remove("selected-cell");
-    clearSelectedCell();
+    _clearSelectedCell();
 
     increaseCurrentGold(getBasePrice(evolutionNumber));
 
-		playIndexSound("coin-sound");
-	};
-	
-	window.addTypeBuff = (cellElement) => {
-		const soldPokemonId = cellElement.getAttribute('data-pokemon-id');
+    playIndexSound("coin-sound");
+  };
 
-		const pokemonHasNextEvolutions = hasNextEvolutions(cellElement.getAttribute('data-evolution-chain-id'), soldPokemonId);
+  window.addTypeBuff = (cellElement) => {
+    const soldPokemonId = cellElement.getAttribute("data-pokemon-id");
+
+    const pokemonHasNextEvolutions = hasNextEvolutions(
+      cellElement.getAttribute("data-evolution-chain-id"),
+      soldPokemonId
+    );
 
     const allExistingBuyerCellsPokemonId = Array.from(
       document.querySelectorAll("[id^=buyer-][data-pokemon-id]")
-		).map((eachBuyerCell) => eachBuyerCell.getAttribute('data-pokemon-id'));
-		
-		if (pokemonHasNextEvolutions || !allExistingBuyerCellsPokemonId.includes(soldPokemonId)) {
-			return;
-		}
-	};
+    ).map((eachBuyerCell) => eachBuyerCell.getAttribute("data-pokemon-id"));
+
+    if (
+      pokemonHasNextEvolutions ||
+      !allExistingBuyerCellsPokemonId.includes(soldPokemonId)
+    ) {
+      return;
+    }
+  };
 
   window.attachBackpackContextMenu = (cellElement) => {
     const onBackpackContextMenu = (event) => {
@@ -691,7 +714,7 @@
       }
 
       sellBackpackCell(cellElement);
-      clearBackpackCellAndCreateRandomPokeball(cellElement);
+      _clearBackpackCellAndCreateRandomPokeball(cellElement);
     };
 
     cellElement.addEventListener("contextmenu", onBackpackContextMenu);
@@ -812,10 +835,10 @@
       playIndexSound("pokeball-open-sound");
     }
 
-    clearSelectedCell();
+    _clearSelectedCell();
   };
   window.onPokeBallCellClick = (imgElement, pokeBallIndex) => {
-    clearSelectedCell();
+    _clearSelectedCell();
 
     const dataClickPrice = Number.parseInt(
       imgElement.getAttribute("data-click-price"),
@@ -842,153 +865,162 @@
       .findIndex((eachItem) =>
         eachItem.split("/").includes(pokemonDisplayName)
       );
-	};
+  };
 
-	const _isMinimumBackpackCellsOpened = (minimumValue) => {
-		const openedBackpackCells = document.querySelectorAll(
-			"[id^=backpack-cell-][data-pokemon-id]"
-		);
+  const _getOpenedBackpackCells = () => {
+    return document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]");
+  };
 
-		return openedBackpackCells.length >= minimumValue;
-	};
+  const _isMinimumBackpackCellsOpened = (minimumValue) => {
+    return _getOpenedBackpackCells().length >= minimumValue;
+  };
 
-	const shouldRandomBuyerPick = () => {
-		if (_isMinimumBackpackCellsOpened(1) && 0 === window.currentGold) {
-			return true;
-		}
+  const _collectBuyerCellsPokemonId = () => {
+    return Array.from(
+      document.querySelectorAll("[id^=buyer-][data-pokemon-id]")
+    ).map((eachBuyerCell) => eachBuyerCell.getAttribute("data-pokemon-id"));
+  };
 
-		return _isMinimumBackpackCellsOpened(4);
-	}
-	
-	const _getRandomBuyerPickFromBackpack = (cellElement) => {
-		if (shouldRandomBuyerPick()) {
-			return;
-		}
+  const _getRandomBuyerPickFromBackpack = (cellElement) => {
+    const allBackpackPokemonIds = Array.from(
+      document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
+    ).map((eachBackpackCell) =>
+      eachBackpackCell.getAttribute("data-pokemon-id")
+    );
 
-		const allBackpackPokemonIds = Array.from(
-			document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
-		).map((eachBackpackCell) =>
-			eachBackpackCell.getAttribute("data-pokemon-id")
-		);
+    const duplicateCountOfEachPokemonIds = {};
+    allBackpackPokemonIds.forEach((eachPokemonId) => {
+      duplicateCountOfEachPokemonIds[eachPokemonId] =
+        (duplicateCountOfEachPokemonIds[eachPokemonId] || 0) + 1;
+    });
 
-		const duplicateCountOfEachPokemonIds = {};
-		allBackpackPokemonIds.forEach((eachPokemonId) => {
-			duplicateCountOfEachPokemonIds[eachPokemonId] =
-				(duplicateCountOfEachPokemonIds[eachPokemonId] || 0) + 1;
-		});
+    const randomDuplicateCount = Math.floor(Math.random() * 2);
 
-		const randomDuplicateCount = Math.floor(Math.random() * 2);
+    const pokemonIdsWithGreaterThanDuplicateNumber = Object.entries(
+      duplicateCountOfEachPokemonIds
+    )
+      .filter(
+        ([_, backPokemonIdDuplicateCount]) =>
+          backPokemonIdDuplicateCount > randomDuplicateCount
+      )
+      .map(([backpackPokemonId, _]) => backpackPokemonId);
 
-		const pokemonIdsWithGreaterThanDuplicateNumber = Object.entries(
-			duplicateCountOfEachPokemonIds
-		)
-			.filter(
-				([_, backPokemonIdDuplicateCount]) =>
-					backPokemonIdDuplicateCount > randomDuplicateCount
-			)
-			.map(([backpackPokemonId, _]) => backpackPokemonId);
+    const backpackPokemonIdsToFilter =
+      pokemonIdsWithGreaterThanDuplicateNumber.length
+        ? pokemonIdsWithGreaterThanDuplicateNumber
+        : Object.keys(duplicateCountOfEachPokemonIds);
 
-		const backpackPokemonIdsToFilter =
-			pokemonIdsWithGreaterThanDuplicateNumber.length
-				? pokemonIdsWithGreaterThanDuplicateNumber
-				: Object.keys(duplicateCountOfEachPokemonIds);
+    const allFilteredBackpackPokemonIds = [
+      ...backpackPokemonIdsToFilter,
+    ].filter(
+      (pokemonIdsThatAreNullWhat) => pokemonIdsThatAreNullWhat !== "null"
+    );
 
-		const allFilteredBackpackPokemonIds = [
-			...backpackPokemonIdsToFilter,
-		].filter(
-			(pokemonIdsThatAreNullWhat) => pokemonIdsThatAreNullWhat !== "null"
-		);
+    const allBuyersPokemonId = _collectBuyerCellsPokemonId();
 
-		let tentativeRandomPokemonId = window.getRandomItem(
-			allFilteredBackpackPokemonIds
-		);
+    let duplicateBuyerPokemonIdMap = {};
+    allBuyersPokemonId.forEach((eachBuyerPokemonId) => {
+      duplicateBuyerPokemonIdMap[eachBuyerPokemonId] =
+        duplicateBuyerPokemonIdMap[eachBuyerPokemonId] || 0;
+      duplicateBuyerPokemonIdMap[eachBuyerPokemonId] += 1;
+    });
 
-		const numberOfDuplicates =
-			duplicateCountOfEachPokemonIds[tentativeRandomPokemonId];
+    const buyerPokemonIdsWithTwoDuplicates = Object.entries(
+      duplicateBuyerPokemonIdMap
+    )
+      .filter(([pokemonId, duplicateCount]) => duplicateCount >= 2)
+      .map(([pokemonId, _]) => pokemonId);
 
-		let tentativePokemonDisplayName =
-			window.pokemonNames[`pokemon-id-${tentativeRandomPokemonId}`];
+    const filteredBackpackPokemonIdsWithBuyerDuplicatePokemonIds =
+      allFilteredBackpackPokemonIds.filter(
+        (filteredBackpackPokemonId) =>
+          !buyerPokemonIdsWithTwoDuplicates.includes(filteredBackpackPokemonId)
+      );
 
-		const thatElement = Array.from(
-			document.querySelectorAll("[id^=backpack-cell-]")
-		).find(
-			(eachCell) =>
-				eachCell &&
-				tentativePokemonDisplayName ===
-				eachCell.getAttribute("data-display-name")
-		);
+    if (0 === filteredBackpackPokemonIdsWithBuyerDuplicatePokemonIds.length) {
+      return;
+    }
 
-		const randomBackpackCellElement = document.querySelector(
-			`[id^=backpack-cell-][data-pokemon-id="${tentativeRandomPokemonId}"]`
-		);
+    let tentativeRandomPokemonId = window.getRandomItem(
+      filteredBackpackPokemonIdsWithBuyerDuplicatePokemonIds
+    );
 
-		const pokemonNextEvolutions = window.getNextEvolutions(
-			randomBackpackCellElement.getAttribute("data-evolution-chain-id"),
-			tentativeRandomPokemonId
-		);
+    const numberOfDuplicates =
+      duplicateCountOfEachPokemonIds[tentativeRandomPokemonId];
 
-		const allExistingBuyerCellsWithPokemonId = Array.from(
-			document.querySelectorAll("[id^=buyer-][data-pokemon-id]")
-		);
+    let tentativePokemonDisplayName =
+      window.pokemonNames[`pokemon-id-${tentativeRandomPokemonId}`];
 
-		const allBuyersPokemonId = allExistingBuyerCellsWithPokemonId.map(
-			(eachBuyerCell) => eachBuyerCell.getAttribute("data-pokemon-id")
-		);
+    const thatElement = Array.from(
+      document.querySelectorAll("[id^=backpack-cell-]")
+    ).find(
+      (eachCell) =>
+        eachCell &&
+        tentativePokemonDisplayName ===
+          eachCell.getAttribute("data-display-name")
+    );
 
-		if (numberOfDuplicates > 1 && pokemonNextEvolutions.length) {
-			const nextRandomEvolutionPokemonId = window.getRandomItem(
-				pokemonNextEvolutions
-			).id;
-			if (
-				allBuyersPokemonId.filter(
-					(eachBuyerPokemonId) =>
-						nextRandomEvolutionPokemonId === eachBuyerPokemonId
-				).length <= 1
-			) {
-				tentativeRandomPokemonId = nextRandomEvolutionPokemonId;
-			}
-		}
-		
-		return tentativeRandomPokemonId;
-	};
+    const randomBackpackCellElement = document.querySelector(
+      `[id^=backpack-cell-][data-pokemon-id="${tentativeRandomPokemonId}"]`
+    );
 
-	const getRandomPokemonIdFromPool = () => {
-		if (!_isMinimumBackpackCellsOpened(1)) {
-			return;
-		}
+    const pokemonNextEvolutions = window.getNextEvolutions(
+      randomBackpackCellElement.getAttribute("data-evolution-chain-id"),
+      tentativeRandomPokemonId
+    );
 
-		const poolByLevel = window.getPoolByLevel();
+    if (numberOfDuplicates > 1 && pokemonNextEvolutions.length) {
+      const nextRandomEvolutionPokemonId = window.getRandomItem(
+        pokemonNextEvolutions
+      ).id;
+      if (
+        allBuyersPokemonId.filter(
+          (eachBuyerPokemonId) =>
+            nextRandomEvolutionPokemonId === eachBuyerPokemonId
+        ).length <= 1
+      ) {
+        tentativeRandomPokemonId = nextRandomEvolutionPokemonId;
+      }
+    }
 
-		const randomChainList = window.getRandomItem(poolByLevel);
+    return tentativeRandomPokemonId;
+  };
 
-		const { id } = window.getRandomItem(randomChainList);
+  const _getRandomPokemonIdFromPool = () => {
+    const poolByLevel = window.getPoolByLevel();
 
-		return id;
-	};
+    const randomChainList = window.getRandomItem(poolByLevel);
 
-	const _getRandomBuyerPokemonId = (cellElement) => {
-		if (!_isMinimumBackpackCellsOpened(1)) {
-			return undefined;
-		}
+    const { id } = window.getRandomItem(randomChainList);
 
-		if (0 === window.currentGold) {
-			return _getRandomBuyerPickFromBackpack(cellElement)
-		}
+    return id;
+  };
 
-		return window.isRandomSuccess(window.RANDOM_BUYER_UNRELATED_POKEMON_RATE) && window.currentGold >= window.BUYER_SHUFFLE_GOLD_DECREASE ?
-			getRandomPokemonIdFromPool() : _getRandomBuyerPickFromBackpack(cellElement)
-	}
+  const _getRandomBuyerPokemonId = (cellElement) => {
+    if (!_isMinimumBackpackCellsOpened(1)) {
+      return undefined;
+    }
 
-	window.randomizeBuyerCell = (cellElement) => {
-		if (cellElement._nextRandomForThisCell > Date.now()) {
-			return;
-		}
+    if (0 === window.currentGold) {
+      return _getRandomBuyerPickFromBackpack(cellElement);
+    }
 
-		const randomPokemonId = _getRandomBuyerPokemonId(cellElement);
-		
-		if ('undefined' === typeof randomPokemonId) {
-			return;
-		}
+    return window.isRandomSuccess(window.RANDOM_BUYER_UNRELATED_POKEMON_RATE) &&
+      window.currentGold >= window.BUYER_SHUFFLE_GOLD_DECREASE
+      ? _getRandomPokemonIdFromPool()
+      : _getRandomBuyerPickFromBackpack(cellElement);
+  };
+
+  const _randomizeBuyerCell = (cellElement) => {
+    if (cellElement._nextRandomForThisCell > Date.now()) {
+      return;
+    }
+
+    const randomPokemonId = _getRandomBuyerPokemonId(cellElement);
+
+    if ("undefined" === typeof randomPokemonId) {
+      return;
+    }
 
     cellElement.setAttribute("data-pokemon-id", randomPokemonId);
     cellElement.setAttribute(
@@ -997,8 +1029,8 @@
     );
 
     const pokemonSpeciesObject =
-			window.pokemonSpecies[`pokemon-id-${randomPokemonId}`];
-		
+      window.pokemonSpecies[`pokemon-id-${randomPokemonId}`];
+
     const evolutionNumber = pokemonSpeciesObject.evolution_number;
 
     const finalSellValue = getRandomBuyerPrice(evolutionNumber);
@@ -1019,21 +1051,21 @@
 
     decorateBuyerCell(cellElement, randomPokemonId);
 
-    attachBuyerRefreshElement(cellElement);
+    _attachBuyerRefreshElement(cellElement);
 
-    restartBuyerRandomizeTimeout(cellElement);
+    _restartBuyerRandomizeTimeout(cellElement);
 
     if (
       window.selectedCellElement &&
       null !== window.selectedCellElement.getAttribute("data-identifier")
     ) {
-      highlightBackpackAndBuyerSameIdentifier(
+      _highlightBackpackAndBuyerSameIdentifier(
         window.selectedCellElement.getAttribute("data-identifier")
       );
     }
   };
 
-  window.attachBuyerRefreshElement = (cellElement) => {
+  const _attachBuyerRefreshElement = (cellElement) => {
     const buyerRefreshElement = document.createElement("div");
     buyerRefreshElement.classList.add("buyer-refresh");
     buyerRefreshElement.setAttribute("title", "Randomize for 10 Gold");
@@ -1045,7 +1077,7 @@
     cellElement.appendChild(buyerRefreshElement);
   };
 
-  window.restartBuyerRandomizeTimeout = (cellElement) => {
+  const _restartBuyerRandomizeTimeout = (cellElement) => {
     cellElement._allowBuyerRandomizeTimeout &&
       clearTimeout(cellElement._allowBuyerRandomizeTimeout);
     cellElement._allowBuyerRandomizeTimeout = setTimeout(() => {
@@ -1068,14 +1100,14 @@
           continue;
         }
 
-        randomizeBuyerCell(cellElement);
+        _randomizeBuyerCell(cellElement);
 
         return;
       }
     }, 1000);
   };
 
-  window.clearAllHighlight = () => {
+  const _clearAllHighlight = () => {
     Array.from(document.querySelectorAll(`[id^=buyer-]`)).forEach((eachItem) =>
       eachItem.classList.remove("highlight-border")
     );
@@ -1084,7 +1116,7 @@
     );
   };
 
-  window.clearSelectedCell = () => {
+  const _clearSelectedCell = () => {
     document.getElementById("floating-image").removeAttribute("src");
 
     if (window.selectedCellElement) {
@@ -1092,20 +1124,20 @@
       window.selectedCellElement = null;
     }
 
-    clearAllHighlight();
+    _clearAllHighlight();
 
     document
       .getElementById("left-box-evolution-chain")
       .removeAttribute("data-show-that");
   };
 
-  window.highlightBackpackAndBuyerSameIdentifier = (dataIdentifierName) => {
+  const _highlightBackpackAndBuyerSameIdentifier = (dataIdentifierName) => {
     Array.from(
       document.querySelectorAll(`[data-identifier-${dataIdentifierName}]`)
     ).forEach((eachItem) => eachItem.classList.add("highlight-border"));
   };
 
-  window.highlightBuyerSameIdentifier = (dataIdentifierName) => {
+  const _highlightBuyerSameIdentifier = (dataIdentifierName) => {
     Array.from(
       document.querySelectorAll(
         `[id^=buyer-][data-identifier-${dataIdentifierName}]`
@@ -1113,7 +1145,7 @@
     ).forEach((eachItem) => eachItem.classList.add("highlight-border"));
   };
 
-  window.clearBackpackCellAndCreateRandomPokeball = (cellElement) => {
+  const _clearBackpackCellAndCreateRandomPokeball = (cellElement) => {
     cellElement.classList.remove("selected-cell");
     cellElement.removeAttribute("title");
     clearElementAttributesByPrefix(cellElement, "data-");
@@ -1123,7 +1155,7 @@
     attachCellWithPokeBallImage(cellElement);
   };
 
-  window.deleteAudioElementCriesInterval = () => {
+  window.audioElementCriesDeleteInterval = () => {
     window._deleteCriesInterval && clearInterval(window._deleteCriesInterval);
     window._deleteCriesInterval = setInterval(() => {
       const allCryElements = Array.from(
@@ -1151,11 +1183,11 @@
     }, 500);
   };
 
-  window.formatCryMp3Link = (pokemonIdentifier) => {
+  const _formatCryMp3Link = (pokemonIdentifier) => {
     return window.cryMp3LinkMap[pokemonIdentifier] || pokemonIdentifier;
   };
 
-  window.createOrUpdateCryElement = (pokemonIdentifier) => {
+  const _createOrUpdateCryElement = (pokemonIdentifier) => {
     const audioElementId = `pokemon-cry-${pokemonIdentifier}`;
     const existingCryElement = document.getElementById(audioElementId);
 
@@ -1172,7 +1204,7 @@
     audioElement.setAttribute("id", audioElementId);
     audioElement.setAttribute(
       "src",
-      `https://play.pokemonshowdown.com/audio/cries/${formatCryMp3Link(
+      `https://play.pokemonshowdown.com/audio/cries/${_formatCryMp3Link(
         pokemonIdentifier
       )}.mp3`
     );
@@ -1185,13 +1217,13 @@
     return audioElement;
   };
 
-  window.playCry = (pokemonIdentifier) => {
-    const audioElement = createOrUpdateCryElement(pokemonIdentifier);
+  const _playCry = (pokemonIdentifier) => {
+    const audioElement = _createOrUpdateCryElement(pokemonIdentifier);
 
     playIndexSound(audioElement.id);
   };
 
-  window.attachBuyerContextMenu = (cellElement) => {
+  const _attachBuyerContextMenu = (cellElement) => {
     const onBuyerContextMenu = (event) => {
       event.preventDefault();
 
@@ -1218,7 +1250,7 @@
 
       cellElement._nextRandomForThisCell = Date.now() + 6000;
 
-      restartBuyerRandomizeTimeout(cellElement);
+      _restartBuyerRandomizeTimeout(cellElement);
 
       playIndexSound("shuffle-sound");
     };
@@ -1226,7 +1258,7 @@
     cellElement.addEventListener("contextmenu", onBuyerContextMenu, true);
   };
 
-  window.onBuyerMouseDown = (cellElement) => {
+  const _onBuyerMouseDown = (cellElement) => {
     if (!window.selectedCellElement) {
       return;
     }
@@ -1266,17 +1298,17 @@
 
     updateExpForNextLevelCount(evolutionNumber);
 
-    doVibrate();
+    _doVibrate();
 
     cellElement.innerHTML = '<img src="./images/transparent-picture.png" />';
 
-    clearBackpackCellAndCreateRandomPokeball(window.selectedCellElement);
+    _clearBackpackCellAndCreateRandomPokeball(window.selectedCellElement);
 
-    clearSelectedCell();
+    _clearSelectedCell();
 
     playIndexSound("gold-sound");
 
-    playCry(thisIdentifier);
+    _playCry(thisIdentifier);
   };
 
   window.initializeVibration = () => {
@@ -1285,7 +1317,7 @@
     }
   };
 
-  window.doVibrate = () => {
+  const _doVibrate = () => {
     if ("true" === window.localStorage.getItem("enable-vibration")) {
       navigator.vibrate(150);
     }
@@ -1340,8 +1372,8 @@
     cellElement.setAttribute("data-identifier", pokemonIdentifier);
     cellElement.setAttribute(`data-identifier-${pokemonIdentifier}`, "true");
 
-    cellElement.onclick = () => window.onBuyerMouseDown(cellElement);
-    cellElement.ondragstart = () =>  window.onBuyerMouseDown(cellElement);
+    cellElement.onclick = () => _onBuyerMouseDown(cellElement);
+    cellElement.ondragstart = () => _onBuyerMouseDown(cellElement);
   };
 
   window.publishHighestLevel = async () => {
@@ -1471,8 +1503,8 @@
     let sessionMap = {
       level: window.currentLevel,
       gold: window.currentGold,
-			expCountForNextLevel: window.expCountForNextLevel,
-			levelStarted: window.levelStarted
+      expCountForNextLevel: window.expCountForNextLevel,
+      levelStarted: window.levelStarted,
     };
 
     const allDiscoveredLocalStorageKeys = Object.entries({
@@ -1512,8 +1544,14 @@
       throw reason;
     }
 
-    const { level, expCountForNextLevel, levelStarted, gold, discovered, lastUpdated } =
-      responseObject;
+    const {
+      level,
+      expCountForNextLevel,
+      levelStarted,
+      gold,
+      discovered,
+      lastUpdated,
+    } = responseObject;
 
     let deviceDataAndDateString = "No data";
 
@@ -1552,11 +1590,11 @@
     if ("number" === typeof expCountForNextLevel) {
       window.setExpCountForNextLevel(expCountForNextLevel);
       window.updateExpCountForNextLevelElement();
-		}
-		
-		if ("number" === typeof levelStarted) {
-			window.setLevelStarted(levelStarted);
-		}
+    }
+
+    if ("number" === typeof levelStarted) {
+      window.setLevelStarted(levelStarted);
+    }
 
     if ("number" === typeof gold) {
       window.setCurrentGold(gold);
@@ -1572,13 +1610,24 @@
     }
 
     console.info("Session synced.");
+  };
+
+  window.showQr = () => {
+    document
+      .querySelector("div.qr-code-container")
+      .classList.remove("display-none");
+  };
+
+  window.hideQr = () => {
+    document
+      .querySelector("div.qr-code-container")
+      .classList.add("display-none");
 	};
 	
-	window.showQr = () => {
-		document.querySelector('div.qr-code-container').classList.remove('display-none');
-	};
-	
-	window.hideQr = () => {
-		document.querySelector('div.qr-code-container').classList.add('display-none');
+	window.toggleFullScreen = () => {
+		const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+		const isOnHomepage = window.matchMedia('(display-mode: fullscreen)').matches;
+		
+		isInstalled || isOnHomepage ? document.exitFullscreen() : document.body.requestFullscreen();
 	};
 })();
