@@ -185,10 +185,10 @@ div.buyer-refresh {
 }
 
 .evolution-chain-image-container {
-	max-width: 8vmin;
-	max-height: 8vmin;
-	min-width: 8vmin;
-	min-height: 8vmin;
+	max-width: 7vmin;
+	max-height: 7vmin;
+	min-width: 7vmin;
+	min-height: 7vmin;
 }
 
 #evolution-chain img {
@@ -651,6 +651,10 @@ img {
 	display: none;
 }
 
+#pokemerge-brand {
+	font-size: 100%;
+}
+
 @media (display-mode: fullscreen) {
 
 	.header-full-screen > .icon-full {
@@ -698,6 +702,10 @@ img {
 }
 
 @media (max-width: 540px) {
+	:root {
+		font-size: 8px;
+	}
+
 	.content {
 		padding: 0 20px;
 	}
