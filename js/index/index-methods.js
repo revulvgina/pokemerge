@@ -843,17 +843,17 @@
         eachItem.split("/").includes(pokemonDisplayName)
       );
 	};
-	
-	window.getRandomBuyerPickFromBackpack = (cellElement) => {
+
+	window.isMinimumBackpackCellsOpened = (minimumValue) => {
 		const openedBackpackCells = document.querySelectorAll(
 			"[id^=backpack-cell-][data-pokemon-id]"
 		);
 
-		if (openedBackpackCells.length <= 1) {
-			return;
-		}
-
-		if (cellElement._nextRandomForThisCell > Date.now()) {
+		return openedBackpackCells.length >= minimumValue;
+	};
+	
+	window.getRandomBuyerPickFromBackpack = (cellElement) => {
+		if (!window.isMinimumBackpackCellsOpened(2)) {
 			return;
 		}
 
@@ -945,6 +945,10 @@
 	};
 
 	const getRandomPokemonIdFromPool = () => {
+		if (!window.isMinimumBackpackCellsOpened(1)) {
+			return;
+		}
+
 		const poolByLevel = window.getPoolByLevel();
 
 		const randomChainList = window.getRandomItem(poolByLevel);
@@ -955,22 +959,25 @@
 	};
 
 	window.randomizeBuyerCell = (cellElement) => {
-		const tentativeRandomPokemonId = window.isRandomSuccess(window.RANDOM_BUYER_UNRELATED_POKEMON_RATE) && window.currentGold >= window.BUYER_SHUFFLE_GOLD_DECREASE ?
-			// getBackpackRandomPokemonIdFromPool() : window.getRandomBuyerPickFromBackpack(cellElement);
-			getRandomPokemonIdFromPool() : window.getRandomBuyerPickFromBackpack(cellElement);
-		
-		if ('undefined' === typeof tentativeRandomPokemonId) {
+		if (cellElement._nextRandomForThisCell > Date.now()) {
 			return;
 		}
 
-    cellElement.setAttribute("data-pokemon-id", tentativeRandomPokemonId);
+		const randomPokemonId = window.isRandomSuccess(window.RANDOM_BUYER_UNRELATED_POKEMON_RATE) && window.currentGold >= window.BUYER_SHUFFLE_GOLD_DECREASE ?
+			getRandomPokemonIdFromPool() : window.getRandomBuyerPickFromBackpack(cellElement);
+		
+		if ('undefined' === typeof randomPokemonId) {
+			return;
+		}
+
+    cellElement.setAttribute("data-pokemon-id", randomPokemonId);
     cellElement.setAttribute(
       "data-display-name",
-      window.pokemonNames[`pokemon-id-${tentativeRandomPokemonId}`]
+      window.pokemonNames[`pokemon-id-${randomPokemonId}`]
     );
 
     const pokemonSpeciesObject =
-			window.pokemonSpecies[`pokemon-id-${tentativeRandomPokemonId}`];
+			window.pokemonSpecies[`pokemon-id-${randomPokemonId}`];
 		
     const evolutionNumber = pokemonSpeciesObject.evolution_number;
 
@@ -990,7 +997,7 @@
       pokemonSpeciesObject.evolution_number
     );
 
-    decorateBuyerCell(cellElement, tentativeRandomPokemonId);
+    decorateBuyerCell(cellElement, randomPokemonId);
 
     attachBuyerRefreshElement(cellElement);
 
