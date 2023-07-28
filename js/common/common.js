@@ -12,9 +12,7 @@
   };
 
   window.loadPokeCsv = async () => {
-    const response = await fetch(
-      "./csv/pokemon.csv"
-    );
+    const response = await fetch("./csv/pokemon.csv");
     const text = await response.text();
 
     window.pokeCsv = csvToArray(text, ",");
@@ -106,13 +104,13 @@
       return;
     }
 
-		thisAudio.volume = volume;
-		thisAudio.muted = false;
+    thisAudio.volume = volume;
+    thisAudio.muted = false;
 
     // thisAudio.pause();
     thisAudio.currentTime = 0;
     thisAudio.play();
-	};
+  };
 
   window.loadPokemonSpeciesChainJson = async () => {
     const response = await fetch("./json/pokemon-species-chain.json");
@@ -125,20 +123,20 @@
 
     window.pokemonNames = await response.json();
   };
-	
-	window.getEvolutionOrdinalByNumber = (evolutionNumber) => {
-		if (1 === evolutionNumber) {
-			return '1st evolution';
-		}
-		if (2 === evolutionNumber) {
-			return '2nd evolution';
-		}
-		if (3 === evolutionNumber) {
-			return '3rd evolution';
-		}
 
-		return 'unknown evolution';
-	}
+  window.getEvolutionOrdinalByNumber = (evolutionNumber) => {
+    if (1 === evolutionNumber) {
+      return "1st evolution";
+    }
+    if (2 === evolutionNumber) {
+      return "2nd evolution";
+    }
+    if (3 === evolutionNumber) {
+      return "3rd evolution";
+    }
+
+    return "unknown evolution";
+  };
 
   window.loadPokemonSpeciesJson = async () => {
     const response = await fetch("./json/pokemon-species.json");
@@ -150,21 +148,31 @@
     const response = await fetch("./json/pokemon-species-flavor-text.json");
 
     window.pokemonSpeciesFlavorText = await response.json();
-	};
+  };
 
   window.loadPokemonTypeNamesJson = async () => {
     const response = await fetch("./json/pokemon-type-names.json");
 
     window.pokemonTypeNames = await response.json();
-	};
+  };
 
   window.loadPokemonTypesJson = async () => {
     const response = await fetch("./json/pokemon-types.json");
 
     window.pokemonTypes = await response.json();
-	};
+  };
 
-	window.isRandomSuccess = (randomNumberFrom) => {
-		return 0 === Math.floor(Math.random() * randomNumberFrom);
-	};
+  window.isRandomSuccess = (randomNumberFrom) => {
+    return 0 === Math.floor(Math.random() * randomNumberFrom);
+  };
+
+  window.muteAllAudioWhenAway = () => {
+    document.addEventListener("visibilitychange", () => {
+      const allElementsThatMakeSound =
+        document.querySelectorAll("video, audio");
+      allElementsThatMakeSound.forEach(
+        (eachElement) => (eachElement.muted = !!document.hidden)
+      );
+    });
+  };
 })();

@@ -36,6 +36,8 @@
 		window.setContentAsLoaded();
 
 		window.initializeLevelStarted();
+
+		window.muteAllAudioWhenAway();
 		
 		document.body.scrollTo(0, 0);
   });

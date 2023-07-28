@@ -19,6 +19,8 @@
 
 		window.playSound('pokemon-theme-bgm', 0.1);
 		
+		window.muteAllAudioWhenAway();
+		
 		document.body.scrollTo(0, 0);
   });
 

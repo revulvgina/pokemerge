@@ -5,6 +5,7 @@
 		await populateGrid('highest-backpack');
 		await populateFastestLevelGrid('fastest-level');
 		window.playSound('trainer-battle', 0.1);
+		window.muteAllAudioWhenAway();
   });
 
 	async function fetchCategory(destinationUrl) {

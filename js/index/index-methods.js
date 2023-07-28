@@ -852,8 +852,8 @@
 		return openedBackpackCells.length >= minimumValue;
 	};
 	
-	window.getRandomBuyerPickFromBackpack = (cellElement) => {
-		if (!window.isMinimumBackpackCellsOpened(2)) {
+	const getRandomBuyerPickFromBackpack = (cellElement) => {
+		if (!window.isMinimumBackpackCellsOpened(4)) {
 			return;
 		}
 
@@ -964,7 +964,7 @@
 		}
 
 		const randomPokemonId = window.isRandomSuccess(window.RANDOM_BUYER_UNRELATED_POKEMON_RATE) && window.currentGold >= window.BUYER_SHUFFLE_GOLD_DECREASE ?
-			getRandomPokemonIdFromPool() : window.getRandomBuyerPickFromBackpack(cellElement);
+			getRandomPokemonIdFromPool() : getRandomBuyerPickFromBackpack(cellElement);
 		
 		if ('undefined' === typeof randomPokemonId) {
 			return;
