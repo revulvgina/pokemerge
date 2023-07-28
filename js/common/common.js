@@ -163,4 +163,8 @@
 
     window.pokemonTypes = await response.json();
 	};
+
+	window.isRandomSuccess = (randomNumberFrom) => {
+		return 0 === Math.floor(Math.random() * randomNumberFrom);
+	};
 })();
