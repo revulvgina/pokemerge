@@ -136,7 +136,7 @@
   };
 
   window.setCurrentGold = (numberValue) => {
-    window.currentGold = numberValue;
+    window.currentGold = Number.parseInt(numberValue, 10);
     window.localStorage.setItem("current_gold", numberValue);
   };
 
@@ -844,16 +844,24 @@
       );
 	};
 
-	window.isMinimumBackpackCellsOpened = (minimumValue) => {
+	const _isMinimumBackpackCellsOpened = (minimumValue) => {
 		const openedBackpackCells = document.querySelectorAll(
 			"[id^=backpack-cell-][data-pokemon-id]"
 		);
 
 		return openedBackpackCells.length >= minimumValue;
 	};
+
+	const shouldRandomBuyerPick = () => {
+		if (_isMinimumBackpackCellsOpened(1) && 0 === window.currentGold) {
+			return true;
+		}
+
+		return _isMinimumBackpackCellsOpened(4);
+	}
 	
-	const getRandomBuyerPickFromBackpack = (cellElement) => {
-		if (!window.isMinimumBackpackCellsOpened(4)) {
+	const _getRandomBuyerPickFromBackpack = (cellElement) => {
+		if (shouldRandomBuyerPick()) {
 			return;
 		}
 
@@ -945,7 +953,7 @@
 	};
 
 	const getRandomPokemonIdFromPool = () => {
-		if (!window.isMinimumBackpackCellsOpened(1)) {
+		if (!_isMinimumBackpackCellsOpened(1)) {
 			return;
 		}
 
@@ -958,13 +966,25 @@
 		return id;
 	};
 
+	const _getRandomBuyerPokemonId = (cellElement) => {
+		if (!_isMinimumBackpackCellsOpened(1)) {
+			return undefined;
+		}
+
+		if (0 === window.currentGold) {
+			return _getRandomBuyerPickFromBackpack(cellElement)
+		}
+
+		return window.isRandomSuccess(window.RANDOM_BUYER_UNRELATED_POKEMON_RATE) && window.currentGold >= window.BUYER_SHUFFLE_GOLD_DECREASE ?
+			getRandomPokemonIdFromPool() : _getRandomBuyerPickFromBackpack(cellElement)
+	}
+
 	window.randomizeBuyerCell = (cellElement) => {
 		if (cellElement._nextRandomForThisCell > Date.now()) {
 			return;
 		}
 
-		const randomPokemonId = window.isRandomSuccess(window.RANDOM_BUYER_UNRELATED_POKEMON_RATE) && window.currentGold >= window.BUYER_SHUFFLE_GOLD_DECREASE ?
-			getRandomPokemonIdFromPool() : getRandomBuyerPickFromBackpack(cellElement);
+		const randomPokemonId = _getRandomBuyerPokemonId(cellElement);
 		
 		if ('undefined' === typeof randomPokemonId) {
 			return;
