@@ -598,7 +598,7 @@
   };
 
   window.initializeMouseMoveListener = () => {
-    if (isMobile()) {
+    if (window.isMobile()) {
       return;
     }
 
@@ -683,7 +683,7 @@
       .getElementById("left-box-evolution-chain")
       .setAttribute("data-show-that", "show");
 
-    if (!isMobile()) {
+    if (!window.isMobile()) {
       _setFloatingImage(cellElement.getAttribute("data-pokemon-id"));
     }
 
