@@ -31,6 +31,7 @@
 		rock: "#4B190E",
 		steel: "#5C756D",
 		water: "#2648DC",
+		normal: "#BCBC9C",
 		md_yellow_100: "#FFD600",
 		md_yellow_200: "#FBC02D",
 		md_amber_700: "#FFA000",

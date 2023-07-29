@@ -5,6 +5,10 @@
 		await window.loadPokemonSpeciesChainJson();
 		await window.loadPokemonNamesJson();
 		await window.loadPokemonSpeciesJson();
+		await window.loadPokemonTypesJson();
+		await window.loadPokemonTypeNamesJson();
+
+		window.loadCommonElements();
 		
 		await window.initializeSessionFromCloud();
     window.initializeSessionId();

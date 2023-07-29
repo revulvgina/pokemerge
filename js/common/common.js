@@ -175,4 +175,11 @@
       );
     });
   };
+	
+	window.toggleFullScreen = () => {
+		const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+		const isOnHomepage = window.matchMedia('(display-mode: fullscreen)').matches;
+		
+		isInstalled || isOnHomepage ? document.exitFullscreen() : document.body.requestFullscreen();
+	};
 })();

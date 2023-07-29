@@ -7,13 +7,14 @@
 	<meta name="viewport" content="width=device-width" />
 	<link href='https://fonts.googleapis.com/css?family=Press+Start+2P:400&subset=latin' rel='stylesheet' type='text/css'>
 	<link href='./styles/pokeball-shake.css' rel='stylesheet' type='text/css'>
-	<link href='./styles/common.css?v=074941' rel='stylesheet' type='text/css'>
+	<link href='./styles/common.css?v=d091541d' rel='stylesheet' type='text/css'>
 	<script src="./js/common/jquery.min.js"></script>
 	<script src="./js/common/load-html.js"></script>
 	<script src="./js/common/csv-to-array.js"></script>
 	<script src="./js/common/nanoid.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 	<script src="./js/common/supabase.js"></script>
+	<script src="./js/common/common-constants.js"></script>
 	<script src="./js/common/common.js"></script>
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<link rel="preload" as="image" href="./images/transparent-picture.png">
@@ -52,14 +53,17 @@
 				<div class="backpack-header">
 					<img src="./images/backpack.png" id="backpack-icon" class="pixelated"/>
 					<strong>Backpack</strong>
+					<div id="pokemon-buff-chance-container" class="opacity-zero">
+						<div id="pokemon-buff-dot-0"></div>
+						<div id="pokemon-buff-dot-1"></div>
+					</div>
+					<div id="encounter-container" class="pulse-text opacity-zero">
+						Master Ball and Ultra Ball only.
+					</div>
 				</div>
 				<div id="spinning-box" class="display-none">
 				</div>
 				<div class="backpack-grid no-highlight grid-container" id="backpack-grid">
-				</div>
-
-				<div id="encounter-container" class="display-none pulse-text">
-					Master Ball and Ultra Ball only for 30 seconds.
 				</div>
 				<div class="pokemon-spinner-container">
 					<div class="pokemon-spinner">
@@ -91,13 +95,13 @@
 		</script>
 	</dialog>
 
-	<link href='./styles/index/index.css?v=091541' rel='stylesheet' type='text/css'>
-	<!-- <link href='./styles/index/responsive.css?v=091541' rel='stylesheet' type='text/css'> -->
-	<link href='./styles/index/settings.css?v=091541' rel='stylesheet' type='text/css'>
-	<script src="./js/index/index-constants.js?v=091541"></script>
-	<script src="./js/index/index-methods.js?v=091541"></script>
-	<script src="./js/index/index.js?v=091541"></script>
-	<script src="./js/index/settings-dialog.js?v=091541"></script>
+	<link href='./styles/index/index.css?v=d091541d' rel='stylesheet' type='text/css'>
+	<!-- <link href='./styles/index/responsive.css?v=d091541d' rel='stylesheet' type='text/css'> -->
+	<link href='./styles/index/settings.css?v=d091541d' rel='stylesheet' type='text/css'>
+	<script src="./js/index/index-constants.js?v=d091541d"></script>
+	<script src="./js/index/index-methods.js?v=d091541d"></script>
+	<script src="./js/index/index.js?v=d091541d"></script>
+	<script src="./js/index/settings-dialog.js?v=d091541d"></script>
 	
 
 </body>

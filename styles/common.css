@@ -60,3 +60,7 @@ body {
 .cursor-pointer {
 	cursor: pointer;
 }
+
+.opacity-zero {
+	opacity: 0;
+}
