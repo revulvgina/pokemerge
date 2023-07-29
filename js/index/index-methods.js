@@ -219,9 +219,6 @@
   };
 
   const _getBackpackRandomPokemonId = (pokeBallIndex) => {
-    // return {
-    // 	pokemonId: 133
-    // };
     let pool = getPoolByLevel();
 
     const poolByPokeBallIndex = pool.filter((eachEvolutionChainList) => {
@@ -1004,7 +1001,7 @@
     ).map((eachBuyerCell) => eachBuyerCell.getAttribute("data-pokemon-id"));
   };
 
-  const _getRandomBuyerPickFromBackpack = (cellElement) => {
+	const _getRandomBuyerPickFromBackpack = (cellElement) => {
     const allBackpackPokemonIds = Array.from(
       document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
     ).map((eachBackpackCell) =>
@@ -1109,7 +1106,7 @@
     return tentativeRandomPokemonId;
   };
 
-  const _getRandomPokemonIdFromPool = () => {
+	const _getRandomPokemonIdFromPool = () => {
     const poolByLevel = window.getPoolByLevel();
 
     const randomChainList = window.getRandomItem(poolByLevel);
