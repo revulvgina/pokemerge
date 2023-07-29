@@ -38,26 +38,26 @@
     document.querySelector("#spinning-box").style.height = `${offsetHeight}px`;
   };
 
-  window.createRandomPokeBallImage = () => {
+  const _createRandomPokeBallImage = () => {
     const imgTag = document.createElement("img");
-    const randomPokeBallIndex = getRandomPokeBallIndex();
+    const randomPokeBallIndex = _getRandomPokeBallIndex();
     const pokeBallName = window.pokeBallNames[randomPokeBallIndex];
     imgTag.setAttribute("src", `./images/${pokeBallName}.png`);
     imgTag.onclick = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
     imgTag.ondragstart = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
     imgTag.setAttribute("data-pokeball-index", randomPokeBallIndex);
-    imgTag.setAttribute("data-click-price", getClickPrice(randomPokeBallIndex));
+    imgTag.setAttribute("data-click-price", _getClickPrice(randomPokeBallIndex));
     imgTag.setAttribute(
       "title",
-      `Open for ${getClickPrice(randomPokeBallIndex)} gold`
+      `Open for ${_getClickPrice(randomPokeBallIndex)} gold`
     );
 
     return imgTag;
   };
 
-  window.attachCellWithPokeBallImage = (cellElement) => {
+  const _attachCellWithPokeBallImage = (cellElement) => {
     cellElement.innerHTML = "";
-    cellElement.appendChild(createRandomPokeBallImage());
+    cellElement.appendChild(_createRandomPokeBallImage());
     cellElement.setAttribute(
       "data-evolution-number",
       Number.parseInt(
@@ -73,7 +73,7 @@
     );
 
     backpackCells.forEach((eachCell) => {
-      attachCellWithPokeBallImage(eachCell);
+      _attachCellWithPokeBallImage(eachCell);
     });
   };
 
@@ -88,24 +88,24 @@
     window.setLevelStarted(Date.now());
   };
 
-  window.getBasePrice = (evolution_number) => {
+  const _getBasePrice = (evolution_number) => {
     return Math.pow(evolution_number, evolution_number);
   };
 
-  window.getRandomBuyerPrice = (evolutionNumber) => {
-    const basePrice = getBasePrice(evolutionNumber);
+  const _getRandomBuyerPrice = (evolutionNumber) => {
+    const basePrice = _getBasePrice(evolutionNumber);
 
     return 3 + basePrice + Math.floor(Math.random() * basePrice);
   };
 
-  window.getClickPrice = (pokeBallIndex) => {
+  const _getClickPrice = (pokeBallIndex) => {
     return Math.min(
       window.MAXIMUM_POKEBALL_OPEN_PRICE,
       (pokeBallIndex + 1) * 3
     );
   };
 
-  window.getRandomPokeBallIndex = () => {
+  const _getRandomPokeBallIndex = () => {
     if (window._encounterDuration > Date.now()) {
       return window.getRandomItem(window._encounterPokemonBallList);
     }
@@ -116,16 +116,16 @@
   window.addEventListeners = () => {
     document.addEventListener("keydown", (event) => {
       if (event.code === "KeyP") {
-        onPokeBallClick();
+        _onPokeBallClick();
       }
     });
   };
 
   window.attachContextMenus = () => {
-    const backpackCells = getAllBackpackCells();
+    const backpackCells = _getAllBackpackCells();
 
     backpackCells.forEach((eachBackpackCell) => {
-      attachBackpackContextMenu(eachBackpackCell);
+      _attachBackpackContextMenu(eachBackpackCell);
     });
 
     const buyerCells = Array.from(document.querySelectorAll("[id^=buyer-]"));
@@ -135,7 +135,7 @@
     });
   };
 
-  window.playBgm = () => {
+  const _playBgm = () => {
     const bgmElement = document.getElementById("pokemon-theme-bgm");
 
     if (!bgmElement.paused) {
@@ -156,7 +156,7 @@
     window.localStorage.setItem("current_lv", numberValue);
   };
 
-  window.updateLastUpdated = (lastUpdatedValue = Date.now()) => {
+  const _updateLastUpdated = (lastUpdatedValue = Date.now()) => {
     window.localStorage.setItem("last-updated", lastUpdatedValue);
   };
 
@@ -200,7 +200,7 @@
     window.setExpCountForNextLevel(window.expCountForNextLevel);
   };
 
-  window.getPoolByLevel = () => {
+  const _getPoolByLevel = () => {
     const totalSpeciesChainEvolution = Object.keys(
       window.pokemonSpeciesChain
     ).length;
@@ -214,12 +214,12 @@
     });
   };
 
-  window.getIncreasingChanceByLevel = (maxIncrease = 15) => {
+  const _getIncreasingChanceByLevel = (maxIncrease = 15) => {
     return Math.min(maxIncrease, Math.floor(window.currentLevel / 1.5));
   };
 
   const _getBackpackRandomPokemonId = (pokeBallIndex) => {
-    let pool = getPoolByLevel();
+    let pool = _getPoolByLevel();
 
     const poolByPokeBallIndex = pool.filter((eachEvolutionChainList) => {
       return eachEvolutionChainList.some(
@@ -270,7 +270,7 @@
     }
 
     if (
-      0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))
+      0 === Math.floor(Math.random() * (20 - _getIncreasingChanceByLevel(15)))
     ) {
       const buyerCellsPokemonId = _collectBuyerCellsPokemonId();
       const randomBuyerPokemonOverlapWithPool = buyerCellsPokemonId.filter(
@@ -288,7 +288,7 @@
     }
 
     if (
-      0 === Math.floor(Math.random() * (20 - getIncreasingChanceByLevel(15)))
+      0 === Math.floor(Math.random() * (20 - _getIncreasingChanceByLevel(15)))
     ) {
       const backpackCellsPokemonId = Array.from(
         document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
@@ -317,16 +317,6 @@
     };
   };
 
-  window.getChainStringFromChainDataArray = (chainDataList) => {
-    return chainDataList
-      .map((eachEvolutionName) =>
-        Array.isArray(eachEvolutionName)
-          ? eachEvolutionName.join("/")
-          : eachEvolutionName
-      )
-      .join(" > ");
-  };
-
   const _randomizeBackpackCell = (cellElement, pokeBallIndex) => {
     const { pokemonId } = _getBackpackRandomPokemonId(pokeBallIndex);
 
@@ -339,7 +329,7 @@
       pokemonSpeciesObject.evolution_chain_id
     );
 
-    window.setEvolutionChainIdsAndNames(cellElement);
+    _setEvolutionChainIdsAndNames(cellElement);
 
     cellElement.setAttribute(
       "data-display-name",
@@ -368,32 +358,32 @@
     currentGoldElement.innerText = `${window.currentGold}`;
   };
 
-  window.increaseCurrentGold = (goldIncrease) => {
+  const _increaseCurrentGold = (goldIncrease) => {
     window.setCurrentGold(window.currentGold + goldIncrease);
 
     updateCurrentGold();
 
-    window.updateLastUpdated();
+    _updateLastUpdated();
 
     if (goldIncrease > 0) {
-      publishHighestGold();
+      _publishHighestGold();
     }
   };
 
-  window.updateExpForNextLevelCount = (increaseValue) => {
+  const _updateExpForNextLevelCount = (increaseValue) => {
     window.setExpCountForNextLevel(
       (window.expCountForNextLevel || 0) +
         Math.floor(increaseValue * Math.max(1, window.currentLevel / 40))
     );
 
-    window.updateLastUpdated();
+    _updateLastUpdated();
 
     if (window.expCountForNextLevel < window.currentLevel) {
       updateExpCountForNextLevelElement();
       return;
     }
 
-    increaseCurrentGold(window.currentLevel * 5);
+    _increaseCurrentGold(window.currentLevel * 5);
 
     let excessValue = window.expCountForNextLevel - window.currentLevel;
 
@@ -406,17 +396,17 @@
 
     window.setExpCountForNextLevel(excessValue);
 
-    window.updateLastUpdated();
+    _updateLastUpdated();
 
     updateExpCountForNextLevelElement();
     updateCurrentLevel();
 
-    playIndexSound("level-up-sound");
+    _playIndexSound("level-up-sound");
 
     window.levelUpSoundPriorityTimeout = Date.now() + 2000;
 
-    publishHighestLevel();
-    publishFastestLevel();
+    _publishHighestLevel();
+    _publishFastestLevel();
 
     window.setLevelStarted(Date.now());
 
@@ -461,7 +451,7 @@
     window.localStorage.setItem("level-started", timestamp);
   };
 
-  window.clearElementAttributesByPrefix = (cellElement, attributePrefix) => {
+  const _clearElementAttributesByPrefix = (cellElement, attributePrefix) => {
     const attributeNames = Array.from(cellElement.attributes).map(
       ({ name }) => name
     );
@@ -473,7 +463,7 @@
     });
   };
 
-  window.getNextEvolutions = (evolutionChainId, pokemonId) => {
+  const _getNextEvolutions = (evolutionChainId, pokemonId) => {
     const evolutionChainList =
       window.pokemonSpeciesChain[`evolution_chain_id-${evolutionChainId}`];
 
@@ -481,11 +471,19 @@
       ({ evolves_from_species_id }) =>
         evolves_from_species_id.toString() === pokemonId.toString()
     );
-  };
+	};
+	
+	const _countNextEvolutions = (evolutionChainId, pokemonId) => {
+		return _getNextEvolutions(evolutionChainId, pokemonId).length;
+	};
 
-  window.hasNextEvolutions = (evolutionChainId, pokemonId) => {
-    return !!window.getNextEvolutions(evolutionChainId, pokemonId).length;
-  };
+	const _hasMultipleEvolutions = (evolutionChainId, pokemonId) => {
+		return _getNextEvolutions(evolutionChainId, pokemonId).length > 1;
+	};
+
+  const _hasNextEvolutions = (evolutionChainId, pokemonId) => {
+    return !!_countNextEvolutions(evolutionChainId, pokemonId);
+	};
 
   const _upgradeCell = (cellElement) => {
     const currentEvolutionNumber = Number.parseInt(
@@ -511,12 +509,12 @@
     );
 
     if (!nextEvolutions.length) {
-      setSelectedCell(window.selectedCellElement);
+      _setSelectedCell(window.selectedCellElement);
       return;
     }
 
-    clearElementAttributesByPrefix(cellElement, "data-identifier-");
-    clearElementAttributesByPrefix(
+    _clearElementAttributesByPrefix(cellElement, "data-identifier-");
+    _clearElementAttributesByPrefix(
       window.selectedCellElement,
       "data-identifier-"
 		);
@@ -539,18 +537,18 @@
 
     _clearSelectedCell();
 
-    setSelectedCell(cellElement);
+    _setSelectedCell(cellElement);
 
-    updateExpForNextLevelCount(currentEvolutionNumber);
+    _updateExpForNextLevelCount(currentEvolutionNumber);
 
-    playIndexSound("plus-sound");
+    _playIndexSound("plus-sound");
   };
 
-  window.getPokemonImageUrl = (pokemonId) => {
+  const _getPokemonImageUrl = (pokemonId) => {
     return `.	/images/bit/${pokemonId}.png`;
   };
 
-  window.updateDisplayCell = (
+  const _updateDisplayCell = (
     cellElement,
     pokemonId,
     pokemonDisplayName,
@@ -558,7 +556,7 @@
   ) => {
     cellElement.innerHTML = "";
 
-    const imageUrl = getPokemonImageUrl(pokemonId);
+    const imageUrl = _getPokemonImageUrl(pokemonId);
     let img = document.createElement("img");
     img.src = imageUrl;
     img.setAttribute("draggable", "false");
@@ -591,7 +589,7 @@
     cellElement.appendChild(textContainerElement);
   };
 
-  window.setFloatingImageCoordinates = ({ clientX, clientY }) => {
+  const _setFloatingImageCoordinates = ({ clientX, clientY }) => {
     const floatingImageElement = document.getElementById("floating-image");
     floatingImageElement.style.left = `${
       window._recordedMouseMoveEvent.clientX - 10
@@ -623,20 +621,20 @@
       }
 
       window._recordedMouseMoveEvent.clientX >= 0 &&
-        setFloatingImageCoordinates(window._recordedMouseMoveEvent);
+        _setFloatingImageCoordinates(window._recordedMouseMoveEvent);
     });
   };
 
-  window.setFloatingImage = (pokemonIdString) => {
+  const _setFloatingImage = (pokemonIdString) => {
     const floatingImage = document.getElementById("floating-image");
     floatingImage.setAttribute("src", `./images/bit/${pokemonIdString}.png`);
 
     const mouseMoveEvent = window._recordedMouseMoveEvent;
 
-    setFloatingImageCoordinates(mouseMoveEvent);
+    _setFloatingImageCoordinates(mouseMoveEvent);
   };
 
-  window.getSelectedCellBorderStyle = (displayNameInCell, displayName) => {
+  const _getSelectedCellBorderStyle = (displayNameInCell, displayName) => {
     if (displayNameInCell !== displayName) {
       return "";
     }
@@ -644,7 +642,7 @@
     return ` evolution-chain-border-current`;
   };
 
-  window.setEvolutionChain = (cellElement) => {
+  const _setEvolutionChain = (cellElement) => {
     const chainIndex = Number.parseInt(
       cellElement.getAttribute("data-chain-index"),
       10
@@ -663,7 +661,7 @@
       const eachDisplayName =
         window.pokemonNames[`pokemon-id-${eachEvolutionSpeciesId}`];
       collectEach.push(
-        `<div title="${eachDisplayName}" class="evolution-chain-image-container${getSelectedCellBorderStyle(
+        `<div title="${eachDisplayName}" class="evolution-chain-image-container${_getSelectedCellBorderStyle(
           displayNameInCell,
           eachDisplayName
         )}"><img src="./images/bit/${eachEvolutionSpeciesId}.png" /></div>`
@@ -673,24 +671,24 @@
     document.getElementById("evolution-chain").innerHTML = collectEach.join("");
   };
 
-  window.setSelectedCell = (cellElement) => {
+  const _setSelectedCell = (cellElement) => {
     _clearSelectedCell();
 
     window.selectedCellElement = cellElement;
     cellElement.classList.add("selected-cell");
 
-    setEvolutionChain(cellElement);
+    _setEvolutionChain(cellElement);
 
     document
       .getElementById("left-box-evolution-chain")
       .setAttribute("data-show-that", "show");
 
     if (!isMobile()) {
-      setFloatingImage(cellElement.getAttribute("data-pokemon-id"));
+      _setFloatingImage(cellElement.getAttribute("data-pokemon-id"));
     }
 
     if (
-      window.hasNextEvolutions(
+      _hasNextEvolutions(
         cellElement.getAttribute("data-evolution-chain-id"),
         cellElement.getAttribute("data-pokemon-id")
       )
@@ -705,11 +703,11 @@
       );
     }
 
-    playIndexSound("click-sound");
-    playBgm();
+    _playIndexSound("click-sound");
+    _playBgm();
   };
 
-  window.sellBackpackCell = (cellElement) => {
+  const _sellBackpackCell = (cellElement) => {
     const evolutionNumber = Number.parseInt(
       cellElement.getAttribute("data-evolution-number"),
       10
@@ -721,13 +719,13 @@
     cellElement.classList.remove("selected-cell");
     _clearSelectedCell();
 
-    increaseCurrentGold(getBasePrice(evolutionNumber));
+    _increaseCurrentGold(_getBasePrice(evolutionNumber));
 
-    playIndexSound("coin-sound");
+    _playIndexSound("coin-sound");
 	};
 	
 	const _willAddBuff = (evolutionChainId, pokemonId) => {
-		const pokemonHasNextEvolutions = hasNextEvolutions(
+		const pokemonHasNextEvolutions = _hasNextEvolutions(
 			evolutionChainId,
 			pokemonId
 		);
@@ -793,7 +791,7 @@
     }, 30000);
   };
 
-  window.attachBackpackContextMenu = (cellElement) => {
+  const _attachBackpackContextMenu = (cellElement) => {
     const onBackpackContextMenu = (event) => {
       event.preventDefault();
 
@@ -801,7 +799,7 @@
         return;
       }
 
-      sellBackpackCell(cellElement);
+      _sellBackpackCell(cellElement);
       _clearBackpackCellAndCreateRandomPokeball(cellElement);
     };
 
@@ -839,7 +837,7 @@
 		const pokemonDisplayName = window.pokemonNames[`pokemon-id-${pokemonId}`];
 		cellElement.setAttribute(`data-display-name`, pokemonDisplayName);
 
-		const sellValue = getBasePrice(pokemonSpeciesObject.evolution_number);
+		const sellValue = _getBasePrice(pokemonSpeciesObject.evolution_number);
 		
 		let titleString = `${cellElement.getAttribute('data-display-name')}#${pokemonId}\n`;
 		titleString += `Type(s): ${thisPokemonTypeNames.join(', ')}\n`;
@@ -868,7 +866,7 @@
 			window.localStorage.setItem(discoveredKey, Date.now());
 		}
 
-		updateDisplayCell(cellElement, pokemonId, pokemonDisplayName);
+		_updateDisplayCell(cellElement, pokemonId, pokemonDisplayName);
 		
 		_setBackpackCellBorder(cellElement, thisPokemonTypeNames);
 
@@ -880,17 +878,17 @@
 			pokemonSpeciesObject.evolution_number
 		);
 
-		cellElement.onclick = () => onBackpackMouseDown(cellElement);
-		cellElement.ondragstart = () => onBackpackMouseDown(cellElement);
+		cellElement.onclick = () => _onBackpackMouseDown(cellElement);
+		cellElement.ondragstart = () => _onBackpackMouseDown(cellElement);
 	};
 
 	const _decorateBackpackCell = (cellElement, pokemonId) => {
 		_updateBackpackCell(cellElement, pokemonId);
 
-    publishHighestBackpack();
+    _publishHighestBackpack();
   };
 
-  window.onBackpackMouseDown = (cellElement) => {
+  const _onBackpackMouseDown = (cellElement) => {
     const thisDataIdentifier = cellElement.getAttribute("data-identifier");
     if (null === thisDataIdentifier) {
       return;
@@ -910,22 +908,22 @@
       }
     }
 
-    setSelectedCell(cellElement);
+    _setSelectedCell(cellElement);
   };
 
-  window.getEmptyBackpackCell = () => {
-    const everyCells = getAllBackpackCells();
+  const _getEmptyBackpackCell = () => {
+    const everyCells = _getAllBackpackCells();
 
     return everyCells.findIndex(
       (eachCell) => null === eachCell.getAttribute("data-display-name")
     );
   };
 
-  window.getAllBackpackCells = () => {
+  const _getAllBackpackCells = () => {
     return Array.from(document.querySelectorAll("[id^=backpack-cell-]"));
   };
 
-  window.playIndexSound = (audioId) => {
+  const _playIndexSound = (audioId) => {
     const volumeMap = {
       ["pokeball-open-sound"]: 0.05,
       ["click-sound"]: 0.25,
@@ -944,8 +942,8 @@
     window.playSound(audioId, volume);
   };
 
-  window.onPokeBallClick = () => {
-    let indexWithoutDisplayName = getEmptyBackpackCell();
+  const _onPokeBallClick = () => {
+    let indexWithoutDisplayName = _getEmptyBackpackCell();
 
     if (
       "number" === typeof indexWithoutDisplayName &&
@@ -961,7 +959,7 @@
           1
       );
 
-      playIndexSound("pokeball-open-sound");
+      _playIndexSound("pokeball-open-sound");
     }
 
     _clearSelectedCell();
@@ -980,20 +978,12 @@
       return;
     }
 
-    increaseCurrentGold(-dataClickPrice);
+    _increaseCurrentGold(-dataClickPrice);
 
     const parentElement = imgElement.parentElement;
     _randomizeBackpackCell(parentElement, pokeBallIndex);
     // setSelectedCell(parentElement);
-    playIndexSound("pokeball-open-sound");
-  };
-
-  window.getEvolutionIndexByChainString = (pokemonDisplayName, chainString) => {
-    return chainString
-      .split(" > ")
-      .findIndex((eachItem) =>
-        eachItem.split("/").includes(pokemonDisplayName)
-      );
+    _playIndexSound("pokeball-open-sound");
   };
 
   const _getOpenedBackpackCells = () => {
@@ -1100,7 +1090,7 @@
       `[id^=backpack-cell-][data-pokemon-id="${tentativeRandomPokemonId}"]`
     );
 
-    const pokemonNextEvolutions = window.getNextEvolutions(
+    const pokemonNextEvolutions = _getNextEvolutions(
       randomBackpackCellElement.getAttribute("data-evolution-chain-id"),
       tentativeRandomPokemonId
     );
@@ -1124,7 +1114,7 @@
   };
 
 	const _getRandomPokemonIdFromPool = () => {
-    const poolByLevel = window.getPoolByLevel();
+    const poolByLevel = _getPoolByLevel();
 
     const randomChainList = window.getRandomItem(poolByLevel);
 
@@ -1180,16 +1170,20 @@
 
     const evolutionNumber = pokemonSpeciesObject.evolution_number;
 
-    const finalSellValue = getRandomBuyerPrice(evolutionNumber);
-
-    cellElement.setAttribute("data-buyer-sell-value", finalSellValue);
+		let buyerSellValue = _getRandomBuyerPrice(evolutionNumber);
+		
+		const nextEvolutionsCount = _countNextEvolutions(pokemonSpeciesObject.evolution_chain_id, randomPokemonId);
 
     cellElement.setAttribute(
       "data-evolution-chain-id",
       pokemonSpeciesObject.evolution_chain_id
-    );
+		);
 
-    setEvolutionChainIdsAndNames(cellElement);
+		const finalBuyerSellValue = buyerSellValue * Math.max(1, nextEvolutionsCount);
+
+    cellElement.setAttribute("data-buyer-sell-value", finalBuyerSellValue);
+
+    _setEvolutionChainIdsAndNames(cellElement);
 
     cellElement.setAttribute(
       "data-evolution-number",
@@ -1318,14 +1312,14 @@
   const _clearBackpackCellAndCreateRandomPokeball = (cellElement) => {
     cellElement.classList.remove("selected-cell");
     cellElement.removeAttribute("title");
-    clearElementAttributesByPrefix(cellElement, "data-");
+    _clearElementAttributesByPrefix(cellElement, "data-");
 
     cellElement.innerHTML = "";
 
-    attachCellWithPokeBallImage(cellElement);
+    _attachCellWithPokeBallImage(cellElement);
   };
 
-  window.audioElementCriesDeleteInterval = () => {
+  window.initializeAudioElementCriesDeleteInterval = () => {
     window._deleteCriesInterval && clearInterval(window._deleteCriesInterval);
     window._deleteCriesInterval = setInterval(() => {
       const allCryElements = Array.from(
@@ -1390,7 +1384,7 @@
   const _playCry = (pokemonIdentifier) => {
     const audioElement = _createOrUpdateCryElement(pokemonIdentifier);
 
-    playIndexSound(audioElement.id);
+    _playIndexSound(audioElement.id);
   };
 
   const _attachBuyerContextMenu = (cellElement) => {
@@ -1411,7 +1405,7 @@
 
       // randomizeBuyerCell(cellElement);
       // cellElement.removeAttribute("data-display-buyer-randomize-button");
-			clearElementAttributesByPrefix(cellElement, "data-");
+			_clearElementAttributesByPrefix(cellElement, "data-");
 			
 			cellElement.removeAttribute("title");
 			
@@ -1419,13 +1413,13 @@
 
       cellElement.innerHTML = '<img src="./images/transparent-picture.png" />';
 
-			increaseCurrentGold(-window.BUYER_SHUFFLE_GOLD_DECREASE);
+			_increaseCurrentGold(-window.BUYER_SHUFFLE_GOLD_DECREASE);
 
       cellElement._nextRandomForThisCell = Date.now() + 6000;
 
       _restartBuyerRandomizeTimeout(cellElement);
 
-      playIndexSound("shuffle-sound");
+      _playIndexSound("shuffle-sound");
     };
 
     cellElement.addEventListener("contextmenu", onBuyerContextMenu, true);
@@ -1454,10 +1448,10 @@
 
     cellElement.removeAttribute("title");
 
-		clearElementAttributesByPrefix(cellElement, "data-");
+		_clearElementAttributesByPrefix(cellElement, "data-");
 		_resetBorderColor(cellElement);
 
-    increaseCurrentGold(goldIncreaseValue);
+    _increaseCurrentGold(goldIncreaseValue);
 
     reanimateElement(cellElement);
 
@@ -1470,7 +1464,7 @@
       10
     );
 
-    updateExpForNextLevelCount(evolutionNumber);
+    _updateExpForNextLevelCount(evolutionNumber);
 
     _doVibrate();
 
@@ -1481,7 +1475,7 @@
 		_resetBorderColor(window.selectedCellElement);
     _clearSelectedCell();
 
-    playIndexSound("gold-sound");
+    _playIndexSound("gold-sound");
 
     _playCry(thisIdentifier);
   };
@@ -1499,7 +1493,7 @@
   };
 
   const _playEncounter = () => {
-    playIndexSound("pokemon-encounter");
+    _playIndexSound("pokemon-encounter");
 
     clearTimeout(window._showStreakAnimation);
     document.getElementById("spinning-box").classList.remove("display-none");
@@ -1508,7 +1502,7 @@
     }, 4000);
   };
 
-  window.setEvolutionChainIdsAndNames = (cellElement) => {
+  const _setEvolutionChainIdsAndNames = (cellElement) => {
     const evolutionChainId = cellElement.getAttribute(
       "data-evolution-chain-id"
     );
@@ -1545,7 +1539,7 @@
 		
 		_setBackpackCellBorder(cellElement, thisPokemonTypeNames);
 
-    updateDisplayCell(cellElement, pokemonId, pokemonDisplayName, true);
+    _updateDisplayCell(cellElement, pokemonId, pokemonDisplayName, true);
 
     cellElement.setAttribute(
       "title",
@@ -1561,7 +1555,7 @@
     cellElement.ondragstart = () => _onBuyerMouseDown(cellElement);
   };
 
-  window.publishHighestLevel = async () => {
+  const _publishHighestLevel = async () => {
     const response = await fetch(
       `https://pokemerge-endpoint.vercel.app/api/highest-level/${window.sessionId}`,
       {
@@ -1579,7 +1573,7 @@
     );
   };
 
-  window.publishHighestBackpack = async () => {
+  const _publishHighestBackpack = async () => {
     const allDiscoveredLocalStorageKeys = Object.keys({
       ...window.localStorage,
     }).filter((eachKey) => /^discovered-/.test(eachKey));
@@ -1601,11 +1595,11 @@
     );
   };
 
-  window.publishHighestGold = async () => {
+  const _publishHighestGold = async () => {
     if (window.highestGoldAttained > window.currentGold) {
       clearTimeout(window.highestGoldPublishTimeout);
       window.highestGoldPublishTimeout = setTimeout(
-        window.postHighestGold,
+        _postHighestGold,
         5000
       );
       return;
@@ -1613,10 +1607,10 @@
 
     window.highestGoldAttained = window.currentGold;
 
-    await window.postHighestGold();
+    await _postHighestGold();
   };
 
-  window.postHighestGold = async () => {
+  const _postHighestGold = async () => {
     clearTimeout(window.highestGoldPublishTimeout);
 
     const response = await fetch(
@@ -1636,7 +1630,7 @@
     );
   };
 
-  window.publishFastestLevel = async () => {
+  const _publishFastestLevel = async () => {
     const response = await fetch(
       `https://pokemerge-endpoint.vercel.app/api/fastest-level/${window.sessionId}`,
       {
@@ -1765,7 +1759,7 @@
       return;
     }
 
-    window.updateLastUpdated(lastUpdated);
+    _updateLastUpdated(lastUpdated);
 
     if ("number" === typeof level) {
       window.setCurrentLevel(level);

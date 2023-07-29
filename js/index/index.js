@@ -29,7 +29,7 @@
 
     window.resetBuyers();
 
-    window.audioElementCriesDeleteInterval();
+    window.initializeAudioElementCriesDeleteInterval();
 
     window.addEventListeners();
 
