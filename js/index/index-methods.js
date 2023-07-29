@@ -1071,15 +1071,6 @@
     let tentativePokemonDisplayName =
       window.pokemonNames[`pokemon-id-${tentativeRandomPokemonId}`];
 
-    const thatElement = Array.from(
-      document.querySelectorAll("[id^=backpack-cell-]")
-    ).find(
-      (eachCell) =>
-        eachCell &&
-        tentativePokemonDisplayName ===
-          eachCell.getAttribute("data-display-name")
-    );
-
     const randomBackpackCellElement = document.querySelector(
       `[id^=backpack-cell-][data-pokemon-id="${tentativeRandomPokemonId}"]`
     );
@@ -1090,14 +1081,15 @@
     );
 
     if (numberOfDuplicates > 1 && pokemonNextEvolutions.length) {
-      const nextRandomEvolutionPokemonId = window.getRandomItem(
+			const { id: nextRandomEvolutionPokemonId } = window.getRandomItem(
         pokemonNextEvolutions
-      ).id;
+			);
+			
       if (
         allBuyersPokemonId.filter(
           (eachBuyerPokemonId) =>
             nextRandomEvolutionPokemonId === eachBuyerPokemonId
-        ).length <= 1
+        ).length <= Math.floor(Math.random() * 2)
       ) {
         tentativeRandomPokemonId = nextRandomEvolutionPokemonId;
       }
