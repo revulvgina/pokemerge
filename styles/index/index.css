@@ -1,5 +1,5 @@
 :root {
-	--grid-cell-size: 10vmin;
+	--grid-cell-size: 12.5vmin;
 }
 
 body {
@@ -250,13 +250,13 @@ div.buyer-refresh {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr;
 	gap: 0.5em;
 }
 
 .backpack-grid {
-	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 .backpack-grid>div,
@@ -610,7 +610,8 @@ img#backpack-icon[src="./images/master-ball.png"] {
 }
 
 .grid-cell.highlight-border {
-	border-color: rgba(var(--color-f7df6f), 0.9) !important;
+	/* border-color: rgba(var(--color-f7df6f), 0.9) !important; */
+	animation: slow-pulse 0.5s infinite;
 }
 
 #floating-image {
@@ -724,8 +725,8 @@ img {
 
 @media (max-width: 1024px) {
 	:root {
-		font-size: 10px;
-		--grid-cell-size: 10.5vmin;
+		font-size: 15px;
+		--grid-cell-size: 13vmin;
 	}
 
 	.content {
@@ -744,7 +745,7 @@ img {
 /* IPAD MINI */
 @media (max-width: 768px) {
 	:root {
-		--grid-cell-size: 14.75vmin;
+		--grid-cell-size: 17.5vmin;
 	}
 
 	.grid-container {
@@ -752,10 +753,11 @@ img {
 	}
 }
 
+/* SURFACE DUO */
 @media (max-width: 540px) {
 	:root {
-		font-size: 8px;
-		--grid-cell-size: 15.5vmin;
+		font-size: 12px;
+		--grid-cell-size: 18vmin;
 	}
 
 	.content {
@@ -763,11 +765,11 @@ img {
 	}
 }
 
-/* GALAXY SIII */
-@media (max-width: 360px) {
+/* PIXEL 5 */
+@media (max-width: 393px) {
 	:root {
-		font-size: 8px;
-		--grid-cell-size: 17vmin;
+		font-size: 10px;
+		--grid-cell-size: 21.5vmin;
 	}
 
 	.grid-container {
@@ -775,30 +777,46 @@ img {
 	}
 }
 
-@media (width: 1024px) and (height: 1366px) {
+/* GALAXY SIII */
+@media (max-width: 360px) {
 	:root {
-		font-size: 20px;
-		--grid-cell-size: 15.8vmin;
+		font-size: 10px;
+		--grid-cell-size: 21.5vmin;
+	}
+
+	.grid-container {
+		gap: 0.1em;
 	}
 }
 
-@media (width: 820px) and (height: 1180px) {
+/* IPAD PRO */
+@media (width: 1024px) and (height: 1366px) {
 	:root {
-		font-size: 16px;
+		font-size: 20px;
 		--grid-cell-size: 17vmin;
 	}
 }
 
-@media (width: 768px) and (height: 1024px) {
+/* IPAD AIR */
+@media (width: 820px) and (height: 1180px) {
 	:root {
-		font-size: 14px;
-		--grid-cell-size: 15.5vmin;
+		font-size: 16px;
+		--grid-cell-size: 21vmin;
 	}
 }
 
+/* IPAD MINI */
+@media (width: 768px) and (height: 1024px) {
+	:root {
+		font-size: 14px;
+		--grid-cell-size: 19vmin;
+	}
+}
+
+/* IPHONE SE */
 @media (width: 375px) and (height: 667px) {
 	:root {
-		font-size: 8px;
-		--grid-cell-size: 16vmin;
+		font-size: 10px;
+		--grid-cell-size: 21vmin;
 	}
 }

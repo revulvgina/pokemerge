@@ -8,7 +8,7 @@
   window.createBuyerCells = () => {
     const buyersGrid = document.getElementById("buyers-grid");
 
-    for (let i = 0; i < 5; i += 1) {
+    for (let i = 0; i < window.TOTAL_BUYERS; i += 1) {
       const eachBuyerCell = document.createElement("div");
       eachBuyerCell.id = `buyer-${i}`;
       eachBuyerCell.classList.add("no-highlight", "grid-cell");
@@ -20,7 +20,7 @@
   window.createBackpackCells = () => {
     const backpackGrid = document.getElementById("backpack-grid");
 
-    for (let i = 0; i < 25; i += 1) {
+    for (let i = 0; i < 16; i += 1) {
       const eachBackpackCell = document.createElement("div");
       eachBackpackCell.id = `backpack-cell-${i}`;
       eachBackpackCell.classList.add("backpack-0", "no-highlight", "grid-cell");
@@ -1011,16 +1011,16 @@
       eachBackpackCell.getAttribute("data-pokemon-id")
     );
 
-    const duplicateCountOfEachPokemonIds = {};
+    const duplicateCountOfEachBackpackPokemonIds = {};
     allBackpackPokemonIds.forEach((eachPokemonId) => {
-      duplicateCountOfEachPokemonIds[eachPokemonId] =
-        (duplicateCountOfEachPokemonIds[eachPokemonId] || 0) + 1;
+      duplicateCountOfEachBackpackPokemonIds[eachPokemonId] =
+        (duplicateCountOfEachBackpackPokemonIds[eachPokemonId] || 0) + 1;
     });
 
     const randomDuplicateCount = Math.floor(Math.random() * 2);
 
-    const pokemonIdsWithGreaterThanDuplicateNumber = Object.entries(
-      duplicateCountOfEachPokemonIds
+    const backpackPokemonIdsWithGreaterThanDuplicateNumber = Object.entries(
+      duplicateCountOfEachBackpackPokemonIds
     )
       .filter(
         ([_, backPokemonIdDuplicateCount]) =>
@@ -1029,9 +1029,9 @@
       .map(([backpackPokemonId, _]) => backpackPokemonId);
 
     const backpackPokemonIdsToFilter =
-      pokemonIdsWithGreaterThanDuplicateNumber.length
-        ? pokemonIdsWithGreaterThanDuplicateNumber
-        : Object.keys(duplicateCountOfEachPokemonIds);
+      backpackPokemonIdsWithGreaterThanDuplicateNumber.length
+        ? backpackPokemonIdsWithGreaterThanDuplicateNumber
+        : Object.keys(duplicateCountOfEachBackpackPokemonIds);
 
     const allFilteredBackpackPokemonIds = [
       ...backpackPokemonIdsToFilter,
@@ -1069,7 +1069,7 @@
     );
 
     const numberOfDuplicates =
-      duplicateCountOfEachPokemonIds[tentativeRandomPokemonId];
+      duplicateCountOfEachBackpackPokemonIds[tentativeRandomPokemonId];
 
     let tentativePokemonDisplayName =
       window.pokemonNames[`pokemon-id-${tentativeRandomPokemonId}`];
@@ -1234,7 +1234,7 @@
 		let isBuyersUpdated = false;
     window._buyerInterval && clearInterval(window._buyerInterval);
     window._buyerInterval = setInterval(() => {
-      for (let i = 0; i < 5; i += 1) {
+      for (let i = 0; i < window.TOTAL_BUYERS; i += 1) {
         const cellElement = document.getElementById(`buyer-${i}`);
 
         if (null !== cellElement.getAttribute("data-identifier")) {
