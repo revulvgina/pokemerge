@@ -32,4 +32,6 @@
 	window.TYPE_BUFF_FILTER_RATE = 3;
 
 	window.TOTAL_BUYERS = 4;
+
+	window.ENCOUNTER_DURATION_MILLISECONDS = 30000;
 })();

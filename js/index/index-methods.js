@@ -31,7 +31,7 @@
     window.temporaryTypeBuffs = [];
   };
 
-  window.adjustEncounterDisplay = () => {
+  const _adjustEncounterDisplay = () => {
     const { offsetWidth, offsetHeight } =
       document.querySelector("div.backpack-grid");
     document.querySelector("#spinning-box").style.width = `${offsetWidth}px`;
@@ -327,7 +327,7 @@
       .join(" > ");
   };
 
-  window.randomizeBackpackCell = (cellElement, pokeBallIndex) => {
+  const _randomizeBackpackCell = (cellElement, pokeBallIndex) => {
     const { pokemonId } = _getBackpackRandomPokemonId(pokeBallIndex);
 
     const pokemonSpeciesObject =
@@ -421,25 +421,35 @@
     window.setLevelStarted(Date.now());
 
     if (0 === window.currentLevel % 5) {
-      adjustEncounterDisplay();
-      playEncounter();
-      window._encounterDuration = Date.now() + 30000;
-      document
-        .getElementById("encounter-container")
-        .classList.remove("opacity-zero");
-      document
-        .getElementById("backpack-icon")
-        .setAttribute("src", "./images/master-ball.png");
-      window._encounterDurationNotification = setTimeout(() => {
-        document
-          .getElementById("encounter-container")
-          .classList.add("opacity-zero");
-        document
-          .getElementById("backpack-icon")
-          .setAttribute("src", "./images/backpack.png");
-      }, 30000);
+			_startEncounter();
     }
-  };
+	};
+	
+	const _startEncounter = () => {
+		_adjustEncounterDisplay();
+
+		_playEncounter();
+		
+		window._encounterDuration = Date.now() + window.ENCOUNTER_DURATION_MILLISECONDS;
+
+		document
+			.getElementById("encounter-container")
+			.classList.remove("opacity-zero");
+		
+		document
+			.getElementById("backpack-icon")
+			.setAttribute("src", "./images/master-ball.png");
+		
+		window._encounterDurationNotification = setTimeout(() => {
+			document
+				.getElementById("encounter-container")
+				.classList.add("opacity-zero");
+			
+			document
+				.getElementById("backpack-icon")
+				.setAttribute("src", "./images/backpack.png");
+		}, window.ENCOUNTER_DURATION_MILLISECONDS);
+	};
 
   window.setExpCountForNextLevel = (thatValue, isRestored = false) => {
     window.expCountForNextLevel = thatValue;
@@ -848,6 +858,8 @@
 			return;
 		}
 
+		cellElement.setAttribute('data-generated-date', Date.now());
+
 		const pokemonIdentifier = pokemonSpeciesObject.identifier;
 
 		const discoveredKey = `discovered-${pokemonIdentifier}`;
@@ -942,7 +954,7 @@
         `backpack-cell-${indexWithoutDisplayName}`
       );
 
-      randomizeBackpackCell(
+      _randomizeBackpackCell(
         cellElement,
         Number.parseInt(cellElement.getAttribute("data-evolution-number"), 10) -
           1
@@ -970,7 +982,7 @@
     increaseCurrentGold(-dataClickPrice);
 
     const parentElement = imgElement.parentElement;
-    randomizeBackpackCell(parentElement, pokeBallIndex);
+    _randomizeBackpackCell(parentElement, pokeBallIndex);
     // setSelectedCell(parentElement);
     playIndexSound("pokeball-open-sound");
   };
@@ -1002,11 +1014,23 @@
   };
 
 	const _getRandomBuyerPickFromBackpack = (cellElement) => {
+		const nowDate = Date.now();
+
     const allBackpackPokemonIds = Array.from(
-      document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id]")
-    ).map((eachBackpackCell) =>
-      eachBackpackCell.getAttribute("data-pokemon-id")
-    );
+      document.querySelectorAll("[id^=backpack-cell-][data-pokemon-id][data-generated-date]")
+		)
+			.filter((eachBackpackCell) => {
+				const generatedDate = Number.parseInt(eachBackpackCell.getAttribute('data-generated-date'), 10);
+
+				return nowDate > (generatedDate + 3000);
+			})
+			.map((eachBackpackCell) =>
+				eachBackpackCell.getAttribute("data-pokemon-id")
+		);
+		
+		if (!allBackpackPokemonIds.length) {
+			return undefined;
+		}
 
     const duplicateCountOfEachBackpackPokemonIds = {};
     allBackpackPokemonIds.forEach((eachPokemonId) => {
@@ -1058,7 +1082,7 @@
       );
 
     if (0 === filteredBackpackPokemonIdsWithBuyerDuplicatePokemonIds.length) {
-      return;
+      return undefined;
     }
 
     let tentativeRandomPokemonId = window.getRandomItem(
@@ -1469,7 +1493,7 @@
     }
   };
 
-  window.playEncounter = () => {
+  const _playEncounter = () => {
     playIndexSound("pokemon-encounter");
 
     clearTimeout(window._showStreakAnimation);

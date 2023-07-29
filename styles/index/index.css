@@ -209,9 +209,9 @@ div.buyer-refresh {
 #encounter-container {
 	color: rgb(var(--color-ffffee));
 	width: 60%;
-	padding: 0 10px;
+	padding: 0;
 	text-align: right;
-	font-size: 60%;
+	font-size: 50%;
 	margin-left: auto;
 }
 
@@ -594,6 +594,9 @@ img[src] {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	min-height: 2.1%;
+	height: 2.1%;
+	max-height: 2.1%;
 }
 
 .backpack-header>img {
