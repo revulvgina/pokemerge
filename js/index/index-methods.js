@@ -696,7 +696,8 @@
       )
     ) {
       _highlightBackpackAndBuyerSameIdentifier(
-        cellElement.getAttribute("data-identifier")
+				cellElement.getAttribute("data-identifier"),
+				cellElement.id
       );
     } else {
       _highlightBuyerSameIdentifier(
@@ -1296,10 +1297,14 @@
       .removeAttribute("data-show-that");
   };
 
-  const _highlightBackpackAndBuyerSameIdentifier = (dataIdentifierName) => {
-    Array.from(
-      document.querySelectorAll(`[data-identifier-${dataIdentifierName}]`)
-    ).forEach((eachItem) => eachItem.classList.add("highlight-border"));
+  const _highlightBackpackAndBuyerSameIdentifier = (dataIdentifierName, excludeId) => {
+		Array.from(
+			document.querySelectorAll(`[data-identifier-${dataIdentifierName}]`)
+		).forEach((eachGridCell) => {
+			if (excludeId && eachGridCell.id === excludeId) { return; }
+
+			eachGridCell.classList.add("highlight-border");
+		});
   };
 
   const _highlightBuyerSameIdentifier = (dataIdentifierName) => {
@@ -1792,15 +1797,15 @@
     console.info("Session synced.");
   };
 
-  window.showQr = () => {
-    document
-      .querySelector("div.qr-code-container")
-      .classList.remove("display-none");
-  };
-
-  window.hideQr = () => {
-    document
-      .querySelector("div.qr-code-container")
-      .classList.add("display-none");
-  };
+	window.showQr = () => {
+		document
+			.querySelector("div.qr-code-container")
+			.classList.remove("display-none");
+	};
+	
+	window.hideQr = () => {
+		document
+			.querySelector("div.qr-code-container")
+			.classList.add("display-none");
+	};
 })();

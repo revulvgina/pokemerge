@@ -129,6 +129,18 @@ window.initializeNickname = async () => {
   console.info(`Welcome back ${nickname}.`);
 };
 
+window.toggleFullScreenFromSettings = () => {
+	const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+	const isOnHomepage = window.matchMedia('(display-mode: fullscreen)').matches;
+	
+	isInstalled || isOnHomepage ? document.exitFullscreen() : document.body.requestFullscreen();
+
+	setTimeout(() => {
+		document.getElementById("settings-dialog").close();
+		document.getElementById("settings-dialog").showModal();
+	}, 100);
+};
+
 const _saveCurrentSession = async () => {
   if (
     window.shareSessionContainerElement.classList.contains("is-sharing-session")

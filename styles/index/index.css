@@ -95,23 +95,6 @@ div.buyer-refresh {
 	width: 25px;
 }
 
-.header-qr {
-	width: 25px;
-	position: absolute;
-	right: 70px;
-}
-
-.header-full-screen {
-	width: 25px;
-	position: absolute;
-	right: 110px;
-}
-
-.header-full-screen>img {
-	width: 25px;
-	height: 25px;
-}
-
 #exp-container {
 	border: 1px solid rgb(var(--color-3a3a3a));
 	padding: 0.3%;
@@ -137,6 +120,7 @@ div.buyer-refresh {
 	font-size: 80%;
 	width: 100%;
 	bottom: 5%;
+	transform: translateY(10%);
 }
 
 #settings {
@@ -493,6 +477,24 @@ img[src="./images/master-ball.png"]:not(#backpack-icon) {
 	}
 }
 
+@keyframes yellow-red-border-pulse {
+	0% {
+		border-color: #ffcb05;
+	}
+
+	25% {
+		border-color: #ff6600;
+	}
+
+	50% {
+		border-color: #ff0000;
+	}
+
+	25% {
+		border-color: #ff6600;
+	}
+}
+
 @keyframes bar-pulse {
 	25% {
 		box-shadow: 0 0 4px #eeff00;
@@ -612,9 +614,9 @@ img#backpack-icon[src="./images/master-ball.png"] {
 	background-color: rgba(var(--color-f7df6f), 0.9) !important;
 }
 
-.grid-cell.highlight-border {
+.grid-cell.highlight-border:not(.selected-cell) {
 	/* border-color: rgba(var(--color-f7df6f), 0.9) !important; */
-	animation: slow-pulse 0.5s infinite;
+	animation: yellow-red-border-pulse 0.2s infinite;
 }
 
 #floating-image {
@@ -703,27 +705,14 @@ img {
 	initial-value: 0turn;
 }
 
-.header-full-screen>.icon-full {
-	display: inline;
-}
-
-.header-full-screen>.icon-un-full {
-	display: none;
-}
-
 #pokemerge-brand {
 	font-size: 100%;
 }
 
-@media (display-mode: fullscreen) {
-
-	.header-full-screen>.icon-full {
-		display: none;
-	}
-
-	.header-full-screen>.icon-un-full {
-		display: inline;
-	}
+.settings-qr {
+	width: 25px;
+	position: absolute;
+	right: 70px;
 }
 
 @media (max-width: 1024px) {

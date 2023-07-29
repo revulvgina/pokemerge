@@ -2,7 +2,11 @@
 	<form>
 		<div class="options">
 			<div class="settings-header">
-				<div class="inline-block" style="font-size: 140%;">Settings</div>
+				<div class="settings-header-text" style="font-size: 140%;">Settings</div>
+				<div class="settings-full-screen" onclick="toggleFullScreenFromSettings()">
+					<img class="full-screen-icon icon-full" src="./images/full-screen.svg" />
+					<img class="full-screen-icon icon-un-full" src="./images/un-full-screen.svg" />
+				</div>
 				<div class="inline-block header-close-button cursor-pointer no-highlight"
 					onclick="closeDialog('settings-dialog')">X</div>
 			</div>
