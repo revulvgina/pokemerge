@@ -156,7 +156,15 @@ body {
 	background: rgba(0, 0, 0, 0.2);
 	color: rgb(var(--color-ffffee));
 	padding: 20px 0;
-	font-size: 60%;
+	font-size: 100%;
+}
+
+.pokemon-name-id {
+	color: #555555;
+}
+
+.pokemon-name-id:hover {
+	color: rgb(var(--color-ffffee));
 }
 
 .cell {

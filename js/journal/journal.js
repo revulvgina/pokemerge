@@ -86,7 +86,7 @@
     const divElement = document.createElement("div");
     divElement.classList.add("pokemon-name-container");
     const pokemonNameElement = document.createElement("div");
-    pokemonNameElement.innerText = displayName;
+    pokemonNameElement.innerHTML = `${displayName}`;
     addNameToDatalist(id, displayName);
     pokemonNameElement.classList.add("pokemon-name");
     divElement.appendChild(pokemonNameElement);
@@ -335,7 +335,7 @@
     const displayNameElement = document.getElementById("display-name");
     displayNameElement.innerHTML = `<span>${cellElement.getAttribute(
       "data-display-name"
-		)}</span>`;
+		)}</span><span class="pokemon-name-id">#${cellElement.getAttribute('data-pokemon-id')}</span>`;
 		
 		setPokemonTypes(cellElement);
 
