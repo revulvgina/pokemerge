@@ -55,7 +55,7 @@ body {
 			rgba(var(--color-f8d898), 0.5) 1px,
 			rgba(var(--color-f8d898), 0.5) 10px) #e8c080;
 	padding: 0 30px;
-	border: 5px double rgb(var(--color-a76f47));
+	border: 3px double rgb(var(--color-a76f47));
 	border-radius: 20px;
 }
 
@@ -665,7 +665,7 @@ img {
 }
 
 .grid-cell {
-	border: 4px dashed rgb(var(--color-a76f47));
+	border: 3px solid rgb(var(--color-a76f47));
 	cursor: pointer;
 	background-color: rgba(var(--color-f79f4f), 0.9);
 	justify-content: center;
@@ -737,7 +737,7 @@ img {
 	}
 
 	.grid-cell {
-		border-width: 3px;
+		border-width: 2px;
 	}
 }
 
