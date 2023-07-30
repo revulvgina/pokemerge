@@ -89,10 +89,6 @@ div.buyer-refresh {
 	flex-basis: 100%;
 }
 
-.header-settings {
-	width: 4%;
-}
-
 #exp-container {
 	border: 1px solid rgb(var(--color-3a3a3a));
 	padding: 0.3%;
@@ -709,11 +705,17 @@ img {
 .settings-qr {
 	margin-right: 4%;
 	width: 4%;
+	min-width: 25px;
 }
 
 .settings-qr > img {
 	width: 100%;
 	height: 100%;
+}
+
+.header-settings {
+	width: 4%;
+	min-width: 25px;
 }
 
 @media (max-width: 1024px) {
