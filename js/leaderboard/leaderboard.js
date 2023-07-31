@@ -12,8 +12,8 @@
     let response;
     try {
 			response = await fetch(
-				extraCacheBusterFetchUrl(`https://pokemerge-endpoint.vercel.app/api/${destinationUrl}`)
-				// `https://pokemerge-endpoint.vercel.app/api/${destinationUrl}/cached`
+				extraCacheBusterFetchUrl(`${window.DB_API_ENDPOINT}/${destinationUrl}`)
+				// `${window.DB_API_ENDPOINT}/${destinationUrl}/cached`
       );
     } catch (e) {
       console.error(e);
@@ -94,6 +94,6 @@
 			return `${(timeValue/1000 / 60 / 60).toFixed(2)}h`
 		}
 
-		return `${(timeValue / 1000 / 60 / 60 / 24)}d`
+		return `${(timeValue / 1000 / 60 / 60 / 24).toFixed(2)}d`
 	}
 })();

@@ -1567,7 +1567,7 @@
 
   const _publishHighestLevel = async () => {
     const response = await fetch(
-      `https://pokemerge-endpoint.vercel.app/api/highest-level/${window.sessionId}`,
+      `${window.DB_API_ENDPOINT}/highest-level/${window.sessionId}`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -1589,7 +1589,7 @@
     }).filter((eachKey) => /^discovered-/.test(eachKey));
 
     const response = await fetch(
-      `https://pokemerge-endpoint.vercel.app/api/highest-backpack/${window.sessionId}`,
+      `${window.DB_API_ENDPOINT}/highest-backpack/${window.sessionId}`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -1624,7 +1624,7 @@
     clearTimeout(window.highestGoldPublishTimeout);
 
     const response = await fetch(
-      `https://pokemerge-endpoint.vercel.app/api/highest-gold/${window.sessionId}`,
+      `${window.DB_API_ENDPOINT}/highest-gold/${window.sessionId}`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -1642,7 +1642,7 @@
 
   const _publishFastestLevel = async () => {
     const response = await fetch(
-      `https://pokemerge-endpoint.vercel.app/api/fastest-level/${window.sessionId}`,
+      `${window.DB_API_ENDPOINT}/fastest-level/${window.sessionId}`,
       {
         method: "POST",
         body: JSON.stringify({

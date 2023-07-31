@@ -82,7 +82,7 @@ function saveNickname(_) {
     let response;
     try {
       response = await fetch(
-        `https://pokemerge-endpoint.vercel.app/api/nickname/${window.sessionId}`,
+        `${window.DB_API_ENDPOINT}/nickname/${window.sessionId}`,
         {
           method: "POST",
           body: JSON.stringify({ value: formattedInputValue }),
@@ -104,7 +104,7 @@ window.initializeNickname = async () => {
   let response;
   try {
     response = await fetch(
-      `https://pokemerge-endpoint.vercel.app/api/nickname/${Date.now()}/${
+      `${window.DB_API_ENDPOINT}/nickname/${Date.now()}/${
         window.sessionId
       }`
     );

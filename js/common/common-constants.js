@@ -44,5 +44,8 @@
 		ground: "#AD7235",
 		md_blue_100: "#81D4fA",
 		md_blue_200: "#0091EA",
-	}
+	};
+
+	window.DB_API_ENDPOINT = `https://pokemerge-endpoint.vercel.app/api`;
+	// window.DB_API_ENDPOINT = `http://localhost:3000/api`;
 })();
