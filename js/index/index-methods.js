@@ -315,10 +315,18 @@
         filteredPokemonIdsInPoolByBuffTypeByChance
       )
     };
-  };
+	};
+	
+	const _saveCollectedPokemonId = (pokemonId) => {
+		const localStorageCollectedPokemonKey = `collected-${pokemonId}`;
+
+		window.localStorage.setItem(localStorageCollectedPokemonKey, Number.parseInt((window.localStorage.getItem(localStorageCollectedPokemonKey)?.toString() || 0), 10) + 1);
+	};
 
   const _randomizeBackpackCell = (cellElement, pokeBallIndex) => {
-    const { pokemonId } = _getBackpackRandomPokemonId(pokeBallIndex);
+		const { pokemonId } = _getBackpackRandomPokemonId(pokeBallIndex);
+		
+		_saveCollectedPokemonId(pokemonId);
 
     const pokemonSpeciesObject =
       window.pokemonSpecies[`pokemon-id-${pokemonId}`];
@@ -485,7 +493,7 @@
     return !!_countNextEvolutions(evolutionChainId, pokemonId);
 	};
 
-  const _upgradeCell = (cellElement) => {
+  const _upgradeBackpackCell = (cellElement) => {
     const currentEvolutionNumber = Number.parseInt(
       cellElement.getAttribute("data-evolution-number"),
       10
@@ -527,7 +535,9 @@
     cellElement.setAttribute(
       "data-evolution-number",
       nextRandomEvolutionSpeciesObject.evolution_number
-    );
+		);
+		
+		_saveCollectedPokemonId(nextRandomEvolutionSpeciesObject.id);
 
     _decorateBackpackCell(cellElement, nextRandomEvolutionSpeciesObject.id);
 
@@ -885,7 +895,7 @@
 	const _decorateBackpackCell = (cellElement, pokemonId) => {
 		_updateBackpackCell(cellElement, pokemonId);
 
-    _publishHighestBackpack();
+		_publishHighestBackpack();
   };
 
   const _onBackpackMouseDown = (cellElement) => {
@@ -903,7 +913,7 @@
         cellElement.getAttribute("id") !==
           window.selectedCellElement.getAttribute("id")
       ) {
-        _upgradeCell(cellElement);
+        _upgradeBackpackCell(cellElement);
         return;
       }
     }
@@ -1690,7 +1700,14 @@
 
     allDiscoveredLocalStorageKeys.forEach(([k, v]) => {
       sessionMap.discovered[k] = v;
-    });
+		});
+		
+		sessionMap.collected = {};
+		const allCollectedLocalStorageEntries = Object.entries({ ...window.localStorage })
+			.filter(([k, v]) => /^collected-/.test(k))
+			.forEach(([k, v]) => {
+				sessionMap.collected[k] = v;
+			});
 
     sessionMap.lastUpdated = Date.now();
 
@@ -1724,7 +1741,8 @@
       expCountForNextLevel,
       levelStarted,
       gold,
-      discovered,
+			discovered,
+			collected,
       lastUpdated,
     } = responseObject;
 
@@ -1780,6 +1798,14 @@
       const discoveredEntries = Object.entries(discovered);
 
       discoveredEntries.forEach(([localStorageKey, localStorageValue]) => {
+        window.localStorage.setItem(localStorageKey, localStorageValue);
+      });
+    }
+
+    if (collected && Object.keys(collected).length) {
+      const collectedEntries = Object.entries(collected);
+
+      collectedEntries.forEach(([localStorageKey, localStorageValue]) => {
         window.localStorage.setItem(localStorageKey, localStorageValue);
       });
     }
