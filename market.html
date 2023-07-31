@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+	<link href='https://fonts.googleapis.com/css?family=Press+Start+2P:400&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='./styles/pokeball-shake.css' rel='stylesheet' type='text/css'>
+	<link href='./styles/common.css?v=074943' rel='stylesheet' type='text/css'>
+	<script src="./js/common/jquery.min.js"></script>
+	<script src="./js/common/load-html.js"></script>
+	<script src="./js/common/csv-to-array.js"></script>
+	<script src="./js/common/common.js?v=2"></script>
+	<script src="./js/common/common-constants.js"></script>
+	<script src="./js/common/color-thief.js"></script>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+	<meta property="og:image" content="https://raw.githubusercontent.com/revulvgina/pokemerge/master/images/195.png">
+	<meta property="og:title" content="PoKeMerge" />
+	<meta property="og:description" content="Play PoKeMerge" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://revulvgina.github.io/pokemerge/" />
+	<meta name="description" content="Play PoKeMerge.">
+	<meta name="theme-color" content="#83d5f6">
+</head>
+
+<body>
+	<div class="container no-highlight">
+		<div class="header">
+			<img src="./images/arrow-back.svg" class="arrow-back" alt="Go back"
+				onclick="window.location.href = window.backLocation()" />
+			<div class="header-text">
+				<span><strong>Market</strong></span>
+			</div>
+			<div class="header-buy-list">
+				<span>Buy List</span>
+			</div>
+			<div class="header-sell-list">
+				<span>Sell List</span>
+			</div>
+		</div>
+		<div class="search-box">
+			<input name="pokemon-names" id="pokemon-names-input" placeholder="Search Pokemon">
+			<div id="pokemon-names" class="initial-list">
+			</div>
+		</div>
+		<div class="content">
+			<div id="market-grid" class="display-none"></div>
+			<div class="pokemon-spinner-container">
+				<div class="pokemon-spinner">
+					<script>
+						loadHTML('./components/common/pokemon-spinner.html', true);
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<audio id="pokemart-mp3" src="./mp3/pokemart.mp3?v=1" loop muted></audio>
+
+	<link href='./styles/market/market.css?v=074729' rel='stylesheet' type='text/css'>
+	<script src="./js/market/market.js?v=074729"></script>
+</body>
+
+</html>

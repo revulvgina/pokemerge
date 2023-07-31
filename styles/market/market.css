@@ -1,5 +1,5 @@
 body {
-	background-color: rgb(var(--color-0F0F1B));
+	background-color: rgb(var(--color-f79f4f));
 
 	touch-action: none;
 	-ms-touch-action: none;
@@ -15,7 +15,7 @@ body {
 }
 
 .header {
-	background-color: rgb(var(--color-cf4f2f));
+	background-color: rgb(var(--color-f79f4f));
 	height: 60px;
 	padding: 10px 20px;
 	display: flex;
@@ -32,6 +32,10 @@ body {
 	padding: 30px 30px;
 	height: calc(100vh - 120px);
 	overflow: hidden auto;
+}
+
+.content.content-loaded .pokemon-spinner-container {
+	display: none;
 }
 
 .search-box {

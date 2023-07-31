@@ -1649,10 +1649,6 @@
     );
   };
 
-  window.setContentAsLoaded = () => {
-    document.querySelector(".content").classList.add("content-loaded");
-  };
-
   window.initializeSessionFromCloud = async () => {
     const locationSearch = window.location.search;
     if ("string" !== typeof locationSearch || !locationSearch.trim().length) {

@@ -182,4 +182,8 @@
 		
 		isInstalled || isOnHomepage ? document.exitFullscreen() : document.body.requestFullscreen();
 	};
+
+  window.setContentAsLoaded = () => {
+    document.querySelector(".content").classList.add("content-loaded");
+  };
 })();

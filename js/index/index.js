@@ -36,13 +36,13 @@
     window.initializeBackpackBalls();
 
 		window.initializeMouseMoveListener();
-		
-		window.setContentAsLoaded();
 
 		window.initializeLevelStarted();
 
 		window.muteAllAudioWhenAway();
 		window.initializeVibration();
+		
+		window.setContentAsLoaded();
 		
 		document.body.scrollTo(0, 0);
   });
