@@ -279,7 +279,7 @@ div[id^=backpack-cell-][data-evolution-number="4"]:after {
 	color: #ff9900;
 }
 
-div[data-identifier] div img {
+div[data-pokemon-id] div img {
 	background-image: radial-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.02));
 	background-size: 100% 33%;
 	background-repeat: no-repeat;
@@ -470,21 +470,75 @@ img[src="./images/master-ball.png"]:not(#backpack-icon) {
 	}
 }
 
-@keyframes yellow-red-border-pulse {
+@keyframes transparent-border-color-pulse {
 	0% {
-		border-color: #ffcb05;
+		border-top-color: rgba(var(--cell-border-top-left-color));
+		border-left-color: rgba(var(--cell-border-top-left-color));
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color));
+		border-right-color: rgba(var(--cell-border-bottom-right-color));
 	}
 
-	25% {
-		border-color: #ff6600;
+	10% {
+		border-top-color: rgba(var(--cell-border-top-left-color), 0.25);
+		border-left-color: rgba(var(--cell-border-top-left-color), 0.25);
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color), 0.25);
+		border-right-color: rgba(var(--cell-border-bottom-right-color), 0.25);
+	}
+
+	20% {
+		border-top-color: rgba(var(--cell-border-top-left-color));
+		border-left-color: rgba(var(--cell-border-top-left-color));
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color));
+		border-right-color: rgba(var(--cell-border-bottom-right-color));
+	}
+
+	30% {
+		border-top-color: rgba(var(--cell-border-top-left-color), 0.5);
+		border-left-color: rgba(var(--cell-border-top-left-color), 0.5);
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color), 0.5);
+		border-right-color: rgba(var(--cell-border-bottom-right-color), 0.5);
+	}
+
+	40% {
+		border-top-color: rgba(var(--cell-border-top-left-color));
+		border-left-color: rgba(var(--cell-border-top-left-color));
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color));
+		border-right-color: rgba(var(--cell-border-bottom-right-color));
 	}
 
 	50% {
-		border-color: #ff0000;
+		border-top-color: rgba(var(--cell-border-top-left-color), 0.75);
+		border-left-color: rgba(var(--cell-border-top-left-color), 0.75);
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color), 0.75);
+		border-right-color: rgba(var(--cell-border-bottom-right-color), 0.75);
 	}
 
-	25% {
-		border-color: #ff6600;
+	60% {
+		border-top-color: rgba(var(--cell-border-top-left-color));
+		border-left-color: rgba(var(--cell-border-top-left-color));
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color));
+		border-right-color: rgba(var(--cell-border-bottom-right-color));
+	}
+
+	70% {
+		border-top-color: rgba(var(--cell-border-top-left-color), 0.5);
+		border-left-color: rgba(var(--cell-border-top-left-color), 0.5);
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color), 0.5);
+		border-right-color: rgba(var(--cell-border-bottom-right-color), 0.5);
+	}
+
+	80% {
+		border-top-color: rgba(var(--cell-border-top-left-color));
+		border-left-color: rgba(var(--cell-border-top-left-color));
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color));
+		border-right-color: rgba(var(--cell-border-bottom-right-color));
+	}
+
+	90% {
+		border-top-color: rgba(var(--cell-border-top-left-color), 0.25);
+		border-left-color: rgba(var(--cell-border-top-left-color), 0.25);
+		border-bottom-color: rgba(var(--cell-border-bottom-right-color), 0.25);
+		border-right-color: rgba(var(--cell-border-bottom-right-color), 0.25);
 	}
 }
 
@@ -541,12 +595,12 @@ img[src="./images/master-ball.png"]:not(#backpack-icon) {
 	}
 }
 
-[id^=backpack-cell-]:not([data-identifier]) {
+[id^=backpack-cell-]:not([data-pokemon-id]) {
 	background-color: #0000;
 }
 
-[id^=backpack-cell-]:not([data-identifier]),
-[id^=backpack-cell-]:not([data-identifier])>img {
+[id^=backpack-cell-]:not([data-pokemon-id]),
+[id^=backpack-cell-]:not([data-pokemon-id])>img {
 	cursor: help;
 }
 
@@ -609,7 +663,7 @@ img#backpack-icon[src="./images/master-ball.png"] {
 
 .grid-cell.highlight-border:not(.selected-cell) {
 	/* border-color: rgba(var(--color-f7df6f), 0.9) !important; */
-	animation: yellow-red-border-pulse 0.2s infinite;
+	animation: transparent-border-color-pulse 1s step-end infinite;
 }
 
 #floating-image {
@@ -666,7 +720,7 @@ img {
 .grid-cell {
 	border: 3px solid rgb(var(--color-a76f47));
 	cursor: pointer;
-	background-color: rgba(var(--color-f79f4f), 0.9);
+	background-color: rgba(var(--color-f79f4f), 1);
 	justify-content: center;
 	max-height: 100%;
 	position: relative;

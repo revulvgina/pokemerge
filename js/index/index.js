@@ -1,12 +1,13 @@
 (async () => {
 	document.body.scrollTo(0, 0);
 
-  document.addEventListener("imports-loaded", async () => {
+	document.addEventListener("imports-loaded", async () => {
 		await window.loadPokemonSpeciesChainJson();
 		await window.loadPokemonNamesJson();
 		await window.loadPokemonSpeciesJson();
 		await window.loadPokemonTypesJson();
 		await window.loadPokemonTypeNamesJson();
+		await window.convertDiscoveredIdentifierToIds();
 
 		window.loadCommonElements();
 		

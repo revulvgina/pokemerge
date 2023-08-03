@@ -11,6 +11,7 @@
 	<script src="./js/common/jquery.min.js"></script>
 	<script src="./js/common/load-html.js"></script>
 	<script src="./js/common/csv-to-array.js"></script>
+	<script src="./js/common/nanoid.js"></script>
 	<script src="./js/common/common.js?v=2"></script>
 	<script src="./js/common/common-constants.js"></script>
 	<script src="./js/common/color-thief.js"></script>
@@ -32,12 +33,9 @@
 				onclick="window.location.href = window.backLocation()" />
 			<div class="header-text">
 				<span><strong>Market</strong></span>
-			</div>
-			<div class="header-buy-list">
-				<span>Buy List</span>
-			</div>
-			<div class="header-sell-list">
-				<span>Sell List</span>
+				<div class="header-gold-container">
+					<span id="gold-value"></span>
+				</div>
 			</div>
 		</div>
 		<div class="search-box">
@@ -45,8 +43,20 @@
 			<div id="pokemon-names" class="initial-list">
 			</div>
 		</div>
+		<div class="market-types">
+			<div class="market-type-buy market-type market-type-selected" id="market-type-buy"  tabindex="0" onclick="onBuyClick()">Buy</div>
+			<div class="market-type-sell market-type" id="market-type-sell" tabindex="0" onclick="onSellClick()">Sell</div>
+		</div>
+		<div class="market-grid-header">
+			<div class="first-grid-cell">Name</div>
+			<div class="second-grid-cell">Price</div>
+			<div class="third-grid-cell">Action</div>
+		</div>
+		<div class="page-background"></div>
 		<div class="content">
-			<div id="market-grid" class="display-none"></div>
+			<div id="market-grid" class="display-none">
+
+			</div>
 			<div class="pokemon-spinner-container">
 				<div class="pokemon-spinner">
 					<script>
@@ -57,10 +67,11 @@
 		</div>
 	</div>
 	
-	<audio id="pokemart-mp3" src="./mp3/pokemart.mp3?v=1" loop muted></audio>
+	<audio id="page-bgm" src="./mp3/pokemart.mp3?v=1" loop data-volume="0.02"></audio>
 
 	<link href='./styles/market/market.css?v=074729' rel='stylesheet' type='text/css'>
-	<script src="./js/market/market.js?v=074729"></script>
+	<script src="./js/market/market-constants.js?v=074729"></script>
+	<script src="./js/market/market.js?v=074729" type="module"></script>
 </body>
 
 </html>

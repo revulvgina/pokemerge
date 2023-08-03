@@ -9,6 +9,7 @@
 		await window.loadPokemonSpeciesChainJson();
 		await window.loadPokemonNamesJson();
 		await window.loadPokemonSpeciesJson();
+		await window.convertDiscoveredIdentifierToIds();
 
     initializeCommonVars();
     initializeImageUrlLoadedListener();
@@ -97,7 +98,7 @@
 		imageElement.setAttribute("data-image-url", imageUrl);
 		imageElement.setAttribute('data-pokemon-id', id);
     imageElement.classList.add("pokemon-image");
-    if (isDiscovered(identifier)) {
+    if (isDiscovered(id)) {
       imageElement.classList.add("discovered");
 			window.totalDiscovered += 1;
 		}
@@ -307,11 +308,11 @@
       `${top}px auto auto ${left}px`
     );
 
-    const pokemonIdentifier = cellElement.getAttribute(
-      "data-pokemon-identifier"
+    const pokemonId = cellElement.getAttribute(
+      "data-pokemon-id"
     );
 
-		const isPokemonDiscovered = isDiscovered(pokemonIdentifier);
+		const isPokemonDiscovered = isDiscovered(pokemonId);
 		
     if (isPokemonDiscovered) {
       fullScreenDetailElement.style.backgroundColor =
@@ -360,7 +361,7 @@
     }
 
     const dateDiscoveredElement = document.getElementById("date-discovered");
-    const lastDiscovered = getDiscovered(pokemonIdentifier);
+    const lastDiscovered = getDiscovered(pokemonId);
     if (null !== lastDiscovered) {
       const dateDiscovered = window.getDateTimeFormat(
         Number.parseInt(lastDiscovered, 10)
@@ -382,7 +383,7 @@
 			const speciesImageUrl = `./images/official-artwork/${eachSpecies.id}.png`;
 			eachEvolutionChainSpeciesElement.setAttribute('src', speciesImageUrl);
 			eachEvolutionChainSpeciesElement.setAttribute('title', `#${eachSpecies.id} ${speciesDisplayName} (${window.getEvolutionOrdinalByNumber(eachSpecies.evolution_number)})`);
-			eachEvolutionChainSpeciesElement.classList.toggle('discovered', isDiscovered(eachSpecies.identifier));
+			eachEvolutionChainSpeciesElement.classList.toggle('discovered', isDiscovered(eachSpecies.id));
 			
 			evolutionChainElement.appendChild(eachEvolutionChainSpeciesElement);
 
@@ -412,10 +413,10 @@
     toggleCellFullScreen(e.target);
   }
 
-  function isDiscovered(pokemonIdentifier) {
+  function isDiscovered(pokemonId) {
     return (
       "string" ===
-      typeof window.localStorage.getItem(`discovered-${pokemonIdentifier}`)
+      typeof getDiscovered(pokemonId)
     );
 	}
 	
@@ -437,7 +438,7 @@
 		typesElement.innerHTML = typesInnerHTML;
 	}
 
-  function getDiscovered(pokemonIdentifier) {
-    return window.localStorage.getItem(`discovered-${pokemonIdentifier}`);
+  function getDiscovered(pokemonId) {
+    return window.localStorage.getItem(`discovered-${pokemonId}`);
   }
 })();
