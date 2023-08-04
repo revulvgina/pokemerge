@@ -17,10 +17,10 @@ import * as marketConstants from './market-constants.js';
 
     await window.onBuyClick();
 
-    window.setContentAsLoaded();
-
 		window.playPageBgm();
 		window.muteAllAudioWhenAway();
+
+    window.setContentAsLoaded();
 
     document.body.scrollTo(0, 0);
   });
@@ -56,6 +56,7 @@ import * as marketConstants from './market-constants.js';
         eachItem.pokemon_id
       )}" />
 			<span class="market-grid-item-display-name">${pokemonDisplayName}</span>`;
+			imageContainerElement.setAttribute('data-display-name', pokemonDisplayName);
       marketGrid.appendChild(imageContainerElement);
 
       const goldContainerElement = document.createElement("div");
@@ -66,6 +67,7 @@ import * as marketConstants from './market-constants.js';
       );
       goldContainerElement.innerHTML = `<span>${window.formatGoldDisplay(eachItem.price)}</span>`;
       goldContainerElement.title = `${new Intl.NumberFormat().format(eachItem.price)} gold`;
+			goldContainerElement.setAttribute('data-display-name', pokemonDisplayName);
       marketGrid.appendChild(goldContainerElement);
 
       const actionContainerElement = document.createElement("div");
@@ -74,6 +76,7 @@ import * as marketConstants from './market-constants.js';
         "market-grid-item-action-container",
         "third-grid-cell"
 			);
+			actionContainerElement.setAttribute('data-display-name', pokemonDisplayName);
 			
 			let actionInnerHTML;
 
@@ -110,7 +113,9 @@ import * as marketConstants from './market-constants.js';
 
 		marketMethods.clearList();
 
-    const buyList = await marketMethods.fetchBuyList();
+		const searchInputValue = marketMethods.getSearchInputValue();
+		const pokemonIds = marketMethods.getMatchingPokemonIds(searchInputValue);
+    const buyList = await marketMethods.fetchBuyList(pokemonIds);
 
 		_addToList(buyList, "Buy", marketConstants.MARKET_ACTION.BUY_ITEM);
 		
@@ -173,6 +178,8 @@ import * as marketConstants from './market-constants.js';
 		}
 
 		_addToList(toSellList, "Sell", marketConstants.MARKET_ACTION.REGISTER_ITEM);
+		
+		marketMethods.filterMarketGrid();
 		
 		window.toggleContentAsLoaded(true);
 
@@ -279,5 +286,19 @@ import * as marketConstants from './market-constants.js';
 		marketMethods.updateGold();
 
 		await window.onSellClick();
+	};
+
+	const _executeMarketSearch = async () => {
+		if (document.getElementById('market-type-buy').classList.contains(marketConstants.MARKET_TYPE_SELECTED_CLASS_NAME)) {
+			await window.onBuyClick();
+			return;
+		}
+		
+		marketMethods.filterMarketGrid();
+	}
+
+	window.onKeyUp = () => {
+		clearTimeout(window._onMarketSearchTimeout);
+		window._onMarketSearchTimeout = setTimeout(_executeMarketSearch, 250);
 	};
 })();

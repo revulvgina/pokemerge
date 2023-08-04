@@ -5,3 +5,4 @@ export var MARKET_ACTION = {
 		REGISTER_ITEM: 'registerItem'
 };
 export var MARKET_PRICE_MULTIPLIER = 50;
+export var MARKET_TYPE_SELECTED_CLASS_NAME = 'market-type-selected';

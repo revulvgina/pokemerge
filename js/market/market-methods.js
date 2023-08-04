@@ -31,7 +31,7 @@ export function clearList() {
 
 export async function fetchBuyList(pokemonIds = undefined) {
 	let idsQueryString = "";
-	if (Array.isArray(pokemonIds)) {
+	if (Array.isArray(pokemonIds) && pokemonIds.length) {
 		idsQueryString = `?id=${pokemonIds.join(",")}`;
 	}
 
@@ -66,3 +66,43 @@ export async function expireCollectList () {
 		return;
 	}
 };
+
+export function getMatchingPokemonIds(pokemonPartialName) {
+	if ('string' !== typeof pokemonPartialName || pokemonPartialName.trim().length <= 2) {
+		return undefined;
+	}
+
+	window.pokemonNameEntries = window.pokemonNameEntries || Object.entries(pokemonNames);
+
+	return window.pokemonNameEntries
+		.filter(([pokemonIdKey, pokemonName]) => new RegExp(pokemonPartialName, 'ig').test(pokemonName))
+		.map(([pokemonIdKey, pokemonName]) => pokemonIdKey.match(/^pokemon-id-(\d+)$/)[1]);
+}
+
+export function getSearchInputValue() {
+	const inputElement = document.getElementById('pokemon-names-input');
+	
+	const inputValue = inputElement.value;
+
+	if ('string' === typeof inputValue && inputValue.trim().length) {
+		return inputValue.trim();
+	}
+
+	return undefined;
+}
+
+export function filterMarketGrid() {
+	const searchInputValue = getSearchInputValue();
+
+	const allMarketGridItem = Array.from(document.querySelectorAll('div.market-grid-item'));
+
+	if ('string' !== typeof searchInputValue) {
+		allMarketGridItem.forEach((eachMarketGridItem) => eachMarketGridItem.classList.remove('display-none'));
+		return;
+	}
+
+	allMarketGridItem.forEach((eachMarketGridItem) => {
+		const doesMatch = new RegExp(searchInputValue, 'ig').test(eachMarketGridItem.getAttribute('data-display-name'));
+		eachMarketGridItem.classList.toggle('display-none', !doesMatch);
+	});
+}

@@ -222,6 +222,10 @@ body .third-grid-cell > * {
 	padding-bottom: 2%;
 }
 
+.market-grid-item.display-none {
+	display: none;
+}
+
 /* .market-grid-item:nth-child(3n+1) {
 	padding-left: 4%;
 	justify-content: flex-start;

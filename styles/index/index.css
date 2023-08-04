@@ -709,10 +709,6 @@ img {
 	animation: bg-spin 1s linear 4 forwards;
 }
 
-.display-none {
-	display: none;
-}
-
 .inline-block {
 	display: inline-block;
 }
