@@ -3,7 +3,6 @@ import * as marketMethods from './market-methods.js';
 (async () => {
 	document.body.scrollTo(0, 0);
 	
-
   document.addEventListener("imports-loaded", async () => {
     await window.loadPokemonNamesJson();
 
@@ -64,7 +63,7 @@ import * as marketMethods from './market-methods.js';
         "market-grid-item-gold-container",
         "second-grid-cell"
       );
-      goldContainerElement.innerHTML = `<span>3000 gold</span>`;
+      goldContainerElement.innerHTML = `<span>${eachItem.price}</span>`;
       marketGrid.appendChild(goldContainerElement);
 
       const actionContainerElement = document.createElement("div");
@@ -77,7 +76,7 @@ import * as marketMethods from './market-methods.js';
 			let actionInnerHTML;
 
 			if (actionName) {
-				actionInnerHTML = `<button onclick="${actionName}('${eachItem['market_key']}', '${eachItem['pokemon_id']}')" id="market-item-${eachItem['market_key']}-${eachItem['pokemon_id']}">${label}</button>`
+				actionInnerHTML = `<button onclick="${actionName}('${eachItem['market_key']}', '${eachItem['pokemon_id']}', ${eachItem.price})" id="market-item-${eachItem['market_key']}-${eachItem['pokemon_id']}">${label}</button>`
 			} else {
 				const lastUpdatedNumber = Number.parseInt(eachItem.last_updated, 10);
 				actionInnerHTML = `<span class="market-item-last-updated" title="${new Date(lastUpdatedNumber).toLocaleString()}" data-last-updated="${lastUpdatedNumber}">${window.getRelativeTime(lastUpdatedNumber)}</span>`;
@@ -164,7 +163,13 @@ import * as marketMethods from './market-methods.js';
 				continue;
 			}
 
-			toSellList.push({ pokemon_id });
+			const pokemonPrice = await window.getPokemonPrice(pokemon_id);
+
+			console.log("pokemonPrice", pokemonPrice)
+
+			const sellPrice = pokemonPrice * 10;
+
+			toSellList.push({ pokemon_id, price: sellPrice });
 		}
 
 		_addToList(toSellList, "Sell", window.MARKET_ACTION.REGISTER_ITEM);
@@ -174,13 +179,13 @@ import * as marketMethods from './market-methods.js';
 		_resetLastUpdatedInterval();
   };
 
-	window.buyItem = async (market_key, pokemon_id) => {
-		if (window.currentGold < window.MINIMUM_BUY_PRICE) {
+	window.buyItem = async (market_key, pokemon_id, price) => {
+		if (window.currentGold < price) {
 			window.alert('You do have enough gold for this purchase.');
 			return;
 		}
 
-		if (!confirm(`Do you want to buy ${window.pokemonNames[`pokemon-id-${pokemon_id}`]} for 3000 gold?`)) {
+		if (!confirm(`Do you want to buy ${window.pokemonNames[`pokemon-id-${pokemon_id}`]} for ${price} gold?`)) {
 			return;
 		}
 		
@@ -189,7 +194,7 @@ import * as marketMethods from './market-methods.js';
       response = await fetch(
         `${window.DB_API_ENDPOINT}/market/buy/${
           window.sessionId
-        }`, { method: 'POST', body: JSON.stringify({value: market_key})}
+        }`, { method: 'POST', body: JSON.stringify({market_key})}
       );
     } catch (reason) {
       console.error(reason);
@@ -198,9 +203,9 @@ import * as marketMethods from './market-methods.js';
 		
 		const jsonResponse = await response.json();
 		
-		const { pokemon_id: boughtPokemonId, gold_change } = jsonResponse;
+		const { pokemon_id: boughtPokemonId, price: boughtPrice } = jsonResponse;
 
-		window.setCurrentGold(window.currentGold - gold_change);
+		window.setCurrentGold(window.currentGold - boughtPrice);
 
 		marketMethods.updateGold();
 
@@ -225,12 +230,20 @@ import * as marketMethods from './market-methods.js';
 			return;
 		}
 
+		const pokemonPrice = await window.getPokemonPrice(pokemon_id);
+		const sellPrice = pokemonPrice * 10;
+
     let response;
     try {
       response = await fetch(
         `${window.DB_API_ENDPOINT}/market/register/${
           window.sessionId
-        }`, { method: 'POST', body: JSON.stringify({value: Number.parseInt(pokemon_id, 10)})}
+				}`, {
+					method: 'POST', body: JSON.stringify({
+						pokemon_id: Number.parseInt(pokemon_id, 10),
+						price: sellPrice
+					})
+			}
       );
     } catch (reason) {
       console.error(reason);
@@ -250,7 +263,7 @@ import * as marketMethods from './market-methods.js';
       response = await fetch(
         `${window.DB_API_ENDPOINT}/market/sell-collect/${
           window.sessionId
-        }`, { method: 'POST', body: JSON.stringify({value: market_key})}
+        }`, { method: 'POST', body: JSON.stringify({market_key})}
       );
     } catch (reason) {
       console.error(reason);
@@ -259,9 +272,9 @@ import * as marketMethods from './market-methods.js';
 
 		const jsonResponse = await response.json();
 
-		const { pokemon_id, gold_change } = jsonResponse;
+		const { pokemon_id, price } = jsonResponse;
 
-		window.setCurrentGold(window.currentGold + Number.parseInt(gold_change, 10));
+		window.setCurrentGold(window.currentGold + Number.parseInt(price, 10));
 
 		marketMethods.updateGold();
 

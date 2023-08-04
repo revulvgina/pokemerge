@@ -92,6 +92,11 @@
 	border: 1px solid rgb(var(--color-ffffee));
 }
 
+.market-link-container {
+	margin-top: 5%;
+	border: 1px solid rgb(var(--color-ffffee));
+}
+
 .reset-container {
 	background: rgb(var(--color-cf4f2f));
 	color: rgb(var(--color-f7df6f));
@@ -99,20 +104,10 @@
 	border: 5px double rgb(var(--color-ffffee));
 }
 
-#journal-button,
-#journal-button:visited,
-#journal-button:hover,
-#journal-button:active {
-	color: inherit;
-	text-decoration: none;
-	border-width: 0;
-	outline: none;
-}
-
-#leaderboard-button,
-#leaderboard-button:visited,
-#leaderboard-button:hover,
-#leaderboard-button:active {
+.link-button,
+.link-button:visited,
+.link-button:hover,
+.link-button:active {
 	color: inherit;
 	text-decoration: none;
 	border-width: 0;
