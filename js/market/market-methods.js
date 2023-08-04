@@ -32,7 +32,7 @@ export function clearList() {
 export async function fetchBuyList(pokemonIds = undefined) {
 	let idsQueryString = "";
 	if (Array.isArray(pokemonIds) && pokemonIds.length) {
-		idsQueryString = `?id=${pokemonIds.join(",")}`;
+		idsQueryString = `?ids=${pokemonIds.join(",")}`;
 	}
 
 	let response;
