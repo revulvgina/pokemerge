@@ -376,5 +376,37 @@
 		}
 		
 		return variationsPrice * baseEvolutionNumber;
-  };
+	};
+	
+	window.formatGoldDisplay = (goldValue) => {
+		const goldNumberValue = 'number' === typeof goldValue ? goldValue : Number.parseInt(goldValue, 10);
+
+		const cutOffs = [
+      1_000,
+      1_000_000,
+      1_000_000_000,
+      1_000_000_000_000,
+      1_000_000_000_000_000,
+      1_000_000_000_000_000_000,
+		];
+		
+		const cutOffDisplays = [
+			'',
+			'k',
+			'm',
+			'b',
+			't',
+			'q'
+		];
+
+		const displayIndex = cutOffs.findIndex((aCutOff) => aCutOff > goldNumberValue);
+		
+		const cutOffDisplay = cutOffDisplays[displayIndex] || '';
+
+    const cutoff = cutOffs[displayIndex];
+
+		const divisor = displayIndex ? cutOffs[displayIndex - 1] : 1;
+
+		return `${(goldNumberValue/divisor).toFixed(1 === divisor ? 0 : 3)}${cutOffDisplay || ''}`;
+	};
 })();

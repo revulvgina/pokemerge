@@ -1,4 +1,5 @@
 import * as marketMethods from './market-methods.js';
+import * as marketConstants from './market-constants.js';
 
 (async () => {
 	document.body.scrollTo(0, 0);
@@ -63,7 +64,8 @@ import * as marketMethods from './market-methods.js';
         "market-grid-item-gold-container",
         "second-grid-cell"
       );
-      goldContainerElement.innerHTML = `<span>${eachItem.price}</span>`;
+      goldContainerElement.innerHTML = `<span>${window.formatGoldDisplay(eachItem.price)}</span>`;
+      goldContainerElement.title = `${new Intl.NumberFormat().format(eachItem.price)} gold`;
       marketGrid.appendChild(goldContainerElement);
 
       const actionContainerElement = document.createElement("div");
@@ -110,7 +112,7 @@ import * as marketMethods from './market-methods.js';
 
     const buyList = await marketMethods.fetchBuyList();
 
-		_addToList(buyList, "Buy", window.MARKET_ACTION.BUY_ITEM);
+		_addToList(buyList, "Buy", marketConstants.MARKET_ACTION.BUY_ITEM);
 		
 		window.toggleContentAsLoaded(true);
   };
@@ -124,7 +126,7 @@ import * as marketMethods from './market-methods.js';
     
 		const sellListCollect = await _fetchListWithSessionId("sell-list-collect");
 
-		_addToList(sellListCollect, "Collect", window.MARKET_ACTION.COLLECT_ITEM);
+		_addToList(sellListCollect, "Collect", marketConstants.MARKET_ACTION.COLLECT_ITEM);
 		
     const sellList = await _fetchListWithSessionId("sell-list");
 
@@ -143,11 +145,11 @@ import * as marketMethods from './market-methods.js';
 		for (let [k, v] of allCollectedLocalStorageEntries) {
 			const currentCollectedCount = Number.parseInt(v);
 
-			if (v < window.COLLECTED_AMOUNT_FOR_SELLING) {
+			if (v < marketConstants.COLLECTED_AMOUNT_FOR_SELLING) {
 				continue;
 			}
 
-			let amountLeftForSelling = Math.floor(v / window.COLLECTED_AMOUNT_FOR_SELLING);
+			let amountLeftForSelling = Math.floor(v / marketConstants.COLLECTED_AMOUNT_FOR_SELLING);
 
 			const collectedMatch = k.match(/^collected-(\d+)$/);
 
@@ -165,14 +167,12 @@ import * as marketMethods from './market-methods.js';
 
 			const pokemonPrice = await window.getPokemonPrice(pokemon_id);
 
-			console.log("pokemonPrice", pokemonPrice)
-
-			const sellPrice = pokemonPrice * 10;
+			const sellPrice = pokemonPrice * marketConstants.MARKET_PRICE_MULTIPLIER;
 
 			toSellList.push({ pokemon_id, price: sellPrice });
 		}
 
-		_addToList(toSellList, "Sell", window.MARKET_ACTION.REGISTER_ITEM);
+		_addToList(toSellList, "Sell", marketConstants.MARKET_ACTION.REGISTER_ITEM);
 		
 		window.toggleContentAsLoaded(true);
 
@@ -218,7 +218,7 @@ import * as marketMethods from './market-methods.js';
 		await window.onBuyClick();
 	};
 
-	window.registerItem = async (_, pokemon_id) => {
+	window.registerItem = async (_, pokemon_id, price) => {
 		const amountForSelling = marketMethods.getCollectedAmountForSelling(pokemon_id);
 
 		if (amountForSelling <= 0) {
@@ -226,12 +226,12 @@ import * as marketMethods from './market-methods.js';
 		}
 			
 		if (!confirm(`Do you want to sell ${
-			window.pokemonNames[`pokemon-id-${pokemon_id}`]} for ${window.MINIMUM_BUY_PRICE}?\n\nBackpack Count for Selling: ${amountForSelling}`)) {
+			window.pokemonNames[`pokemon-id-${pokemon_id}`]} for ${window.formatGoldDisplay(price)} gold?\n\nBackpack Count for Selling: ${amountForSelling}`)) {
 			return;
 		}
 
 		const pokemonPrice = await window.getPokemonPrice(pokemon_id);
-		const sellPrice = pokemonPrice * 10;
+		const sellPrice = pokemonPrice * marketConstants.MARKET_PRICE_MULTIPLIER;
 
     let response;
     try {

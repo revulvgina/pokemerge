@@ -1,5 +1,5 @@
 :root {
-	--grid-cell-max-height: 4vmin;
+	--grid-cell-max-height: 5vmin;
 	--grid-cell-min-height: 30px;
 	--color-pokemart: 136, 208, 24;
 }

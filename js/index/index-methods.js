@@ -349,7 +349,8 @@
 
   window.updateCurrentGold = () => {
     const currentGoldElement = document.getElementById("current-gold");
-    currentGoldElement.innerText = `${window.currentGold}`;
+    currentGoldElement.innerText = window.formatGoldDisplay(window.currentGold);
+    currentGoldElement.title = `${new Intl.NumberFormat().format(window.currentGold)} gold`;
   };
 
   const _increaseCurrentGold = (goldIncrease) => {

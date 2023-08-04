@@ -1,3 +1,5 @@
+import * as marketConstants from './market-constants.js';
+
 export function getCollectedAmountForSelling(pokemon_id) {
 	const totalCollectedCount = Number.parseInt(window.localStorage.getItem(`collected-${pokemon_id}`) || 0, 10);
 
@@ -5,7 +7,7 @@ export function getCollectedAmountForSelling(pokemon_id) {
 		return 0;
 	}
 
-	let amountForSelling = Math.floor(totalCollectedCount / window.COLLECTED_AMOUNT_FOR_SELLING);
+	let amountForSelling = Math.floor(totalCollectedCount / marketConstants.COLLECTED_AMOUNT_FOR_SELLING);
 		
 	if (amountForSelling <= 0) {
 		return 0;
@@ -48,7 +50,8 @@ export async function fetchBuyList(pokemonIds = undefined) {
 };
 	
 export function updateGold() {
-	document.getElementById('gold-value').innerText = `${window.currentGold} Gold`;
+	document.getElementById('gold-value').innerText = `${window.formatGoldDisplay(window.currentGold)} Gold`;
+	document.getElementById('gold-value').title = `${new Intl.NumberFormat().format(Number.parseInt(window.currentGold, 10))} Gold`;
 };
 
 export async function expireCollectList () {

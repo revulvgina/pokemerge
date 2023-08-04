@@ -47,7 +47,8 @@
 
       const valueGridItem = document.createElement("div");
       valueGridItem.classList.add("grid-item", "grid-item-value");
-      valueGridItem.innerText = eachHighestLevelRow.value;
+      valueGridItem.innerText = 'highest-gold' === gridCategoryId ? window.formatGoldDisplay(Number.parseInt(eachHighestLevelRow.value, 10)) : eachHighestLevelRow.value;
+      valueGridItem.title = new Intl.NumberFormat().format(eachHighestLevelRow.value);
 			gridCategory.appendChild(valueGridItem);
 		});
 		
