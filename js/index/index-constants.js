@@ -1,11 +1,9 @@
 (() => {
-  window.defaultPokeBallCell = `<img src="./images/poke-ball.png" onclick="onPokeBallCellClick(this)" ondragstart="onPokeBallCellClick(this)" />`;
-  window.pokeBallRandomIndexList = [
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		1, 1, 1, 1, 1, 1, 1, 1,
-		2, 2, 2, 2,
-		3,
-  ];
+	window.pokeBallRandomIndexList =
+		Array(24).fill(0)
+			.concat(Array(8).fill(1))
+			.concat(Array(4).fill(2))
+			.concat(Array(1).fill(3));
   window.pokeBallNames = [
     "poke-ball",
     "great-ball",
@@ -14,12 +12,14 @@
 	];
 	
   window._encounterDuration = -Infinity;
-	window._encounterPokemonBallList = [2, 2, 2, 2, 3];
+	window._encounterPokemonBallList = Array(4).fill(2).concat(Array(1).fill(3));
 	
   window.cryMp3LinkMap = {
     ["nidoran-f"]: "nidoranf",
     ["nidoran-m"]: "nidoranm",
 	};
+
+	window.MAGIKARP_GYARADOS_IDS = Array(8).fill(129).concat(Array(2).fill(130));
 	
 	window.BUYER_SHUFFLE_GOLD_DECREASE = 10;
 

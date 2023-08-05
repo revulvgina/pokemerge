@@ -620,6 +620,10 @@ img[src] {
 	image-rendering: pixelated;
 }
 
+[id^=backpack-cell-] img.flip-image {
+	transform: scaleX(-1);
+}
+
 .pixelated {
 	image-rendering: pixelated;
 }

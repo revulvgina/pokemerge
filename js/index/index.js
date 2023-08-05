@@ -42,6 +42,7 @@
 
 		window.muteAllAudioWhenAway();
 		window.initializeVibration();
+		window.registerMagikarpSongListener();
 		
 		window.setContentAsLoaded();
 		

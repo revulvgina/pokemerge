@@ -43,8 +43,8 @@
     const randomPokeBallIndex = _getRandomPokeBallIndex();
     const pokeBallName = window.pokeBallNames[randomPokeBallIndex];
     imgTag.setAttribute("src", `./images/${pokeBallName}.png`);
-    imgTag.onclick = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
-    imgTag.ondragstart = () => onPokeBallCellClick(imgTag, randomPokeBallIndex);
+    imgTag.onclick = () => _onPokeBallCellClick(imgTag, randomPokeBallIndex);
+    imgTag.ondragstart = () => _onPokeBallCellClick(imgTag, randomPokeBallIndex);
     imgTag.setAttribute("data-pokeball-index", randomPokeBallIndex);
     imgTag.setAttribute("data-click-price", _getClickPrice(randomPokeBallIndex));
     imgTag.setAttribute(
@@ -114,7 +114,7 @@
   const _getRandomPokeBallIndex = () => {
     if (window._encounterDuration > Date.now()) {
       return window.getRandomItem(window._encounterPokemonBallList);
-    }
+		}
 
     return window.getRandomItem(window.pokeBallRandomIndexList);
   };
@@ -139,17 +139,6 @@
     buyerCells.forEach((eachBuyerCell) => {
       _attachBuyerContextMenu(eachBuyerCell);
     });
-  };
-
-  const _playBgm = () => {
-    const bgmElement = document.getElementById("pokemon-theme-bgm");
-
-    if (!bgmElement.paused) {
-      return;
-    }
-
-    bgmElement.volume = 0.1;
-    bgmElement.play();
   };
 
   window.setCurrentLevel = (numberValue) => {
@@ -200,12 +189,32 @@
     });
   };
 
-  const _getIncreasingChanceByLevel = (maxIncrease = 15) => {
-    return Math.min(maxIncrease, Math.floor(window.currentLevel / 1.5));
-  };
+	const _getIncreasingChanceByLevel = (maxIncrease = 15) => {
+		return Math.min(maxIncrease, Math.floor(window.currentLevel / 1.5));
+	};
 
-  const _getBackpackRandomPokemonId = (pokeBallIndex) => {
-    let pool = _getPoolByLevel();
+	const _canStartMagikarpMode = () => {
+		const magikarpModeTimeout = window.localStorage.getItem('magikarp-mode-timeout');
+
+		if (null === magikarpModeTimeout) {
+			return true;
+		}
+
+		const magikarpModeTimeoutTimestamp = Number.parseInt(magikarpModeTimeout, 10);
+
+		return Date.now() > magikarpModeTimeoutTimestamp;
+	};
+
+	const _isOnMagikarpMode = () => _isMagikarpSongPlaying() && window.enableMagikarpGyaradosOnly;
+
+	const _getBackpackRandomPokemonId = (pokeBallIndex) => {
+		if (_isOnMagikarpMode()) {
+			return {
+				pokemonId: window.getRandomItem(window.MAGIKARP_GYARADOS_IDS)
+			};
+		}
+
+		let pool = _getPoolByLevel();
 
     const poolByPokeBallIndex = pool.filter((eachEvolutionChainList) => {
       return eachEvolutionChainList.some(
@@ -303,16 +312,16 @@
     };
 	};
 	
-	const _saveCollectedPokemonId = (pokemonId) => {
+	const _recordCollectedPokemonId = (pokemonId) => {
 		const localStorageCollectedPokemonKey = `collected-${pokemonId}`;
 
 		window.localStorage.setItem(localStorageCollectedPokemonKey, Number.parseInt((window.localStorage.getItem(localStorageCollectedPokemonKey)?.toString() || 0), 10) + 1);
 	};
 
   const _randomizeBackpackCell = (cellElement, pokeBallIndex) => {
-		const { pokemonId } = _getBackpackRandomPokemonId(pokeBallIndex);
-		
-		_saveCollectedPokemonId(pokemonId);
+		let { pokemonId } = _getBackpackRandomPokemonId(pokeBallIndex);
+
+		_recordCollectedPokemonId(pokemonId);
 
     const pokemonSpeciesObject =
       window.pokemonSpecies[`pokemon-id-${pokemonId}`];
@@ -405,7 +414,7 @@
 
     window.setLevelStarted(Date.now());
 
-    if (0 === window.currentLevel % 5) {
+    if (0 === window.currentLevel % 5 && !_isMagikarpSongPlaying()) {
 			_startEncounter();
     }
 	};
@@ -518,7 +527,7 @@
       nextRandomEvolutionSpeciesObject.evolution_number
 		);
 		
-		_saveCollectedPokemonId(nextRandomEvolutionSpeciesObject.id);
+		_recordCollectedPokemonId(nextRandomEvolutionSpeciesObject.id);
 
     _decorateBackpackCell(cellElement, nextRandomEvolutionSpeciesObject.id);
 
@@ -694,8 +703,11 @@
       );
     }
 
-    _playIndexSound("click-sound");
-    _playBgm();
+		_playIndexSound("click-sound");
+		
+		if (document.getElementById('magikarp-song').paused) {
+			window.playPageBgm();
+		}
   };
 
   const _sellBackpackCell = (cellElement) => {
@@ -877,7 +889,15 @@
 		_updateBackpackCell(cellElement, pokemonId);
 
 		_publishHighestBackpack();
-  };
+	};
+	
+	const _isSummoningMagikarpMode = () => {
+		return window.selectedCellElement && window.temporaryTypeBuffs.includes('11') && "129" === window.selectedCellElement.getAttribute('data-pokemon-id');
+	};
+
+	const _isMagikarpSongPlaying = () => {
+		return !!!document.getElementById('magikarp-song').paused;
+	}
 
   const _onBackpackMouseDown = (cellElement) => {
     const targetPokemonId = cellElement.getAttribute("data-pokemon-id");
@@ -886,7 +906,30 @@
     }
 
     if (window.selectedCellElement) {
-      window.selectedCellElement.classList.remove("selected-cell");
+			window.selectedCellElement.classList.remove("selected-cell");
+			
+			if (window.selectedCellElement.id === cellElement.id && _isSummoningMagikarpMode() && _canStartMagikarpMode()) {
+				cellElement.querySelector('img').classList.toggle('flip-image', !cellElement.querySelector('img').classList.contains('flip-image'));
+				_playCry(129);
+
+				if (!_isMagikarpSongPlaying()) {
+					document.getElementById('magikarp-song').currentTime = 220;
+					window.playSound('magikarp-song', 0.1);
+					document.getElementById('page-bgm').pause();
+					document.getElementById('page-bgm').currentTime = 0;
+				}
+
+				if (window.isRandomSuccess(50)) {
+					window.enableMagikarpGyaradosOnly = true;
+
+					window.localStorage.setItem('magikarp-mode-timeout', Date.now() + 64_800_000); // 18 hours timeout
+		
+					document
+						.getElementById("backpack-icon")
+						.setAttribute("src", "./images/bit/129.png");
+				}
+				return;
+			}
 
       if (
         targetPokemonId ===
@@ -928,7 +971,11 @@
 
     if ((window.levelUpSoundPriorityTimeout || 0) > Date.now()) {
       volume = 0.15;
-    }
+		}
+		
+		if (_isSummoningMagikarpMode()) {
+			volume = 0.1;
+		}
 
     window.playSound(audioId, volume);
   };
@@ -955,7 +1002,7 @@
 
     _clearSelectedCell();
   };
-  window.onPokeBallCellClick = (imgElement, pokeBallIndex) => {
+  const _onPokeBallCellClick = (imgElement, pokeBallIndex) => {
     _clearSelectedCell();
 
     const dataClickPrice = Number.parseInt(
@@ -1678,6 +1725,8 @@
 			.forEach(([k, v]) => {
 				sessionMap.collected[k] = v;
 			});
+		
+		sessionMap.magikarpModeTimeout = window.localStorage.getItem('magikarp-mode-timeout');
 
     sessionMap.lastUpdated = Date.now();
 
@@ -1713,6 +1762,7 @@
       gold,
 			discovered,
 			collected,
+			magikarpModeTimeout,
       lastUpdated,
     } = responseObject;
 
@@ -1778,7 +1828,11 @@
       collectedEntries.forEach(([localStorageKey, localStorageValue]) => {
         window.localStorage.setItem(localStorageKey, localStorageValue);
       });
-    }
+		}
+		
+		if (magikarpModeTimeout) {
+			window.localStorage.setItem('magikarp-mode-timeout', magikarpModeTimeout);
+		}
 
     console.info("Session synced.");
   };
@@ -1793,5 +1847,13 @@
 		document
 			.querySelector("div.qr-code-container")
 			.classList.add("display-none");
+	};
+
+	window.registerMagikarpSongListener = () => {
+		document.getElementById('magikarp-song').addEventListener("ended", () => {
+			document
+				.getElementById("backpack-icon")
+				.setAttribute("src", "./images/backpack.png");
+	 });
 	};
 })();
