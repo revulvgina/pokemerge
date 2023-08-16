@@ -10,6 +10,8 @@
 		await window.loadPokemonNamesJson();
 		await window.loadPokemonSpeciesJson();
 		await window.convertDiscoveredIdentifierToIds();
+		
+		await window.commonInitialize();
 
     initializeCommonVars();
     initializeImageUrlLoadedListener();
@@ -18,7 +20,7 @@
     initializeIntersectionObserver();
 		initializeDatalistListener();
 
-		window.playSound('pokemon-theme-bgm', 0.1);
+		window.playSound('pokemon-theme-bgm');
 		
 		window.muteAllAudioWhenAway();
 		

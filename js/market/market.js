@@ -10,6 +10,8 @@ import * as marketConstants from './market-constants.js';
 		window.initializeSessionId();
 		
 		window.initializeCurrentGold();
+		
+		await window.commonInitialize();
 
 		marketMethods.updateGold();
 

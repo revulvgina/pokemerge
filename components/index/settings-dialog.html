@@ -1,53 +1,71 @@
-
-	<form>
-		<div class="options">
-			<div class="settings-header">
-				<div class="settings-header-text" style="font-size: 140%;">Menu</div>
-				<div class="settings-full-screen" onclick="toggleFullScreenFromSettings()">
-					<img class="full-screen-icon icon-full" src="./images/full-screen.svg" />
-					<img class="full-screen-icon icon-un-full" src="./images/un-full-screen.svg" />
-				</div>
-				<div class="inline-block header-close-button cursor-pointer no-highlight"
-					onclick="closeDialog('settings-dialog')">X</div>
+<form>
+	<div class="options">
+		<div class="settings-header">
+			<div class="settings-header-text" style="font-size: 140%;">Menu</div>
+			<div class="settings-full-screen" onclick="toggleFullScreenFromSettings()">
+				<img class="full-screen-icon icon-full" src="./images/full-screen.svg" />
+				<img class="full-screen-icon icon-un-full" src="./images/un-full-screen.svg" />
 			</div>
-			<div class="settings-content settings-items-container no-highlight">
-				<div class="journal-link-container settings-item-container">
-					<a id="journal-button" class="no-highlight cursor-pointer link-button" href="./journal.html">Go to Journal</a>
-				</div>
+			<div class="inline-block header-close-button cursor-pointer no-highlight"
+				onclick="closeDialog('settings-dialog')">X</div>
+		</div>
+		<div class="settings-content settings-items-container no-highlight">
+			<div class="journal-link-container settings-item-container">
+				<a id="journal-button" class="no-highlight cursor-pointer link-button" href="./journal.html">Go to Journal</a>
+			</div>
 
-				<div class="leaderboard-link-container settings-item-container cursor-pointer no-highlight">
-					<a id="leaderboard-button" class="no-highlight cursor-pointer link-button" href="./leaderboard.html">Go to Leaderboard</a>
-				</div>
+			<div class="leaderboard-link-container settings-item-container cursor-pointer no-highlight">
+				<a id="leaderboard-button" class="no-highlight cursor-pointer link-button" href="./leaderboard.html">Go to Leaderboard</a>
+			</div>
 
-				<div class="market-link-container settings-item-container cursor-pointer no-highlight">
-					<a id="market-button" class="no-highlight cursor-pointer link-button" href="./market.html">Go to Market</a>
-				</div>
+			<div class="market-link-container settings-item-container cursor-pointer no-highlight">
+				<a id="market-button" class="no-highlight cursor-pointer link-button" href="./market.html">Go to Market</a>
+			</div>
 
-				<div class="vibrate-container settings-item-container cursor-pointer no-highlight">
-					<label class="no-highlight cursor-pointer" for="enable-vibration">
-						Enable vibration&nbsp;<input type="checkbox" checked="checked" id="enable-vibration"
-							onchange="onEnableVibration()" />
-					</label>
-				</div>
+			<div class="vibrate-container settings-item-container cursor-pointer no-highlight">
+				<label class="no-highlight cursor-pointer" for="enable-vibration">
+					Enable vibration&nbsp;<input type="checkbox" checked="checked" id="enable-vibration"
+						onchange="onEnableVibration()" />
+				</label>
+			</div>
 
-				<div class="nickname-container settings-item-container">
-					<div class="nickname-label">Nickname</div>
-					<input type="text" id="nickname" maxlength="12"/>
-				</div>
+			<div class="nickname-container settings-item-container">
+				<div class="nickname-label">Nickname</div>
+				<input type="text" id="nickname" maxlength="12"/>
+			</div>
 
-				<div class="share-session-container settings-item-container cursor-pointer no-highlight" id="share-session" oncontextmenu="return false;">
-					<div class="share-session-button">Save Session to Cloud</div>
-					<div id="share-session-status">&nbsp;</div>
-				</div>
+			<div class="share-session-container settings-item-container cursor-pointer no-highlight" id="share-session" oncontextmenu="return false;">
+				<div class="share-session-button">Save Session to Cloud</div>
+				<div id="share-session-status">&nbsp;</div>
+			</div>
 
-				<div class="reset-container settings-item-container cursor-pointer" id="reset-progress" oncontextmenu="return false;">
-					<div class="no-highlight">Hold to Reset Progress</div>
+			<div class="volume-container effects-volume-container settings-item-container cursor-pointer no-highlight">
+				<div class="volume-label">
+					<span>Effects&nbsp;</span><span id="effects-volume-intensity">🔊</span>
 				</div>
+				<div class="volume-control">
+					<input type="range" id="effects-volume" name="effects-volume" min="0" max="100" step="10"
+					onchange="onEffectsVolumeChange()" />
+				</div>
+			</div>
 
-				<div class="ko-fi-container">
-					<a href='https://ko-fi.com/V7V6FNLGC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+			<div class="volume-container bgm-volume-container settings-item-container cursor-pointer no-highlight">
+				<div class="volume-label">
+					<span>BGM&nbsp;</span><span id="bgm-volume-intensity">🔊</span>
 				</div>
+				<div class="volume-control">
+					<input type="range" id="bgm-volume" name="bgm-volume" min="0" max="100" step="10"
+						onchange="onBgmVolumeChange()" />
+				</div>
+			</div>
+
+			<div class="reset-container settings-item-container cursor-pointer" id="reset-progress" oncontextmenu="return false;">
+				<div class="no-highlight">Hold to Reset Progress</div>
+			</div>
+
+			<div class="ko-fi-container">
+				<a href='https://ko-fi.com/V7V6FNLGC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 			</div>
 		</div>
-	</form>
-</dialog>
+	</div>
+</form>

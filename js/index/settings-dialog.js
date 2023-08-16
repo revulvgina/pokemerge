@@ -172,6 +172,14 @@ const _saveCurrentSession = async () => {
   );
 };
 
+window.onEffectsVolumeChange = (evt) => {
+	window.updateVolume('effects');
+};
+
+window.onBgmVolumeChange = (evt) => {
+	window.updateVolume('bgm');
+};
+
 document.addEventListener("imports-loaded", async () => {
   document
     .getElementById("reset-progress")
@@ -218,5 +226,5 @@ document.addEventListener("imports-loaded", async () => {
       event.preventDefault();
       await _saveCurrentSession();
     }
-  );
+	);
 });

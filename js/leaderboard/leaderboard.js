@@ -5,7 +5,10 @@
 		await populateGrid('highest-backpack');
 		await populateFastestLevelGrid('fastest-level');
 		await window.convertDiscoveredIdentifierToIds();
-		window.playSound('trainer-battle', 0.1);
+		
+		await window.commonInitialize();
+
+		window.playSound('trainer-battle');
 		window.muteAllAudioWhenAway();
   });
 

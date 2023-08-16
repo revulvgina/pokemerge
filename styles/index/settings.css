@@ -100,7 +100,7 @@
 .reset-container {
 	background: rgb(var(--color-cf4f2f));
 	color: rgb(var(--color-f7df6f));
-	margin-top: 5%;
+	margin-top: 8%;
 	border: 5px double rgb(var(--color-ffffee));
 }
 
@@ -121,6 +121,7 @@
 
 .share-session-container {
 	margin-top: 5%;
+	margin-bottom: 2%;
 	padding-left: 0;
 }
 
@@ -174,7 +175,22 @@
 }
 
 .ko-fi-container {
-	margin-top: 20%;
+	margin-top: 5%;
+}
+
+.volume-container {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+}
+
+.volume-label {
+	flex-grow: 1;
+}
+
+.bgm-volume-container {
+	margin-top: 3%;
 }
 
 @keyframes red-gradient {

@@ -9,7 +9,66 @@
     const totalItems = listOfItems.length;
 
     return listOfItems[Math.floor(Math.random() * totalItems)];
-  };
+	};
+	
+	window.commonInitialize = async () => {
+		window.defaultStorageValue('effects-volume', 20);
+		window.defaultStorageValue('bgm-volume', 20);
+
+		window.updateAllAudioElementVolume('effects');
+		window.updateAllAudioElementVolume('bgm');
+	};
+
+	window.updateVolumeElements = () => {
+		document.getElementById('effects-volume').value = window.getVolumePercentValue(window.localStorage.getItem('effects-volume')) * 100;
+		window.updateVolumeIntensity('effects');
+
+		document.getElementById('bgm-volume').value = window.getVolumePercentValue(window.localStorage.getItem('bgm-volume')) * 100;
+		window.updateVolumeIntensity('bgm');
+	};
+
+	window.updateVolume = (volumeType) => {
+		const key = `${volumeType}-volume`;
+
+		const effectsVolumeElement = document.getElementById(key);
+		window.localStorage.setItem(key, effectsVolumeElement.value);
+
+		document.getElementById(`${key}-intensity`).innerText = 0 === Number.parseInt(effectsVolumeElement.value, 10) ? '🔇' : '🔊';
+
+		window.updateVolumeIntensity(volumeType);
+
+		window.updateAllAudioElementVolume(volumeType);
+	};
+
+	window.updateVolumeIntensity = (volumeType) => {
+		document.getElementById(`${volumeType}-volume-intensity`).innerText = 0 === Number.parseInt(document.getElementById(`${volumeType}-volume`).value, 10) ? '🔇' : '🔊';
+	}
+
+	window.updateAllAudioElementVolume = (volumeType) => {
+		Array.from(document.querySelectorAll(`audio[data-sound-type="${volumeType}"]`)).forEach((eachAudioElement) => {
+			eachAudioElement.volume = window.getVolumePercentValue(window.localStorage.getItem(`${volumeType}-volume`));
+		});
+	};
+
+	window.getVolumePercentValue = (objectValue) => {
+		if ('string' === typeof objectValue && /^[0-9]+$/.test(objectValue)) {
+			return window.getVolumePercentValue(Number.parseInt(objectValue, 10));
+		}
+
+		if ('number' !== typeof objectValue) {
+			return undefined;
+		}
+		
+		if (objectValue <= -1 || objectValue >= 101) {
+			return undefined;
+		}
+
+		return Math.floor(objectValue) / 100;
+	};
+
+	window.defaultStorageValue = (localStorageKey, defaultValue) => {
+		window.localStorage.setItem(localStorageKey, null === window.localStorage.getItem(localStorageKey) ? defaultValue : window.localStorage.getItem(localStorageKey));
+	};
 
   window.loadPokeCsv = async () => {
     const response = await fetch("./csv/pokemon.csv");
@@ -97,14 +156,13 @@
     return "/pokemerge";
   };
 
-  window.playSound = (audioId, volume = 1) => {
+  window.playSound = (audioId) => {
     const thisAudio = document.getElementById(audioId);
 
     if (!thisAudio) {
       return;
     }
 
-    thisAudio.volume = volume;
     thisAudio.muted = false;
 
     // thisAudio.pause();
@@ -212,14 +270,6 @@
 
       if (!bgmElement.paused) {
         return;
-      }
-
-      bgmElement.volume = 0.2;
-
-      const elementDataVolumeAttribute = bgmElement.getAttribute("data-volume");
-
-      if (elementDataVolumeAttribute) {
-        bgmElement.volume = Number.parseFloat(elementDataVolumeAttribute);
       }
 
       bgmElement.muted = false;

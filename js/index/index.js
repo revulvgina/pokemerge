@@ -12,6 +12,10 @@
 		window.loadCommonElements();
 		
 		await window.initializeSessionFromCloud();
+		
+		await window.commonInitialize();
+		window.updateVolumeElements();
+
     window.initializeSessionId();
 		await window.initializeNickname();
 

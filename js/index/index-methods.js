@@ -405,7 +405,7 @@
     updateExpCountForNextLevelElement();
     updateCurrentLevel();
 
-    _playIndexSound("level-up-sound");
+    window.playSound("level-up-sound");
 
     window.levelUpSoundPriorityTimeout = Date.now() + 2000;
 
@@ -541,7 +541,7 @@
 
     _updateExpForNextLevelCount(currentEvolutionNumber);
 
-    _playIndexSound("plus-sound");
+    window.playSound("plus-sound");
   };
 
   const _getPokemonImageUrl = (pokemonId) => {
@@ -703,7 +703,7 @@
       );
     }
 
-		_playIndexSound("click-sound");
+		window.playSound("click-sound");
 		
 		if (document.getElementById('magikarp-song').paused) {
 			window.playPageBgm();
@@ -724,7 +724,7 @@
 
     _increaseCurrentGold(_getBasePrice(evolutionNumber));
 
-    _playIndexSound("coin-sound");
+    window.playSound("coin-sound");
 	};
 	
 	const _willAddBuff = (evolutionChainId, pokemonId) => {
@@ -914,7 +914,7 @@
 
 				if (!_isMagikarpSongPlaying()) {
 					document.getElementById('magikarp-song').currentTime = 220;
-					window.playSound('magikarp-song', 0.1);
+					window.playSound('magikarp-song');
 					document.getElementById('page-bgm').pause();
 					document.getElementById('page-bgm').currentTime = 0;
 				}
@@ -957,29 +957,6 @@
     return Array.from(document.querySelectorAll("[id^=backpack-cell-]"));
   };
 
-  const _playIndexSound = (audioId) => {
-    const volumeMap = {
-      ["pokeball-open-sound"]: 0.05,
-      ["click-sound"]: 0.25,
-    };
-
-    let volume = volumeMap[audioId] || 1;
-
-    if (/^pokemon-cry-/.test(audioId)) {
-      volume = 0.5;
-    }
-
-    if ((window.levelUpSoundPriorityTimeout || 0) > Date.now()) {
-      volume = 0.15;
-		}
-		
-		if (_isSummoningMagikarpMode()) {
-			volume = 0.1;
-		}
-
-    window.playSound(audioId, volume);
-  };
-
   const _onPokeBallClick = () => {
     let indexWithoutDisplayName = _getEmptyBackpackCell();
 
@@ -997,7 +974,7 @@
           1
       );
 
-      _playIndexSound("pokeball-open-sound");
+      window.playSound("pokeball-open-sound");
     }
 
     _clearSelectedCell();
@@ -1021,7 +998,7 @@
     const parentElement = imgElement.parentElement;
     _randomizeBackpackCell(parentElement, pokeBallIndex);
     // setSelectedCell(parentElement);
-    _playIndexSound("pokeball-open-sound");
+    window.playSound("pokeball-open-sound");
   };
 
   const _getOpenedBackpackCells = () => {
@@ -1409,15 +1386,13 @@
 
     document.getElementById("audio-cries").appendChild(audioElement);
 
-    audioElement.volume = 0.1;
-
     return audioElement;
   };
 
 	const _playCry = (pokemonId) => {
     const audioElement = _createOrUpdateCryElement(pokemonId);
 
-    _playIndexSound(audioElement.id);
+    window.playSound(audioElement.id);
   };
 
   const _attachBuyerContextMenu = (cellElement) => {
@@ -1452,7 +1427,7 @@
 
       _restartBuyerRandomizeTimeout(cellElement);
 
-      _playIndexSound("shuffle-sound");
+      window.playSound("shuffle-sound");
     };
 
     cellElement.addEventListener("contextmenu", onBuyerContextMenu, true);
@@ -1508,7 +1483,7 @@
 		_resetBorderColor(window.selectedCellElement);
     _clearSelectedCell();
 
-    _playIndexSound("gold-sound");
+    window.playSound("gold-sound");
 
     _playCry(targetPokemonId);
   };
@@ -1526,7 +1501,7 @@
   };
 
   const _playEncounter = () => {
-    _playIndexSound("pokemon-encounter");
+    window.playSound("pokemon-encounter");
 
     clearTimeout(window._showStreakAnimation);
     document.getElementById("spinning-box").classList.remove("display-none");
@@ -1706,7 +1681,9 @@
       level: window.currentLevel,
       gold: window.currentGold,
       expCountForNextLevel: window.expCountForNextLevel,
-      levelStarted: window.levelStarted,
+			levelStarted: window.levelStarted,
+			effectsVolume: window.localStorage.getItem('effects-volume'),
+			bgmVolume: window.localStorage.getItem('bgm-volume')
     };
 
     const allDiscoveredLocalStorageKeys = Object.entries({
@@ -1763,7 +1740,9 @@
 			discovered,
 			collected,
 			magikarpModeTimeout,
-      lastUpdated,
+			lastUpdated,
+			effectsVolume,
+			bgmVolume
     } = responseObject;
 
     let deviceDataAndDateString = "No data";
@@ -1833,6 +1812,16 @@
 		if (magikarpModeTimeout) {
 			window.localStorage.setItem('magikarp-mode-timeout', magikarpModeTimeout);
 		}
+
+		if ('string' === typeof effectsVolume) {
+			window.localStorage.setItem('effects-volume', effectsVolume);
+		}
+
+		if ('string' === typeof bgmVolume) {
+			window.localStorage.setItem('bgm-volume', bgmVolume);
+		}
+
+		document.dispatchEvent(new CustomEvent('session-synced'));
 
     console.info("Session synced.");
   };
